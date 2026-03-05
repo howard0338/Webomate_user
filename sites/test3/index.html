@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>晶艷車體鍍膜—新北永和店 | 專業科技 頂級御車</title>
+    <meta name="description" content="榮獲國際賽事金獎肯定，並深受超過百位車主5星滿分推崇的頂級汽車美容中心。提供專業鍍膜、內裝美容與多項特約服務。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Urbanist:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0B1120',    // Deep tech background
+                            blue: '#1E3A8A',    // Logo Blue base
+                            accent: '#3B82F6',  // Tech Blue highlight
+                            orange: '#F97316',  // Logo Orange
+                            silver: '#E2E8F0',  // Silver text/accents
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        heading: ['Urbanist', '"Noto Sans TC"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B1120; }
+        ::-webkit-scrollbar-thumb { background: #1E3A8A; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3B82F6; }
+        
+        /* Glassmorphism Utilities */
+        .glass-nav {
+            background: rgba(11, 17, 32, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-card {
+            background: rgba(30, 58, 138, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #E2E8F0, #3B82F6);
+        }
+    </style>
+</head>
+<body class="antialiased bg-brand-dark text-brand-silver font-sans selection:bg-brand-orange selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity">
+                    <!-- Logo Injection -->
+                    <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260305152303_0.png" alt="晶艷車體鍍膜 Logo" class="h-12 w-auto object-contain">
+                    <span class="font-heading font-bold text-xl tracking-wider text-white hidden sm:block">晶艷車體鍍膜</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="flex items-baseline space-x-8">
+                        <a href="#about" class="hover:text-brand-orange transition-colors duration-300 text-sm font-medium tracking-wide">國際認證</a>
+                        <a href="#services" class="hover:text-brand-orange transition-colors duration-300 text-sm font-medium tracking-wide">極致服務</a>
+                        <a href="#pricing" class="hover:text-brand-orange transition-colors duration-300 text-sm font-medium tracking-wide">透明價目</a>
+                        <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-orange text-white text-sm font-bold hover:bg-orange-500 hover:shadow-[0_0_15px_rgba(249,115,22,0.5)] transition-all duration-300 transform hover:-translate-y-0.5">預約保養</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80" alt="頂級汽車美容" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/60 to-brand-dark"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-blue/30 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center w-full mt-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-brand-orange text-sm font-bold mb-8 animate-fade-in-up" style="animation-delay: 0.1s;">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>用最好的產品來呵護你的車</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight animate-fade-in-up font-heading" style="animation-delay: 0.2s;">
+                <span class="text-white block mb-2">專業科技</span>
+                <span class="text-gradient">極致御車工藝</span>
+            </h1>
+            
+            <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.3s;">
+                這是一家位於新北永和，榮獲國際賽事金獎肯定，並深受超過百位車主 <span class="text-brand-orange font-bold">5星滿分推崇</span> 的頂級汽車美容中心。我們結合尖端科技與職人精神，為您的愛車注入數位生命力。
+            </p>
+            
+            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.4s;">
+                <a href="#services" class="px-8 py-4 rounded-full bg-brand-orange text-white font-bold text-lg hover:bg-orange-500 hover:shadow-[0_0_20px_rgba(249,115,22,0.4)] transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    探索服務 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#contact" class="px-8 py-4 rounded-full glass-card text-white font-bold text-lg hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-1 flex items-center justify-center gap-2 border border-brand-silver/20">
+                    聯絡我們
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-brand-silver/50">
+            <i data-lucide="chevron-down" class="w-8 h-8"></i>
+        </div>
+    </section>
+
+    <!-- Social Proof & Maps Data Section -->
+    <section class="py-12 border-y border-brand-silver/10 bg-brand-blue/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+                <!-- Google Maps Rating -->
+                <div class="flex items-center gap-4 group cursor-pointer">
+                    <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <img src="https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png" alt="Google Maps" class="w-8 h-8 opacity-80">
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-1 text-brand-orange mb-1">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <span class="text-white font-bold text-xl ml-2">5.0</span>
+                        </div>
+                        <p class="text-sm text-brand-silver/70">Google Maps 113 則真實顧客好評</p>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block w-px h-16 bg-brand-silver/20"></div>
+
+                <!-- Location -->
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full glass-card flex items-center justify-center text-brand-accent">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-white font-bold text-lg">新北永和旗艦店</h3>
+                        <p class="text-sm text-brand-silver/70">234新北市永和區永亨路57號</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Certifications (About) -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-brand-orange font-bold tracking-widest text-sm mb-3">PROFESSIONAL EXPERTISE</h2>
+                <h3 class="text-3xl md:text-5xl font-black text-white font-heading">頂尖技術 國際認證</h3>
+                <div class="w-24 h-1 bg-gradient-to-r from-brand-accent to-brand-orange mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Award Card 1 -->
+                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-blue/30 flex items-center justify-center text-brand-orange mb-6 group-hover:bg-brand-orange group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="trophy" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-brand-silver/50 text-sm font-bold mb-2">2024 / 2025</div>
+                    <h4 class="text-xl font-bold text-white mb-3 leading-snug">國際賽事 拋光大師賽</h4>
+                    <p class="text-brand-silver/80 text-sm">2024 國際 GT SHOW 榮獲<span class="text-yellow-400 font-bold">金、銀獎狀</span><br>2025 國際 AEA 榮獲前8名獎盃</p>
+                </div>
+
+                <!-- Award Card 2 -->
+                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-blue/30 flex items-center justify-center text-brand-accent mb-6 group-hover:bg-brand-accent group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="award" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-brand-silver/50 text-sm font-bold mb-2">2025</div>
+                    <h4 class="text-xl font-bold text-white mb-3 leading-snug">日本頂級 JCA 認證</h4>
+                    <p class="text-brand-silver/80 text-sm">通過日本🇯🇵頂級 JCA 第2、3級技師嚴格認證，導入純正日式匠人施作工法。</p>
+                </div>
+
+                <!-- Award Card 3 -->
+                <div class="glass-card p-8 rounded-3xl hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-2xl bg-brand-blue/30 flex items-center justify-center text-brand-silver mb-6 group-hover:bg-white group-hover:text-brand-dark transition-colors duration-300">
+                        <i data-lucide="graduation-cap" class="w-7 h-7"></i>
+                    </div>
+                    <div class="text-brand-silver/50 text-sm font-bold mb-2">2023 / 2024</div>
+                    <h4 class="text-xl font-bold text-white mb-3 leading-snug">汽美達人 官方講師</h4>
+                    <p class="text-brand-silver/80 text-sm">連續受邀擔任北市青年發展協會汽美達人講師，致力於培育業界頂尖人才。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Pricing Table -->
+    <section id="pricing" class="py-24 bg-brand-dark relative border-t border-brand-silver/5">
+        <!-- Abstract Tech Background Elements -->
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-blue/10 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-brand-orange font-bold tracking-widest text-sm mb-3">TRANSPARENT PRICING</h2>
+                <h3 class="text-3xl md:text-5xl font-black text-white font-heading mb-4">透明價目 極致享受</h3>
+                <p class="text-brand-silver/70">以最優惠的價格，享受最精緻的汽車美容服務與品質</p>
+            </div>
+
+            <!-- Pricing Table Wrapper -->
+            <div class="glass-card rounded-3xl overflow-hidden shadow-2xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse whitespace-nowrap">
+                        <thead>
+                            <tr class="bg-brand-blue/20 text-white text-lg border-b border-brand-blue/30">
+                                <th class="p-6 font-bold w-1/3">服務項目</th>
+                                <th class="p-6 font-bold text-center">小型車</th>
+                                <th class="p-6 font-bold text-center">大型車</th>
+                                <th class="p-6 font-bold text-center">休旅車</th>
+                                <th class="p-6 font-bold text-center">商旅車</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-brand-silver divide-y divide-brand-silver/10">
+                            <tr class="hover:bg-white/5 transition-colors duration-200 group">
+                                <td class="p-6 font-medium group-hover:text-white flex items-center gap-3">
+                                    <i data-lucide="droplets" class="w-5 h-5 text-brand-accent"></i> 達人鍍膜洗車
+                                </td>
+                                <td class="p-6 text-center font-heading text-lg">1,000</td>
+                                <td class="p-6 text-center font-heading text-lg">1,200</td>
+                                <td class="p-6 text-center font-heading text-lg">1,500</td>
+                                <td class="p-6 text-center font-heading text-lg text-brand-orange">2,000</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors duration-200 group">
+                                <td class="p-6 font-medium group-hover:text-white flex items-center gap-3">
+                                    <i data-lucide="sofa" class="w-5 h-5 text-brand-accent"></i> 皮革保養 <span class="text-xs text-brand-silver/50 ml-2">(維持光澤)</span>
+                                </td>
+                                <td class="p-6 text-center font-heading text-lg">400</td>
+                                <td class="p-6 text-center font-heading text-lg">450</td>
+                                <td class="p-6 text-center font-heading text-lg">500</td>
+                                <td class="p-6 text-center font-heading text-lg text-brand-orange">600</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors duration-200 group">
+                                <td class="p-6 font-medium group-hover:text-white flex items-center gap-3">
+                                    <i data-lucide="sparkles" class="w-5 h-5 text-brand-accent"></i> 內裝美容 <span class="text-xs text-brand-silver/50 ml-2">(深度清潔)</span>
+                                </td>
+                                <td class="p-6 text-center font-heading text-lg">4,000</td>
+                                <td class="p-6 text-center font-heading text-lg">4,500</td>
+                                <td class="p-6 text-center font-heading text-lg">5,000</td>
+                                <td class="p-6 text-center font-heading text-lg text-brand-orange">6,000</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors duration-200 group">
+                                <td class="p-6 font-medium group-hover:text-white flex items-center gap-3">
+                                    <i data-lucide="brush" class="w-5 h-5 text-brand-accent"></i> 絨布座椅清洗
+                                </td>
+                                <td class="p-6 text-center font-heading text-lg">2,000</td>
+                                <td class="p-6 text-center font-heading text-lg">2,200</td>
+                                <td class="p-6 text-center font-heading text-lg">2,500</td>
+                                <td class="p-6 text-center font-heading text-lg text-brand-orange">3,000</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors duration-200 group">
+                                <td class="p-6 font-medium group-hover:text-white flex items-center gap-3">
+                                    <i data-lucide="layers" class="w-5 h-5 text-brand-accent"></i> 絨布地毯清洗
+                                </td>
+                                <td class="p-6 text-center font-heading text-lg">2,000</td>
+                                <td class="p-6 text-center font-heading text-lg">2,200</td>
+                                <td class="p-6 text-center font-heading text-lg">2,500</td>
+                                <td class="p-6 text-center font-heading text-lg text-brand-orange">3,000</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors duration-200 group">
+                                <td class="p-6 font-medium group-hover:text-white flex items-center gap-3">
+                                    <i data-lucide="thermometer-sun" class="w-5 h-5 text-brand-accent"></i> 蒸汽殺菌清洗 <span class="text-xs text-brand-silver/50 ml-2">(清潔、殺菌)</span>
+                                </td>
+                                <td class="p-6 text-center font-heading text-lg">2,000</td>
+                                <td class="p-6 text-center font-heading text-lg">2,200</td>
+                                <td class="p-6 text-center font-heading text-lg">2,500</td>
+                                <td class="p-6 text-center font-heading text-lg text-brand-orange">3,000</td>
+                            </tr>
+                            <tr class="hover:bg-white/5 transition-colors duration-200 group">
+                                <td class="p-6 font-medium group-hover:text-white flex items-center gap-3">
+                                    <i data-lucide="wind" class="w-5 h-5 text-brand-accent"></i> 臭氧除臭 <span class="text-xs text-brand-silver/50 ml-2">(室內空氣循環)</span>
+                                </td>
+                                <td class="p-6 text-center font-heading text-lg">800</td>
+                                <td class="p-6 text-center font-heading text-lg">1,000</td>
+                                <td class="p-6 text-center font-heading text-lg">1,200</td>
+                                <td class="p-6 text-center font-heading text-lg text-brand-orange">1,500</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section id="services" class="py-24 relative border-t border-brand-silver/5">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="text-brand-orange font-bold tracking-widest text-sm mb-3">EXCLUSIVE SERVICES</h2>
+                    <h3 class="text-3xl md:text-5xl font-black text-white font-heading">全方位特約服務</h3>
+                </div>
+                <p class="text-brand-silver/70 max-w-md md:text-right">除了頂級美容，我們更結合同業菁英，提供一站式的愛車升級與照護方案。</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- Specialty 1 -->
+                <div class="glass-card p-6 rounded-2xl text-center hover:bg-brand-blue/20 transition-all duration-300 hover:-translate-y-1 cursor-default">
+                    <i data-lucide="car-front" class="w-8 h-8 mx-auto text-brand-silver mb-4"></i>
+                    <h4 class="font-bold text-white text-sm md:text-base">新、中古車買賣</h4>
+                </div>
+                <!-- Specialty 2 -->
+                <div class="glass-card p-6 rounded-2xl text-center hover:bg-brand-blue/20 transition-all duration-300 hover:-translate-y-1 cursor-default">
+                    <i data-lucide="cpu" class="w-8 h-8 mx-auto text-brand-accent mb-4"></i>
+                    <h4 class="font-bold text-white text-sm md:text-base">汽車刷寫程式</h4>
+                </div>
+                <!-- Specialty 3 -->
+                <div class="glass-card p-6 rounded-2xl text-center hover:bg-brand-blue/20 transition-all duration-300 hover:-translate-y-1 cursor-default">
+                    <i data-lucide="cloud-rain" class="w-8 h-8 mx-auto text-brand-silver mb-4"></i>
+                    <h4 class="font-bold text-white text-sm md:text-base">日本CH雨刷</h4>
+                </div>
+                <!-- Specialty 4 -->
+                <div class="glass-card p-6 rounded-2xl text-center hover:bg-brand-blue/20 transition-all duration-300 hover:-translate-y-1 cursor-default">
+                    <i data-lucide="footprints" class="w-8 h-8 mx-auto text-brand-orange mb-4"></i>
+                    <h4 class="font-bold text-white text-sm md:text-base">神爪3D腳踏墊</h4>
+                </div>
+                <!-- Specialty 5 -->
+                <div class="glass-card p-6 rounded-2xl text-center hover:bg-brand-blue/20 transition-all duration-300 hover:-translate-y-1 cursor-default col-span-2 md:col-span-1 lg:col-span-1">
+                    <i data-lucide="paint-roller" class="w-8 h-8 mx-auto text-brand-silver mb-4"></i>
+                    <h4 class="font-bold text-white text-sm md:text-base">烤漆、鈑金特約</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-[#050810] pt-20 pb-10 border-t border-brand-blue/20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                
+                <!-- Brand Col -->
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260305152303_0.png" alt="Logo" class="h-10 w-auto opacity-90">
+                        <span class="font-heading font-bold text-2xl text-white tracking-wider">晶艷車體鍍膜</span>
+                    </div>
+                    <p class="text-brand-silver/60 leading-relaxed max-w-md mb-8">
+                        結合頂尖獲獎技術與最高規格產品，為您的愛車提供不凡的極致呵護。從基礎洗車到高階鍍膜，我們承諾給予最專業的服務品質。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-brand-accent hover:text-white transition-all duration-300">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:bg-brand-orange hover:text-white transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6 tracking-wide">聯絡資訊</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-brand-silver/80 group">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-accent mt-0.5 group-hover:text-brand-orange transition-colors"></i>
+                            <div>
+                                <span class="block font-medium text-white mb-1">新北永和店</span>
+                                <a href="https://maps.google.com/?q=234新北市永和區永亨路57號" target="_blank" rel="noopener noreferrer" class="hover:text-brand-orange transition-colors text-sm">234新北市永和區永亨路57號</a>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3 text-brand-silver/80 group">
+                            <i data-lucide="clock" class="w-5 h-5 text-brand-accent group-hover:text-brand-orange transition-colors"></i>
+                            <span class="text-sm">歡迎來電預約洽詢</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6 tracking-wide">快速導覽</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-brand-silver/70 hover:text-white transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-orange"></i> 國際認證</a></li>
+                        <li><a href="#pricing" class="text-brand-silver/70 hover:text-white transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-orange"></i> 服務價目</a></li>
+                        <li><a href="#services" class="text-brand-silver/70 hover:text-white transition-colors text-sm flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-orange"></i> 特約服務</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-brand-silver/10 flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="text-brand-silver/40 text-sm">
+                    &copy; 2024 晶艷車體鍍膜—新北永和店. All rights reserved.
+                </p>
+                <div class="flex items-center gap-2 text-brand-silver/40 text-sm">
+                    <span>Designed with</span> <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i> <span>for Auto Care</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+```
