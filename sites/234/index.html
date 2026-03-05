@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>也好珈琲營業所 Yehow Coffee</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#FDFBF7', // 燕麥/溫潤白
+                            wood: '#8C6239', // 溫暖木質棕
+                            woodDark: '#5C3A21', // 深木色
+                            teal: '#4A7C7A', // 藍綠點綴色
+                            tealLight: '#E8F0F0', // 淺藍綠背景
+                            text: '#333333',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Smooth scrolling */
+        html { scroll-behavior: smooth; }
+        /* Custom scrollbar for a polished look */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FDFBF7; }
+        ::-webkit-scrollbar-thumb { background: #8C6239; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #5C3A21; }
+    </style>
+</head>
+<body class="antialiased bg-brand-bg text-brand-text font-sans selection:bg-brand-teal selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-brand-bg/90 backdrop-blur-md border-b border-brand-wood/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <!-- Logo Placeholder based on brand colors -->
+                    <div class="w-10 h-10 rounded-full bg-brand-teal flex items-center justify-center text-white font-serif font-bold text-xl shadow-sm">
+                        也
+                    </div>
+                    <span class="font-serif font-semibold text-xl tracking-wider text-brand-woodDark">也好珈琲營業所</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#story" class="text-gray-600 hover:text-brand-teal transition-colors duration-300">品牌故事</a>
+                    <a href="#menu" class="text-gray-600 hover:text-brand-teal transition-colors duration-300">精選菜單</a>
+                    <a href="#location" class="text-gray-600 hover:text-brand-teal transition-colors duration-300">營業資訊</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-[90vh] flex items-center justify-center overflow-hidden">
+        <!-- Background Image (Cozy cafe interior with wood and teal hints) -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" alt="也好珈琲營業所 店內空間" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/40"></div> <!-- Overlay -->
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight tracking-wide drop-shadow-lg">
+                日子不必太完美<br/>
+                <span class="block mt-4 text-3xl md:text-5xl text-brand-bg/90">只想給您一個溫柔的釋懷</span>
+            </h1>
+            <p class="mt-6 text-lg md:text-xl text-gray-200 font-light tracking-widest max-w-2xl mx-auto">
+                對生活的一種妥協，希望路過時，會想推開門進來坐坐。
+            </p>
+            <div class="mt-10">
+                <a href="#menu" class="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-full shadow-sm text-brand-woodDark bg-brand-bg hover:bg-white hover:text-brand-teal hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                    查看精選菜單
+                    <i data-lucide="arrow-down" class="ml-2 w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-12 bg-brand-tealLight border-y border-brand-teal/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <div class="flex space-x-1 text-yellow-500">
+                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                    <i data-lucide="star-half" class="w-6 h-6 fill-current"></i>
+                </div>
+                <div class="text-lg md:text-xl font-medium text-brand-woodDark">
+                    "隱身於台大巷弄間，獲得 4.6 顆星高分評價的溫柔角落。"
+                </div>
+                <div class="text-sm text-gray-500 border-l border-gray-300 pl-4">
+                    來自 42 位顧客的真實回饋
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section id="story" class="py-24 bg-brand-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <i data-lucide="coffee" class="w-12 h-12 mx-auto text-brand-teal mb-8"></i>
+            <h2 class="text-3xl md:text-4xl font-serif text-brand-woodDark mb-8 tracking-wider">也好，就好。</h2>
+            <div class="w-24 h-1 bg-brand-teal/30 mx-auto mb-10"></div>
+            <p class="text-lg text-gray-600 leading-relaxed font-light tracking-wide">
+                「也好珈琲營業所」不僅僅是一間咖啡店，更是一個承載著妥協與釋懷的空間。<br><br>
+                在這個步調飛快的城市裡，我們經常被要求完美。但在這裡，我們告訴你：日子不必太完美。無論是工作後的疲憊，還是午後的片刻閒暇，只要路過，推開那扇溫潤的木門，點一杯用心沖煮的咖啡，給自己一個喘息的理由。<br><br>
+                這樣，也好。
+            </p>
+        </div>
+    </section>
+
+    <!-- Visual Menu Highlights -->
+    <section id="menu" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-serif text-brand-woodDark tracking-wider">珈琲品項</h2>
+                <p class="mt-4 text-gray-500 tracking-widest">精心挑選，溫柔呈現</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Highlight 1: Pour Over -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-2xl shadow-md aspect-[4/3] mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop" alt="手沖咖啡" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-serif tracking-widest">職人手沖</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-serif text-brand-woodDark mb-2">手沖單品珈琲</h3>
+                    <p class="text-gray-600 font-light">精心挑選各式豆種，以職人精神為您沖煮出一杯純粹。每一口都能品嚐到咖啡豆最真實的風土與層次。</p>
+                </div>
+
+                <!-- Highlight 2: Specialty Latte -->
+                <div class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-2xl shadow-md aspect-[4/3] mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a125290ac692?q=80&w=2070&auto=format&fit=crop" alt="調味拿鐵" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <span class="text-white font-serif tracking-widest">特色調味</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-serif text-brand-woodDark mb-2">特色調味拿鐵</h3>
+                    <p class="text-gray-600 font-light">無論是溫潤的「蜂蜜肉桂拿鐵」，還是帶點驚喜的「海鹽焦糖拿鐵」，我們用巧思為經典義式增添一抹溫柔的風味。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Menu List -->
+    <section class="py-20 bg-brand-bg">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-brand-wood/10">
+                <h3 class="text-2xl font-serif text-center text-brand-teal mb-10 tracking-widest border-b pb-4">經典菜單</h3>
+                
+                <div class="space-y-10">
+                    <!-- Category 1 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-brand-woodDark mb-4 flex items-center">
+                            <span class="bg-brand-wood w-2 h-2 rounded-full mr-3"></span>
+                            Espresso Coffee / 義式咖啡
+                        </h4>
+                        <ul class="space-y-3 font-light text-gray-700">
+                            <li class="flex justify-between items-end border-b border-gray-100 pb-1">
+                                <span>美式咖啡 Americano</span>
+                                <span class="font-medium">$130</span>
+                            </li>
+                            <li class="flex justify-between items-end border-b border-gray-100 pb-1">
+                                <span>拿鐵 Caffè Latte</span>
+                                <span class="font-medium">$160</span>
+                            </li>
+                            <li class="flex justify-between items-end border-b border-gray-100 pb-1">
+                                <span>燕麥拿鐵 Oat Latte</span>
+                                <span class="font-medium">$180</span>
+                            </li>
+                            <li class="flex justify-between items-end border-b border-gray-100 pb-1">
+                                <span>卡布奇諾 Cappuccino</span>
+                                <span class="font-medium">$160</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Category 2 -->
+                    <div>
+                        <h4 class="text-lg font-bold text-brand-woodDark mb-4 flex items-center">
+                            <span class="bg-brand-teal w-2 h-2 rounded-full mr-3"></span>
+                            Flavored Coffee / 調味咖啡
+                        </h4>
+                        <ul class="space-y-3 font-light text-gray-700">
+                            <li class="flex justify-between items-end border-b border-gray-100 pb-1">
+                                <span>蜂蜜肉桂拿鐵 Honey Cinnamon Latte</span>
+                                <span class="font-medium">$170</span>
+                            </li>
+                            <li class="flex justify-between items-end border-b border-gray-100 pb-1">
+                                <span>海鹽焦糖拿鐵 Sea Salt Caramel Latte</span>
+                                <span class="font-medium">$170</span>
+                            </li>
+                            <li class="flex justify-between items-end border-b border-gray-100 pb-1">
+                                <span>黑糖拿鐵 Brown Sugar Latte</span>
+                                <span class="font-medium">$170</span>
+                            </li>
+                            <li class="flex justify-between items-end border-b border-gray-100 pb-1">
+                                <span>桂花拿鐵 Osmanthus Latte</span>
+                                <span class="font-medium">$170</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                     <!-- Category 3 -->
+                     <div>
+                        <h4 class="text-lg font-bold text-brand-woodDark mb-4 flex items-center">
+                            <span class="bg-gray-400 w-2 h-2 rounded-full mr-3"></span>
+                            Pour-over Coffee / 手沖咖啡
+                        </h4>
+                        <ul class="space-y-3 font-light text-gray-700">
+                            <li class="flex justify-between items-end border-b border-gray-100 pb-1">
+                                <span>單品手沖 (請洽吧台)</span>
+                                <span class="font-medium">$180</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Footer -->
+    <footer id="location" class="bg-brand-woodDark text-brand-bg pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h2 class="text-3xl font-serif mb-6 text-white tracking-widest">也好珈琲營業所</h2>
+                    <p class="text-brand-bg/80 font-light mb-8 max-w-sm">
+                        日子不必太完美，只是希望路過時，會想推開門進來坐坐。為您在喧囂城市中保留的一處溫柔角落。
+                    </p>
+                    <div class="space-y-4 font-light text-brand-bg/90">
+                        <div class="flex items-start">
+                            <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-1 text-brand-tealLight"></i>
+                            <p>106 臺北市大安區<br>新生南路三段60巷1號</p>
+                        </div>
+                        <div class="flex items-center mt-4 pt-4 border-t border-white/10">
+                            <a href="https://maps.google.com/?q=106臺北市大安區新生南路三段60巷1號" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-brand-tealLight hover:text-white transition-colors">
+                                開啟 Google Maps 導航
+                                <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col justify-center items-center md:items-end">
+                     <div class="bg-white/5 p-8 rounded-2xl border border-white/10 text-center w-full max-w-sm">
+                        <i data-lucide="clock" class="w-8 h-8 mx-auto text-brand-tealLight mb-4"></i>
+                        <h3 class="text-xl font-serif text-white mb-2">營業時間</h3>
+                        <p class="text-brand-bg/80 font-light">
+                            歡迎隨時關注我們的社群<br>獲取最新營業資訊與店休日
+                        </p>
+                        <div class="mt-6 flex justify-center space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-teal transition-colors duration-300">
+                                <i data-lucide="instagram" class="w-5 h-5 text-white"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-teal transition-colors duration-300">
+                                <i data-lucide="facebook" class="w-5 h-5 text-white"></i>
+                            </a>
+                        </div>
+                     </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-brand-bg/50 font-light">
+                <p>&copy; 2024 也好珈琲營業所 Yehow Coffee. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Design with a gentle touch.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+</html>
