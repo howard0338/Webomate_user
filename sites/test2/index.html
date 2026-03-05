@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路燈咖啡 師大店 | 創新的數位體驗</title>
+    <meta name="description" content="位於大安區的科技感咖啡廳，提供創新的數位體驗，是您談創新的好地方。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config for "Tech Impact / Modern Minimalist" Hybrid -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        heading: ['"Urbanist"', '"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        tech: {
+                            900: '#0B1121', // Deep space black
+                            800: '#151E32', // Dark slate
+                            700: '#1E293B', // Slate
+                            blue: '#38BDF8', // Electric Blue
+                            teal: '#2DD4BF', // Neon Teal
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'tech-grid': 'linear-gradient(to right, #1E293B 1px, transparent 1px), linear-gradient(to bottom, #1E293B 1px, transparent 1px)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for tech feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1121;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38BDF8;
+        }
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+        }
+        .glow-text {
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+        }
+    </style>
+</head>
+<body class="antialiased bg-tech-900 text-gray-300 font-sans selection:bg-tech-blue selection:text-tech-900">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-tech-900/80 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
+                <!-- Logo: Using predictions[0] placeholder -->
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-tech-blue to-tech-teal flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.4)]">
+                    <i data-lucide="lightbulb" class="text-tech-900 w-6 h-6"></i>
+                </div>
+                <span class="font-heading font-bold text-xl text-white tracking-wider">路燈咖啡<span class="text-tech-blue text-sm ml-2 font-sans tracking-normal">師大店</span></span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="#about" class="hover:text-tech-blue transition-colors duration-300">品牌概念</a>
+                <a href="#menu" class="hover:text-tech-blue transition-colors duration-300">數位菜單</a>
+                <a href="#location" class="hover:text-tech-blue transition-colors duration-300">空間資訊</a>
+                <a href="#location" class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-tech-blue hover:text-tech-900 hover:border-tech-blue transition-all duration-300 flex items-center gap-2">
+                    <i data-lucide="navigation" class="w-4 h-4"></i>
+                    立即前往
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background Image: Using predictions[1] placeholder with tech overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="路燈咖啡 師大店 空間" class="w-full h-full object-cover object-center opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-b from-tech-900/90 via-tech-900/70 to-tech-900"></div>
+            <div class="absolute inset-0 bg-tech-grid bg-grid-pattern opacity-20"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-tech-blue/10 border border-tech-blue/30 text-tech-blue text-sm font-medium mb-8 backdrop-blur-sm">
+                <span class="w-2 h-2 rounded-full bg-tech-blue animate-pulse"></span>
+                System Online: Operational
+            </div>
+            <h1 class="text-5xl md:text-7xl font-heading font-extrabold text-white mb-6 leading-tight tracking-tight">
+                創新的 <span class="text-transparent bg-clip-text bg-gradient-to-r from-tech-blue to-tech-teal glow-text">數位體驗</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-400 mb-10 max-w-2xl font-light tracking-wide">
+                不只是咖啡廳，更是激發靈感、<span class="text-white font-medium border-b border-tech-blue/50 pb-1">談創新的好地方</span>。簡潔俐落的空間，為您的下一個大想法提供完美載體。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#menu" class="px-8 py-4 rounded-lg bg-tech-blue text-tech-900 font-bold tracking-wider hover:bg-tech-teal transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_-10px_rgba(45,212,191,0.5)] flex items-center justify-center gap-2">
+                    探索菜單 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#location" class="px-8 py-4 rounded-lg bg-white/5 border border-white/10 text-white font-medium tracking-wider hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 backdrop-blur-sm flex items-center justify-center gap-2">
+                    <i data-lucide="map-pin" class="w-5 h-5 text-tech-blue"></i> 浦城街4號
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500 animate-bounce">
+            <span class="text-xs tracking-widest uppercase">Scroll</span>
+            <i data-lucide="mouse" class="w-5 h-5"></i>
+        </div>
+    </header>
+
+    <!-- Social Proof Section (Injected Data) -->
+    <section class="py-12 bg-tech-800 border-y border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-tech-blue/5 via-transparent to-tech-teal/5"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="flex items-center gap-6">
+                <div class="w-16 h-16 rounded-full bg-tech-900 border border-white/10 flex items-center justify-center flex-shrink-0">
+                    <img src="https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/cafe-71.png" alt="Cafe Icon" class="w-8 h-8 opacity-80" style="filter: brightness(0) invert(1);">
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-1">路燈咖啡 師大店</h3>
+                    <p class="text-sm text-gray-400">106臺北市大安區浦城街4號</p>
+                </div>
+            </div>
+            
+            <div class="flex-1 max-w-2xl px-8 border-l border-white/10">
+                <p class="text-lg text-gray-300 italic leading-relaxed">
+                    "隱身於大安區巷弄的創新聚落，極簡科技感的空間設計，獲得近千位在地顧客與工作者好評推崇的質感咖啡體驗。"
+                </p>
+            </div>
+
+            <div class="flex flex-col items-end text-right">
+                <div class="flex items-center gap-1 mb-2">
+                    <span class="text-3xl font-heading font-bold text-white mr-2">4.1</span>
+                    <i data-lucide="star" class="w-5 h-5 fill-tech-blue text-tech-blue"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-tech-blue text-tech-blue"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-tech-blue text-tech-blue"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-tech-blue text-tech-blue"></i>
+                    <i data-lucide="star-half" class="w-5 h-5 text-tech-blue"></i>
+                </div>
+                <p class="text-sm text-gray-400 flex items-center gap-2">
+                    <i data-lucide="users" class="w-4 h-4"></i>
+                    來自 918 位 Google 嚮導評價
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Concept Section -->
+    <section id="about" class="py-24 bg-tech-900 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-tech-blue to-tech-teal rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative rounded-2xl overflow-hidden aspect-square border border-white/10 bg-tech-800">
+                        <!-- Placeholder for interior/concept image -->
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Tech Space" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-sm text-tech-blue font-bold tracking-widest uppercase mb-3 flex items-center gap-2">
+                        <i data-lucide="cpu" class="w-4 h-4"></i> Concept
+                    </h2>
+                    <h3 class="text-3xl md:text-5xl font-heading font-bold text-white mb-6 leading-tight">
+                        重塑對話空間的<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-tech-blue to-white">未來想像</span>
+                    </h3>
+                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
+                        我們摒棄繁雜，以簡潔俐落的線條與冷色調，打造出專注且極具現代科技感的環境。在這裡，每一杯精心萃取的飲品都是激發靈感的燃料；每一個安靜的角落，都是孕育創新思維的絕佳基地。
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-tech-blue/10 flex items-center justify-center mt-1 flex-shrink-0 text-tech-blue">
+                                <i data-lucide="wifi" class="w-3 h-3"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium">高速數位體驗</h4>
+                                <p class="text-sm text-gray-500 mt-1">完善的網路與電源配置，讓您的數位工作無縫接軌。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="w-6 h-6 rounded-full bg-tech-teal/10 flex items-center justify-center mt-1 flex-shrink-0 text-tech-teal">
+                                <i data-lucide="message-square" class="w-3 h-3"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium">深度交流場域</h4>
+                                <p class="text-sm text-gray-500 mt-1">適當的桌距與聲學設計，提供談論創新點子的完美氛圍。</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section (Extracted from provided image data) -->
+    <section id="menu" class="py-24 bg-tech-800 relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-sm text-tech-blue font-bold tracking-widest uppercase mb-3">Digital Menu</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-white">精選數據載體</h3>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">為您的腦力激盪提供最佳能量補給，嚴選茶飲與輕食。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Menu Item 1 (From Menu Image) -->
+                <div class="group bg-tech-900 rounded-2xl overflow-hidden border border-white/5 hover:border-tech-blue/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_-15px_rgba(56,189,248,0.3)]">
+                    <div class="aspect-[4/3] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-tech-900/20 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="水果茶" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 z-20 bg-tech-900/80 backdrop-blur-md px-3 py-1 rounded-full border border-white/10 text-xs font-mono text-tech-blue">
+                            HOT/ICED
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-white">水果茶</h4>
+                                <p class="text-xs text-gray-500 font-mono mt-1">Fresh Fruit Tea</p>
+                            </div>
+                            <span class="text-lg font-bold text-tech-teal font-mono">NT$190</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3 line-clamp-2">豐富新鮮水果調製，酸甜口感為思緒帶來清新活力。</p>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 (From Menu Image) -->
+                <div class="group bg-tech-900 rounded-2xl overflow-hidden border border-white/5 hover:border-tech-blue/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_-15px_rgba(56,189,248,0.3)]">
+                    <div class="aspect-[4/3] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-tech-900/20 group-hover:bg-transparent transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1515823662972-da6a2e4d3002?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="抹茶歐蕾" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-white">抹茶歐蕾</h4>
+                                <p class="text-xs text-gray-500 font-mono mt-1">Matcha Au Lait</p>
+                            </div>
+                            <span class="text-lg font-bold text-tech-teal font-mono">NT$150</span>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3 line-clamp-2">濃郁抹茶與滑順牛奶的完美比例，溫潤口感沉澱思緒。</p>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 (From Salad Image) -->
+                <div class="group bg-tech-900 rounded-2xl overflow-hidden border border-white/5 hover:border-tech-blue/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_-15px_rgba(56,189,248,0.3)]">
+                    <div class="aspect-[4/3] overflow-hidden relative">
+                        <div class="absolute inset-0 bg-tech-900/20 group-hover:bg-transparent transition-colors z-10"></div>
+                        <!-- Using a high-quality placeholder representing the salad image provided -->
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="煙燻鮭魚木盆沙拉" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 z-20 bg-tech-blue/20 backdrop-blur-md px-3 py-1 rounded-full border border-tech-blue/30 text-xs font-mono text-white">
+                            SIGNATURE
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <div>
+                                <h4 class="text-xl font-bold text-white">煙燻鮭魚木盆沙拉</h4>
+                                <p class="text-xs text-gray-500 font-mono mt-1">Smoked Salmon Salad</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3 line-clamp-2">精選煙燻鮭魚搭配新鮮生菜與特製沙拉醬，大份量木盆裝盛，健康輕食首選。</p>
+                    </div>
+                </div>
+
+                <!-- Menu Item 4 (From Menu Image) -->
+                <div class="group bg-tech-900 rounded-2xl overflow-hidden border border-white/5 hover:border-tech-blue/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_-15px_rgba(56,189,248,0.3)]">
+                    <div class="p-6 h-full flex flex-col justify-center">
+                        <div class="w-12 h-12 rounded-full bg-tech-800 flex items-center justify-center mb-4 text-tech-blue">
+                            <i data-lucide="coffee" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-1">桂圓紅棗茶</h4>
+                        <p class="text-xs text-gray-500 font-mono mb-4">Longan & Claret Jujube Tea</p>
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+                            <span class="text-xs text-gray-400 uppercase tracking-wider">Hot Only</span>
+                            <span class="text-lg font-bold text-tech-teal font-mono">NT$200</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Menu Item 5 (From Menu Image) -->
+                 <div class="group bg-tech-900 rounded-2xl overflow-hidden border border-white/5 hover:border-tech-blue/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_-15px_rgba(56,189,248,0.3)]">
+                    <div class="p-6 h-full flex flex-col justify-center">
+                        <div class="w-12 h-12 rounded-full bg-tech-800 flex items-center justify-center mb-4 text-tech-teal">
+                            <i data-lucide="leaf" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-1">有機蘋果檸香茶</h4>
+                        <p class="text-xs text-gray-500 font-mono mb-4">Apple & Lemon Tea</p>
+                        <div class="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+                            <span class="text-xs text-gray-400 uppercase tracking-wider">Hot Only</span>
+                            <span class="text-lg font-bold text-tech-teal font-mono">NT$180</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- View All Menu CTA -->
+                <div class="group bg-gradient-to-br from-tech-800 to-tech-900 rounded-2xl overflow-hidden border border-white/5 hover:border-tech-blue/50 transition-all duration-500 flex items-center justify-center cursor-pointer min-h-[250px]">
+                    <div class="text-center">
+                        <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:bg-tech-blue/10 transition-all duration-300">
+                            <i data-lucide="plus" class="w-8 h-8 text-gray-400 group-hover:text-tech-blue transition-colors"></i>
+                        </div>
+                        <span class="text-white font-medium tracking-wider">載入完整菜單</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Footer -->
+    <footer id="location" class="bg-tech-900 pt-24 pb-12 border-t border-white/10 relative overflow-hidden">
+        <!-- Abstract tech decorative element -->
+        <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-tech-blue/5 to-transparent pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
+                <div>
+                    <h2 class="text-3xl font-heading font-bold text-white mb-6">初始化您的<br><span class="text-tech-blue">實體連線</span></h2>
+                    <p class="text-gray-400 mb-8 max-w-md">準備好開始您的下一次創新對話了嗎？我們在師大商圈的靜謐角落等候您的到來。</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10 text-tech-blue">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">座標位置</h4>
+                                <p class="text-gray-400 text-sm">106臺北市大安區浦城街4號</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10 text-tech-teal">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium mb-1">系統運行時間</h4>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                                    <span class="text-green-400 text-sm font-mono">OPERATIONAL (營業中)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-tech-800 aspect-video md:aspect-auto">
+                    <!-- Google Maps Iframe Placeholder styled contextually -->
+                    <div class="absolute inset-0 bg-tech-800 flex flex-col items-center justify-center text-gray-500">
+                        <i data-lucide="map" class="w-12 h-12 mb-4 opacity-50"></i>
+                        <span class="font-mono text-sm tracking-widest">MAP_MODULE_LOADING...</span>
+                        <a href="https://maps.google.com/?q=106臺北市大安區浦城街4號" target="_blank" class="mt-4 px-6 py-2 rounded-full border border-tech-blue/50 text-tech-blue hover:bg-tech-blue hover:text-tech-900 transition-colors text-sm">
+                            開啟 Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="lightbulb" class="text-tech-blue w-5 h-5"></i>
+                    <span class="font-heading font-bold text-white tracking-wider">路燈咖啡 <span class="text-gray-500 text-sm font-sans">師大店</span></span>
+                </div>
+                <p class="text-gray-500 text-sm font-mono">
+                    &copy; 2024 Lantern Cafe Shida. All systems nominal.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
+```
