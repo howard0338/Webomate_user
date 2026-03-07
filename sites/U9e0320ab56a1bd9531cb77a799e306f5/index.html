@@ -3,29 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>簪香食品有限公司 | 真材實料，極致美味</title>
-    <meta name="description" content="位於新北新店的簪香食品有限公司，堅持真材實料，為您帶來最純粹的美味。">
+    <title>簪香食品有限公司 | 堅持真材實料的極致美味</title>
+    <meta name="description" content="位於新店區寶橋路，榮獲 Google 4.2 星好評的在地優質食品首選。我們堅持真材實料，為您帶來最純粹的美味。">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            red: '#9B111E', // 大氣深紅色 (Ruby Red)
-                            light: '#C4303E',
-                            dark: '#6E0B14',
-                            gold: '#D4AF37', // 點綴金色
-                            bg: '#FDFBF7' // 微暖白背景
+                            50: '#fcf3f3',
+                            100: '#f8e4e4',
+                            200: '#f2caca',
+                            300: '#e8a3a3',
+                            400: '#db7171',
+                            500: '#cc4545',
+                            600: '#b83131',
+                            700: '#9a2626', // Main Atmospheric Red
+                            800: '#802323',
+                            900: '#6a2222',
+                        },
+                        gold: {
+                            500: '#D4AF37',
                         }
                     },
                     fontFamily: {
@@ -37,14 +43,24 @@
         }
     </script>
 
-    <!-- Custom CSS for Animations & Effects -->
+    <!-- Custom CSS for Animations & Glassmorphism -->
     <style>
-        /* Base Styles */
-        body {
-            background-color: #FDFBF7;
+        /* Glassmorphism */
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .glass-card {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        /* Scroll Reveal Animation */
+        /* Scroll Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -55,69 +71,52 @@
             transform: translateY(0);
         }
 
-        /* Staggered delays for grid items */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-
-        /* Typewriter Cursor */
-        .typewriter-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1em;
-            background-color: white;
-            vertical-align: middle;
-            margin-left: 4px;
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Section Fade In */
+        /* Fade In Animation */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
         .animate-fade-in {
-            animation: fadeIn 1.5s ease-out forwards;
+            animation: fadeIn 1.2s ease-out forwards;
         }
 
-        /* Image Hover Zoom */
-        .img-container {
-            overflow: hidden;
+        /* Typewriter Cursor */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
         }
-        .img-container img {
-            transition: transform 0.6s ease;
+        @keyframes blink {
+            50% { opacity: 0; }
         }
-        .img-container:hover img {
-            transform: scale(1.08);
+
+        /* Image Overlay Gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(20,20,20,0.85) 0%, rgba(154,38,38,0.4) 100%);
         }
     </style>
 </head>
-<body class="antialiased text-gray-800 font-sans">
+<body class="antialiased text-gray-800 bg-[#FAFAFA] font-sans selection:bg-brand-700 selection:text-white">
 
-    <!-- Navbar (Glassmorphism) -->
-    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-white/85 border-b border-gray-100 shadow-sm" id="navbar">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo Area -->
-                <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <div class="w-10 h-10 rounded-full bg-brand-red flex items-center justify-center text-white shadow-md">
-                        <i data-lucide="utensils-crossed" class="w-5 h-5"></i>
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-brand-700 text-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <i data-lucide="flame" class="w-6 h-6"></i>
                     </div>
-                    <span class="font-serif font-bold text-2xl tracking-wider text-brand-dark">簪香食品</span>
-                </div>
-                
+                    <span class="font-serif text-2xl font-bold text-gray-900 tracking-wider">簪香食品</span>
+                </a>
+
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-brand-red font-medium transition-all duration-300">關於我們</a>
-                    <a href="#products" class="text-gray-600 hover:text-brand-red font-medium transition-all duration-300">精選產品</a>
-                    <a href="#contact" class="text-gray-600 hover:text-brand-red font-medium transition-all duration-300">聯絡資訊</a>
-                    <a href="tel:0987321456" class="flex items-center gap-2 bg-brand-red text-white px-5 py-2.5 rounded-full font-medium hover:bg-brand-dark hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                    <a href="#about" class="text-sm font-medium text-gray-600 hover:text-brand-700 transition-colors duration-300">品牌精神</a>
+                    <a href="#products" class="text-sm font-medium text-gray-600 hover:text-brand-700 transition-colors duration-300">嚴選產品</a>
+                    <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-brand-700 transition-colors duration-300">聯絡我們</a>
+                    <a href="tel:0987321456" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-700 text-white text-sm font-medium hover:bg-brand-800 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_-6px_rgba(154,38,38,0.5)]">
                         <i data-lucide="phone" class="w-4 h-4"></i>
-                        0987321456
+                        0987-321-456
                     </a>
                 </div>
             </div>
@@ -125,375 +124,336 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden animate-fade-in">
-        <!-- Background Image with Overlay -->
+    <section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="簪香食品背景" class="w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80"></div>
+            <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=2070&auto=format&fit=crop" alt="精選辛香料與醬料背景" class="w-full h-full object-cover object-center scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" />
+            <div class="absolute inset-0 hero-gradient"></div>
         </div>
 
-        <!-- Hero Content -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand-gold/50 bg-black/30 backdrop-blur-sm mb-6 reveal">
-                <i data-lucide="star" class="w-4 h-4 text-brand-gold fill-brand-gold"></i>
-                <span class="text-brand-gold text-sm font-medium tracking-wide">新北新店在地優質首選</span>
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center animate-fade-in pt-20">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm mb-8">
+                <i data-lucide="map-pin" class="w-4 h-4 text-brand-300"></i>
+                <span class="text-sm text-gray-200 tracking-wide">新北市新店區・在地口碑推薦</span>
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 tracking-tight drop-shadow-lg reveal delay-100">
-                簪香食品有限公司
+            <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 tracking-tight drop-shadow-lg">
+                大氣淬鍊<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-white">極致真原味</span>
             </h1>
             
-            <div class="h-12 mb-8 reveal delay-200">
-                <p class="text-xl md:text-2xl text-gray-200 font-light tracking-wide">
-                    <span id="typewriter" class="text-white font-medium"></span><span class="typewriter-cursor"></span>
-                </p>
+            <!-- Typewriter Effect -->
+            <div class="h-8 md:h-12 mb-10">
+                <p id="typewriter-text" class="text-lg md:text-2xl font-light text-gray-200 tracking-widest cursor"></p>
             </div>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center reveal delay-300">
-                <a href="#products" class="px-8 py-4 rounded-full bg-brand-red text-white font-medium tracking-wide hover:bg-brand-light hover:shadow-xl hover:shadow-brand-red/30 hover:-translate-y-1 transition-all duration-300">
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-700 text-white font-medium tracking-wide transition-all duration-300 hover:bg-brand-600 hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(154,38,38,0.8)] flex items-center justify-center gap-2">
                     探索美味
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </a>
-                <a href="#contact" class="px-8 py-4 rounded-full bg-white/10 text-white font-medium tracking-wide border border-white/30 backdrop-blur-sm hover:bg-white hover:text-brand-dark hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 text-white font-medium tracking-wide backdrop-blur-md border border-white/20 transition-all duration-300 hover:bg-white/20 hover:-translate-y-1">
                     聯絡我們
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof / Stats Section -->
-    <section class="py-16 bg-white relative z-20 -mt-10 mx-4 md:mx-auto max-w-6xl rounded-2xl shadow-2xl reveal">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-100">
-            <!-- Stat 1: Google Rating -->
-            <div class="text-center px-6 py-4">
-                <div class="flex justify-center items-center gap-1 mb-2">
-                    <i data-lucide="star" class="w-6 h-6 text-brand-gold fill-brand-gold"></i>
-                    <i data-lucide="star" class="w-6 h-6 text-brand-gold fill-brand-gold"></i>
-                    <i data-lucide="star" class="w-6 h-6 text-brand-gold fill-brand-gold"></i>
-                    <i data-lucide="star" class="w-6 h-6 text-brand-gold fill-brand-gold"></i>
-                    <i data-lucide="star-half" class="w-6 h-6 text-brand-gold fill-brand-gold"></i>
-                </div>
-                <div class="text-4xl font-bold text-brand-dark mb-1 font-serif flex justify-center items-baseline gap-1">
-                    <span class="counter" data-target="4.2" data-decimals="1">0</span>
-                    <span class="text-lg text-gray-500 font-sans">/ 5</span>
-                </div>
-                <p class="text-gray-500 text-sm font-medium">Google 商家真實評分</p>
-            </div>
-            
-            <!-- Stat 2: Reviews -->
-            <div class="text-center px-6 py-4">
-                <div class="flex justify-center items-center mb-2">
-                    <div class="w-12 h-12 rounded-full bg-brand-red/10 flex items-center justify-center">
-                        <i data-lucide="users" class="w-6 h-6 text-brand-red"></i>
+    <!-- Social Proof Section -->
+    <section class="relative -mt-16 z-20 max-w-6xl mx-auto px-6 lg:px-8 reveal">
+        <div class="glass-card rounded-2xl shadow-xl p-8 md:p-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-gray-200 text-center">
+                <div class="px-4 py-2">
+                    <div class="flex items-center justify-center gap-1 mb-2">
+                        <i data-lucide="star" class="w-6 h-6 text-gold-500 fill-gold-500"></i>
+                        <span class="text-5xl font-bold text-gray-900 font-serif counter" data-target="4.2" data-decimal="1">0</span>
                     </div>
+                    <p class="text-sm text-gray-500 font-medium tracking-wide uppercase">Google 顧客評分</p>
                 </div>
-                <div class="text-4xl font-bold text-brand-dark mb-1 font-serif flex justify-center items-baseline gap-1">
-                    <span class="counter" data-target="11">0</span>
-                    <span class="text-2xl text-brand-red font-sans">+</span>
-                </div>
-                <p class="text-gray-500 text-sm font-medium">在地饕客好評推薦</p>
-            </div>
-            
-            <!-- Stat 3: Quality -->
-            <div class="text-center px-6 py-4">
-                <div class="flex justify-center items-center mb-2">
-                    <div class="w-12 h-12 rounded-full bg-brand-red/10 flex items-center justify-center">
-                        <i data-lucide="shield-check" class="w-6 h-6 text-brand-red"></i>
+                <div class="px-4 py-2 pt-8 md:pt-2">
+                    <div class="flex items-center justify-center gap-1 mb-2">
+                        <span class="text-5xl font-bold text-gray-900 font-serif counter" data-target="11">0</span>
+                        <span class="text-3xl font-bold text-brand-700">+</span>
                     </div>
+                    <p class="text-sm text-gray-500 font-medium tracking-wide uppercase">真實五星好評</p>
                 </div>
-                <div class="text-4xl font-bold text-brand-dark mb-1 font-serif flex justify-center items-baseline gap-1">
-                    <span class="counter" data-target="100">0</span>
-                    <span class="text-2xl text-brand-red font-sans">%</span>
+                <div class="px-4 py-2 pt-8 md:pt-2">
+                    <div class="flex items-center justify-center gap-2 mb-2">
+                        <i data-lucide="shield-check" class="w-10 h-10 text-brand-700"></i>
+                    </div>
+                    <p class="text-lg font-bold text-gray-900 mb-1">真材實料</p>
+                    <p class="text-sm text-gray-500 font-medium tracking-wide">絕不妥協的品質承諾</p>
                 </div>
-                <p class="text-gray-500 text-sm font-medium">堅持真材實料</p>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-100 text-center">
+                <p class="text-gray-600 font-serif text-lg italic">「隱身新店區寶橋路，榮獲在地饕客 4.2 星高分推崇的優質食品選擇。」</p>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="order-2 lg:order-1 reveal">
-                <div class="img-container rounded-2xl shadow-2xl aspect-[4/3] relative">
-                    <!-- Using the provided AI generated image URL as requested, or a high quality fallback -->
-                    <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260307082744_0.png" onerror="this.src='https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'" alt="簪香食品 真材實料" class="w-full h-full object-cover" />
-                    <div class="absolute inset-0 border-4 border-white/20 rounded-2xl pointer-events-none"></div>
+    <!-- About Philosophy -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="relative reveal">
+                    <div class="absolute -inset-4 bg-brand-50 rounded-[2rem] transform -rotate-3 z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=2070&auto=format&fit=crop" alt="嚴選辛香料" class="relative z-10 w-full aspect-[4/5] object-cover rounded-2xl shadow-2xl transition-transform duration-700 hover:scale-[1.02]" />
+                    <div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl z-20 max-w-xs border border-gray-100 hidden md:block">
+                        <i data-lucide="quote" class="w-8 h-8 text-brand-200 mb-2"></i>
+                        <p class="text-gray-800 font-serif font-medium">看得到的真材實料，吃得出的用心堅持。</p>
+                    </div>
                 </div>
-            </div>
-            <div class="order-1 lg:order-2 reveal delay-200">
-                <h2 class="text-sm font-bold tracking-widest text-brand-red uppercase mb-3">About Us</h2>
-                <h3 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6 leading-tight">
-                    堅持真材實料<br>
-                    <span class="text-brand-red">成就極致美味</span>
-                </h3>
-                <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                    位於新北市新店區的「簪香食品有限公司」，深耕在地，始終秉持著最純粹的職人精神。我們相信，唯有頂級的食材與不妥協的工序，才能熬煮出令人回味無窮的滋味。
-                </p>
-                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                    這是一家深受在地饕客喜愛的優質食品品牌。從原料挑選到製作包裝，每一個環節我們都嚴格把關。沒有華麗的包裝噱頭，只有「真材實料，好吃」的樸實承諾。
-                </p>
-                
-                <div class="flex items-center gap-4 p-4 bg-brand-bg rounded-xl border border-brand-gold/20">
-                    <div class="w-12 h-12 rounded-full bg-brand-red/10 flex items-center justify-center flex-shrink-0">
-                        <i data-lucide="map-pin" class="w-6 h-6 text-brand-red"></i>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-gray-900">在地深耕</h4>
-                        <p class="text-sm text-gray-500">231新北市新店區寶橋路235巷6弄3號2樓</p>
-                    </div>
+                <div class="reveal">
+                    <h2 class="text-brand-700 font-bold tracking-widest text-sm uppercase mb-3">Brand Philosophy</h2>
+                    <h3 class="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">堅持傳統工法<br/>成就非凡風味</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                        簪香食品有限公司創立以來，始終秉持「真材實料」的核心理念。我們深知，美味的靈魂來自於食材的純粹。因此，從源頭把關，嚴選頂級辛香料與新鮮食材，拒絕多餘的人工添加。
+                    </p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-brand-100 p-1 rounded-full"><i data-lucide="check" class="w-4 h-4 text-brand-700"></i></div>
+                            <span class="text-gray-700 font-medium">嚴選頂級產地原料，香氣濃郁純正</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-brand-100 p-1 rounded-full"><i data-lucide="check" class="w-4 h-4 text-brand-700"></i></div>
+                            <span class="text-gray-700 font-medium">傳統工法慢火熬製，鎖住食材精華</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-brand-100 p-1 rounded-full"><i data-lucide="check" class="w-4 h-4 text-brand-700"></i></div>
+                            <span class="text-gray-700 font-medium">無塵潔淨環境製作，安全衛生有保障</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products / Features Section -->
-    <section id="products" class="py-24 bg-gray-50 px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-sm font-bold tracking-widest text-brand-red uppercase mb-3">Our Products</h2>
-                <h3 class="text-4xl font-serif font-bold text-gray-900 mb-4">專業品質，美味呈現</h3>
-                <div class="w-24 h-1 bg-brand-red mx-auto rounded-full"></div>
+    <!-- Products / Features -->
+    <section id="products" class="py-24 bg-[#FAFAFA]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-brand-700 font-bold tracking-widest text-sm uppercase mb-3">Signature Selection</h2>
+                <h3 class="font-serif text-4xl font-bold text-gray-900 mb-4">簪香精選推薦</h3>
+                <p class="text-gray-600 text-lg">每一口都能品嚐到我們的用心，大氣紅色的視覺饗宴，帶來味蕾的極致震撼。</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Product Card 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group reveal delay-100">
-                    <div class="img-container aspect-video relative">
-                        <img src="https://images.unsplash.com/photo-1585032226651-759b368d7246?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="嚴選食材" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-300"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product Card 1 (Using provided user image) -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group reveal">
+                    <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                        <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260307083131_0.png" alt="招牌秘製醬料" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-300"></div>
                     </div>
                     <div class="p-8">
-                        <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center mb-4">
-                            <i data-lucide="leaf" class="w-5 h-5 text-brand-red"></i>
+                        <div class="flex items-center gap-2 text-brand-700 mb-3 text-sm font-bold tracking-wider">
+                            <i data-lucide="flame" class="w-4 h-4"></i> 熱銷冠軍
                         </div>
-                        <h4 class="text-2xl font-serif font-bold text-gray-900 mb-3 group-hover:text-brand-red transition-colors">嚴選頂級食材</h4>
-                        <p class="text-gray-600 leading-relaxed">
-                            從源頭嚴格把關，挑選最新鮮、最優質的原料，確保每一口都能品嚐到大自然賦予的純粹風味。
-                        </p>
+                        <h4 class="font-serif text-2xl font-bold text-gray-900 mb-3 group-hover:text-brand-700 transition-colors">招牌秘製醬料</h4>
+                        <p class="text-gray-600 line-clamp-2">獨家配方慢火熬煮，色澤紅潤大氣，香氣撲鼻，真材實料看得見，是料理提味的絕佳首選。</p>
                     </div>
                 </div>
 
                 <!-- Product Card 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group reveal delay-200">
-                    <div class="img-container aspect-video relative">
-                        <img src="https://images.unsplash.com/photo-1635320237302-3d7122049e70?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="獨門配方" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-300"></div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group reveal" style="transition-delay: 100ms;">
+                    <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1606850780554-b55ea40f0ebb?q=80&w=2070&auto=format&fit=crop" alt="頂級辛香辣醬" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     </div>
                     <div class="p-8">
-                        <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center mb-4">
-                            <i data-lucide="flame" class="w-5 h-5 text-brand-red"></i>
-                        </div>
-                        <h4 class="text-2xl font-serif font-bold text-gray-900 mb-3 group-hover:text-brand-red transition-colors">獨門秘製工法</h4>
-                        <p class="text-gray-600 leading-relaxed">
-                            傳承經典手藝，結合現代化衛生標準，以精準的火候與比例，熬煮出層次豐富的絕佳口感。
-                        </p>
+                        <h4 class="font-serif text-2xl font-bold text-gray-900 mb-3 group-hover:text-brand-700 transition-colors">頂級辛香辣醬</h4>
+                        <p class="text-gray-600 line-clamp-2">嚴選多種頂級辣椒與香料，層次豐富，辣而不燥，為喜愛重口味的饕客帶來極致享受。</p>
                     </div>
                 </div>
 
                 <!-- Product Card 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group reveal delay-300">
-                    <div class="img-container aspect-video relative">
-                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="安心美味" class="w-full h-full object-cover" />
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-300"></div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group reveal" style="transition-delay: 200ms;">
+                    <div class="relative aspect-[4/3] overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1587049352847-4d4b12404110?q=80&w=2070&auto=format&fit=crop" alt="純粹原味高湯" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                     </div>
                     <div class="p-8">
-                        <div class="w-10 h-10 rounded-full bg-brand-red/10 flex items-center justify-center mb-4">
-                            <i data-lucide="award" class="w-5 h-5 text-brand-red"></i>
-                        </div>
-                        <h4 class="text-2xl font-serif font-bold text-gray-900 mb-3 group-hover:text-brand-red transition-colors">安心品質保證</h4>
-                        <p class="text-gray-600 leading-relaxed">
-                            絕不添加人工化學色素與防腐劑，以最真實的面貌呈現，讓您吃得開心，更吃得安心。
-                        </p>
+                        <h4 class="font-serif text-2xl font-bold text-gray-900 mb-3 group-hover:text-brand-700 transition-colors">純粹原味精粹</h4>
+                        <p class="text-gray-600 line-clamp-2">堅持無添加，萃取食材最原始的甘甜，讓您的每一道居家料理都能展現大廚般的水準。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-24 px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="bg-brand-dark rounded-3xl overflow-hidden shadow-2xl reveal">
-            <div class="grid grid-cols-1 lg:grid-cols-2">
-                <!-- Info Side -->
-                <div class="p-12 md:p-16 flex flex-col justify-center relative">
-                    <!-- Decorative background pattern -->
-                    <div class="absolute top-0 right-0 opacity-10 pointer-events-none">
-                        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="100" cy="100" r="99" stroke="white" stroke-width="2"/>
-                            <circle cx="100" cy="100" r="70" stroke="white" stroke-width="2"/>
-                            <circle cx="100" cy="100" r="40" stroke="white" stroke-width="2"/>
-                        </svg>
-                    </div>
+    <!-- Contact & Location -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="bg-brand-900 rounded-[2.5rem] overflow-hidden shadow-2xl reveal relative">
+                <!-- Decorative background elements -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-800 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-700 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"></div>
 
-                    <h2 class="text-sm font-bold tracking-widest text-brand-gold uppercase mb-3">Contact Us</h2>
-                    <h3 class="text-4xl font-serif font-bold text-white mb-8">聯絡簪香</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 relative z-10">
+                    <div class="p-10 md:p-16 lg:p-20 flex flex-col justify-center">
+                        <h2 class="text-brand-300 font-bold tracking-widest text-sm uppercase mb-3">Contact Us</h2>
+                        <h3 class="font-serif text-4xl md:text-5xl font-bold text-white mb-8">期待為您服務</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-brand-500 transition-colors duration-300">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-brand-200 text-sm font-medium mb-1">公司地址</p>
+                                    <p class="text-white text-lg">231新北市新店區<br/>寶橋路235巷6弄3號2樓</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-brand-500 transition-colors duration-300">
+                                    <i data-lucide="clock" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-brand-200 text-sm font-medium mb-1">營業時間</p>
+                                    <p class="text-white text-lg">週一至週五<br/>上午 9:00 - 下午 5:00</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 group">
+                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-brand-500 transition-colors duration-300">
+                                    <i data-lucide="phone" class="w-5 h-5 text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="text-brand-200 text-sm font-medium mb-1">聯絡專線</p>
+                                    <a href="tel:0987321456" class="text-white text-2xl font-bold hover:text-brand-300 transition-colors inline-block">0987-321-456</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="space-y-8">
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-brand-red transition-colors duration-300">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-brand-gold font-medium mb-1">門市地址</h4>
-                                <p class="text-gray-300 leading-relaxed">231新北市新店區<br>寶橋路235巷6弄3號2樓</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-brand-red transition-colors duration-300">
-                                <i data-lucide="clock" class="w-5 h-5 text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-brand-gold font-medium mb-1">營業時間</h4>
-                                <p class="text-gray-300">週一至週五<br>上午 09:00 - 下午 05:00</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-brand-red transition-colors duration-300">
-                                <i data-lucide="phone" class="w-5 h-5 text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-brand-gold font-medium mb-1">聯絡專線</h4>
-                                <a href="tel:0987321456" class="text-2xl font-serif font-bold text-white hover:text-brand-gold transition-colors">0987-321-456</a>
-                            </div>
-                        </div>
+                    <div class="h-[400px] lg:h-auto w-full bg-gray-200 relative">
+                        <!-- Google Maps iframe -->
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.484279267156!2d121.552178!3d24.9803046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346802e464fff053%3A0x34a14249c8c8a808!2z562H6aaZ6aOf5ZOB5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1700000000000!5m2!1szh-TW!2stw" 
+                            class="absolute inset-0 w-full h-full border-0 grayscale-[20%] contrast-[1.1]" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
-                </div>
-
-                <!-- Map Side -->
-                <div class="h-[400px] lg:h-auto w-full bg-gray-200 relative">
-                    <!-- Google Maps Iframe using provided coordinates -->
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.516886477543!2d121.552178!3d24.9803046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346801e464ffe553%3A0xd070a141c9c8a808!2z56-H6aaZ6aOf5ZOB5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2stw!4v1700000000000!5m2!1szh-TW!2stw" 
-                        class="absolute inset-0 w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-700" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+    <footer class="bg-gray-950 text-gray-400 py-12 border-t border-gray-900">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-full bg-brand-red flex items-center justify-center text-white">
-                    <i data-lucide="utensils-crossed" class="w-4 h-4"></i>
-                </div>
-                <span class="font-serif font-bold text-xl tracking-wider">簪香食品</span>
+            <div class="flex items-center gap-2">
+                <i data-lucide="flame" class="w-5 h-5 text-brand-700"></i>
+                <span class="font-serif text-xl font-bold text-white tracking-wider">簪香食品</span>
             </div>
-            
-            <p class="text-gray-400 text-sm text-center md:text-left">
-                &copy; 2026 簪香食品有限公司 Zan Xiang Food Co., Ltd. All rights reserved.
+            <p class="text-sm">
+                &copy; 2026 簪香食品有限公司 All Rights Reserved.
             </p>
-            
-            <div class="flex gap-4">
-                <a href="#about" class="text-gray-400 hover:text-white transition-colors text-sm">關於我們</a>
-                <a href="#products" class="text-gray-400 hover:text-white transition-colors text-sm">產品介紹</a>
-                <a href="#contact" class="text-gray-400 hover:text-white transition-colors text-sm">聯絡資訊</a>
-            </div>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        // Initialize Lucide Icons
+        // Initialize Icons
         lucide.createIcons();
 
         // Navbar Scroll Effect
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md', 'bg-white/95');
-                navbar.classList.remove('bg-white/85', 'shadow-sm');
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
             } else {
-                navbar.classList.remove('shadow-md', 'bg-white/95');
-                navbar.classList.add('bg-white/85', 'shadow-sm');
+                navbar.classList.remove('shadow-md');
+                navbar.style.background = 'rgba(255, 255, 255, 0.85)';
             }
         });
 
         // Typewriter Effect
-        const textToType = "堅持真材實料，為您呈現極致美味的承諾。";
-        const typewriterElement = document.getElementById('typewriter');
+        const text = "堅持真材實料，淬鍊極致美味。";
+        const typewriterElement = document.getElementById('typewriter-text');
         let i = 0;
         
         function typeWriter() {
-            if (i < textToType.length) {
-                typewriterElement.innerHTML += textToType.charAt(i);
+            if (i < text.length) {
+                typewriterElement.innerHTML += text.charAt(i);
                 i++;
                 setTimeout(typeWriter, 100);
+            } else {
+                // Optional: remove cursor after done, or keep it blinking
+                setTimeout(() => {
+                    typewriterElement.classList.remove('cursor');
+                }, 3000);
             }
         }
         
-        // Start typing after a short delay
-        setTimeout(typeWriter, 1000);
+        // Start typewriter after a short delay
+        setTimeout(typeWriter, 800);
 
         // Scroll Reveal Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Trigger on load
-
-        // Number Counter Animation Function
-        function animateValue(obj, start, end, duration, decimals = 0) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                // Easing out function
-                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                let current = start + easeOutQuart * (end - start);
-                
-                if (decimals > 0) {
-                    obj.innerHTML = current.toFixed(decimals);
-                } else {
-                    obj.innerHTML = Math.floor(current);
-                }
-                
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    // Ensure exact final value
-                    obj.innerHTML = decimals > 0 ? end.toFixed(decimals) : end;
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-
-        // Intersection Observer for Counters
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5
-        };
-
-        const counterObserver = new IntersectionObserver((entries, observer) => {
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const target = parseFloat(counter.getAttribute('data-target'));
-                    const decimals = parseInt(counter.getAttribute('data-decimals') || 0);
-                    animateValue(counter, 0, target, 2000, decimals);
-                    observer.unobserve(counter); // Only animate once
+                    entry.target.classList.add('active');
+                    // Optional: unobserve after revealing
+                    // revealObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
-
-        document.querySelectorAll('.counter').forEach(counter => {
-            counterObserver.observe(counter);
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
         });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Animated Counters
+        const counters = document.querySelectorAll('.counter');
+        let hasCounted = false;
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasCounted) {
+                    counters.forEach(counter => {
+                        const target = parseFloat(counter.getAttribute('data-target'));
+                        const isDecimal = counter.hasAttribute('data-decimal');
+                        const duration = 2000; // ms
+                        const frameRate = 30; // ms
+                        const totalFrames = Math.round(duration / frameRate);
+                        let frame = 0;
+                        
+                        const counterInterval = setInterval(() => {
+                            frame++;
+                            const progress = frame / totalFrames;
+                            // Ease out quad
+                            const easeProgress = progress * (2 - progress);
+                            const currentVal = target * easeProgress;
+
+                            if (isDecimal) {
+                                counter.innerText = currentVal.toFixed(1);
+                            } else {
+                                counter.innerText = Math.round(currentVal);
+                            }
+
+                            if (frame >= totalFrames) {
+                                clearInterval(counterInterval);
+                                counter.innerText = isDecimal ? target.toFixed(1) : target;
+                            }
+                        }, frameRate);
+                    });
+                    hasCounted = true;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe the section containing counters
+        const statsSection = document.querySelector('.counter').closest('section');
+        if(statsSection) {
+            counterObserver.observe(statsSection);
+        }
     </script>
 </body>
 </html>
