@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>123店 | 在簡約中品味不凡</title>
+    <meta name="description" content="台北中山區口碑首選，123店提供現代簡約的空間與咖啡100喝到飽的純粹享受。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Urbanist:wght@200;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                        display: ['Urbanist', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Animations & Effects -->
+    <style>
+        /* Typography */
+        h1, h2, h3, .font-display { font-family: 'Urbanist', 'Noto Sans TC', sans-serif; }
+        
+        /* Glassmorphism */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Scroll Reveal Base State */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Delays for staggered reveal */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        /* Typewriter Cursor */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased text-brand-800 bg-brand-50 selection:bg-brand-900 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <i data-lucide="coffee" class="w-8 h-8 text-brand-900 group-hover:scale-110 transition-transform duration-300"></i>
+                    <span class="font-display font-bold text-2xl tracking-wider text-brand-900">123 Cafe</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium tracking-wide hover:text-brand-400 transition-colors duration-300">關於我們</a>
+                    <a href="#feature" class="text-sm font-medium tracking-wide hover:text-brand-400 transition-colors duration-300">特色服務</a>
+                    <a href="#reviews" class="text-sm font-medium tracking-wide hover:text-brand-400 transition-colors duration-300">顧客評價</a>
+                    <a href="#location" class="px-6 py-2.5 bg-brand-900 text-white text-sm font-medium rounded-full hover:bg-brand-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                        尋找門市
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop" alt="Modern Minimalist Coffee Shop Interior" class="w-full h-full object-cover object-center animate-fade-in" />
+            <div class="absolute inset-0 bg-brand-900/60 mix-blend-multiply"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
+            <span class="block text-brand-100/80 text-sm md:text-base tracking-[0.3em] uppercase mb-6 reveal">Modern Minimalist</span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-tight tracking-tight reveal delay-100">
+                在簡約中 <br class="md:hidden" />
+                <span class="font-light italic text-brand-200">品味不凡</span>
+            </h1>
+            
+            <!-- Typewriter Effect -->
+            <div class="h-8 md:h-12 mb-10 reveal delay-200">
+                <p class="text-lg md:text-2xl text-brand-100 font-light tracking-wide">
+                    <span id="typewriter" class="cursor"></span>
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal delay-300">
+                <a href="#feature" class="w-full sm:w-auto px-8 py-4 bg-white text-brand-900 rounded-full font-medium tracking-wide hover:bg-brand-100 hover:scale-105 hover:shadow-xl transition-all duration-300">
+                    探索純粹體驗
+                </a>
+                <a href="#location" class="w-full sm:w-auto px-8 py-4 border border-white/30 text-white rounded-full font-medium tracking-wide hover:bg-white/10 hover:border-white transition-all duration-300 backdrop-blur-sm">
+                    查看營業資訊
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce text-white/70">
+            <span class="text-xs tracking-widest uppercase mb-2">Scroll</span>
+            <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </div>
+    </section>
+
+    <!-- Core Feature Section -->
+    <section id="feature" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                
+                <!-- Text Content -->
+                <div class="order-2 lg:order-1 reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-600 text-sm font-medium mb-8">
+                        <i data-lucide="infinity" class="w-4 h-4"></i>
+                        <span>Signature Service</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold mb-6 text-brand-900 leading-tight">
+                        極致純粹，<br />
+                        <span class="text-brand-500">無限續杯</span>的美好。
+                    </h2>
+                    <p class="text-lg text-brand-600 leading-relaxed mb-10 font-light">
+                        我們剔除所有繁雜，只留下最純粹的咖啡本質。在 123 Cafe，您不需要看著複雜的菜單猶豫不決。我們提供單一且極致的服務，讓您能在這個舒適的空間裡，專注於當下的美好。
+                    </p>
+                    
+                    <!-- Highlight Card -->
+                    <div class="bg-brand-50 rounded-3xl p-8 border border-brand-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 group">
+                        <div class="flex items-end gap-4 mb-4">
+                            <span class="text-6xl font-display font-bold text-brand-900">NT$ 100</span>
+                            <span class="text-xl text-brand-500 font-medium mb-1">/ 喝到飽</span>
+                        </div>
+                        <p class="text-brand-600">職人嚴選咖啡豆，無限量供應。為您的工作、閱讀或交流，提供源源不絕的靈感與活力。</p>
+                        <div class="mt-6 flex items-center gap-2 text-brand-900 font-medium group-hover:gap-4 transition-all duration-300">
+                            <span>立即體驗</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Content -->
+                <div class="order-1 lg:order-2 relative reveal delay-200">
+                    <div class="aspect-square md:aspect-[4/5] rounded-[2rem] overflow-hidden relative shadow-2xl">
+                        <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260307132633_0.png" alt="123 Cafe 簡約空間與咖啡" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700 ease-in-out">
+                        <!-- Overlay gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                    </div>
+                    <!-- Decorative element -->
+                    <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-brand-100 rounded-full -z-10 blur-3xl opacity-50"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section (Data Injected) -->
+    <section id="reviews" class="py-24 lg:py-32 bg-brand-900 text-white relative overflow-hidden">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 32px 32px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-20 reveal">
+                <i data-lucide="star" class="w-12 h-12 text-yellow-500 mx-auto mb-6 fill-current"></i>
+                <h2 class="text-3xl md:text-5xl font-display font-bold mb-6">深受在地饕客推崇的人氣空間</h2>
+                <p class="text-xl text-brand-300 font-light leading-relaxed">
+                    這是一家位於台北中山區，榮獲超高評價的人氣咖啡廳。我們秉持「在簡約中品味不凡」的精神，為每一位顧客提供最純粹的體驗。
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+                <!-- Data Point 1 -->
+                <div class="py-8 md:py-0 reveal delay-100">
+                    <div class="text-5xl md:text-6xl font-display font-bold mb-2 text-white">
+                        <span class="counter" data-target="4.9">0</span>
+                    </div>
+                    <div class="flex justify-center gap-1 text-yellow-500 mb-3">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <div class="text-brand-300 text-sm tracking-widest uppercase">Google Maps 評分</div>
+                </div>
+
+                <!-- Data Point 2 -->
+                <div class="py-8 md:py-0 reveal delay-200">
+                    <div class="text-5xl md:text-6xl font-display font-bold mb-2 text-white">
+                        <span class="counter" data-target="303">0</span>+
+                    </div>
+                    <div class="text-brand-300 text-sm tracking-widest uppercase mt-7">真實顧客好評</div>
+                </div>
+
+                <!-- Data Point 3 -->
+                <div class="py-8 md:py-0 reveal delay-300">
+                    <div class="text-5xl md:text-6xl font-display font-bold mb-2 text-white">
+                        100
+                    </div>
+                    <div class="text-brand-300 text-sm tracking-widest uppercase mt-7">無限暢飲價格 (NT$)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Info Section -->
+    <section id="location" class="py-24 lg:py-32 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="bg-white rounded-[2rem] p-8 lg:p-16 shadow-sm border border-brand-100 reveal">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    
+                    <div>
+                        <h3 class="text-3xl font-display font-bold text-brand-900 mb-8">門市資訊</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-brand-900"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-brand-900 mb-1">123 easy cafe 便利餐廳</h4>
+                                    <p class="text-brand-600">104 臺北市中山區新生北路一段122號1樓</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="clock" class="w-5 h-5 text-brand-900"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-brand-900 mb-1">營業時間</h4>
+                                    <p class="text-brand-600">週一至週日 10:00 - 20:00</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="wifi" class="w-5 h-5 text-brand-900"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-brand-900 mb-1">空間設施</h4>
+                                    <p class="text-brand-600">提供免費 Wi-Fi / 插座 / 寵物友善空間</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder (Visual only for minimalist aesthetic) -->
+                    <div class="aspect-video bg-brand-100 rounded-2xl overflow-hidden relative group">
+                        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop" alt="Coffee Shop Exterior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                            <div class="bg-white/90 backdrop-blur px-6 py-3 rounded-full shadow-lg flex items-center gap-2 transform group-hover:-translate-y-2 transition-transform duration-300">
+                                <i data-lucide="navigation" class="w-4 h-4 text-brand-900"></i>
+                                <span class="font-medium text-sm text-brand-900">開啟 Google Maps導航</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-brand-100 py-12 text-center text-brand-500">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            <i data-lucide="coffee" class="w-6 h-6 mb-4 text-brand-300"></i>
+            <p class="font-display tracking-widest text-sm mb-2 uppercase">123 Cafe</p>
+            <p class="text-xs">在簡約中品味不凡</p>
+            <div class="mt-8 pt-8 border-t border-brand-50 w-full max-w-md">
+                <p class="text-xs">&copy; 2026 123 Cafe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Typewriter Effect
+        const textArray = ["台北中山區口碑首選", "極致純粹的咖啡體驗", "100元無限暢飲", "專屬於您的簡約時光"];
+        let textIndex = 0;
+        let charIndex = 0;
+        const typeSpeed = 100;
+        const eraseSpeed = 50;
+        const delayBetweenTexts = 2000;
+        const typewriterElement = document.getElementById("typewriter");
+
+        function type() {
+            if (charIndex < textArray[textIndex].length) {
+                typewriterElement.textContent += textArray[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typeSpeed);
+            } else {
+                setTimeout(erase, delayBetweenTexts);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typewriterElement.textContent = textArray[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, eraseSpeed);
+            } else {
+                textIndex = (textIndex + 1) % textArray.length;
+                setTimeout(type, typeSpeed);
+            }
+        }
+        
+        // Start typewriter after initial load
+        setTimeout(type, 1500);
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const isDecimal = target % 1 !== 0;
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = isDecimal ? (count + inc).toFixed(1) : Math.ceil(count + inc);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+                navbar.style.background = 'rgba(255, 255, 255, 0.9)';
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.style.background = 'rgba(255, 255, 255, 0.7)';
+            }
+        });
+    </script>
+</body>
+</html>
+```
