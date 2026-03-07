@@ -3,46 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>58麵館 | 傳承手作溫度的傳統牛肉麵</title>
-    <meta name="description" content="58麵館，以溫暖的牛骨湯色系為主軸，呈現溫馨、傳統的氛圍。為您帶來職人手作的美味牛肉麵。">
+    <title>58麵館 | 溫暖家常味的專屬美味</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            50: '#FFF8F0',  // 溫潤米色/麵湯底色
-                            100: '#FFEED9',
-                            200: '#FFD8B0',
-                            300: '#FFBD80',
-                            400: '#FF9E4D',
-                            500: '#F57C00',  // 琥珀牛油色
-                            600: '#D96500',
-                            700: '#B24D00',
-                            800: '#8C3A00',  // 深邃牛骨湯色
-                            900: '#5C2600',  // 深木質色
-                        }
+                            50: '#fdf8f4',
+                            100: '#f9eee5',
+                            200: '#f2d8c3',
+                            300: '#e8bb9b',
+                            400: '#db976c',
+                            500: '#d17b46',
+                            600: '#c36337',
+                            700: '#a34c2e',
+                            800: '#84402a',
+                            900: '#6a3625', // 牛骨湯深棕色
+                        },
+                        paper: '#FDFBF7', // 燕麥底色
                     },
                     fontFamily: {
                         sans: ['"Noto Sans TC"', 'sans-serif'],
                         serif: ['"Noto Serif TC"', 'serif'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 1s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
                     }
                 }
             }
@@ -51,12 +47,24 @@
 
     <!-- Custom CSS -->
     <style>
-        .glass-nav {
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.85);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        body {
+            background-color: #FDFBF7;
         }
         
+        /* Glassmorphism */
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(253, 251, 247, 0.85);
+            border-bottom: 1px solid rgba(139, 90, 43, 0.1);
+        }
+        
+        /* Transitions */
+        .interactive {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Scroll Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -68,332 +76,336 @@
             transform: translateY(0);
         }
 
-        .typewriter-text {
-            border-right: 2px solid #D96500;
-            white-space: nowrap;
-            overflow: hidden;
-            margin: 0 auto;
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
         }
 
-        /* Hide scrollbar for clean look */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Typewriter Cursor */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
         }
-        ::-webkit-scrollbar-track {
-            background: #FFF8F0;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #D96500;
-            border-radius: 4px;
+        
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
         }
     </style>
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="antialiased text-brand-900 bg-brand-50 font-sans selection:bg-brand-500 selection:text-white">
+<body class="antialiased text-gray-800 font-sans selection:bg-brand-200 selection:text-brand-900">
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-full bg-brand-800 text-white flex items-center justify-center group-hover:bg-brand-600 transition-colors duration-300">
-                    <i data-lucide="soup" class="w-6 h-6"></i>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3 cursor-pointer interactive hover:opacity-80">
+                    <div class="w-10 h-10 bg-brand-800 text-paper rounded-full flex items-center justify-center shadow-md">
+                        <i data-lucide="soup" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-serif text-2xl font-bold text-brand-900 tracking-wider">58麵館</span>
                 </div>
-                <span class="font-serif font-bold text-2xl tracking-wider text-brand-900">58麵館</span>
-            </a>
-            
-            <div class="hidden md:flex items-center gap-8 font-medium">
-                <a href="#about" class="hover:text-brand-600 transition-colors duration-300">關於我們</a>
-                <a href="#menu" class="hover:text-brand-600 transition-colors duration-300">招牌餐點</a>
-                <a href="#reviews" class="hover:text-brand-600 transition-colors duration-300">顧客評價</a>
-                <a href="#contact" class="px-6 py-2.5 bg-brand-800 text-white rounded-full hover:bg-brand-600 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">聯絡我們</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-brand-700 font-medium tracking-wide interactive">關於我們</a>
+                    <a href="#menu" class="text-gray-600 hover:text-brand-700 font-medium tracking-wide interactive">經典美味</a>
+                    <a href="#location" class="text-gray-600 hover:text-brand-700 font-medium tracking-wide interactive">門市資訊</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#menu" class="bg-brand-800 text-white px-6 py-2.5 rounded-full font-medium tracking-wide shadow-lg hover:bg-brand-900 interactive hover:-translate-y-1 hover:shadow-xl">
+                        立即點餐
+                    </a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-brand-800 focus:outline-none">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
             </div>
-            
-            <button class="md:hidden text-brand-900">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Image with Overlay -->
-        <div class="absolute inset-0 w-full h-full">
-            <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&q=80&w=1920" 
-                 alt="傳統牛肉麵" 
-                 class="w-full h-full object-cover object-center transform scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" />
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-brand-900/80"></div>
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?q=80&w=1920&auto=format&fit=crop" alt="58麵館 招牌牛肉麵" class="w-full h-full object-cover object-center animate-fade-in" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
         </div>
-
-        <!-- Hero Content -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
-            <div class="animate-fade-in">
-                <span class="inline-block py-1 px-3 rounded-full bg-brand-500/20 text-brand-100 border border-brand-400/30 text-sm tracking-widest mb-6 backdrop-blur-sm">
-                    TRADITIONAL HANDMADE NOODLES
-                </span>
-                <h1 class="font-serif text-5xl md:text-7xl font-black text-white mb-6 leading-tight text-shadow-lg">
-                    傳承手作溫度<br>
-                    <span class="text-brand-300 font-light text-4xl md:text-6xl mt-2 block">品味醇厚牛骨湯</span>
-                </h1>
-                
-                <div class="h-8 mb-8 flex justify-center items-center">
-                    <p id="typewriter" class="text-brand-100 text-lg md:text-xl font-light tracking-wide typewriter-text"></p>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-                    <a href="#menu" class="px-8 py-4 bg-brand-600 text-white rounded-full font-medium tracking-wide hover:bg-brand-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(217,101,0,0.3)]">
-                        探索招牌美味
-                    </a>
-                    <a href="#contact" class="px-8 py-4 bg-white/10 text-white backdrop-blur-md border border-white/20 rounded-full font-medium tracking-wide hover:bg-white/20 transition-all duration-300 hover:-translate-y-1">
-                        查看營業資訊
-                    </a>
-                </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16 reveal active">
+            <span class="block text-brand-300 font-medium tracking-[0.2em] mb-4 text-sm md:text-base">TRADITIONAL BEEF NOODLES</span>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight text-shadow-lg">
+                一碗溫潤，<br/>吃出家的味道。
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 font-light mb-10 h-8">
+                <span id="typewriter" class="typing-cursor"></span>
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#menu" class="bg-brand-600 text-white px-8 py-4 rounded-full font-medium tracking-widest shadow-lg hover:bg-brand-700 interactive hover:-translate-y-1 hover:shadow-2xl w-full sm:w-auto text-center border border-brand-500">
+                    查看菜單
+                </a>
+                <a href="#about" class="bg-transparent text-white border border-white/50 px-8 py-4 rounded-full font-medium tracking-widest hover:bg-white/10 interactive hover:-translate-y-1 w-full sm:w-auto text-center backdrop-blur-sm">
+                    品牌故事
+                </a>
             </div>
         </div>
         
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 animate-bounce">
-            <i data-lucide="chevron-down" class="w-8 h-8"></i>
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-white/70"></i>
         </div>
     </section>
 
-    <!-- Features Section (Warm Japandi Style) -->
-    <section id="about" class="py-24 bg-brand-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mb-4">職人精神，溫暖呈現</h2>
-                <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full mb-6"></div>
-                <p class="text-brand-700 max-w-2xl mx-auto text-lg">每一碗麵，都蘊含著我們對食材的堅持與對傳統手藝的敬意。以溫暖的牛骨湯色系，為您端上家的味道。</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Feature 1 -->
-                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 reveal text-center group border border-brand-100">
-                    <div class="w-20 h-20 mx-auto bg-brand-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-100 transition-all duration-300">
-                        <i data-lucide="utensils" class="w-10 h-10 text-brand-600"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-brand-900">職人手作麵條</h3>
-                    <p class="text-brand-700 leading-relaxed">每日新鮮現揉，精準掌控麵糰濕度與勁道，讓每一口都充滿Q彈的手作溫度。</p>
+    <!-- Social Proof / Stats Section -->
+    <section class="py-16 bg-white border-b border-brand-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center reveal">
+                <div class="p-4">
+                    <div class="text-4xl font-serif font-bold text-brand-800 mb-2"><span class="counter" data-target="24">0</span><span class="text-2xl">+</span></div>
+                    <div class="text-sm text-gray-500 tracking-wider">小時慢火熬煮</div>
                 </div>
-                
-                <!-- Feature 2 -->
-                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 reveal text-center group border border-brand-100" style="transition-delay: 100ms;">
-                    <div class="w-20 h-20 mx-auto bg-brand-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-100 transition-all duration-300">
-                        <i data-lucide="flame" class="w-10 h-10 text-brand-600"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-brand-900">招牌醇厚骨湯</h3>
-                    <p class="text-brand-700 leading-relaxed">嚴選優質牛大骨，搭配獨門中藥材慢火熬製數十小時，湯頭呈現溫暖琥珀色，香醇回甘。</p>
+                <div class="p-4">
+                    <div class="text-4xl font-serif font-bold text-brand-800 mb-2"><span class="counter" data-target="100">0</span><span class="text-2xl">%</span></div>
+                    <div class="text-sm text-gray-500 tracking-wider">原肉新鮮手切</div>
                 </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 reveal text-center group border border-brand-100" style="transition-delay: 200ms;">
-                    <div class="w-20 h-20 mx-auto bg-brand-50 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-100 transition-all duration-300">
-                        <i data-lucide="leaf" class="w-10 h-10 text-brand-600"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold mb-3 text-brand-900">嚴選新鮮食材</h3>
-                    <p class="text-brand-700 leading-relaxed">堅持採用當日產地直送的新鮮蔬菜與頂級肉品，為您把關每一口吃進肚裡的健康與美味。</p>
+                <div class="p-4">
+                    <div class="text-4xl font-serif font-bold text-brand-800 mb-2"><span class="counter" data-target="15">0</span><span class="text-2xl">年</span></div>
+                    <div class="text-sm text-gray-500 tracking-wider">在地傳承手藝</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-serif font-bold text-brand-800 mb-2"><span class="counter" data-target="98">0</span><span class="text-2xl">%</span></div>
+                    <div class="text-sm text-gray-500 tracking-wider">顧客滿意回訪</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Visual Divider / Quote -->
-    <section class="py-20 bg-brand-900 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <img src="https://images.unsplash.com/photo-1555126634-ae235b6b1076?auto=format&fit=crop&q=80&w=1920" alt="Texture" class="w-full h-full object-cover">
-        </div>
-        <div class="max-w-4xl mx-auto px-6 relative z-10 text-center reveal">
-            <i data-lucide="quote" class="w-12 h-12 text-brand-500 mx-auto mb-6 opacity-50"></i>
-            <p class="font-serif text-2xl md:text-3xl text-brand-50 leading-loose">「在繁忙的城市裡，為您保留一碗麵的時間，品嚐最純粹的溫暖。」</p>
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-paper">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="w-full lg:w-1/2 reveal">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-brand-200 rounded-2xl transform translate-x-4 translate-y-4"></div>
+                        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?q=80&w=800&auto=format&fit=crop" alt="用心熬煮的牛骨湯" class="relative rounded-2xl shadow-xl w-full object-cover aspect-[4/5] interactive hover:-translate-y-2 hover:shadow-2xl z-10">
+                        <div class="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-lg z-20 hidden md:block border border-gray-100">
+                            <i data-lucide="quote" class="w-8 h-8 text-brand-300 mb-2"></i>
+                            <p class="font-serif text-gray-700 italic">「每一口湯，都是對家人的心意。」</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 reveal">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-[2px] bg-brand-500"></div>
+                        <span class="text-brand-600 font-medium tracking-widest text-sm uppercase">Our Story</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6 leading-tight">
+                        堅持純粹，<br/>熬出記憶中的溫暖家常味。
+                    </h2>
+                    <p class="text-gray-600 leading-relaxed mb-6 text-lg font-light">
+                        在 58麵館，我們相信最美味的料理往往來自最純粹的堅持。我們的靈魂——牛骨湯，選用上等牛大骨與新鮮蔬果，堅持每日清晨起鍋，慢火熬煮數小時，直到湯頭呈現溫潤迷人的琥珀色澤。
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-10 text-lg font-light">
+                        不添加多餘的人工調味，只為了讓您品嚐到食材本身的鮮甜。搭配Q彈有勁的手工麵條，與燉煮至入口即化的厚切牛肉，這不僅是一碗麵，更是我們想傳遞給您的那份，如家人般溫暖的心意。
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div class="flex -space-x-4">
+                            <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" alt="Customer">
+                            <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=100&auto=format&fit=crop" alt="Customer">
+                            <img class="w-12 h-12 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=100&auto=format&fit=crop" alt="Customer">
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <strong class="text-gray-900 block font-medium">深受在地饕客喜愛</strong>
+                            獲得無數好評推薦
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Menu Section -->
     <section id="menu" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-                <div>
-                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mb-4">招牌餐點</h2>
-                    <div class="w-16 h-1 bg-brand-500 rounded-full"></div>
-                </div>
-                <p class="text-brand-600 mt-4 md:mt-0 font-medium tracking-wide">AUTHENTIC TAIWANESE FLAVOR</p>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <i data-lucide="utensils-crossed" class="w-8 h-8 text-brand-400 mx-auto mb-4"></i>
+                <h2 class="text-4xl font-serif font-bold text-gray-900 mb-4">經典美味</h2>
+                <p class="text-gray-500 text-lg font-light">每一道佳餚都經過特別處理，完美呈現溫潤誘人的色澤，讓您一眼就能感受到用心。</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Menu Item 1 -->
-                <div class="group flex flex-col sm:flex-row gap-6 bg-brand-50 rounded-2xl p-6 hover:bg-brand-100 transition-all duration-300 hover:shadow-lg reveal cursor-pointer border border-transparent hover:border-brand-200">
-                    <div class="w-full sm:w-40 h-40 rounded-xl overflow-hidden shrink-0 relative">
-                        <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&q=80&w=500" alt="招牌紅燒牛肉麵" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-2 left-2 bg-brand-600 text-white text-xs px-2 py-1 rounded-md font-bold">人氣必點</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Item 1 -->
+                <div class="group bg-paper rounded-2xl overflow-hidden shadow-sm hover:shadow-xl interactive reveal border border-gray-100">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8dd?q=80&w=600&auto=format&fit=crop" alt="招牌原汁牛肉麵" class="w-full h-full object-cover interactive group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-brand-800 text-white text-xs font-bold px-3 py-1 rounded-full tracking-wider">
+                            人氣必點
+                        </div>
                     </div>
-                    <div class="flex flex-col justify-center flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-2xl font-bold text-brand-900">招牌紅燒牛肉麵</h3>
-                            <span class="font-bold text-brand-600 text-xl border-b-2 border-brand-300">$180</span>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-serif font-bold text-gray-900 group-hover:text-brand-700 transition-colors">極致鮮牛原汁麵</h3>
+                            <span class="text-xl font-medium text-brand-600">$220</span>
                         </div>
-                        <p class="text-brand-700 text-sm leading-relaxed mb-4">慢火熬煮琥珀色湯頭，搭配軟嫩入味的特選牛腱肉與Q彈手作麵條，經典不敗的絕佳風味。</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs px-2 py-1 bg-white rounded-full text-brand-600 border border-brand-200">微辣</span>
-                            <span class="text-xs px-2 py-1 bg-white rounded-full text-brand-600 border border-brand-200">可加麵</span>
-                        </div>
+                        <p class="text-gray-500 font-light leading-relaxed mb-6">
+                            嚴選頂級牛腱心，搭配耗時24小時慢火熬製的溫潤牛骨高湯，肉質軟嫩入味，湯頭醇厚回甘。
+                        </p>
+                        <button class="w-full py-3 border border-brand-200 rounded-xl text-brand-800 font-medium hover:bg-brand-50 interactive flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-bag" class="w-4 h-4"></i> 加入點餐
+                        </button>
                     </div>
                 </div>
 
-                <!-- Menu Item 2 -->
-                <div class="group flex flex-col sm:flex-row gap-6 bg-brand-50 rounded-2xl p-6 hover:bg-brand-100 transition-all duration-300 hover:shadow-lg reveal cursor-pointer border border-transparent hover:border-brand-200" style="transition-delay: 100ms;">
-                    <div class="w-full sm:w-40 h-40 rounded-xl overflow-hidden shrink-0">
-                        <img src="https://images.unsplash.com/photo-1555126634-ae235b6b1076?auto=format&fit=crop&q=80&w=500" alt="清燉牛骨湯麵" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                <!-- Item 2 -->
+                <div class="group bg-paper rounded-2xl overflow-hidden shadow-sm hover:shadow-xl interactive reveal border border-gray-100" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?q=80&w=600&auto=format&fit=crop" alt="清燉牛肉麵" class="w-full h-full object-cover interactive group-hover:scale-110">
                     </div>
-                    <div class="flex flex-col justify-center flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-2xl font-bold text-brand-900">清燉牛骨湯麵</h3>
-                            <span class="font-bold text-brand-600 text-xl border-b-2 border-brand-300">$190</span>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-serif font-bold text-gray-900 group-hover:text-brand-700 transition-colors">清燉養生牛肉麵</h3>
+                            <span class="text-xl font-medium text-brand-600">$240</span>
                         </div>
-                        <p class="text-brand-700 text-sm leading-relaxed mb-4">原汁原味呈現牛大骨的清甜，湯頭清澈見底卻底蘊深厚，適合喜愛清爽口味的饕客。</p>
-                        <div class="flex gap-2">
-                            <span class="text-xs px-2 py-1 bg-white rounded-full text-brand-600 border border-brand-200">清爽推薦</span>
-                        </div>
+                        <p class="text-gray-500 font-light leading-relaxed mb-6">
+                            以多種鮮蔬與牛骨清熬，湯頭清澈透亮，保留牛肉最原始的鮮甜，適合喜愛清淡口味的饕客。
+                        </p>
+                        <button class="w-full py-3 border border-brand-200 rounded-xl text-brand-800 font-medium hover:bg-brand-50 interactive flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-bag" class="w-4 h-4"></i> 加入點餐
+                        </button>
                     </div>
                 </div>
+
+                <!-- Item 3 -->
+                <div class="group bg-paper rounded-2xl overflow-hidden shadow-sm hover:shadow-xl interactive reveal border border-gray-100" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1623341214825-9f4f963727da?q=80&w=600&auto=format&fit=crop" alt="家傳手工水餃" class="w-full h-full object-cover interactive group-hover:scale-110">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-serif font-bold text-gray-900 group-hover:text-brand-700 transition-colors">家傳手工鮮肉餃</h3>
+                            <span class="text-xl font-medium text-brand-600">$90</span>
+                        </div>
+                        <p class="text-gray-500 font-light leading-relaxed mb-6">
+                            每日新鮮現包，薄皮爆汁，內餡選用溫體黑豬肉與鮮脆高麗菜，是麵食之外的最佳搭配。
+                        </p>
+                        <button class="w-full py-3 border border-brand-200 rounded-xl text-brand-800 font-medium hover:bg-brand-50 interactive flex items-center justify-center gap-2">
+                            <i data-lucide="shopping-bag" class="w-4 h-4"></i> 加入點餐
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center reveal">
+                <a href="#" class="inline-flex items-center gap-2 text-brand-700 font-medium hover:text-brand-900 interactive border-b-2 border-brand-300 hover:border-brand-800 pb-1">
+                    查看完整菜單 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section id="reviews" class="py-24 bg-brand-800 text-white relative overflow-hidden">
-        <!-- Decorative elements -->
-        <div class="absolute top-0 left-0 w-64 h-64 bg-brand-600 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-64 h-64 bg-brand-900 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 translate-y-1/2"></div>
+    <!-- Services / Icons Section -->
+    <section class="py-20 bg-brand-900 text-white relative overflow-hidden">
+        <!-- Background pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
         
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h2 class="font-serif text-4xl md:text-5xl font-bold mb-6 leading-tight">在地饕客<br><span class="text-brand-300">口碑首選推薦</span></h2>
-                    <p class="text-brand-100 text-lg mb-10 leading-relaxed opacity-90">感謝每一位來到58麵館的顧客，您的支持與反饋是我們堅持傳統手作、用心熬煮每一鍋湯的最大動力。</p>
-                    
-                    <div class="flex items-center gap-8 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 inline-flex">
-                        <div class="text-center pr-8 border-r border-white/20">
-                            <div class="flex items-center justify-center gap-1 mb-1">
-                                <span class="text-4xl font-black text-brand-300 counter" data-target="4.2">0</span>
-                                <span class="text-xl text-brand-300 mt-2">星</span>
-                            </div>
-                            <div class="flex text-yellow-400 text-sm mb-1">
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
-                            </div>
-                            <span class="text-xs text-brand-200">Google 商家評分</span>
-                        </div>
-                        <div class="text-center pl-2">
-                            <div class="text-4xl font-black text-white mb-1">
-                                <span class="counter" data-target="99">0</span><span class="text-2xl">+</span>
-                            </div>
-                            <span class="text-xs text-brand-200">真實顧客評價</span>
-                        </div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <div class="reveal flex flex-col items-center">
+                    <div class="w-20 h-20 bg-brand-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg border border-brand-700 transform rotate-3 hover:rotate-0 interactive">
+                        <i data-lucide="bowl" class="w-10 h-10 text-brand-200"></i>
                     </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">嚴選食材</h3>
+                    <p class="text-brand-200 font-light text-sm leading-relaxed max-w-xs mx-auto">
+                        堅持每日親赴市場挑選新鮮食材，從原肉到鮮蔬，為您的健康嚴格把關。
+                    </p>
                 </div>
-
-                <div class="grid gap-6 reveal" style="transition-delay: 200ms;">
-                    <!-- Review Card 1 -->
-                    <div class="bg-white text-brand-900 p-6 rounded-2xl shadow-xl transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
-                        <div class="flex gap-1 text-brand-500 mb-3">
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        </div>
-                        <p class="text-brand-800 font-medium mb-4">「湯頭非常濃郁，喝得出是用心熬煮的牛骨湯，麵條很有嚼勁，環境溫馨乾淨，永和區難得的好味道！」</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 font-bold">陳</div>
-                            <div>
-                                <h4 class="font-bold text-sm">在地嚮導 陳先生</h4>
-                                <span class="text-xs text-gray-500">2週前</span>
-                            </div>
-                        </div>
+                <div class="reveal flex flex-col items-center" style="transition-delay: 100ms;">
+                    <div class="w-20 h-20 bg-brand-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg border border-brand-700 transform -rotate-3 hover:rotate-0 interactive">
+                        <i data-lucide="scroll-text" class="w-10 h-10 text-brand-200"></i>
                     </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">獨門秘方</h3>
+                    <p class="text-brand-200 font-light text-sm leading-relaxed max-w-xs mx-auto">
+                        傳承多年的獨家香料配方，造就了令人回味無窮、層次豐富的濃郁湯頭。
+                    </p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & Info Section -->
-    <section id="contact" class="py-24 bg-brand-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 mb-4">期待您的光臨</h2>
-                <div class="w-16 h-1 bg-brand-500 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white rounded-3xl shadow-xl overflow-hidden border border-brand-100 reveal">
-                <!-- Info -->
-                <div class="p-10 md:p-14 flex flex-col justify-center bg-white">
-                    <h3 class="font-serif text-3xl font-bold text-brand-900 mb-8">聯絡資訊</h3>
-                    
-                    <div class="space-y-8">
-                        <div class="flex items-start gap-4 group">
-                            <div class="w-12 h-12 bg-brand-50 rounded-full flex items-center justify-center shrink-0 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300 text-brand-600">
-                                <i data-lucide="map-pin" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-900 mb-1">店鋪地址</h4>
-                                <p class="text-brand-700">234027 新北市永和區永貞路58號</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4 group">
-                            <div class="w-12 h-12 bg-brand-50 rounded-full flex items-center justify-center shrink-0 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300 text-brand-600">
-                                <i data-lucide="clock" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-900 mb-1">營業時間</h4>
-                                <p class="text-brand-700">每天 <span class="font-bold text-brand-600">09:00 - 18:00</span></p>
-                                <p class="text-sm text-brand-500 mt-1">湯頭每日限量，售完為止</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4 group">
-                            <div class="w-12 h-12 bg-brand-50 rounded-full flex items-center justify-center shrink-0 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300 text-brand-600">
-                                <i data-lucide="phone" class="w-6 h-6"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-brand-900 mb-1">訂位專線</h4>
-                                <a href="tel:0913280028" class="text-brand-700 hover:text-brand-600 text-lg font-medium transition-colors">0913-280-028</a>
-                            </div>
-                        </div>
+                <div class="reveal flex flex-col items-center" style="transition-delay: 200ms;">
+                    <div class="w-20 h-20 bg-brand-800 rounded-2xl flex items-center justify-center mb-6 shadow-lg border border-brand-700 transform rotate-3 hover:rotate-0 interactive">
+                        <i data-lucide="map-pin" class="w-10 h-10 text-brand-200"></i>
                     </div>
-                </div>
-
-                <!-- Map Placeholder (Stylized) -->
-                <div class="relative h-64 lg:h-auto bg-brand-200 group overflow-hidden">
-                    <!-- A stylized map image placeholder since iframe maps require API keys or exact embed links -->
-                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800" alt="Map Location" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700 mix-blend-multiply">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <div class="bg-white/90 backdrop-blur px-6 py-4 rounded-xl shadow-lg text-center transform group-hover:-translate-y-2 transition-transform duration-300">
-                            <i data-lucide="map-pin" class="w-8 h-8 text-brand-600 mx-auto mb-2"></i>
-                            <span class="font-bold text-brand-900 block">58麵館</span>
-                            <span class="text-sm text-brand-600">永和區永貞路58號</span>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3">溫馨空間</h3>
+                    <p class="text-brand-200 font-light text-sm leading-relaxed max-w-xs mx-auto">
+                        木質調的溫潤裝潢，乾淨明亮的用餐環境，讓您像在家一樣放鬆享受美味。
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-brand-900 text-brand-100 py-12 border-t border-brand-800">
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                <i data-lucide="soup" class="w-8 h-8 text-brand-500"></i>
-                <span class="font-serif font-bold text-2xl tracking-wider text-white">58麵館</span>
+    <footer id="location" class="bg-gray-900 text-gray-300 py-16 border-t-4 border-brand-700">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 lg:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-brand-800 text-white rounded-full flex items-center justify-center">
+                            <i data-lucide="soup" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-serif text-3xl font-bold text-white tracking-wider">58麵館</span>
+                    </div>
+                    <p class="text-gray-400 font-light leading-relaxed max-w-md mb-6">
+                        為您奉上一碗充滿溫度的家常美味。我們用心熬煮每一滴牛骨高湯，只為看見您滿足的笑容。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 interactive text-white">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-600 interactive text-white">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold tracking-widest mb-6 uppercase text-sm">營業資訊</h4>
+                    <ul class="space-y-4 font-light text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="clock" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="text-white mb-1">週一至週日</p>
+                                <p class="text-gray-400">11:00 - 14:30</p>
+                                <p class="text-gray-400">17:00 - 21:00</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0"></i>
+                            <p>02-2345-6789</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold tracking-widest mb-6 uppercase text-sm">門市位置</h4>
+                    <ul class="space-y-4 font-light text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-500 mt-0.5 shrink-0"></i>
+                            <p class="leading-relaxed">台北市大安區<br>隱身巷弄的溫馨角落<br>(近捷運站出口)</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
             
-            <div class="text-center md:text-right text-sm text-brand-300">
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-light text-gray-500">
                 <p>&copy; 2026 58麵館. All rights reserved.</p>
-                <p class="mt-1">傳承手作溫度，品味醇厚牛骨湯</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-white transition-colors">隱私權政策</a>
+                    <a href="#" class="hover:text-white transition-colors">服務條款</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -403,18 +415,62 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Navbar scroll effect
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                nav.classList.add('shadow-md');
+                navbar.classList.add('shadow-md');
+                navbar.style.background = 'rgba(253, 251, 247, 0.95)';
             } else {
-                nav.classList.remove('shadow-md');
+                navbar.classList.remove('shadow-md');
+                navbar.style.background = 'rgba(253, 251, 247, 0.85)';
             }
         });
 
+        // Scroll Reveal Logic
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                
+                // Trigger counter if exists inside revealed element
+                const counters = entry.target.querySelectorAll('.counter');
+                if (counters.length > 0) {
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 2000; // 2 seconds
+                        const increment = target / (duration / 16); // 60fps
+                        
+                        let current = 0;
+                        const updateCounter = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        updateCounter();
+                        // Remove class so it doesn't trigger again
+                        counter.classList.remove('counter');
+                    });
+                }
+                
+                observer.unobserve(entry.target);
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => revealOnScroll.observe(el));
+
         // Typewriter Effect
-        const text = "這是一家位於永和區，獲得99位在地饕客4.2星好評的溫馨麵館。";
+        const text = "用心熬煮的溫暖家常味，您的專屬美味食堂。";
         const typewriterElement = document.getElementById('typewriter');
         let i = 0;
         
@@ -424,73 +480,15 @@
                 i++;
                 setTimeout(typeWriter, 100);
             } else {
-                // Remove cursor after typing
+                // Remove cursor after typing finishes
                 setTimeout(() => {
-                    typewriterElement.style.borderRight = 'none';
-                }, 2000);
+                    typewriterElement.classList.remove('typing-cursor');
+                }, 3000);
             }
         }
         
-        // Start typing effect after a short delay
+        // Start typewriter after a short delay
         setTimeout(typeWriter, 1000);
-
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    
-                    // If it contains counters, trigger them
-                    const counters = entry.target.querySelectorAll('.counter');
-                    if(counters.length > 0) {
-                        startCounters(counters);
-                    }
-                    
-                    observer.unobserve(entry.target);
-                }
-            });
-        };
-
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
-        
-        revealElements.forEach(el => {
-            revealObserver.observe(el);
-        });
-
-        // Number Counter Animation
-        let countersStarted = false;
-        function startCounters(counters) {
-            if(countersStarted) return;
-            countersStarted = true;
-            
-            counters.forEach(counter => {
-                const target = parseFloat(counter.getAttribute('data-target'));
-                const duration = 2000; // 2 seconds
-                const step = target / (duration / 16); // 60fps
-                let current = 0;
-                
-                const isFloat = target % 1 !== 0;
-
-                const updateCounter = () => {
-                    current += step;
-                    if (current < target) {
-                        counter.innerText = isFloat ? current.toFixed(1) : Math.ceil(current);
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                
-                updateCounter();
-            });
-        }
     </script>
 </body>
 </html>
