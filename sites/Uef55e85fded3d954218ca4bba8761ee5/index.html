@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>頭巾阿姨 | 雙北質感飄眉工作室</title>
+    <meta name="description" content="座落於雙北的質感飄眉工作室。提供自然霧眉、飄眉服務，打造專屬您的無壓力放鬆時光。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            offwhite: '#F9F8F6', // 溫暖米白
+                            grey: '#8A8D8F',     // 質感灰
+                            dark: '#2C2C2C',     // 深灰文字
+                            pink: '#D4B5B0',     // 莫蘭迪粉
+                            green: '#A3B19B',    // 鼠尾草綠
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for specific effects -->
+    <style>
+        body {
+            background-color: #F9F8F6;
+        }
+        
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(249, 248, 246, 0.75);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .typewriter-container::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased text-brand-dark font-sans selection:bg-brand-pink selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <!-- Fallback Text Logo -->
+                <div class="w-10 h-10 rounded-full bg-brand-pink/20 flex items-center justify-center text-brand-pink group-hover:bg-brand-pink group-hover:text-white transition-colors duration-300">
+                    <i data-lucide="sparkles" class="w-5 h-5"></i>
+                </div>
+                <span class="font-serif text-xl tracking-wider font-semibold text-brand-dark">頭巾阿姨</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-brand-grey hover:text-brand-dark transition-colors text-sm tracking-widest">品牌理念</a>
+                <a href="#services" class="text-brand-grey hover:text-brand-dark transition-colors text-sm tracking-widest">服務項目</a>
+                <a href="#booking" class="text-brand-grey hover:text-brand-dark transition-colors text-sm tracking-widest">預約方式</a>
+            </div>
+
+            <a href="https://www.instagram.com/blablabrows.studio?igsh=MTNxM295NDVwdzQ4YQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-2 bg-brand-dark text-white px-6 py-2.5 rounded-full hover:bg-brand-grey transition-all duration-300 hover:scale-105 shadow-md">
+                <i data-lucide="instagram" class="w-4 h-4"></i>
+                <span class="text-sm tracking-wider">立即預約</span>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-brand-dark p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260308140047_0.png" alt="頭巾阿姨工作室環境" class="w-full h-full object-cover object-center scale-105 animate-[float_20s_ease-in-out_infinite_alternate]">
+            <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+            <span class="block text-brand-offwhite/80 text-sm md:text-base tracking-[0.3em] mb-4 animate-fade-in" style="animation-delay: 0.2s;">TAIPEI BROW STUDIO</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif text-white mb-6 leading-tight animate-fade-in" style="animation-delay: 0.4s;">
+                溫柔對待<br>
+                <span class="font-sans font-light text-3xl md:text-5xl mt-2 block">每一寸真實的美麗</span>
+            </h1>
+            
+            <!-- Typewriter Effect Container -->
+            <div class="h-8 md:h-10 mb-10 flex justify-center items-center">
+                <p class="text-lg md:text-xl text-brand-offwhite font-light tracking-wide typewriter-container" id="typewriter-text"></p>
+            </div>
+
+            <div class="animate-fade-in" style="animation-delay: 0.8s;">
+                <a href="https://www.instagram.com/blablabrows.studio?igsh=MTNxM295NDVwdzQ4YQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-brand-offwhite text-brand-dark px-8 py-4 rounded-full text-lg hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 hover:-translate-y-1 group">
+                    <i data-lucide="instagram" class="w-5 h-5 text-brand-pink group-hover:scale-110 transition-transform"></i>
+                    <span>私訊 IG 預約時段</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-fade-in" style="animation-delay: 1.2s;">
+            <span class="text-white/60 text-xs tracking-widest mb-2">SCROLL</span>
+            <div class="w-[1px] h-12 bg-white/30 overflow-hidden">
+                <div class="w-full h-1/2 bg-white animate-[float_2s_ease-in-out_infinite]"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section (Data Injected) -->
+    <section class="py-16 bg-white reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-center md:text-left">
+                <div class="flex items-center gap-4">
+                    <div class="w-16 h-16 rounded-full bg-brand-offwhite flex items-center justify-center shrink-0">
+                        <img src="https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png" alt="Google Maps Icon" class="w-8 h-8 opacity-60">
+                    </div>
+                    <div>
+                        <p class="text-sm text-brand-grey tracking-wider mb-1">座落於台北市中山區周邊</p>
+                        <p class="text-brand-dark font-medium">深受在地顧客喜愛的質感空間</p>
+                    </div>
+                </div>
+                
+                <div class="w-px h-12 bg-gray-200 hidden md:block"></div>
+                
+                <div class="flex items-center gap-6">
+                    <div class="text-center">
+                        <div class="flex items-center justify-center gap-1 text-yellow-500 mb-1">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <span class="text-3xl font-serif font-bold text-brand-dark">5.0</span>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-3xl font-light text-brand-dark flex items-baseline gap-1">
+                            <span class="counter font-serif font-bold" data-target="3223">0</span>
+                            <span class="text-lg">+</span>
+                        </p>
+                        <p class="text-sm text-brand-grey tracking-widest">真實顧客好評推薦</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Philosophy -->
+    <section id="about" class="py-24 bg-brand-offwhite relative overflow-hidden">
+        <!-- Decorative shapes -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-pink/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-green/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 reveal">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=1000" alt="放鬆的環境" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                        <div class="absolute inset-0 bg-brand-dark/10"></div>
+                    </div>
+                </div>
+                
+                <div class="order-1 md:order-2 reveal">
+                    <h2 class="text-sm text-brand-pink tracking-[0.2em] font-bold mb-4">OUR PHILOSOPHY</h2>
+                    <h3 class="text-3xl md:text-4xl font-serif text-brand-dark mb-6 leading-relaxed">
+                        不只是一次飄眉<br>
+                        更是一段療癒自我的時光
+                    </h3>
+                    <p class="text-brand-grey leading-loose mb-8 text-lg font-light">
+                        「頭巾阿姨」致力於打造一個完全無壓力的放鬆空間。在這裡，您可以卸下日常的疲憊，安心地將眉毛交給我們。
+                        <br><br>
+                        我們相信，變美的過程應該是愉悅的。除了提供專業的技術，我們更樂意傾聽。如果您有心事，隨時歡迎與我們聊聊天；如果您想安靜休息，我們也會給予最舒適的寧靜。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-green/20 flex items-center justify-center shrink-0 mt-1">
+                                <i data-lucide="leaf" class="w-5 h-5 text-brand-green"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-brand-dark mb-1">無壓環境</h4>
+                                <p class="text-sm text-brand-grey">營造像家一樣放鬆的氛圍</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-brand-pink/20 flex items-center justify-center shrink-0 mt-1">
+                                <i data-lucide="message-circle-heart" class="w-5 h-5 text-brand-pink"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-brand-dark mb-1">溫暖傾聽</h4>
+                                <p class="text-sm text-brand-grey">陪伴您度過美好的變美時光</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services & Pricing -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-sm text-brand-green tracking-[0.2em] font-bold mb-4">SERVICE & PRICING</h2>
+                <h3 class="text-3xl md:text-4xl font-serif text-brand-dark mb-4">單一純粹，專注完美</h3>
+                <p class="text-brand-grey font-light">我們提供透明、簡單的服務方案，讓您不需為了選擇而煩惱，只需期待美好的成果。</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <!-- Pricing Card -->
+                <div class="bg-brand-offwhite rounded-3xl p-8 md:p-12 shadow-sm border border-brand-grey/10 hover-lift reveal relative overflow-hidden">
+                    <!-- Decorative element -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-white rounded-bl-full opacity-50"></div>
+                    
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                        <div class="text-center md:text-left">
+                            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-dark text-white text-xs tracking-wider mb-4">
+                                <i data-lucide="sparkles" class="w-3 h-3"></i> 招牌服務
+                            </div>
+                            <h4 class="text-2xl md:text-3xl font-medium text-brand-dark mb-2">專屬客製 飄眉/霧眉</h4>
+                            <p class="text-brand-grey">依照個人臉型與骨骼，量身打造最自然的專屬眉型。</p>
+                        </div>
+                        
+                        <div class="flex flex-col items-center md:items-end shrink-0">
+                            <div class="text-brand-dark mb-1 flex items-start">
+                                <span class="text-xl mt-1 mr-1">NT$</span>
+                                <span class="text-5xl font-serif font-bold">4,000</span>
+                            </div>
+                            <p class="text-sm text-brand-green font-medium flex items-center gap-1 bg-brand-green/10 px-3 py-1 rounded-full">
+                                <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+                                含3個月內免費補色一次
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 pt-8 border-t border-brand-grey/20 grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="flex flex-col items-center text-center gap-3 p-4">
+                            <i data-lucide="pen-tool" class="w-8 h-8 text-brand-dark/70 stroke-[1.5]"></i>
+                            <h5 class="font-medium text-brand-dark">專業設計</h5>
+                            <p class="text-xs text-brand-grey">仔細溝通，精準測量，打造專屬您的黃金比例眉型。</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center gap-3 p-4">
+                            <i data-lucide="droplet" class="w-8 h-8 text-brand-dark/70 stroke-[1.5]"></i>
+                            <h5 class="font-medium text-brand-dark">頂級色乳</h5>
+                            <p class="text-xs text-brand-grey">選用高品質植物性色乳，留色自然，後期不泛紅發藍。</p>
+                        </div>
+                        <div class="flex flex-col items-center text-center gap-3 p-4">
+                            <i data-lucide="shield-check" class="w-8 h-8 text-brand-dark/70 stroke-[1.5]"></i>
+                            <h5 class="font-medium text-brand-dark">安心保固</h5>
+                            <p class="text-xs text-brand-grey">提供三個月內免費補色服務，確保眉型達到最完美的狀態。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Break / Secondary Image -->
+    <section class="py-20 bg-brand-offwhite">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] reveal">
+                    <img src="https://images.unsplash.com/photo-1588514125304-749e1e248b62?auto=format&fit=crop&q=80&w=1000" alt="精緻飄眉細節" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="rounded-2xl overflow-hidden aspect-[4/3] reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=1000" alt="工作室一隅" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking CTA -->
+    <section id="booking" class="py-24 bg-brand-dark text-white relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-3xl mx-auto px-6 text-center relative z-10 reveal">
+            <i data-lucide="calendar-heart" class="w-12 h-12 mx-auto text-brand-pink mb-6"></i>
+            <h2 class="text-3xl md:text-5xl font-serif mb-6">準備好迎接全新的自己了嗎？</h2>
+            <p class="text-brand-offwhite/80 text-lg font-light mb-10 leading-relaxed">
+                為維持服務品質，我們採<span class="text-brand-pink font-medium">完全預約制</span>。<br>
+                歡迎透過 Instagram 私訊我們，討論您的需求並預約專屬時段。
+            </p>
+            
+            <a href="https://www.instagram.com/blablabrows.studio?igsh=MTNxM295NDVwdzQ4YQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-brand-pink text-white px-10 py-4 rounded-full text-lg hover:bg-white hover:text-brand-dark transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl group">
+                <i data-lucide="instagram" class="w-6 h-6 group-hover:scale-110 transition-transform"></i>
+                <span class="font-medium tracking-wide">前往 IG 私訊預約</span>
+            </a>
+            
+            <p class="mt-8 text-sm text-brand-offwhite/50 tracking-widest">@blablabrows.studio</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 border-t border-brand-grey/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                </div>
+                <span class="font-serif text-lg font-semibold text-brand-dark">頭巾阿姨</span>
+            </div>
+            
+            <div class="text-center md:text-left text-brand-grey text-sm space-y-2">
+                <p>雙北地區質感飄眉工作室</p>
+                <p>採完全預約制，請透過 IG 聯繫</p>
+            </div>
+            
+            <div class="text-sm text-brand-grey/60">
+                &copy; 2026 頭巾阿姨 Brow Studio. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+                navbar.style.background = 'rgba(255, 255, 255, 0.9)';
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.style.background = 'rgba(249, 248, 246, 0.75)';
+            }
+        });
+
+        // Typewriter Effect
+        const phrases = ["台北口碑首選，打造專屬自然眉型", "享受無壓力的放鬆時光，我們樂意傾聽"];
+        let phraseIndex = 0;
+        let letterIndex = 0;
+        let currentText = "";
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter-text');
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                currentText = currentPhrase.substring(0, letterIndex - 1);
+                letterIndex--;
+            } else {
+                currentText = currentPhrase.substring(0, letterIndex + 1);
+                letterIndex++;
+            }
+
+            typewriterElement.textContent = currentText;
+
+            let typeSpeed = 100;
+            if (isDeleting) typeSpeed /= 2;
+
+            if (!isDeleting && letterIndex === currentPhrase.length) {
+                typeSpeed = 2000; // Pause at end of phrase
+                isDeleting = true;
+            } else if (isDeleting && letterIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before typing next phrase
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        
+        // Start typewriter after a slight delay
+        setTimeout(type, 1500);
+
+        // Scroll Reveal & Counter Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const counters = document.querySelectorAll('.counter');
+        let hasCounted = false;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Reveal elements
+                    entry.target.classList.add('active');
+                    
+                    // Trigger counters if within this section
+                    if (!hasCounted && entry.target.querySelector('.counter')) {
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            const duration = 2000; // 2 seconds
+                            const increment = target / (duration / 16); // 60fps
+                            
+                            let current = 0;
+                            const updateCounter = () => {
+                                current += increment;
+                                if (current < target) {
+                                    counter.innerText = Math.ceil(current).toLocaleString();
+                                    requestAnimationFrame(updateCounter);
+                                } else {
+                                    counter.innerText = target.toLocaleString();
+                                }
+                            };
+                            updateCounter();
+                        });
+                        hasCounted = true;
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
+```
