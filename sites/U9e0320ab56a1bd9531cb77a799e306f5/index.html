@@ -3,69 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>美樂蒂娃娃店 | 樂華夜市的人氣夢幻樂園</title>
+    <title>可樂狗 | 復古文青娃娃屋 & 閱讀空間</title>
     
-    <!-- Google Fonts: Quicksand for cute english/numbers, Noto Sans TC for Chinese -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Config -->
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Quicksand', 'Noto Sans TC', 'sans-serif'],
-                    },
                     colors: {
                         brand: {
-                            50: '#fdf2f8',
-                            100: '#fce7f3',
-                            200: '#fbcfe8',
-                            300: '#f9a8d4',
-                            400: '#f472b6',
-                            500: '#ec4899', // Main Pink
-                            600: '#db2777',
-                            700: '#be185d',
-                            800: '#9d174d',
-                            900: '#831843',
-                        }
+                            light: '#F5F0E6', // 燕麥色/紙張色
+                            DEFAULT: '#C1A089', // 溫潤木質棕
+                            dark: '#6B4E3D', // 深棕色文字
+                            accent: '#D98A6C' // 復古玫瑰/紅磚色點綴
+                        },
+                        paper: '#FDFBF7'
                     },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
-                        }
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
                     }
                 }
             }
         }
     </script>
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS for Animations & Interactions -->
     <style>
         body {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            background-color: #FDFBF7;
         }
         
-        /* Glassmorphism */
-        .glass-nav {
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            background: rgba(255, 255, 255, 0.85);
-            border-bottom: 1px solid rgba(252, 231, 243, 0.5);
-        }
-
-        /* Scroll Reveal */
+        /* Scroll Reveal Utility */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -79,43 +59,51 @@
         /* Typewriter Cursor */
         .typewriter-cursor {
             display: inline-block;
-            width: 3px;
-            height: 1em;
+            width: 2px;
+            height: 1.2em;
             background-color: white;
             vertical-align: middle;
             animation: blink 1s step-end infinite;
-            margin-left: 4px;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        /* Soft Shadow */
-        .soft-shadow {
-            box-shadow: 0 20px 40px -15px rgba(236, 72, 153, 0.15);
+        /* Image Hover Effect */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.7s ease;
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="bg-brand-50 text-gray-800 overflow-x-hidden selection:bg-brand-300 selection:text-white">
+<body class="antialiased text-gray-800 font-sans selection:bg-brand selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-white/70 border-b border-brand-light/50" id="navbar">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center text-white transform group-hover:rotate-12 transition-transform duration-300 shadow-md">
-                        <i data-lucide="smile" class="w-6 h-6"></i>
+                    <div class="w-10 h-10 rounded-full bg-brand-dark text-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
+                        <i data-lucide="dog" class="w-6 h-6"></i>
                     </div>
-                    <span class="font-bold text-2xl tracking-wider text-brand-600">美樂蒂<span class="text-brand-400 font-medium text-lg ml-1">娃娃店</span></span>
+                    <span class="font-serif text-2xl font-bold text-brand-dark tracking-wider">可樂狗</span>
                 </a>
                 
-                <!-- Contact CTA -->
-                <div class="hidden md:flex items-center">
-                    <a href="tel:019191919" class="flex items-center gap-2 bg-white border-2 border-brand-200 text-brand-600 px-6 py-2.5 rounded-full font-bold hover:bg-brand-50 hover:border-brand-300 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-brand-dark font-medium transition-colors duration-300">品牌故事</a>
+                    <a href="#features" class="text-gray-600 hover:text-brand-dark font-medium transition-colors duration-300">特色服務</a>
+                    <a href="#gallery" class="text-gray-600 hover:text-brand-dark font-medium transition-colors duration-300">精選娃娃</a>
+                    <a href="tel:019919191" class="flex items-center gap-2 bg-brand-dark text-white px-6 py-2.5 rounded-full hover:bg-brand hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
                         <i data-lucide="phone" class="w-4 h-4"></i>
-                        019191919
+                        <span>019919191</span>
                     </a>
                 </div>
             </div>
@@ -123,215 +111,203 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative min-h-[90vh] flex items-center justify-center pt-20 overflow-hidden">
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1596461404969-9ce20c71c739?auto=format&fit=crop&q=80&w=1920" alt="美樂蒂娃娃店溫馨內部" class="w-full h-full object-cover object-center scale-105 animate-[pulse-slow_10s_ease-in-out_infinite]" />
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-900/60 to-brand-800/40 backdrop-blur-[2px]"></div>
+            <img src="https://images.unsplash.com/photo-1558021211-6d1403321394?q=80&w=2000&auto=format&fit=crop" alt="可樂狗復古娃娃屋內部空間" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-black/50"></div>
         </div>
-
+        
         <!-- Content -->
-        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-sm font-medium mb-8 reveal">
-                <i data-lucide="map-pin" class="w-4 h-4 text-brand-200"></i>
-                <span>新北永和・樂華夜市</span>
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-lg reveal" style="transition-delay: 100ms;">
-                探索充滿童趣的<br/>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-200 to-white">夢幻樂園</span>
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <h1 class="font-serif text-5xl md:text-7xl font-bold text-white mb-6 tracking-widest drop-shadow-lg reveal">
+                可樂狗
             </h1>
-            
-            <div class="h-8 md:h-10 mb-10 reveal" style="transition-delay: 200ms;">
-                <p class="text-lg md:text-2xl text-brand-50 font-medium drop-shadow-md inline-block" id="typewriter-text"></p><span class="typewriter-cursor"></span>
+            <div class="h-8 md:h-12 mb-8 reveal" style="transition-delay: 200ms;">
+                <p class="text-lg md:text-2xl text-brand-light font-light tracking-wide drop-shadow-md">
+                    <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
+                </p>
             </div>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal" style="transition-delay: 300ms;">
-                <a href="#collection" class="px-8 py-4 bg-brand-500 text-white rounded-full font-bold text-lg hover:bg-brand-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/30 transition-all duration-300 flex items-center gap-2">
-                    尋找專屬夥伴
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            <div class="reveal" style="transition-delay: 400ms;">
+                <a href="#about" class="inline-flex items-center justify-center w-14 h-14 rounded-full border border-white/50 text-white hover:bg-white hover:text-brand-dark transition-all duration-300 animate-bounce">
+                    <i data-lucide="chevron-down" class="w-6 h-6"></i>
                 </a>
             </div>
         </div>
+    </section>
 
-        <!-- Decorative Elements -->
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
-            <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,119.93,191.36,97.8,238.3,80.6,281.42,65.34,321.39,56.44Z" class="fill-brand-50"></path>
-            </svg>
+    <!-- Social Proof Section -->
+    <section class="py-12 bg-brand-dark text-white relative z-20 -mt-2">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
+                <div class="p-4 reveal">
+                    <p class="text-brand-light/80 text-sm mb-2 font-serif">Google 地圖在地推薦</p>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-4xl font-bold text-brand-light counter" data-target="4.3" data-decimals="1">0</span>
+                        <span class="text-2xl text-brand-light">星</span>
+                    </div>
+                    <div class="flex justify-center gap-1 mt-2 text-yellow-400">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star-half" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+                <div class="p-4 reveal" style="transition-delay: 100ms;">
+                    <p class="text-brand-light/80 text-sm mb-2 font-serif">真實造訪評價</p>
+                    <div class="flex items-center justify-center gap-2">
+                        <span class="text-4xl font-bold text-brand-light counter" data-target="39773">0</span>
+                        <span class="text-2xl text-brand-light">+</span>
+                    </div>
+                    <p class="text-sm mt-2 text-brand-light/70">樂華夜市商圈人氣地標</p>
+                </div>
+                <div class="p-4 reveal flex flex-col justify-center items-center" style="transition-delay: 200ms;">
+                    <i data-lucide="map-pin" class="w-8 h-8 mb-3 text-brand-accent"></i>
+                    <p class="font-serif text-lg">位於新北永和樂華夜市商圈，</p>
+                    <p class="font-serif text-lg">深受大人小孩喜愛的溫馨夢幻空間。</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Social Proof / Stats Section -->
-    <section class="relative z-20 max-w-5xl mx-auto px-6 lg:px-8 -mt-10 md:-mt-20 mb-24 reveal">
-        <div class="bg-white rounded-3xl soft-shadow p-8 md:p-12 border border-brand-100">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-brand-100">
-                <!-- Stat 1: Google Rating -->
-                <div class="flex flex-col items-center justify-center pt-4 md:pt-0">
-                    <div class="flex items-center gap-1 text-yellow-400 mb-2">
-                        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                        <i data-lucide="star-half" class="w-6 h-6 fill-current"></i>
+    <!-- Brand Story / About -->
+    <section id="about" class="py-24 bg-paper">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal img-zoom-container rounded-2xl shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=1000&auto=format&fit=crop" alt="復古娃娃陪伴" class="w-full h-[500px] object-cover rounded-2xl">
+                </div>
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-light text-brand-dark text-sm font-medium mb-6">
+                        <i data-lucide="heart-handshake" class="w-4 h-4"></i>
+                        品牌精神
                     </div>
-                    <div class="text-4xl font-black text-gray-900 mb-1"><span class="counter" data-target="4.3">0</span></div>
-                    <p class="text-sm font-bold text-brand-500 uppercase tracking-wider">Google 在地好評</p>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-brand-dark mb-6 leading-tight">
+                        每個娃娃，<br>都是一個故事的開端。
+                    </h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        在可樂狗，我們相信「陪伴」是最溫暖的力量。這裡不僅僅是販售娃娃的店鋪，更是一個充滿復古文青氛圍的夢幻空間。
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                        我們精心挑選每一隻充滿故事感的娃娃，並打造了一個舒適的閱讀角落。無論是想找回童心的大人，還是渴望探索世界的小朋友，都能在這裡找到屬於自己的平靜與歡樂。
+                    </p>
+                    <a href="#gallery" class="inline-flex items-center gap-2 bg-transparent border-2 border-brand-dark text-brand-dark px-8 py-3 rounded-full hover:bg-brand-dark hover:text-white transition-all duration-300 font-medium">
+                        探索我們的娃娃
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 bg-brand-light/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="font-serif text-4xl font-bold text-brand-dark mb-4 reveal">專屬您的溫馨體驗</h2>
+            <p class="text-gray-600 mb-16 max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">從獨特的選品到舒適的空間，我們用心為每一位踏入可樂狗的顧客，準備最美好的相遇。</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 reveal group" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-light rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand group-hover:text-white transition-colors duration-300 text-brand-dark">
+                        <i data-lucide="bot" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-4">獨特選品娃娃</h3>
+                    <p class="text-gray-600 leading-relaxed">精挑細選具備復古文青風格的特色娃娃，每一隻都有獨特的表情與質感，等待成為您的專屬陪伴。</p>
                 </div>
                 
-                <!-- Stat 2: Reviews -->
-                <div class="flex flex-col items-center justify-center pt-8 md:pt-0">
-                    <div class="w-12 h-12 bg-brand-50 rounded-full flex items-center justify-center text-brand-500 mb-3">
-                        <i data-lucide="users" class="w-6 h-6"></i>
+                <!-- Feature 2 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 reveal group" style="transition-delay: 300ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-light rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand group-hover:text-white transition-colors duration-300 text-brand-dark">
+                        <i data-lucide="book-open" class="w-8 h-8"></i>
                     </div>
-                    <div class="text-4xl font-black text-gray-900 mb-1"><span class="counter" data-target="39773">0</span>+</div>
-                    <p class="text-sm font-bold text-brand-500 uppercase tracking-wider">樂華夜市熱門推薦</p>
+                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-4">故事閱讀時光</h3>
+                    <p class="text-gray-600 leading-relaxed">店內設有溫馨的木質閱讀區，備有精選童書與繪本。讓小朋友在娃娃的陪伴下，展開想像的翅膀。</p>
                 </div>
-
-                <!-- Stat 3: Happy Kids -->
-                <div class="flex flex-col items-center justify-center pt-8 md:pt-0">
-                    <div class="w-12 h-12 bg-brand-50 rounded-full flex items-center justify-center text-brand-500 mb-3">
-                        <i data-lucide="heart" class="w-6 h-6"></i>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 reveal group" style="transition-delay: 400ms;">
+                    <div class="w-16 h-16 mx-auto bg-brand-light rounded-2xl flex items-center justify-center mb-6 group-hover:bg-brand group-hover:text-white transition-colors duration-300 text-brand-dark">
+                        <i data-lucide="gift" class="w-8 h-8"></i>
                     </div>
-                    <div class="text-4xl font-black text-gray-900 mb-1"><span class="counter" data-target="100">0</span>%</div>
-                    <p class="text-sm font-bold text-brand-500 uppercase tracking-wider">純真笑容保證</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Brand Story Section -->
-    <section class="py-20 bg-brand-50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <!-- Image -->
-                <div class="w-full lg:w-1/2 reveal">
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-brand-200 rounded-[3rem] transform -rotate-3 z-0"></div>
-                        <img src="https://images.unsplash.com/photo-1558066110-bf9b120e4c6e?auto=format&fit=crop&q=80&w=800" alt="可愛娃娃陪伴" class="relative z-10 w-full h-[500px] object-cover rounded-[2.5rem] shadow-xl" />
-                        <!-- Floating Badge -->
-                        <div class="absolute -bottom-6 -right-6 z-20 bg-white p-4 rounded-2xl soft-shadow animate-float flex items-center gap-3">
-                            <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-500">
-                                <i data-lucide="sparkles" class="w-5 h-5"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-gray-500 font-bold">為孩子帶來</p>
-                                <p class="text-sm font-black text-gray-900">溫暖陪伴</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Text Content -->
-                <div class="w-full lg:w-1/2 reveal" style="transition-delay: 200ms;">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-100 text-brand-600 text-sm font-bold mb-6">
-                        <i data-lucide="heart-handshake" class="w-4 h-4"></i>
-                        <span>我們的品牌精神</span>
-                    </div>
-                    <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-8 leading-tight">
-                        每個娃娃，都是一個<br/><span class="text-brand-500">快樂的種子</span>
-                    </h2>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-6 font-medium">
-                        在美樂蒂，我們用心挑選每一個絨毛夥伴。期待它們與小主人相遇，共同創造無數的歡樂時光。
-                    </p>
-                    <p class="text-lg text-gray-600 leading-relaxed mb-10 font-medium">
-                        我們相信，一個小小的娃娃，不僅是玩具，更是能為孩子們帶來無限想像與溫暖陪伴的知己，讓每個童年都充滿甜美的回憶！
-                    </p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-500">
-                            <i data-lucide="check" class="w-6 h-6"></i>
-                        </div>
-                        <span class="text-lg font-bold text-gray-800">安全材質，安心擁抱</span>
-                    </div>
+                    <h3 class="font-serif text-xl font-bold text-brand-dark mb-4">暖心質感贈禮</h3>
+                    <p class="text-gray-600 leading-relaxed">提供精美的復古風格包裝服務。無論是生日、節慶或日常驚喜，幫您將最真摯的心意完美傳遞。</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Popular Collection -->
-    <section id="collection" class="py-24 bg-white">
+    <!-- Highlight / Gallery Section -->
+    <section id="gallery" class="py-24 bg-paper">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-4">人氣熱銷夥伴</h2>
-                <p class="text-lg text-gray-500 font-medium">快來挑選屬於你的小可愛，帶回家一起玩耍吧！</p>
+                <h2 class="font-serif text-4xl font-bold text-brand-dark mb-4">精選店長推薦</h2>
+                <p class="text-gray-600">遇見那個讓您心動的小夥伴</p>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Item 1 -->
-                <div class="group cursor-pointer reveal" style="transition-delay: 100ms;">
-                    <div class="relative overflow-hidden rounded-3xl aspect-square mb-6">
-                        <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&q=80&w=800" alt="軟綿綿小兔" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-500 transition-colors">軟綿綿小兔</h3>
-                        <p class="text-gray-500 font-medium text-sm">最柔軟的安撫好朋友</p>
-                    </div>
-                </div>
-
-                <!-- Item 2 -->
-                <div class="group cursor-pointer reveal" style="transition-delay: 200ms;">
-                    <div class="relative overflow-hidden rounded-3xl aspect-square mb-6">
-                        <img src="https://images.unsplash.com/photo-1608889175123-8ee362201f81?auto=format&fit=crop&q=80&w=800" alt="經典泰迪熊" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <div class="absolute top-4 right-4 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full">熱銷 NO.1</div>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-500 transition-colors">經典泰迪熊</h3>
-                        <p class="text-gray-500 font-medium text-sm">永遠不退流行的溫暖</p>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="group cursor-pointer reveal" style="transition-delay: 300ms;">
-                    <div class="relative overflow-hidden rounded-3xl aspect-square mb-6">
-                        <img src="https://images.unsplash.com/photo-1585366119957-e9730b6d0f60?auto=format&fit=crop&q=80&w=800" alt="童話小精靈" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out" />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    <div class="text-center">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-brand-500 transition-colors">童話小精靈</h3>
-                        <p class="text-gray-500 font-medium text-sm">激發無限想像力</p>
-                    </div>
+            
+            <div class="relative rounded-3xl overflow-hidden shadow-2xl reveal img-zoom-container">
+                <!-- Using the provided user image URL -->
+                <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260308170506_0.png" alt="可樂狗精選娃娃" class="w-full h-[60vh] object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8 md:p-12">
+                    <h3 class="font-serif text-3xl md:text-4xl font-bold text-white mb-3">溫馨陪伴系列</h3>
+                    <p class="text-white/90 text-lg max-w-2xl">柔軟的觸感與療癒的神情，是我們店內最受歡迎的人氣選擇。快來樂華夜市帶牠回家吧！</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Location & Contact -->
-    <section class="py-24 bg-brand-50 relative overflow-hidden">
-        <!-- Decorative Circle -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-brand-200/50 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-brand-300/30 blur-3xl"></div>
-
-        <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center reveal">
-            <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-8 soft-shadow">
-                <i data-lucide="store" class="w-10 h-10 text-brand-500"></i>
-            </div>
-            <h2 class="text-3xl md:text-5xl font-black text-gray-900 mb-6">來店裡找我們玩吧！</h2>
-            <p class="text-lg text-gray-600 mb-12 font-medium">位於熱鬧的樂華夜市內，吃喝玩樂一次滿足，快帶寶貝來挑選心儀的娃娃。</p>
-            
-            <div class="bg-white rounded-3xl p-8 md:p-12 soft-shadow flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-left">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 bg-brand-50 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <i data-lucide="map-pinned" class="w-6 h-6 text-brand-500"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">店鋪地址</h4>
-                        <p class="text-xl font-bold text-gray-900">樂華夜市</p>
-                        <p class="text-gray-600 font-medium mt-1">234新北市永和區永平路</p>
+    <section class="py-24 bg-brand-dark text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <h2 class="font-serif text-4xl font-bold mb-8">來找我們玩吧！</h2>
+                    <p class="text-brand-light/80 text-lg mb-10 leading-relaxed">
+                        可樂狗隱身於熱鬧的樂華夜市之中，為您保留了一處安靜、溫馨的秘密基地。無論是逛街累了想歇息，還是想尋找一份特別的禮物，我們都隨時歡迎您的到來。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1">店鋪地址</h4>
+                                <p class="text-brand-light/80">234 新北市永和區永平路 (樂華夜市內)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="phone" class="w-6 h-6 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1">聯絡電話</h4>
+                                <a href="tel:019919191" class="text-brand-light/80 hover:text-white transition-colors duration-300">019919191</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                                <i data-lucide="clock" class="w-6 h-6 text-brand-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl mb-1">營業時間</h4>
+                                <p class="text-brand-light/80">配合樂華夜市營業時間 (詳細請來電洽詢)</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="hidden md:block w-px h-16 bg-gray-200"></div>
-
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 bg-brand-50 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <i data-lucide="phone-call" class="w-6 h-6 text-brand-500"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">聯絡專線</h4>
-                        <a href="tel:019191919" class="text-xl font-bold text-gray-900 hover:text-brand-500 transition-colors">019191919</a>
-                        <p class="text-gray-500 text-sm font-medium mt-1">歡迎來電洽詢款式</p>
+                
+                <div class="reveal relative h-[400px] rounded-3xl overflow-hidden shadow-2xl" style="transition-delay: 200ms;">
+                    <!-- Placeholder for Map to match aesthetic -->
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1000&auto=format&fit=crop" alt="夜市氛圍" class="w-full h-full object-cover opacity-60">
+                    <div class="absolute inset-0 flex items-center justify-center bg-brand-dark/40 backdrop-blur-sm">
+                        <div class="text-center">
+                            <i data-lucide="map" class="w-12 h-12 text-white mx-auto mb-4"></i>
+                            <p class="font-serif text-xl font-bold">歡迎蒞臨 樂華夜市商圈</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -339,116 +315,111 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white py-12 border-t border-brand-100">
+    <footer class="bg-[#2A1F1A] text-brand-light/60 py-12 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="flex items-center gap-2">
-                <i data-lucide="smile" class="w-6 h-6 text-brand-500"></i>
-                <span class="font-bold text-xl text-gray-900">美樂蒂娃娃店</span>
+                <i data-lucide="dog" class="w-5 h-5"></i>
+                <span class="font-serif text-xl font-bold text-white">可樂狗</span>
             </div>
-            <p class="text-gray-400 font-medium text-sm">
-                &copy; 2026 美樂蒂娃娃店. All rights reserved.
+            <p class="text-sm">
+                &copy; 2026 可樂狗 復古娃娃屋. All rights reserved.
             </p>
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition-colors duration-300"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-white transition-colors duration-300"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+            </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-        // Initialize Icons
+        // Initialize Lucide Icons
         lucide.createIcons();
 
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) {
-                nav.classList.add('shadow-sm');
-                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
             } else {
-                nav.classList.remove('shadow-sm');
-                nav.style.background = 'rgba(255, 255, 255, 0.85)';
+                nav.classList.remove('shadow-md');
             }
         });
 
         // Typewriter Effect
-        const text = "位於新北永和口碑首選，為小朋友帶來無盡歡樂的夢幻天地。";
+        const text = "隱身於樂華夜市的復古文青娃娃屋，給您與孩子最溫暖的陪伴。";
         const typewriterElement = document.getElementById('typewriter-text');
         let i = 0;
-        
+
         function typeWriter() {
             if (i < text.length) {
                 typewriterElement.innerHTML += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 100); // Speed of typing
+                setTimeout(typeWriter, 100);
             }
         }
         
         // Start typewriter after a short delay
         setTimeout(typeWriter, 800);
 
-        // Scroll Reveal Logic
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealCallback = (entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    
-                    // If it contains counters, start them
-                    const counters = entry.target.querySelectorAll('.counter');
-                    if (counters.length > 0) {
-                        startCounters(counters);
+        // Scroll Reveal & Counter Animation Logic using Intersection Observer
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Handle Reveal
+                        if (entry.target.classList.contains('reveal')) {
+                            entry.target.classList.add('active');
+                        }
+                        
+                        // Handle Counters
+                        if (entry.target.classList.contains('counter') && !entry.target.classList.contains('counted')) {
+                            const target = parseFloat(entry.target.getAttribute('data-target'));
+                            const decimals = parseInt(entry.target.getAttribute('data-decimals')) || 0;
+                            const duration = 2000; // 2 seconds
+                            const frameRate = 30;
+                            const totalFrames = Math.round((duration / 1000) * frameRate);
+                            let frame = 0;
+
+                            const counterInterval = setInterval(() => {
+                                frame++;
+                                const progress = frame / totalFrames;
+                                // Ease out quad
+                                const currentCount = target * (1 - (1 - progress) * (1 - progress));
+
+                                if (frame >= totalFrames) {
+                                    entry.target.innerText = decimals > 0 ? target.toFixed(decimals) : Math.round(target).toLocaleString();
+                                    clearInterval(counterInterval);
+                                } else {
+                                    entry.target.innerText = decimals > 0 ? currentCount.toFixed(decimals) : Math.round(currentCount).toLocaleString();
+                                }
+                            }, 1000 / frameRate);
+                            
+                            entry.target.classList.add('counted');
+                        }
+                        
+                        // Optional: Unobserve after animation to run only once
+                        // observer.unobserve(entry.target); 
                     }
-                    
-                    observer.unobserve(entry.target);
-                }
+                });
+            }, observerOptions);
+
+            // Observe all reveal elements
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
             });
-        };
-
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
-
-        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
-        
-        revealElements.forEach(el => {
-            revealObserver.observe(el);
+            
+            // Observe all counter elements
+            document.querySelectorAll('.counter').forEach(el => {
+                observer.observe(el);
+            });
         });
-
-        // Counter Animation Logic
-        function startCounters(counters) {
-            counters.forEach(counter => {
-                const target = parseFloat(counter.getAttribute('data-target'));
-                const duration = 2000; // 2 seconds
-                const isFloat = target % 1 !== 0;
-                let startTimestamp = null;
-
-                const step = (timestamp) => {
-                    if (!startTimestamp) startTimestamp = timestamp;
-                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    
-                    // Easing function (easeOutExpo)
-                    const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-                    
-                    const currentVal = easeProgress * target;
-                    
-                    if (isFloat) {
-                        counter.innerText = currentVal.toFixed(1);
-                    } else {
-                        counter.innerText = Math.floor(currentVal).toLocaleString();
-                    }
-
-                    if (progress < 1) {
-                        window.requestAnimationFrame(step);
-                    } else {
-                        counter.innerText = isFloat ? target.toFixed(1) : target.toLocaleString();
-                    }
-                };
-                
-                window.requestAnimationFrame(step);
-            });
-        }
     </script>
 </body>
 </html>
