@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>啦機87孬孬鬧 | 溫馨手作天竺鼠文創</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config for Warm Japandi Style -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        en: ['"Nunito"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#D4A373', // Warm Wood
+                            600: '#b88b5d',
+                            700: '#9c734a',
+                            800: '#825e3c',
+                            900: '#6b4c31',
+                        },
+                        accent: {
+                            DEFAULT: '#E07A5F', // Terracotta
+                            hover: '#c96a51'
+                        },
+                        paper: '#FCFBF4', // Oat/Cream background
+                        dark: '#3D3B38'
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles & Utilities */
+        body {
+            background-color: #FCFBF4;
+            color: #3D3B38;
+            overflow-x: hidden;
+        }
+        
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background: rgba(252, 251, 244, 0.85);
+            border-bottom: 1px solid rgba(212, 163, 115, 0.2);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .smooth-transition {
+            transition: all 0.3s ease;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: #E07A5F;
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FCFBF4;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4A373;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-300 selection:text-dark">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav smooth-transition py-4" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-brand-200 flex items-center justify-center text-brand-700 group-hover:bg-brand-300 smooth-transition">
+                    <i data-lucide="paw-print" class="w-6 h-6"></i>
+                </div>
+                <span class="font-bold text-xl tracking-wider text-dark">啦機87孬孬鬧</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-accent font-medium smooth-transition">關於我們</a>
+                <a href="#products" class="text-gray-600 hover:text-accent font-medium smooth-transition">療癒商品</a>
+                <a href="#custom" class="text-accent font-bold hover:text-accent-hover smooth-transition flex items-center gap-1">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    客製化服務
+                </a>
+                <div class="flex items-center gap-4 border-l border-brand-200 pl-6">
+                    <a href="https://www.facebook.com/share/1H8qCtrPQV/?mibextid=wwXIfr" target="_blank" class="text-gray-400 hover:text-blue-600 smooth-transition">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="https://www.instagram.com/guineapig_lagibachinao?igsh=MTdoeTNnemNkdWM2cg%3D%3D&utm_source=qr" target="_blank" class="text-gray-400 hover:text-pink-600 smooth-transition">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-dark">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Prominent Customization Banner -->
+    <div class="fixed top-20 w-full z-40 bg-accent text-white py-2 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm md:text-base font-medium flex items-center justify-center gap-2">
+            <i data-lucide="gift" class="w-4 h-4 animate-pulse"></i>
+            <span>特色服務：客製化商品可私訊詢問，為您打造獨一無二的專屬禮物！</span>
+            <i data-lucide="gift" class="w-4 h-4 animate-pulse"></i>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?q=80&w=2070&auto=format&fit=crop" alt="Cozy Craft Studio" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-paper/90"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center animate-fade-in">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white border border-white/30 mb-8">
+                <i data-lucide="heart-handshake" class="w-4 h-4 text-brand-200"></i>
+                <span class="text-sm font-medium tracking-wide">純手工製作 ‧ 療癒系網路商店</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-lg">
+                溫馨文青的<br/>
+                <span class="text-brand-300 font-serif italic font-light">手作溫度</span>
+            </h1>
+            
+            <div class="h-8 mb-10 text-lg md:text-2xl text-gray-100 font-light tracking-wide drop-shadow-md">
+                <span id="typewriter"></span><span class="typewriter-cursor"></span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#products" class="px-8 py-4 rounded-full bg-brand-500 text-white font-bold text-lg hover:bg-brand-600 hover:-translate-y-1 hover:shadow-xl smooth-transition flex items-center gap-2 w-full sm:w-auto justify-center">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    探索療癒商品
+                </a>
+                <a href="#custom" class="px-8 py-4 rounded-full bg-white text-dark font-bold text-lg hover:bg-gray-50 hover:-translate-y-1 hover:shadow-xl smooth-transition flex items-center gap-2 w-full sm:w-auto justify-center border border-gray-200">
+                    <i data-lucide="message-circle" class="w-5 h-5 text-accent"></i>
+                    私訊客製化
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-float text-brand-700">
+            <i data-lucide="chevron-down" class="w-8 h-8 opacity-70"></i>
+        </div>
+    </section>
+
+    <!-- About / Feature Section -->
+    <section id="about" class="py-24 bg-paper relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-brand-500 font-en font-bold tracking-widest uppercase text-sm mb-2">About Us</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-dark mb-6">讓可愛的天竺鼠，療癒您的日常</h3>
+                <p class="text-gray-600 leading-relaxed text-lg">
+                    「啦機87孬孬鬧」是一家充滿手作溫度的網路商店。我們將對天竺鼠的喜愛轉化為溫馨、文青風格的商品。每一個設計都蘊含著我們的心意，希望能為您的生活帶來一抹微笑。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl smooth-transition reveal group border border-brand-50">
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 smooth-transition group-hover:bg-brand-100">
+                        <i data-lucide="palette" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3">原創文青設計</h4>
+                    <p class="text-gray-500 leading-relaxed">柔和的配色搭配可愛插畫，打造獨具風格的質感小物，讓生活充滿藝術氣息。</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl smooth-transition reveal group border border-brand-50 delay-100">
+                    <div class="w-14 h-14 bg-accent/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 smooth-transition group-hover:bg-accent/20">
+                        <i data-lucide="pen-tool" class="w-7 h-7 text-accent"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3">專屬客製服務</h4>
+                    <p class="text-gray-500 leading-relaxed">提供客製化商品製作，無論是送禮或自用，都能為您打造獨一無二的心意。</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl smooth-transition reveal group border border-brand-50 delay-200">
+                    <div class="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 smooth-transition group-hover:bg-brand-100">
+                        <i data-lucide="heart" class="w-7 h-7 text-brand-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3">手作的溫度</h4>
+                    <p class="text-gray-500 leading-relaxed">堅持手工心意，從網路商店直送到您手中，傳遞最真摯的溫暖與療癒。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Milestones (Counter Section) -->
+    <section class="py-20 bg-brand-50 border-y border-brand-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-brand-200/50">
+                <div class="reveal">
+                    <div class="text-4xl md:text-5xl font-en font-bold text-brand-600 mb-2"><span class="counter" data-target="100">0</span>%</div>
+                    <div class="text-sm text-gray-600 font-medium">純手工製作</div>
+                </div>
+                <div class="reveal delay-100">
+                    <div class="text-4xl md:text-5xl font-en font-bold text-brand-600 mb-2"><span class="counter" data-target="500">0</span>+</div>
+                    <div class="text-sm text-gray-600 font-medium">療癒商品售出</div>
+                </div>
+                <div class="reveal delay-200">
+                    <div class="text-4xl md:text-5xl font-en font-bold text-brand-600 mb-2"><span class="counter" data-target="99">0</span>%</div>
+                    <div class="text-sm text-gray-600 font-medium">顧客好評推薦</div>
+                </div>
+                <div class="reveal delay-300">
+                    <div class="text-4xl md:text-5xl font-en font-bold text-accent mb-2"><i data-lucide="infinity" class="w-10 h-10 mx-auto"></i></div>
+                    <div class="text-sm text-gray-600 font-medium">客製化無限可能</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Gallery -->
+    <section id="products" class="py-24 bg-paper">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div class="max-w-xl">
+                    <h2 class="text-brand-500 font-en font-bold tracking-widest uppercase text-sm mb-2">Our Creations</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-dark">精選療癒小物</h3>
+                </div>
+                <a href="https://www.instagram.com/guineapig_lagibachinao?igsh=MTdoeTNnemNkdWM2cg%3D%3D&utm_source=qr" target="_blank" class="mt-4 md:mt-0 text-brand-600 font-medium hover:text-brand-800 flex items-center gap-1 smooth-transition group">
+                    查看更多作品 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 smooth-transition"></i>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product Card 1 -->
+                <div class="group cursor-pointer reveal">
+                    <div class="relative overflow-hidden rounded-3xl aspect-square mb-4 bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1611077544812-706e23b20790?q=80&w=2070&auto=format&fit=crop" alt="療癒文具小物" class="w-full h-full object-cover group-hover:scale-105 smooth-transition duration-500" />
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent smooth-transition"></div>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-1">天竺鼠日常系列</h4>
+                    <p class="text-gray-500 text-sm">溫馨文青風 / 手作質感</p>
+                </div>
+                
+                <!-- Product Card 2 -->
+                <div class="group cursor-pointer reveal delay-100">
+                    <div class="relative overflow-hidden rounded-3xl aspect-square mb-4 bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1584824486509-112e4181f1ce?q=80&w=2070&auto=format&fit=crop" alt="質感手作商品" class="w-full h-full object-cover group-hover:scale-105 smooth-transition duration-500" />
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent smooth-transition"></div>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-1">療癒插畫周邊</h4>
+                    <p class="text-gray-500 text-sm">柔和配色 / 獨家設計</p>
+                </div>
+
+                <!-- Product Card 3 (Customization focus) -->
+                <div class="group cursor-pointer reveal delay-200">
+                    <div class="relative overflow-hidden rounded-3xl aspect-square mb-4 bg-brand-100 flex items-center justify-center border-2 border-dashed border-brand-300">
+                        <div class="text-center p-6">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm group-hover:scale-110 smooth-transition">
+                                <i data-lucide="paintbrush" class="w-8 h-8 text-accent"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-dark mb-2">專屬客製化</h4>
+                            <p class="text-gray-600 text-sm mb-4">告訴我們您的想法，為您量身打造。</p>
+                            <span class="inline-block px-4 py-2 bg-accent text-white rounded-full text-sm font-medium group-hover:bg-accent-hover smooth-transition">
+                                私訊詢問
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlighted Customization CTA -->
+    <section id="custom" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-500"></div>
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center reveal">
+            <i data-lucide="message-square-heart" class="w-16 h-16 text-white mx-auto mb-6 opacity-90"></i>
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">客製化商品，為您傳遞心意</h2>
+            <p class="text-brand-50 text-lg md:text-xl mb-10 font-light leading-relaxed">
+                找不到完全符合心意的商品嗎？<br class="hidden md:block"/>
+                我們提供專屬客製化服務，歡迎私訊告訴我們您的需求，<br class="hidden md:block"/>
+                讓我們用手作的溫度，為您實現獨一無二的設計。
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="https://www.instagram.com/guineapig_lagibachinao?igsh=MTdoeTNnemNkdWM2cg%3D%3D&utm_source=qr" target="_blank" class="px-8 py-4 rounded-full bg-white text-brand-600 font-bold text-lg hover:bg-gray-50 hover:-translate-y-1 hover:shadow-xl smooth-transition flex items-center gap-2 w-full sm:w-auto justify-center">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                    IG 私訊討論
+                </a>
+                <a href="https://www.facebook.com/share/1H8qCtrPQV/?mibextid=wwXIfr" target="_blank" class="px-8 py-4 rounded-full bg-transparent border-2 border-white text-white font-bold text-lg hover:bg-white/10 hover:-translate-y-1 smooth-transition flex items-center gap-2 w-full sm:w-auto justify-center">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                    FB 粉絲專頁
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="lg:col-span-2">
+                    <a href="#" class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-brand-500 flex items-center justify-center text-white">
+                            <i data-lucide="paw-print" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-bold text-2xl tracking-wider">啦機87孬孬鬧</span>
+                    </a>
+                    <p class="text-gray-400 leading-relaxed mb-6 max-w-md">
+                        充滿手作溫度、暖色調的網路商店。整體視覺以柔和配色為主，搭配可愛插畫，讓我們的商品療癒您的每一天。
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <a href="https://www.facebook.com/share/1H8qCtrPQV/?mibextid=wwXIfr" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-500 smooth-transition">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.instagram.com/guineapig_lagibachinao?igsh=MTdoeTNnemNkdWM2cg%3D%3D&utm_source=qr" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-500 smooth-transition">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-brand-300">快速導覽</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#about" class="text-gray-400 hover:text-white smooth-transition">關於我們</a></li>
+                        <li><a href="#products" class="text-gray-400 hover:text-white smooth-transition">療癒商品</a></li>
+                        <li><a href="#custom" class="text-accent hover:text-accent-hover font-medium smooth-transition">客製化服務</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6 text-brand-300">聯絡資訊</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-gray-400">
+                            <i data-lucide="store" class="w-5 h-5 text-brand-500 shrink-0 mt-0.5"></i>
+                            <span>網路商店 (無固定營業時間，歡迎隨時線上選購)</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400">
+                            <i data-lucide="phone" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                            <span>0953791955</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-400">
+                            <i data-lucide="mail" class="w-5 h-5 text-brand-500 shrink-0"></i>
+                            <span>請透過 FB/IG 私訊聯繫</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">
+                    &copy; 2026 啦機87孬孬鬧. All rights reserved.
+                </p>
+                <div class="text-gray-500 text-sm flex items-center gap-1">
+                    Made with <i data-lucide="heart" class="w-4 h-4 text-accent"></i> by Webomate
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+                navbar.style.padding = '1rem 0';
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.style.padding = '1.25rem 0';
+            }
+        });
+
+        // Typewriter Effect
+        const phrases = [
+            "台北口碑首選的療癒文創",
+            "充滿溫度的手作天竺鼠周邊",
+            "專屬客製化，為您打造獨特心意"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
+        
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before new word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        
+        // Start typewriter after a short delay
+        setTimeout(type, 1000);
+
+        // Scroll Reveal Animation using Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        
+        const counterObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                
+                const target = entry.target;
+                const endValue = parseInt(target.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const frameRate = 1000 / 60; // 60fps
+                const totalFrames = Math.round(duration / frameRate);
+                let currentFrame = 0;
+
+                const counterInterval = setInterval(() => {
+                    currentFrame++;
+                    const progress = currentFrame / totalFrames;
+                    // Ease out quad
+                    const easeProgress = progress * (2 - progress);
+                    
+                    const currentValue = Math.round(endValue * easeProgress);
+                    target.textContent = currentValue;
+
+                    if (currentFrame === totalFrames) {
+                        clearInterval(counterInterval);
+                        target.textContent = endValue;
+                    }
+                }, frameRate);
+
+                observer.unobserve(target);
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+  
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```
