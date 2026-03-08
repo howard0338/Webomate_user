@@ -1,407 +1,462 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>凱蒂貓茶葉 | 古法手作高山茶</title>
+    <title>台南高山茶大王 | 古法手作頂級高山茶</title>
+    <meta name="description" content="台南在地口碑首選，傳承古法手作的頂級高山茶。沈穩紫檀木色系，品味茶品的溫潤與底蘊。">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Noto Serif TC (Serif for headings), Noto Sans TC (Sans for body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Config -->
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        rosewood: {
-                            50: '#f7f3f3',
-                            100: '#eee3e3',
-                            200: '#dbcdcd',
-                            300: '#c2afaf',
-                            400: '#a38a8a',
-                            500: '#856969',
-                            600: '#6b5050',
-                            700: '#594141',
-                            800: '#4a3737',
-                            900: '#413232', // Deep Rosewood
-                            950: '#261b1b', // Darkest Rosewood
-                        },
-                        gold: {
-                            DEFAULT: '#C5A059',
-                            light: '#E6C98A'
-                        },
-                        cream: '#FAF6F0'
+                        brand: {
+                            900: '#2A1716', // Deepest Sandalwood
+                            800: '#4A2C2A', // Primary Deep Sandalwood (沈穩紫檀木)
+                            600: '#7B5E57', // Medium Sandalwood
+                            400: '#C6A78D', // Light Sandalwood / Gold Accent
+                            50: '#FDFBF9',  // Warm Off-white
+                        }
                     },
                     fontFamily: {
-                        sans: ['"Noto Sans TC"', 'sans-serif'],
                         serif: ['"Noto Serif TC"', 'serif'],
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
                     },
                     boxShadow: {
-                        'soft': '0 20px 40px -15px rgba(0,0,0,0.05)',
-                        'glow': '0 0 20px rgba(197, 160, 89, 0.3)',
+                        'elegant': '0 10px 40px -10px rgba(74, 44, 42, 0.15)',
                     }
                 }
             }
         }
     </script>
 
-    <!-- Custom CSS for Animations & Effects -->
+    <!-- Custom CSS for Animations -->
     <style>
-        /* Smooth Scrolling */
-        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #FDFBF9;
+        }
+        h1, h2, h3, h4, h5, h6, .font-serif {
+            font-family: 'Noto Serif TC', serif;
+        }
         
         /* Glassmorphism */
         .glass-nav {
-            background: rgba(250, 246, 240, 0.85);
+            background: rgba(253, 251, 249, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(74, 55, 55, 0.1);
+            border-bottom: 1px solid rgba(198, 167, 141, 0.2);
         }
 
-        /* Scroll Reveal Animation */
+        /* Scroll Reveal Animations */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Delay utilities for staggered animations */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
 
         /* Typewriter Cursor */
         .typewriter-cursor {
             display: inline-block;
             width: 2px;
-            background-color: #C5A059;
-            animation: blink 1s step-end infinite;
+            background-color: #C6A78D;
             margin-left: 4px;
+            animation: blink 1s step-end infinite;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        /* Image Hover Zoom */
-        .img-hover-zoom {
-            overflow: hidden;
+        /* Image Hover Overlay */
+        .img-overlay-hover::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(74, 44, 42, 0.8) 0%, rgba(74, 44, 42, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
-        .img-hover-zoom img {
-            transition: transform 0.7s ease;
-        }
-        .img-hover-zoom:hover img {
-            transform: scale(1.05);
+        .group:hover .img-overlay-hover::after {
+            opacity: 1;
         }
     </style>
 </head>
-<body class="bg-cream text-rosewood-900 font-sans antialiased overflow-x-hidden">
+<body class="antialiased text-gray-800 selection:bg-brand-400 selection:text-white">
 
-    <!-- Navbar -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-full bg-rosewood-900 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-rosewood-900 transition-colors duration-300">
-                        <i data-lucide="leaf" class="w-6 h-6"></i>
+                    <!-- Abstract Vector Logo Placeholder (Tea Leaf + Knot concept) -->
+                    <div class="w-10 h-10 rounded-full bg-brand-800 flex items-center justify-center text-brand-400 group-hover:bg-brand-900 transition-colors duration-300">
+                        <i data-lucide="leaf" class="w-5 h-5"></i>
                     </div>
-                    <span class="font-serif text-2xl font-bold tracking-widest text-rosewood-900">凱蒂貓茶葉</span>
+                    <span class="font-serif font-bold text-xl text-brand-900 tracking-wider">台南高山茶大王</span>
                 </a>
 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-sm tracking-widest hover:text-gold transition-colors duration-300">品牌故事</a>
-                    <a href="#products" class="text-sm tracking-widest hover:text-gold transition-colors duration-300">嚴選茶品</a>
-                    <a href="#contact" class="text-sm tracking-widest hover:text-gold transition-colors duration-300">聯絡我們</a>
-                    <a href="tel:09191933" class="px-6 py-2 border border-rosewood-900 text-rosewood-900 hover:bg-rosewood-900 hover:text-cream rounded-full transition-all duration-300 text-sm tracking-wider flex items-center gap-2">
-                        <i data-lucide="phone" class="w-4 h-4"></i>
-                        09191933
+                    <a href="#about" class="text-brand-800 hover:text-brand-400 font-medium transition-all duration-300">品牌故事</a>
+                    <a href="#craft" class="text-brand-800 hover:text-brand-400 font-medium transition-all duration-300">古法手作</a>
+                    <a href="#reviews" class="text-brand-800 hover:text-brand-400 font-medium transition-all duration-300">顧客口碑</a>
+                    <a href="#contact" class="px-6 py-2.5 bg-brand-800 text-white rounded-full hover:bg-brand-900 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 font-medium">
+                        聯絡我們
                     </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-brand-800 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Overlay -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image (Serene high mountain tea plantation at dawn) -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?q=80&w=2000&auto=format&fit=crop" alt="高山茶園晨霧" class="w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 bg-gradient-to-b from-rosewood-950/70 via-rosewood-900/60 to-rosewood-950/80"></div>
+            <img src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="高山茶園晨霧" class="w-full h-full object-cover" />
+            <!-- Dark Overlay for Contrast -->
+            <div class="absolute inset-0 bg-brand-900/60 mix-blend-multiply"></div>
         </div>
 
-        <!-- Content -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
-            <div class="mb-6 flex justify-center">
-                <span class="px-4 py-1 border border-gold/50 text-gold text-xs tracking-[0.3em] uppercase rounded-full backdrop-blur-sm">Premium High Mountain Tea</span>
-            </div>
-            <h1 class="text-5xl md:text-7xl font-serif text-cream font-medium mb-6 tracking-widest leading-tight reveal">
-                古法手作<br>
-                <span class="text-gold italic font-light">高山純粹</span>
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20">
+            <span class="block text-brand-400 font-medium tracking-[0.2em] mb-4 reveal">TRADITIONAL HANDCRAFTED TEA</span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg reveal reveal-delay-1">
+                品味高山<br/><span class="text-brand-400 italic font-light">溫潤底蘊</span>
             </h1>
-            <p class="text-lg md:text-xl text-cream/90 font-light tracking-wider mb-10 h-8 flex items-center justify-center reveal delay-100">
-                <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
+            
+            <!-- Typewriter Effect Container -->
+            <div class="h-8 md:h-10 mb-10 reveal reveal-delay-2">
+                <p class="text-lg md:text-2xl text-gray-200 font-light tracking-wide inline-block">
+                    <span id="typewriter-text"></span><span class="typewriter-cursor">&nbsp;</span>
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal reveal-delay-3">
+                <a href="#products" class="w-full sm:w-auto px-8 py-4 bg-brand-400 text-brand-900 font-bold rounded-full hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    探索茶品
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white text-white font-bold rounded-full hover:bg-white/10 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i> 0919-193-3xx
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/70 z-10">
+            <i data-lucide="chevron-down" class="w-8 h-8"></i>
+        </div>
+    </section>
+
+    <!-- Social Proof / Trust Section (Data Injected) -->
+    <section id="reviews" class="py-24 bg-brand-800 text-brand-50 relative overflow-hidden">
+        <!-- Decorative background element -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-600 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <i data-lucide="quote" class="w-12 h-12 text-brand-400 mx-auto mb-6 opacity-50"></i>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-white">台南在地口碑推薦</h2>
+                <!-- Synthesized Fact Statement -->
+                <p class="text-brand-400 text-lg leading-relaxed">
+                    位於台南市，榮獲數百位愛茶人士 <span class="text-white font-bold">4.9 星以上</span> 極致好評推崇的頂級茶行。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Data Card 1 -->
+                <div class="bg-brand-900/50 p-8 rounded-2xl border border-brand-600/30 backdrop-blur-sm hover:-translate-y-2 transition-all duration-300 reveal reveal-delay-1">
+                    <div class="flex items-center gap-2 mb-4 text-brand-400">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <span class="text-white font-bold ml-2 text-xl">4.9</span>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-2">高覺茶</h3>
+                    <p class="text-brand-400/80 text-sm mb-4">台南市中西區民族路二段</p>
+                    <div class="flex items-center gap-2 text-sm text-gray-300 border-t border-brand-600/30 pt-4 mt-auto">
+                        <i data-lucide="users" class="w-4 h-4"></i>
+                        累積 <span class="counter font-bold text-brand-400" data-target="252">0</span> 則真實評論
+                    </div>
+                </div>
+
+                <!-- Data Card 2 -->
+                <div class="bg-brand-900/50 p-8 rounded-2xl border border-brand-600/30 backdrop-blur-sm hover:-translate-y-2 transition-all duration-300 reveal reveal-delay-2">
+                    <div class="flex items-center gap-2 mb-4 text-brand-400">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <span class="text-white font-bold ml-2 text-xl">5.0</span>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-2">皿亮公主高山茶</h3>
+                    <p class="text-brand-400/80 text-sm mb-4">台南市永康區三村一街</p>
+                    <div class="flex items-center gap-2 text-sm text-gray-300 border-t border-brand-600/30 pt-4 mt-auto">
+                        <i data-lucide="users" class="w-4 h-4"></i>
+                        累積 <span class="counter font-bold text-brand-400" data-target="182">0</span> 則真實評論
+                    </div>
+                </div>
+
+                <!-- Data Card 3 -->
+                <div class="bg-brand-900/50 p-8 rounded-2xl border border-brand-600/30 backdrop-blur-sm hover:-translate-y-2 transition-all duration-300 reveal reveal-delay-3">
+                    <div class="flex items-center gap-2 mb-4 text-brand-400">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <span class="text-white font-bold ml-2 text-xl">5.0</span>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold text-white mb-2">台灣高山茶行</h3>
+                    <p class="text-brand-400/80 text-sm mb-4">台南市佳里區中山路</p>
+                    <div class="flex items-center gap-2 text-sm text-gray-300 border-t border-brand-600/30 pt-4 mt-auto">
+                        <i data-lucide="users" class="w-4 h-4"></i>
+                        精選 <span class="counter font-bold text-brand-400" data-target="8">0</span> 則深度好評
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Craftsmanship Section -->
+    <section id="craft" class="py-24 bg-brand-50 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Image side -->
+                <div class="relative group reveal">
+                    <div class="absolute -inset-4 bg-brand-400/20 rounded-2xl transform rotate-3 transition-transform duration-500 group-hover:rotate-1"></div>
+                    <div class="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-elegant img-overlay-hover">
+                        <img src="https://images.unsplash.com/photo-1615486171448-42d8f991c65c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="古法手作泡茶" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-105" />
+                        <div class="absolute bottom-0 left-0 p-8 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                            <p class="text-white font-serif text-xl">專注細節，成就非凡</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text side -->
+                <div class="reveal reveal-delay-2">
+                    <span class="text-brand-600 font-bold tracking-widest text-sm uppercase mb-3 block">Heritage & Craft</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-900 mb-6 leading-tight">
+                        堅持古法手作<br>淬鍊深邃茶韻
+                    </h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                        我們以「沈穩紫檀木色系」為品牌基調，象徵著時間的沉澱與品質的堅持。每一片茶葉，皆來自高海拔純淨茶園，經由經驗豐富的製茶師傅，遵循傳統古法，手工採摘、揉捻、烘焙。
+                    </p>
+                    
+                    <ul class="space-y-6 mb-10">
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 text-brand-800">
+                                <i data-lucide="mountain-snow" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-xl text-brand-900 mb-1">嚴選高山產區</h4>
+                                <p class="text-gray-600 text-sm">雲霧繚繞的生長環境，孕育出果膠質豐富、茶湯甘醇的頂級茶菁。</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 text-brand-800">
+                                <i data-lucide="flame" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif font-bold text-xl text-brand-900 mb-1">古法炭焙工藝</h4>
+                                <p class="text-gray-600 text-sm">精準掌控火候，喚醒茶葉深層的香氣，呈現如紫檀木般溫潤的底蘊。</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-800 font-bold hover:text-brand-400 transition-colors duration-300 group">
+                        了解更多製茶工藝
+                        <i data-lucide="arrow-right" class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products / Visual Plan Grid -->
+    <section id="products" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-600 font-bold tracking-widest text-sm uppercase mb-3 block">Premium Selection</span>
+                <h2 class="text-4xl font-serif font-bold text-brand-900 mb-4">典藏高山茶品</h2>
+                <div class="w-24 h-1 bg-brand-400 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Product Card 1 -->
+                <div class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 reveal reveal-delay-1">
+                    <div class="aspect-[4/3] overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="頂級高山烏龍" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-800 shadow-sm">
+                            熱銷推薦
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl font-bold text-brand-900 mb-2 group-hover:text-brand-600 transition-colors">頂級高山烏龍</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">香氣清雅悠揚，茶湯金黃透亮，入喉甘甜滑順，帶有獨特的高山冷冽氣息。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-brand-800 font-bold">時價</span>
+                            <button class="w-10 h-10 rounded-full border border-brand-400 flex items-center justify-center text-brand-800 group-hover:bg-brand-800 group-hover:text-white transition-all duration-300">
+                                <i data-lucide="plus" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 reveal reveal-delay-2">
+                    <div class="aspect-[4/3] overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1582793988951-9aed5509eb97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="古法炭焙鐵觀音" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl font-bold text-brand-900 mb-2 group-hover:text-brand-600 transition-colors">古法炭焙鐵觀音</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">深邃紫檀木色茶湯，蘊含濃郁熟果香與炭焙火香，韻味醇厚，回甘持久。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-brand-800 font-bold">時價</span>
+                            <button class="w-10 h-10 rounded-full border border-brand-400 flex items-center justify-center text-brand-800 group-hover:bg-brand-800 group-hover:text-white transition-all duration-300">
+                                <i data-lucide="plus" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="group bg-brand-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 reveal reveal-delay-3">
+                    <div class="aspect-[4/3] overflow-hidden relative bg-brand-900 flex items-center justify-center">
+                        <!-- Using an icon to represent the 'gift set' concept if image is lacking, but keeping image style consistent -->
+                        <img src="https://images.unsplash.com/photo-1576092762791-dd9e2220cad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="尊榮禮盒" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110 opacity-80 mix-blend-luminosity">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="gift" class="w-16 h-16 text-brand-400 drop-shadow-md"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-2xl font-bold text-brand-900 mb-2 group-hover:text-brand-600 transition-colors">尊榮紫檀禮盒</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">精選頂級茶葉，搭配高質感木紋禮盒設計，是年節送禮、企業餽贈的最佳選擇。</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-brand-800 font-bold">客製化報價</span>
+                            <button class="w-10 h-10 rounded-full border border-brand-400 flex items-center justify-center text-brand-800 group-hover:bg-brand-800 group-hover:text-white transition-all duration-300">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA Section -->
+    <section id="contact" class="py-24 bg-brand-900 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">尋找屬於您的那杯好茶</h2>
+            <p class="text-brand-400 text-lg mb-12 max-w-2xl mx-auto">
+                無論是日常品茗或送禮需求，歡迎隨時與我們聯繫。<br>台南高山茶大王，為您奉上最純粹的茶香。
             </p>
-            <div class="reveal delay-200">
-                <a href="#products" class="inline-flex items-center gap-2 bg-gold hover:bg-gold-light text-rosewood-950 px-8 py-4 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-glow tracking-widest">
-                    品味茶香
-                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <!-- Phone CTA -->
+                <a href="tel:09191933" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-brand-400 text-brand-900 font-bold rounded-full hover:bg-white hover:shadow-[0_0_20px_rgba(198,167,141,0.4)] transition-all duration-300 transform hover:-translate-y-1 text-lg">
+                    <i data-lucide="phone-call" class="w-6 h-6"></i>
+                    0919-193-3xx
+                </a>
+                
+                <!-- FB CTA -->
+                <a href="https://www.facebook.com/search/top?q=%E5%8F%B0%E5%8D%97%E9%AB%98%E5%B1%B1%E8%8C%B6%E5%A4%A7%E7%8E%8B" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 border-2 border-brand-400 text-brand-400 font-bold rounded-full hover:bg-brand-400 hover:text-brand-900 transition-all duration-300 transform hover:-translate-y-1 text-lg">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                    FB 粉絲專頁
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section class="bg-rosewood-950 py-12 border-b border-rosewood-800 relative z-20 -mt-2">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-center md:text-left reveal">
-                <div class="flex items-center gap-4">
-                    <div class="w-16 h-16 rounded-full bg-rosewood-800 flex items-center justify-center text-gold">
-                        <i data-lucide="map-pin" class="w-8 h-8"></i>
-                    </div>
-                    <div>
-                        <p class="text-gold text-sm tracking-widest mb-1">Google 實體地標</p>
-                        <h3 class="text-cream font-serif text-xl">樂華夜市商圈</h3>
-                    </div>
-                </div>
-                <div class="hidden md:block w-px h-12 bg-rosewood-800"></div>
-                <div class="max-w-2xl">
-                    <p class="text-cream/80 leading-relaxed font-light tracking-wide text-lg">
-                        「隱身於擁有 <span class="text-gold font-medium">39,773</span> 則 Google 評論、高達 <span class="text-gold font-medium">4.3 顆星</span> 評價的永和樂華夜市商圈，是無數在地饕客尋覓頂級高山茶的首選秘境。」
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-cream">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1 reveal">
-                    <div class="relative img-hover-zoom rounded-2xl shadow-soft">
-                        <img src="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?q=80&w=1000&auto=format&fit=crop" alt="古法手作茶葉" class="w-full h-[500px] object-cover rounded-2xl">
-                        <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-rosewood-900 rounded-full flex flex-col items-center justify-center text-cream border-8 border-cream hidden md:flex">
-                            <span class="font-serif text-3xl text-gold mb-1"><span class="counter" data-target="100">0</span>%</span>
-                            <span class="text-sm tracking-widest">純手工焙製</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="order-1 lg:order-2 reveal delay-100">
-                    <h2 class="text-gold text-sm tracking-[0.2em] font-bold mb-4">BRAND STORY</h2>
-                    <h3 class="text-4xl font-serif text-rosewood-900 mb-6 leading-snug">沈穩紫檀木色<br>醞釀歲月茶香</h3>
-                    <p class="text-rosewood-700/80 leading-loose mb-8 font-light text-lg">
-                        凱蒂貓茶葉秉持對高山茶的熱愛，嚴選台灣頂級茶菁。我們拒絕工業化的速成，堅持採用傳統古法手工焙製，讓每一片茶葉在掌心與溫度的交織中，釋放出最純粹的大自然氣息。
-                    </p>
-                    <p class="text-rosewood-700/80 leading-loose mb-10 font-light text-lg">
-                        如同我們空間中沈穩的紫檀木色系，我們的茶湯溫潤、底蘊深厚。入喉甘甜，餘韻繞樑，為您在喧囂的城市中，沏上一壺寧靜與質感。
-                    </p>
-                    <div class="flex items-center gap-6">
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check-circle-2" class="text-gold w-5 h-5"></i>
-                            <span class="text-rosewood-900 tracking-wider">嚴選高山原葉</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <i data-lucide="check-circle-2" class="text-gold w-5 h-5"></i>
-                            <span class="text-rosewood-900 tracking-wider">傳承古法工藝</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services / Products Grid -->
-    <section id="products" class="py-24 bg-rosewood-50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-gold text-sm tracking-[0.2em] font-bold mb-4">OUR SELECTION</h2>
-                <h3 class="text-4xl font-serif text-rosewood-900">嚴選茶品與服務</h3>
-                <div class="w-24 h-px bg-gold mx-auto mt-6"></div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Card 1 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:-translate-y-2 hover:shadow-xl transition-all duration-500 group reveal delay-100">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1597481499750-3e6b22637e12?q=80&w=800&auto=format&fit=crop" alt="頂級高山烏龍" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-rosewood-900/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                    </div>
-                    <div class="p-8 text-center relative">
-                        <div class="w-14 h-14 bg-rosewood-900 rounded-full flex items-center justify-center text-gold absolute -top-7 left-1/2 -translate-x-1/2 shadow-lg border-4 border-white">
-                            <i data-lucide="mountain" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-xl font-serif text-rosewood-900 mt-4 mb-3">頂級高山烏龍</h4>
-                        <p class="text-rosewood-600 font-light text-sm leading-relaxed">
-                            生長於雲霧繚繞的高海拔茶區，葉片厚實，茶湯金黃透亮，帶有獨特的高山冷冽香氣與淡雅花香。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:-translate-y-2 hover:shadow-xl transition-all duration-500 group reveal delay-200">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1581007871115-f14bc016e0a4?q=80&w=800&auto=format&fit=crop" alt="古法手工焙茶" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-rosewood-900/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                    </div>
-                    <div class="p-8 text-center relative">
-                        <div class="w-14 h-14 bg-rosewood-900 rounded-full flex items-center justify-center text-gold absolute -top-7 left-1/2 -translate-x-1/2 shadow-lg border-4 border-white">
-                            <i data-lucide="flame" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-xl font-serif text-rosewood-900 mt-4 mb-3">古法手工焙茶</h4>
-                        <p class="text-rosewood-600 font-light text-sm leading-relaxed">
-                            由經驗豐富的製茶師傅精準掌控火候，慢火細焙。茶湯呈現沈穩的琥珀色，口感醇厚甘潤，韻味無窮。
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:-translate-y-2 hover:shadow-xl transition-all duration-500 group reveal delay-300">
-                    <div class="h-64 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?q=80&w=800&auto=format&fit=crop" alt="專屬品茗體驗" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-rosewood-900/20 group-hover:bg-transparent transition-colors duration-500"></div>
-                    </div>
-                    <div class="p-8 text-center relative">
-                        <div class="w-14 h-14 bg-rosewood-900 rounded-full flex items-center justify-center text-gold absolute -top-7 left-1/2 -translate-x-1/2 shadow-lg border-4 border-white">
-                            <i data-lucide="cup-soda" class="w-6 h-6"></i>
-                        </div>
-                        <h4 class="text-xl font-serif text-rosewood-900 mt-4 mb-3">專屬品茗體驗</h4>
-                        <p class="text-rosewood-600 font-light text-sm leading-relaxed">
-                            在紫檀木色系的溫潤空間中，由專業茶師為您沖泡，體驗從聞香、觀色到品茗的完整感官饗宴。
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="py-20 bg-rosewood-900 relative overflow-hidden">
-        <!-- Background Pattern (Subtle) -->
-        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'#ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-rosewood-800/50">
-                <div class="reveal">
-                    <div class="text-4xl md:text-5xl font-serif text-gold mb-2"><span class="counter" data-target="20">0</span>+</div>
-                    <div class="text-cream/70 text-sm tracking-widest">年製茶經驗</div>
-                </div>
-                <div class="reveal delay-100">
-                    <div class="text-4xl md:text-5xl font-serif text-gold mb-2"><span class="counter" data-target="1500">0</span>+</div>
-                    <div class="text-cream/70 text-sm tracking-widest">海拔高度(m)</div>
-                </div>
-                <div class="reveal delay-200">
-                    <div class="text-4xl md:text-5xl font-serif text-gold mb-2"><span class="counter" data-target="99">0</span>%</div>
-                    <div class="text-cream/70 text-sm tracking-widest">顧客回購率</div>
-                </div>
-                <div class="reveal delay-300">
-                    <div class="text-4xl md:text-5xl font-serif text-gold mb-2"><span class="counter" data-target="4.3">0</span></div>
-                    <div class="text-cream/70 text-sm tracking-widest">Google 評分</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer id="contact" class="bg-rosewood-950 pt-20 pb-10 border-t border-rosewood-900">
+    <footer class="bg-[#1A0F0E] text-brand-50/70 py-12 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <!-- Brand -->
-                <div class="lg:col-span-2">
-                    <a href="#" class="flex items-center gap-3 mb-6">
-                        <div class="w-10 h-10 rounded-full bg-gold flex items-center justify-center text-rosewood-950">
-                            <i data-lucide="leaf" class="w-6 h-6"></i>
-                        </div>
-                        <span class="font-serif text-2xl font-bold tracking-widest text-cream">凱蒂貓茶葉</span>
-                    </a>
-                    <p class="text-cream/60 font-light leading-relaxed max-w-md text-sm">
-                        傳承古法，堅持手作。<br>
-                        我們在樂華夜市商圈，為您備妥一壺來自高山的純粹。沈穩紫檀木色系的空間，期待您的蒞臨品茗。
-                    </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center mb-8 border-b border-white/10 pb-8">
+                <!-- Logo -->
+                <div class="flex items-center justify-center md:justify-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-brand-800 flex items-center justify-center text-brand-400">
+                        <i data-lucide="leaf" class="w-4 h-4"></i>
+                    </div>
+                    <span class="font-serif font-bold text-lg text-white tracking-wider">台南高山茶大王</span>
                 </div>
-
-                <!-- Contact Info -->
-                <div>
-                    <h4 class="text-gold font-serif text-lg mb-6 tracking-widest">聯絡資訊</h4>
-                    <ul class="space-y-4">
-                        <li>
-                            <a href="tel:09191933" class="flex items-center gap-3 text-cream/70 hover:text-gold transition-colors duration-300 group">
-                                <div class="w-8 h-8 rounded-full bg-rosewood-900 flex items-center justify-center group-hover:bg-gold group-hover:text-rosewood-950 transition-all">
-                                    <i data-lucide="phone" class="w-4 h-4"></i>
-                                </div>
-                                <span class="tracking-wider">0919-193-3**</span>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="flex items-start gap-3 text-cream/70">
-                                <div class="w-8 h-8 rounded-full bg-rosewood-900 flex items-center justify-center shrink-0">
-                                    <i data-lucide="map-pin" class="w-4 h-4 text-gold"></i>
-                                </div>
-                                <span class="tracking-wider text-sm mt-1 leading-relaxed">
-                                    234新北市永和區永平路<br>
-                                    <span class="text-xs text-cream/50">(樂華夜市商圈內)</span>
-                                </span>
-                            </div>
-                        </li>
-                    </ul>
+                
+                <!-- Links -->
+                <div class="flex justify-center space-x-6 text-sm">
+                    <a href="#about" class="hover:text-brand-400 transition-colors">品牌故事</a>
+                    <a href="#products" class="hover:text-brand-400 transition-colors">精選茶品</a>
+                    <a href="#contact" class="hover:text-brand-400 transition-colors">聯絡資訊</a>
                 </div>
-
+                
                 <!-- Social -->
-                <div>
-                    <h4 class="text-gold font-serif text-lg mb-6 tracking-widest">關注我們</h4>
-                    <a href="#" target="_blank" class="inline-flex items-center gap-3 text-cream/70 hover:text-gold transition-colors duration-300 group">
-                        <div class="w-10 h-10 rounded-full bg-[#1877F2]/20 text-[#1877F2] flex items-center justify-center group-hover:bg-[#1877F2] group-hover:text-white transition-all">
-                            <i data-lucide="facebook" class="w-5 h-5"></i>
-                        </div>
-                        <span class="tracking-wider">台南高山茶大王</span>
+                <div class="flex justify-center md:justify-end space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-400 hover:text-brand-900 transition-all duration-300">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-brand-400 hover:text-brand-900 transition-all duration-300">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
                     </a>
                 </div>
             </div>
-
-            <div class="border-t border-rosewood-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-cream/40 text-sm tracking-wider">
-                    &copy; 2024 凱蒂貓茶葉 Hello Kitty Tea. All rights reserved.
-                </p>
-                <div class="flex gap-6 text-sm text-cream/40">
-                    <a href="#" class="hover:text-gold transition-colors">隱私權政策</a>
-                    <a href="#" class="hover:text-gold transition-colors">服務條款</a>
-                </div>
+            
+            <div class="text-center text-sm">
+                <p>&copy; 2026 台南高山茶大王. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
 
         // Typewriter Effect
-        const text = "隱身樂華夜市，行家必訪的頂級高山茶";
-        const typewriterElement = document.getElementById('typewriter-text');
-        let index = 0;
+        document.addEventListener('DOMContentLoaded', () => {
+            const text = "台南在地口碑首選，傳承古法手作的高山茶韻";
+            const speed = 100; // ms per char
+            const container = document.getElementById('typewriter-text');
+            let i = 0;
 
-        function typeWriter() {
-            if (index < text.length) {
-                typewriterElement.innerHTML += text.charAt(index);
-                index++;
-                setTimeout(typeWriter, 150);
+            function typeWriter() {
+                if (i < text.length) {
+                    container.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, speed);
+                }
             }
-        }
-        
-        // Start typewriter after a short delay
-        setTimeout(typeWriter, 500);
+            
+            // Start typewriter after a short delay
+            setTimeout(typeWriter, 1000);
+        });
 
         // Scroll Reveal Animation
         const revealElements = document.querySelectorAll('.reveal');
@@ -413,9 +468,7 @@
 
         const revealObserver = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (!entry.isIntersecting) {
-                    return;
-                }
+                if (!entry.isIntersecting) return;
                 entry.target.classList.add('active');
                 observer.unobserve(entry.target);
             });
@@ -425,34 +478,35 @@
             revealObserver.observe(el);
         });
 
-        // Counter Animation
+        // Number Counter Animation
         const counters = document.querySelectorAll('.counter');
-        const speed = 200; // The lower the slower
+        const counterOptions = {
+            threshold: 0.5
+        };
 
         const counterObserver = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const updateCount = () => {
-                        const target = +counter.getAttribute('data-target');
-                        const count = +counter.innerText;
-                        
-                        // Increment logic handles floats for the rating
-                        const isFloat = target % 1 !== 0;
-                        const inc = target / speed;
-
-                        if (count < target) {
-                            counter.innerText = isFloat ? (count + inc).toFixed(1) : Math.ceil(count + inc);
-                            setTimeout(updateCount, 10);
-                        } else {
-                            counter.innerText = target;
-                        }
-                    };
-                    updateCount();
-                    observer.unobserve(counter);
-                }
+                if (!entry.isIntersecting) return;
+                
+                const target = +entry.target.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        entry.target.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        entry.target.innerText = target;
+                    }
+                };
+                
+                updateCounter();
+                observer.unobserve(entry.target);
             });
-        }, { threshold: 0.5 });
+        }, counterOptions);
 
         counters.forEach(counter => {
             counterObserver.observe(counter);
@@ -462,11 +516,11 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
-                navbar.style.background = 'rgba(250, 246, 240, 0.95)';
+                navbar.classList.add('shadow-sm');
+                navbar.style.background = 'rgba(253, 251, 249, 0.95)';
             } else {
-                navbar.classList.remove('shadow-md');
-                navbar.style.background = 'rgba(250, 246, 240, 0.85)';
+                navbar.classList.remove('shadow-sm');
+                navbar.style.background = 'rgba(253, 251, 249, 0.85)';
             }
         });
     </script>
