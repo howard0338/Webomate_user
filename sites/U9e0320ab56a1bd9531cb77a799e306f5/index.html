@@ -1,64 +1,61 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>喵憩 MeowSpace | 溫馨療癒的小空間</title>
+    <title>貓咪咖啡廳 ｜ 溫暖中途之家</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS (CDN) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Configuration (Warm Japandi Style) -->
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config for Warm Japandi Style -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['"Noto Sans TC"', 'sans-serif'],
-                        en: ['"Nunito"', 'sans-serif'],
+                        en: ['Urbanist', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            50: '#FAF8F5',  // 燕麥底色
-                            100: '#F3EFE6', // 淺木色
-                            300: '#D4A373', // 溫潤木質棕 (Primary)
-                            500: '#B07D4B', // 深木色
-                            800: '#5C4D42', // 深咖文字色
-                            900: '#3A3028', // 極深字色
+                            50: '#FDFBF7',  // Soft Oat
+                            100: '#F5F0E6',
+                            200: '#EAE0D0',
+                            300: '#D4B895', // Warm Wood
+                            400: '#B8976E',
+                            500: '#9C7A50',
+                            800: '#4A3F35', // Dark Brown Text
+                            900: '#2D2620',
                         }
                     },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(212, 163, 115, 0.15)',
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
         }
     </script>
 
-    <!-- Custom CSS for Animations & Glassmorphism -->
     <style>
-        body {
-            background-color: #FAF8F5;
-            color: #5C4D42;
-        }
-
-        /* Glassmorphism Navbar */
-        .glass-nav {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background: rgba(250, 248, 245, 0.85);
-            border-bottom: 1px solid rgba(212, 163, 115, 0.1);
-        }
-
-        /* Scroll Reveal Animation */
+        /* Scroll Reveal Base Classes */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active {
@@ -66,57 +63,39 @@
             transform: translateY(0);
         }
         
-        /* Delay utilities for reveal */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-
         /* Typewriter Cursor */
         .cursor::after {
             content: '|';
             animation: blink 1s step-start infinite;
-            color: #D4A373;
-            margin-left: 2px;
         }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
+        @keyframes blink { 50% { opacity: 0; } }
 
-        /* Custom Image Hover */
-        .img-hover-zoom {
-            overflow: hidden;
-        }
-        .img-hover-zoom img {
-            transition: transform 0.6s ease;
-        }
-        .img-hover-zoom:hover img {
-            transform: scale(1.08);
+        /* Custom Selection */
+        ::selection {
+            background-color: #D4B895;
+            color: #fff;
         }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden selection:bg-brand-300 selection:text-white">
+<body class="antialiased bg-brand-50 text-brand-800 selection:bg-brand-300 selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-2 group">
-                    <div class="w-10 h-10 bg-brand-300 text-white rounded-full flex items-center justify-center group-hover:bg-brand-500 transition-colors duration-300">
-                        <i data-lucide="cat" class="w-6 h-6"></i>
-                    </div>
-                    <span class="font-bold text-xl tracking-wider text-brand-900">喵憩 <span class="font-en text-brand-300 text-sm ml-1">MeowSpace</span></span>
-                </a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-brand-800 hover:text-brand-300 transition-colors font-medium">關於空間</a>
-                    <a href="#menu" class="text-brand-800 hover:text-brand-300 transition-colors font-medium">療癒餐點</a>
-                    <a href="#trust" class="text-brand-800 hover:text-brand-300 transition-colors font-medium">顧客口碑</a>
-                    <a href="#contact" class="px-6 py-2.5 rounded-full bg-brand-300 text-white font-medium hover:bg-brand-500 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-                        預約來訪
-                    </a>
+    <!-- Navbar (Glassmorphism) -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 backdrop-blur-md bg-white/70 border-b border-brand-100/50" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- Logo representation (Cat silhouette/bean concept) -->
+                <div class="w-10 h-10 rounded-full bg-brand-300 flex items-center justify-center overflow-hidden transition-transform duration-300 group-hover:scale-110">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=150&h=150&q=80" alt="Logo" class="w-full h-full object-cover opacity-90">
                 </div>
+                <span class="text-xl font-bold tracking-wider text-brand-900">喵途時光</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#story" class="hover:text-brand-400 transition-colors duration-300">品牌故事</a>
+                <a href="#menu" class="hover:text-brand-400 transition-colors duration-300">美味菜單</a>
+                <a href="#reviews" class="hover:text-brand-400 transition-colors duration-300">顧客評價</a>
+                <a href="#contact" class="px-6 py-2.5 rounded-full bg-brand-800 text-white hover:bg-brand-500 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                    聯絡我們
+                </a>
             </div>
         </div>
     </nav>
@@ -125,454 +104,361 @@
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1525268771113-32d9e9021a97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Cozy Cafe Interior" class="w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
+            <img src="https://images.unsplash.com/photo-1525253086316-d0c936c814f8?auto=format&fit=crop&w=1920&q=80" alt="Cozy Cafe Interior" class="w-full h-full object-cover object-center scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-brand-900/80 backdrop-blur-[2px]"></div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
-            <div class="reveal">
-                <span class="inline-block py-1 px-3 rounded-full bg-brand-300/20 text-brand-100 backdrop-blur-sm border border-brand-300/30 text-sm tracking-widest mb-6">
-                    A HEALING SPACE FOR YOU
-                </span>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-white">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6 reveal">
+                <i data-lucide="heart" class="w-4 h-4 text-brand-300 fill-brand-300"></i>
+                <span class="text-sm tracking-widest text-brand-50">溫暖中途驛站</span>
             </div>
             
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight reveal delay-100 drop-shadow-lg">
-                溫馨療癒的 <br class="md:hidden" />
-                <span class="text-brand-300 font-light">專屬小空間</span>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-tight reveal" style="transition-delay: 100ms;">
+                遇見命中注定<br class="hidden md:block">
+                <span class="font-light text-brand-200">的那個牠</span>
             </h1>
             
-            <!-- Typewriter Effect Subtitle (Synthesized from JSON data) -->
-            <div class="h-8 md:h-12 mb-10 reveal delay-200">
-                <p class="text-lg md:text-2xl text-gray-200 font-light tracking-wide drop-shadow-md">
-                    <span id="typewriter-text" class="cursor"></span>
-                </p>
-            </div>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal delay-300">
-                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-300 text-white font-medium text-lg hover:bg-brand-500 hover:shadow-[0_0_20px_rgba(212,163,115,0.4)] hover:-translate-y-1 transition-all duration-300">
-                    探索菜單
+            <p class="text-lg md:text-2xl text-gray-200 mb-10 font-light tracking-wide h-8 reveal cursor" id="typewriter-container" style="transition-delay: 200ms;">
+                <!-- Typewriter text will be injected here -->
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal" style="transition-delay: 300ms;">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-brand-300 text-brand-900 font-bold tracking-wide hover:bg-white hover:scale-105 hover:shadow-[0_0_30px_rgba(212,184,149,0.4)] transition-all duration-300">
+                    查看菜單
                 </a>
-                <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 text-white font-medium text-lg backdrop-blur-md border border-white/20 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
-                    <i data-lucide="phone" class="w-5 h-5"></i>
-                    聯絡我們
+                <a href="#story" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white/10 backdrop-blur-md border border-white/30 text-white font-medium hover:bg-white/20 hover:scale-105 transition-all duration-300">
+                    了解故事
                 </a>
             </div>
         </div>
         
-        <!-- Scroll Down Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
-            <a href="#about" class="text-white/70 hover:text-white transition-colors">
-                <i data-lucide="chevron-down" class="w-8 h-8"></i>
-            </a>
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50 z-10">
+            <i data-lucide="chevron-down" class="w-8 h-8"></i>
         </div>
     </section>
 
-    <!-- About Section (Brand Spirit) -->
-    <section id="about" class="py-24 bg-brand-50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1 reveal">
-                    <div class="relative img-hover-zoom rounded-2xl overflow-hidden shadow-soft aspect-[4/5] md:aspect-square">
-                        <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cute cat sleeping" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 border-4 border-white/20 rounded-2xl pointer-events-none"></div>
+    <!-- Brand Story Section -->
+    <section id="story" class="py-24 bg-brand-50 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative reveal">
+                    <div class="aspect-square rounded-3xl overflow-hidden shadow-2xl relative z-10">
+                        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=1000&q=80" alt="Cats playing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
                     </div>
                     <!-- Decorative element -->
-                    <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-brand-100 rounded-full -z-10"></div>
+                    <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-brand-200 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-pulse"></div>
                 </div>
                 
-                <div class="order-1 lg:order-2 reveal delay-100">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-12 h-[1px] bg-brand-300"></div>
-                        <span class="text-brand-300 font-medium tracking-widest text-sm">BRAND SPIRIT</span>
-                    </div>
-                    <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-6 leading-snug">
-                        運用溫暖色調，<br>
-                        打造像家一樣的放鬆氛圍。
-                    </h2>
-                    <p class="text-brand-800 text-lg leading-relaxed mb-8 font-light">
-                        在這裡，我們拒絕過於花俏的裝飾。以乾淨、簡約的木質溫潤風格為基調，為您保留最純粹的喘息空間。<br><br>
-                        無論是獨自一人品嚐手沖咖啡，或是與可愛親人的貓咪們度過午後時光，我們都希望這個小空間，能成為您日常生活中最療癒的避風港。
+                <div class="order-1 lg:order-2 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-brand-900">從 8 隻小貓開始的<br><span class="text-brand-400">溫暖約定</span></h2>
+                    <p class="text-lg leading-relaxed text-brand-800/80 mb-8">
+                        這裡不僅僅是一間咖啡廳，更是一個充滿愛的中途之家。最初，我們只為了給 8 隻流浪小貓一個遮風避雨的地方，漸漸地，這裡成為了連結貓咪與新家人的溫暖橋樑。
                     </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3 text-brand-800">
-                            <div class="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center text-brand-500">
-                                <i data-lucide="check" class="w-4 h-4"></i>
+                    <p class="text-lg leading-relaxed text-brand-800/80 mb-10">
+                        以米白色調打造的活潑空間，是為了讓貓咪們能安心玩耍，也讓來到這裡的您，能在一杯手沖咖啡的香氣中，徹底卸下疲憊，感受生命力的療癒。
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center shrink-0 text-brand-500">
+                                <i data-lucide="home" class="w-6 h-6"></i>
                             </div>
-                            溫暖療癒的空間設計
-                        </li>
-                        <li class="flex items-center gap-3 text-brand-800">
-                            <div class="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center text-brand-500">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            不過度打擾的貓咪互動
-                        </li>
-                        <li class="flex items-center gap-3 text-brand-800">
-                            <div class="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center text-brand-500">
-                                <i data-lucide="check" class="w-4 h-4"></i>
-                            </div>
-                            精心製作的美味餐點
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu / Services Section -->
-    <section id="menu" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <span class="text-brand-300 font-medium tracking-widest text-sm block mb-2">OUR OFFERINGS</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-4">療癒餐點與體驗</h2>
-                <p class="text-brand-800 font-light">特別加強餐點的品質與呈現，讓美食與貓咪共同成為您美好回憶的一部分。</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="group bg-brand-50 rounded-2xl p-6 shadow-sm hover:shadow-soft transition-all duration-300 hover:-translate-y-2 reveal">
-                    <div class="img-hover-zoom rounded-xl overflow-hidden aspect-video mb-6">
-                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Coffee & Drinks" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex items-center gap-3 mb-3 text-brand-900">
-                        <i data-lucide="coffee" class="w-6 h-6 text-brand-300"></i>
-                        <h3 class="text-xl font-bold">溫暖飲品</h3>
-                    </div>
-                    <p class="text-brand-800 font-light leading-relaxed">
-                        精選咖啡豆與職人手沖技術，提供各式現點現做的咖啡與溫潤茶飲，溫暖您的胃與心。
-                    </p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="group bg-brand-50 rounded-2xl p-6 shadow-sm hover:shadow-soft transition-all duration-300 hover:-translate-y-2 reveal delay-100">
-                    <div class="img-hover-zoom rounded-xl overflow-hidden aspect-video mb-6">
-                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Snacks & Desserts" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex items-center gap-3 mb-3 text-brand-900">
-                        <i data-lucide="cake" class="w-6 h-6 text-brand-300"></i>
-                        <h3 class="text-xl font-bold">手作甜點</h3>
-                    </div>
-                    <p class="text-brand-800 font-light leading-relaxed">
-                        每日限量供應的精緻甜點，不過甜的清爽口感，完美搭配您的午後咖啡時光。
-                    </p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="group bg-brand-50 rounded-2xl p-6 shadow-sm hover:shadow-soft transition-all duration-300 hover:-translate-y-2 reveal delay-200">
-                    <div class="img-hover-zoom rounded-xl overflow-hidden aspect-video mb-6">
-                        <img src="https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cat Interaction" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex items-center gap-3 mb-3 text-brand-900">
-                        <i data-lucide="paw-print" class="w-6 h-6 text-brand-300"></i>
-                        <h3 class="text-xl font-bold">貓咪互動</h3>
-                    </div>
-                    <p class="text-brand-800 font-light leading-relaxed">
-                        乾淨舒適的環境，讓親人可愛的貓咪們自由穿梭。在這裡，您可以享受最純粹的療癒陪伴。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof Section (Data Injection) -->
-    <section id="trust" class="py-24 bg-brand-100 relative overflow-hidden">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#D4A373 2px, transparent 2px); background-size: 30px 30px;"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-4">業界優質指標，口碑見證</h2>
-                <p class="text-brand-800 font-light">我們期許成為全台最受歡迎的療癒空間。以下為在地獲得極高評價的貓咪咖啡廳數據，也是我們追求卓越的服務標竿：</p>
-            </div>
-
-            <!-- Stats Counters -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <div class="bg-white p-8 rounded-2xl text-center shadow-soft reveal">
-                    <div class="text-4xl md:text-5xl font-en font-bold text-brand-300 mb-2 flex justify-center items-center">
-                        <span class="counter" data-target="5.0">0</span>
-                        <span class="text-2xl ml-1 text-brand-500">星</span>
-                    </div>
-                    <p class="text-brand-800 font-medium">Google Maps 滿分好評</p>
-                    <p class="text-sm text-brand-800/60 mt-1">指標：台中 聊療貓Bar</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl text-center shadow-soft reveal delay-100">
-                    <div class="text-4xl md:text-5xl font-en font-bold text-brand-300 mb-2 flex justify-center items-center">
-                        <span class="counter" data-target="2085">0</span>
-                        <span class="text-2xl ml-1 text-brand-500">+</span>
-                    </div>
-                    <p class="text-brand-800 font-medium">累積顧客真實好評</p>
-                    <p class="text-sm text-brand-800/60 mt-1">指標：台北 転運棧</p>
-                </div>
-                <div class="bg-white p-8 rounded-2xl text-center shadow-soft reveal delay-200">
-                    <div class="text-4xl md:text-5xl font-en font-bold text-brand-300 mb-2 flex justify-center items-center">
-                        <span class="counter" data-target="1194">0</span>
-                        <span class="text-2xl ml-1 text-brand-500">+</span>
-                    </div>
-                    <p class="text-brand-800 font-medium">老字號熱門打卡數</p>
-                    <p class="text-sm text-brand-800/60 mt-1">指標：台北 小貓花園</p>
-                </div>
-            </div>
-
-            <!-- Real Locations Cards (Injected Data) -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Location 1 -->
-                <div class="bg-white/80 backdrop-blur rounded-xl p-6 border border-white/50 hover:-translate-y-1 transition-transform duration-300 reveal">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h4 class="font-bold text-brand-900 text-lg">聊療貓Bar</h4>
-                            <p class="text-xs text-brand-800/70 mt-1">療癒系身心靈咖啡廳</p>
-                        </div>
-                        <div class="flex items-center bg-brand-50 px-2 py-1 rounded text-sm font-en font-bold text-brand-500">
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-300 text-brand-300 mr-1"></i> 5.0
-                        </div>
-                    </div>
-                    <p class="text-sm text-brand-800 font-light mb-4 flex items-start gap-2">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-300 shrink-0 mt-0.5"></i>
-                        臺中市大里區塗城路511號
-                    </p>
-                    <div class="text-xs text-brand-800/60 flex items-center gap-1">
-                        <i data-lucide="users" class="w-3 h-3"></i> 827 則在地評論
-                    </div>
-                </div>
-
-                <!-- Location 2 -->
-                <div class="bg-white/80 backdrop-blur rounded-xl p-6 border border-white/50 hover:-translate-y-1 transition-transform duration-300 reveal delay-100">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h4 class="font-bold text-brand-900 text-lg">転運棧</h4>
-                            <p class="text-xs text-brand-800/70 mt-1">貓咪中途咖啡廳</p>
-                        </div>
-                        <div class="flex items-center bg-brand-50 px-2 py-1 rounded text-sm font-en font-bold text-brand-500">
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-300 text-brand-300 mr-1"></i> 4.9
-                        </div>
-                    </div>
-                    <p class="text-sm text-brand-800 font-light mb-4 flex items-start gap-2">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-300 shrink-0 mt-0.5"></i>
-                        臺北市大同區天水路2-3號
-                    </p>
-                    <div class="text-xs text-brand-800/60 flex items-center gap-1">
-                        <i data-lucide="users" class="w-3 h-3"></i> 2,085 則超高人氣評論
-                    </div>
-                </div>
-
-                <!-- Location 3 -->
-                <div class="bg-white/80 backdrop-blur rounded-xl p-6 border border-white/50 hover:-translate-y-1 transition-transform duration-300 reveal delay-200">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h4 class="font-bold text-brand-900 text-lg">小貓花園</h4>
-                            <p class="text-xs text-brand-800/70 mt-1">CAFE' & CATS 1998</p>
-                        </div>
-                        <div class="flex items-center bg-brand-50 px-2 py-1 rounded text-sm font-en font-bold text-brand-500">
-                            <i data-lucide="star" class="w-4 h-4 fill-brand-300 text-brand-300 mr-1"></i> 4.6
-                        </div>
-                    </div>
-                    <p class="text-sm text-brand-800 font-light mb-4 flex items-start gap-2">
-                        <i data-lucide="map-pin" class="w-4 h-4 text-brand-300 shrink-0 mt-0.5"></i>
-                        臺北市士林區福華路129號1樓
-                    </p>
-                    <div class="text-xs text-brand-800/60 flex items-center gap-1">
-                        <i data-lucide="users" class="w-3 h-3"></i> 1,194 則經典推薦
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer / Contact Section -->
-    <footer id="contact" class="bg-brand-900 text-brand-50 pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                <!-- Brand -->
-                <div class="lg:col-span-2">
-                    <a href="#" class="flex items-center gap-2 mb-6">
-                        <div class="w-10 h-10 bg-brand-300 text-white rounded-full flex items-center justify-center">
-                            <i data-lucide="cat" class="w-6 h-6"></i>
-                        </div>
-                        <span class="font-bold text-2xl tracking-wider text-white">喵憩 <span class="font-en text-brand-300 text-lg ml-1">MeowSpace</span></span>
-                    </a>
-                    <p class="text-brand-100/70 font-light leading-relaxed max-w-md mb-6">
-                        為您打造溫馨療癒的小空間。運用溫暖色調與可愛貓咪元素，讓您在這裡放鬆身心，享受美味餐點與純粹的陪伴。
-                    </p>
-                </div>
-
-                <!-- Contact Info -->
-                <div>
-                    <h4 class="text-lg font-bold text-white mb-6 tracking-widest">聯絡資訊</h4>
-                    <ul class="space-y-4 text-brand-100/80 font-light">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="phone" class="w-5 h-5 text-brand-300 shrink-0 mt-0.5"></i>
-                            <a href="tel:0912345678" class="hover:text-brand-300 transition-colors">0912-345-678</a>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="clock" class="w-5 h-5 text-brand-300 shrink-0 mt-0.5"></i>
                             <div>
-                                <p>週一至週五</p>
-                                <p class="font-en">09:00 - 18:00</p>
+                                <h4 class="font-bold text-brand-900">中途照護</h4>
+                                <p class="text-sm text-brand-800/70 mt-1">給浪浪一個溫暖的暫時避風港</p>
                             </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-300 shrink-0 mt-0.5"></i>
-                            <p>期待您的光臨<br><span class="text-xs text-brand-100/50">(詳細地址籌備中)</span></p>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-lg font-bold text-white mb-6 tracking-widest">快速連結</h4>
-                    <ul class="space-y-3 text-brand-100/80 font-light">
-                        <li><a href="#about" class="hover:text-brand-300 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-300"></i> 關於空間</a></li>
-                        <li><a href="#menu" class="hover:text-brand-300 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-300"></i> 療癒餐點</a></li>
-                        <li><a href="#trust" class="hover:text-brand-300 transition-colors flex items-center gap-2"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-300"></i> 顧客口碑</a></li>
-                    </ul>
+                        </div>
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow duration-300">
+                            <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center shrink-0 text-brand-500">
+                                <i data-lucide="cat" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-brand-900">親人互動</h4>
+                                <p class="text-sm text-brand-800/70 mt-1">活潑可愛的貓咪陪伴您的午後</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="border-t border-brand-100/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-brand-100/50 text-sm font-light">
-                    &copy; 2026 喵憩 MeowSpace. All rights reserved.
-                </p>
-                <div class="text-brand-100/50 text-sm font-light flex gap-4">
-                    <a href="#" class="hover:text-white transition-colors">隱私權政策</a>
-                    <a href="#" class="hover:text-white transition-colors">服務條款</a>
+    <!-- Stats Section -->
+    <section class="py-16 bg-brand-900 text-brand-50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#D4B895 1px, transparent 1px); background-size: 20px 20px;"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center divide-y md:divide-y-0 md:divide-x divide-brand-800">
+                <div class="reveal p-4">
+                    <div class="text-5xl font-en font-bold text-brand-300 mb-2"><span class="counter" data-target="150">0</span>+</div>
+                    <div class="text-sm tracking-widest text-brand-200">成功送養貓咪</div>
                 </div>
+                <div class="reveal p-4" style="transition-delay: 100ms;">
+                    <div class="text-5xl font-en font-bold text-brand-300 mb-2"><span class="counter" data-target="12">0</span></div>
+                    <div class="text-sm tracking-widest text-brand-200">目前駐店小天使</div>
+                </div>
+                <div class="reveal p-4" style="transition-delay: 200ms;">
+                    <div class="text-5xl font-en font-bold text-brand-300 mb-2"><span class="counter" data-target="4.9" data-decimals="1">0</span></div>
+                    <div class="text-sm tracking-widest text-brand-200">Google Maps 滿意度</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-400 font-medium tracking-widest text-sm uppercase">Our Menu</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 text-brand-900">療癒系餐點與貓咪點心</h2>
+                <p class="mt-4 text-brand-800/70 max-w-2xl mx-auto">職人現點現做，享受與貓咪共度的悠閒時光。</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Item 1 -->
+                <div class="group rounded-3xl bg-brand-50 p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl reveal">
+                    <div class="aspect-video rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&w=600&q=80" alt="Coffee" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full font-en font-bold text-brand-900 shadow-sm">
+                            $100
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-900 mb-2 flex items-center gap-2">
+                        <i data-lucide="coffee" class="w-5 h-5 text-brand-400"></i>
+                        職人手沖咖啡
+                    </h3>
+                    <p class="text-brand-800/70 text-sm leading-relaxed">
+                        精選咖啡豆，現點現磨。溫潤的口感，是搭配貓咪呼嚕聲的最佳選擇。
+                    </p>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="group rounded-3xl bg-brand-50 p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl reveal" style="transition-delay: 100ms;">
+                    <div class="aspect-video rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=600&q=80" alt="Cake" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-1 rounded-full font-en font-bold text-brand-900 shadow-sm">
+                            $150
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-900 mb-2 flex items-center gap-2">
+                        <i data-lucide="cake" class="w-5 h-5 text-brand-400"></i>
+                        手作療癒蛋糕
+                    </h3>
+                    <p class="text-brand-800/70 text-sm leading-relaxed">
+                        每日限量手工甜點，微甜不膩的幸福滋味，為您的午後補充滿滿能量。
+                    </p>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="group rounded-3xl bg-brand-50 p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl reveal" style="transition-delay: 200ms;">
+                    <div class="aspect-video rounded-2xl overflow-hidden mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=600&q=80" alt="Cat Treat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-brand-300/90 backdrop-blur-sm px-4 py-1 rounded-full font-en font-bold text-white shadow-sm">
+                            $80
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-900 mb-2 flex items-center gap-2">
+                        <i data-lucide="bone" class="w-5 h-5 text-brand-400"></i>
+                        主子最愛肉泥
+                    </h3>
+                    <p class="text-brand-800/70 text-sm leading-relaxed">
+                        成為萬貓迷的秘密武器！純天然無添加，讓您瞬間體驗被貓咪包圍的尊榮感。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section id="reviews" class="py-24 bg-brand-100 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="w-full md:w-1/3 reveal">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg border border-brand-50">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-16 h-16 rounded-full bg-brand-50 flex items-center justify-center shrink-0">
+                                <img src="https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/generic_business-71.png" alt="Google Maps" class="w-8 h-8 opacity-70">
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg text-brand-900">Google 商家評分</h3>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="text-2xl font-bold text-brand-800">4.9</span>
+                                    <div class="flex text-yellow-400">
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-brand-800/80 font-medium text-lg leading-relaxed">
+                            「榮獲 Google Maps 4.9 顆星超高好評，數百位貓奴口碑推薦的中途秘境。」
+                        </p>
+                        <div class="mt-6 pt-6 border-t border-brand-100 flex items-center gap-3">
+                            <div class="flex -space-x-3">
+                                <div class="w-10 h-10 rounded-full bg-gray-200 border-2 border-white overflow-hidden"><img src="https://i.pravatar.cc/100?img=1" class="w-full h-full object-cover"></div>
+                                <div class="w-10 h-10 rounded-full bg-gray-200 border-2 border-white overflow-hidden"><img src="https://i.pravatar.cc/100?img=2" class="w-full h-full object-cover"></div>
+                                <div class="w-10 h-10 rounded-full bg-gray-200 border-2 border-white overflow-hidden"><img src="https://i.pravatar.cc/100?img=3" class="w-full h-full object-cover"></div>
+                            </div>
+                            <span class="text-sm text-brand-800/60">超過 200+ 則真實評論</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-2/3 grid gap-6 reveal" style="transition-delay: 200ms;">
+                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white">
+                        <div class="flex text-yellow-400 mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-brand-800 mb-4">"環境非常乾淨，完全沒有異味！米白色的裝潢讓人覺得很放鬆。點了手沖咖啡和蛋糕，水準很高。最重要的是這裡的貓咪都被照顧得很好，很親人，知道這裡是中途之家後覺得老闆很有愛心！"</p>
+                        <span class="text-sm text-brand-800/50 font-medium">- 在地嚮導 推薦</span>
+                    </div>
+                    <div class="bg-white/60 backdrop-blur-sm p-6 rounded-2xl shadow-sm border border-white ml-0 md:ml-12">
+                        <div class="flex text-yellow-400 mb-3">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-brand-800 mb-4">"買了肉泥之後瞬間變成萬人迷！店員會很親切的介紹每隻貓咪的個性和故事，度過了一個非常療癒的下午，一定會再回訪！"</p>
+                        <span class="text-sm text-brand-800/50 font-medium">- 顧客 真實回饋</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white relative">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-brand-900 reveal">來找我們玩吧！</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-brand-50 p-8 rounded-3xl reveal">
+                    <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto mb-6 text-brand-400 shadow-sm">
+                        <i data-lucide="clock" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-900 mb-4">營業時間</h3>
+                    <p class="text-lg text-brand-800/80">星期一 至 星期五</p>
+                    <p class="text-2xl font-en font-bold text-brand-400 mt-2">09:00 - 18:00</p>
+                    <p class="text-sm text-brand-800/50 mt-4">週末為貓咪休息日，不對外開放唷</p>
+                </div>
+                
+                <div class="bg-brand-50 p-8 rounded-3xl reveal" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mx-auto mb-6 text-brand-400 shadow-sm">
+                        <i data-lucide="phone" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-900 mb-4">聯絡專線</h3>
+                    <p class="text-lg text-brand-800/80 mb-2">歡迎來電預約或詢問領養事宜</p>
+                    <a href="tel:0912345678" class="inline-block text-3xl font-en font-bold text-brand-400 hover:text-brand-500 transition-colors duration-300">
+                        0912-345-678
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-brand-50/60 py-12 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <i data-lucide="cat" class="w-6 h-6 text-brand-300"></i>
+                <span class="text-lg font-bold text-white tracking-wider">喵途時光</span>
+            </div>
+            <p class="text-sm text-center md:text-left">
+                用一杯咖啡的時間，溫暖一個小生命。<br class="md:hidden">
+                中途貓咪咖啡廳
+            </p>
+            <div class="text-sm">
+                &copy; 2026 喵途時光. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Lucide Icons Script -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Scripts -->
     <script>
-        // Initialize Icons
+        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Scroll Reveal Logic
-        document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            const revealOnScroll = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Only animate once
-                    }
-                });
-            }, {
-                root: null,
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            });
-
-            reveals.forEach(reveal => {
-                revealOnScroll.observe(reveal);
-            });
-
-            // Counter Animation Logic
-            const counters = document.querySelectorAll('.counter');
-            const counterObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const target = entry.target;
-                        const endValue = parseFloat(target.getAttribute('data-target'));
-                        const isFloat = endValue % 1 !== 0;
-                        const duration = 2000; // 2 seconds
-                        const frameRate = 1000 / 60;
-                        const totalFrames = Math.round(duration / frameRate);
-                        let currentFrame = 0;
-
-                        const counterInterval = setInterval(() => {
-                            currentFrame++;
-                            const progress = currentFrame / totalFrames;
-                            // Easing out function
-                            const easeOutProgress = 1 - Math.pow(1 - progress, 3);
-                            let currentValue = endValue * easeOutProgress;
-
-                            if (isFloat) {
-                                target.innerText = currentValue.toFixed(1);
-                            } else {
-                                target.innerText = Math.floor(currentValue);
-                            }
-
-                            if (currentFrame >= totalFrames) {
-                                clearInterval(counterInterval);
-                                target.innerText = isFloat ? endValue.toFixed(1) : endValue;
-                            }
-                        }, frameRate);
-                        
-                        observer.unobserve(target);
-                    }
-                });
-            }, { threshold: 0.5 });
-
-            counters.forEach(counter => {
-                counterObserver.observe(counter);
-            });
-
-            // Typewriter Effect Logic (Synthesized from JSON context)
-            const phrases = [
-                "隱身於喧囂城市，為您打造最放鬆的貓咪樂園。",
-                "超過兩千位貓奴真心推薦，療癒您的每一個日常。",
-                "結合職人手沖與溫馨陪伴，打造五星級的療癒時光。"
-            ];
-            const typeWriterElement = document.getElementById('typewriter-text');
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingDelay = 100;
-
-            function type() {
-                const currentPhrase = phrases[phraseIndex];
-                
-                if (isDeleting) {
-                    typeWriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                    charIndex--;
-                    typingDelay = 50; // Faster when deleting
-                } else {
-                    typeWriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                    charIndex++;
-                    typingDelay = 150; // Normal typing speed
-                }
-
-                if (!isDeleting && charIndex === currentPhrase.length) {
-                    isDeleting = true;
-                    typingDelay = 2000; // Pause at end of phrase
-                } else if (isDeleting && charIndex === 0) {
-                    isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    typingDelay = 500; // Pause before typing next phrase
-                }
-
-                setTimeout(type, typingDelay);
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
             }
+        });
 
-            // Start typewriter after a short delay
-            setTimeout(type, 1500);
+        // Typewriter Effect
+        const text = "從 8 隻小貓開始的溫暖中途驛站";
+        const container = document.getElementById('typewriter-container');
+        let index = 0;
 
-            // Navbar Background Change on Scroll
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('shadow-sm');
-                    navbar.style.background = 'rgba(250, 248, 245, 0.95)';
-                } else {
-                    navbar.classList.remove('shadow-sm');
-                    navbar.style.background = 'rgba(250, 248, 245, 0.85)';
+        function typeWriter() {
+            if (index < text.length) {
+                container.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // Remove cursor after finish
+                setTimeout(() => {
+                    container.classList.remove('cursor');
+                }, 2000);
+            }
+        }
+
+        // Scroll Reveal & Counter Animation Logic using IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal');
+        let typewriterTriggered = false;
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add active class for fade-in
+                    entry.target.classList.add('active');
+                    
+                    // Trigger Typewriter only once when Hero is visible
+                    if (entry.target.querySelector('#typewriter-container') && !typewriterTriggered) {
+                        setTimeout(typeWriter, 800); // delay to match fade-in
+                        typewriterTriggered = true;
+                    }
+
+                    // Trigger Counters
+                    const counters = entry.target.querySelectorAll('.counter');
+                    counters.forEach(counter => {
+                        const target = parseFloat(counter.getAttribute('data-target'));
+                        const decimals = parseInt(counter.getAttribute('data-decimals')) || 0;
+                        const duration = 2000; // 2 seconds
+                        const step = target / (duration / 16); // 60fps
+                        let current = 0;
+
+                        const updateCounter = () => {
+                            current += step;
+                            if (current < target) {
+                                counter.innerText = current.toFixed(decimals);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target.toFixed(decimals);
+                            }
+                        };
+                        updateCounter();
+                        // Prevent re-animating
+                        counter.classList.remove('counter'); 
+                    });
+
+                    observer.unobserve(entry.target);
                 }
             });
-            
-            // Smooth Scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
+        }, observerOptions);
+
+        revealElements.forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
