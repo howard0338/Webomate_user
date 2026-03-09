@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>日日好糧 Daily Bread | 桃園龍潭職人手作歐式麵包</title>
+  <meta name="description" content="桃園龍潭老宅內的純粹麥香，職人手作歐式麵包。堅持低糖、法國發酵奶油、天然酵母老麵。" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    [data-fade] { opacity: 0; transform: translateY(2.5rem); transition: opacity 1s ease-out, transform 1s ease-out; }
+    [data-fade].visible { opacity: 1; transform: translateY(0); }
+    .selection\:bg-amber-400::selection { background-color: #eebb4d; }
+    .selection\:text-brown-900::selection { color: #4E342E; }
+  </style>
+</head>
+<body class="font-sans text-[#4E342E] bg-[#f4f0ec] min-h-screen antialiased selection:bg-[#eebb4d] selection:text-[#4E342E]">
+  <!-- Navbar -->
+  <nav id="navbar" class="fixed w-full z-50 bg-white shadow-sm py-4">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      <a href="#" class="flex items-center gap-3">
+        <img src="images/logo.jpg" alt="日日好糧 Logo" class="h-[4.5rem] w-auto object-contain rounded-lg" />
+        <span class="text-2xl font-bold tracking-wider text-[#4E342E]">日日好糧</span>
+      </a>
+      <div class="hidden md:flex space-x-8">
+        <a href="#關於我們" class="text-[#4E342E] hover:text-[#eebb4d] font-medium transition-colors duration-300">關於我們</a>
+        <a href="#我們的堅持" class="text-[#4E342E] hover:text-[#eebb4d] font-medium transition-colors duration-300">我們的堅持</a>
+        <a href="#精選菜單" class="text-[#4E342E] hover:text-[#eebb4d] font-medium transition-colors duration-300">精選菜單</a>
+        <a href="#訂購資訊" class="text-[#4E342E] hover:text-[#eebb4d] font-medium transition-colors duration-300">訂購資訊</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-[#4E342E] p-2" aria-label="選單">
+        <svg id="menu-icon" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="close-icon" class="w-8 h-8 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 flex flex-col items-center space-y-4">
+      <a href="#關於我們" class="nav-link text-[#4E342E] hover:text-[#eebb4d] font-medium text-lg">關於我們</a>
+      <a href="#我們的堅持" class="nav-link text-[#4E342E] hover:text-[#eebb4d] font-medium text-lg">我們的堅持</a>
+      <a href="#精選菜單" class="nav-link text-[#4E342E] hover:text-[#eebb4d] font-medium text-lg">精選菜單</a>
+      <a href="#訂購資訊" class="nav-link text-[#4E342E] hover:text-[#eebb4d] font-medium text-lg">訂購資訊</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="images/hero.jpg" alt="日日好糧 職人手作歐式麵包" class="w-full h-full object-cover object-[60%_center]" />
+      <div class="absolute inset-0 bg-white/10 backdrop-blur-[2px]"></div>
+      <div class="absolute inset-0 bg-black/25"></div>
+    </div>
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20">
+      <div data-fade class="fade-target">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight drop-shadow-lg">日日好糧</h1>
+      </div>
+      <div data-fade class="fade-target" style="transition-delay: 300ms">
+        <p class="text-xl md:text-2xl text-[#f4f0ec] font-light tracking-wide mb-8 min-h-[2rem]">
+          <span id="typewriter"></span><span class="animate-pulse">|</span>
+        </p>
+      </div>
+      <div data-fade class="fade-target" style="transition-delay: 600ms">
+        <a href="#訂購資訊" class="inline-block bg-[#eebb4d] text-[#4E342E] px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:scale-105 transition-all duration-300 shadow-lg">預約美味</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="關於我們" class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div data-fade class="fade-target">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl group">
+            <img src="images/bread.jpg" alt="河馬老爹 職人烘焙" class="w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 border-4 border-[#eebb4d]/30 rounded-2xl m-4 pointer-events-none"></div>
+          </div>
+        </div>
+        <div data-fade class="fade-target" style="transition-delay: 200ms">
+          <div class="space-y-6">
+            <h2 class="text-sm font-bold tracking-widest text-[#eebb4d] uppercase">About Us</h2>
+            <h3 class="text-3xl md:text-4xl font-bold text-[#4E342E] leading-tight">從比利時到龍潭老宅<br/>尋找純粹的麥香</h3>
+            <div class="w-12 h-1 bg-[#eebb4d]"></div>
+            <p class="text-lg leading-relaxed text-[#4E342E]/80">創辦人「河馬老爹」曾經外派歐洲三年。在比利時生活時，他發現歐洲人的麵包相較於亞洲單純許多，是可以取代米飯作為主食、天天享用的純粹美味。</p>
+            <p class="text-lg leading-relaxed text-[#4E342E]/80">回到台灣後，苦於找不到記憶中那份簡單無負擔的歐式麵包，於是決定挽起袖子自己烘焙。我們隱身在桃園龍潭建國路180巷內的老宅，原本只服務社區老客戶，現在，我們希望透過社群與團購，將這份「好食材、好麵包、好安心」的信念，分享給龍潭、楊梅、新竹新埔與竹北的更多朋友。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Beliefs Section -->
+  <section id="我們的堅持" class="py-24 md:py-32 bg-white px-6">
+    <div class="max-w-7xl mx-auto">
+      <div data-fade class="fade-target text-center mb-20">
+        <h2 class="text-sm font-bold tracking-widest text-[#eebb4d] uppercase mb-4">Our Beliefs</h2>
+        <h3 class="text-3xl md:text-5xl font-bold text-[#4E342E]">對於麵包的三個堅持</h3>
+        <p class="mt-6 text-lg text-[#4E342E]/70 max-w-2xl mx-auto">可以簡化，但絕不妥協。我們堅持使用好食材，製作讓人吃得好安心的麵包。</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div data-fade class="fade-target bg-[#f4f0ec] rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300 group h-full flex flex-col">
+          <div class="overflow-hidden h-64 flex-shrink-0">
+            <img src="images/ingredients.jpg" alt="低糖或無糖配方" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+          </div>
+          <div class="p-8 flex-grow">
+            <h4 class="text-xl font-bold text-[#4E342E] mb-4 flex items-center"><span class="text-[#eebb4d] mr-2">★</span> 低糖或無糖配方</h4>
+            <p class="text-[#4E342E]/80 leading-relaxed">市售麵包往往過甜，糖分是健康殺手。歐洲以小麥為主食的國家，麵包多不加糖。我們大幅降低糖分，減輕腸胃對糖的不適應，讓您品嚐麥子真實的甘甜。</p>
+          </div>
+        </div>
+        <div data-fade class="fade-target" style="transition-delay: 200ms">
+          <div class="bg-[#f4f0ec] rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300 group h-full flex flex-col">
+            <div class="overflow-hidden h-64 flex-shrink-0">
+              <img src="images/bread.jpg" alt="法國天然發酵奶油" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="p-8 flex-grow">
+              <h4 class="text-xl font-bold text-[#4E342E] mb-4 flex items-center"><span class="text-[#eebb4d] mr-2">★</span> 法國天然發酵奶油</h4>
+              <p class="text-[#4E342E]/80 leading-relaxed">只使用來自法國的發酵奶油。奶品經乳酸菌發酵後，帶有特別香氣且質地輕盈，比未發酵的奶製品更容易消化，讓腸胃不再感到沉重負擔。</p>
+            </div>
+          </div>
+        </div>
+        <div data-fade class="fade-target" style="transition-delay: 400ms">
+          <div class="bg-[#f4f0ec] rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition-all duration-300 group h-full flex flex-col">
+            <div class="overflow-hidden h-64 flex-shrink-0">
+              <img src="images/天然酵母老麵.jpg" alt="天然酵母老麵" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+            </div>
+            <div class="p-8 flex-grow">
+              <h4 class="text-xl font-bold text-[#4E342E] mb-4 flex items-center"><span class="text-[#eebb4d] mr-2">★</span> 天然酵母老麵</h4>
+              <p class="text-[#4E342E]/80 leading-relaxed">麵包香氣應來自發酵而非調味。我們培育檸檬種、蘋果種與天然野生裸麥種三種老麵糰，不僅增加獨特風味，更能保濕保鮮，大幅減低不消化與脹氣感。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="精選菜單" class="py-24 md:py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div data-fade class="fade-target text-center mb-20">
+        <h2 class="text-sm font-bold tracking-widest text-[#eebb4d] uppercase mb-4">Our Menu</h2>
+        <h3 class="text-3xl md:text-5xl font-bold text-[#4E342E]">經典十款，日日新鮮</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-end">
+        <div data-fade class="fade-target relative rounded-2xl overflow-hidden shadow-md group h-[400px] flex flex-col">
+          <img src="images/bread.jpg" alt="麥香大歐包" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#4E342E]/90 via-[#4E342E]/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col-reverse">
+            <h4 class="text-2xl font-bold text-white border-b border-[#eebb4d]/50 pb-2 inline-block shrink-0">麥香大歐包</h4>
+            <ul class="space-y-2 mb-4 flex-1">
+              <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>木斯里榖物</li>
+              <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>脆皮堅果</li>
+            </ul>
+          </div>
+        </div>
+        <div data-fade class="fade-target" style="transition-delay: 150ms">
+          <div class="relative rounded-2xl overflow-hidden shadow-md group h-[400px] flex flex-col">
+            <img src="images/bread.jpg" alt="養生吐司" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#4E342E]/90 via-[#4E342E]/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col-reverse">
+              <h4 class="text-2xl font-bold text-white border-b border-[#eebb4d]/50 pb-2 inline-block shrink-0">養生吐司</h4>
+              <ul class="space-y-2 mb-4 flex-1">
+                <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>黑麥葡萄乾吐司</li>
+                <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>雜糧吐司</li>
+                <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>豆漿吐司</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div data-fade class="fade-target" style="transition-delay: 300ms">
+          <div class="relative rounded-2xl overflow-hidden shadow-md group h-[400px] flex flex-col">
+            <img src="images/ingredients.jpg" alt="招牌小吐司" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#4E342E]/90 via-[#4E342E]/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col-reverse">
+              <h4 class="text-2xl font-bold text-white border-b border-[#eebb4d]/50 pb-2 inline-block shrink-0">招牌小吐司</h4>
+              <ul class="space-y-2 mb-4 flex-1">
+                <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>蔓越莓起司</li>
+                <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>裸麥多穀力</li>
+                <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>奶酥南瓜子</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div data-fade class="fade-target" style="transition-delay: 450ms">
+          <div class="relative rounded-2xl overflow-hidden shadow-md group h-[400px] flex flex-col">
+            <img src="images/ingredients.jpg" alt="減糖甜點" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-gradient-to-t from-[#4E342E]/90 via-[#4E342E]/40 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 w-full p-8 flex flex-col-reverse">
+              <h4 class="text-2xl font-bold text-white border-b border-[#eebb4d]/50 pb-2 inline-block shrink-0">減糖甜點</h4>
+              <ul class="space-y-2 mb-4 flex-1">
+                <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>布朗尼</li>
+                <li class="text-[#f4f0ec] text-lg font-medium flex items-center"><span class="w-1.5 h-1.5 rounded-full bg-[#eebb4d] mr-3"></span>比司吉</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order & Info Section -->
+  <section id="訂購資訊" class="py-24 md:py-32 bg-[#FFF8E7] text-[#4E342E] px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div data-fade class="fade-target">
+          <h2 class="text-sm font-bold tracking-widest text-[#eebb4d] uppercase mb-4">Visit Us</h2>
+          <h3 class="text-3xl md:text-5xl font-bold text-[#4E342E] mb-8">預約您的專屬美味</h3>
+          <p class="text-lg text-[#4E342E]/80 mb-12 leading-relaxed">我們採預訂制，每週二、四新鮮麵包出爐。提供多個取貨點服務，歡迎龍潭、楊梅、新竹新埔與竹北的朋友來電或私訊訂購。</p>
+          <div class="space-y-8">
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-[#eebb4d] mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <div>
+                <h5 class="font-bold text-xl text-[#4E342E] mb-1">營業時間</h5>
+                <p class="text-[#4E342E]/80">每週二、四 11:00 - 18:00</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-[#eebb4d] mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <div>
+                <h5 class="font-bold text-xl text-[#4E342E] mb-1">店面位置</h5>
+                <p class="text-[#4E342E]/80">桃園市龍潭區建國路180巷內老宅</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-[#eebb4d] mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <div>
+                <h5 class="font-bold text-xl text-[#4E342E] mb-1">訂購專線</h5>
+                <p class="text-[#4E342E]/80">(03) 479-6787</p>
+              </div>
+            </div>
+            <div class="flex items-start">
+              <svg class="w-6 h-6 text-[#eebb4d] mr-4 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <div>
+                <h5 class="font-bold text-xl text-[#4E342E] mb-1">取貨方式</h5>
+                <p class="text-[#4E342E]/80">預訂制，提供多個取貨點，請透過社群或電話確認</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-fade class="fade-target" style="transition-delay: 200ms">
+          <div class="bg-white/80 backdrop-blur-sm p-8 md:p-12 rounded-3xl border border-[#4E342E]/10 h-full flex flex-col justify-center shadow-sm">
+            <h4 class="text-2xl font-bold text-[#4E342E] mb-8 text-center">關注我們，獲取最新出爐資訊</h4>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+              <a href="https://www.facebook.com/dailybread36" target="_blank" rel="noreferrer" class="flex items-center justify-center bg-[#1877F2] text-white px-8 py-4 rounded-full font-bold hover:bg-[#1877F2]/90 hover:-translate-y-1 transition-all duration-300">
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                Facebook 粉絲專頁
+              </a>
+              <a href="https://instagram.com/our_daily_bread" target="_blank" rel="noreferrer" class="flex items-center justify-center bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F56040] text-white px-8 py-4 rounded-full font-bold hover:opacity-90 hover:-translate-y-1 transition-all duration-300">
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                追蹤 Instagram
+              </a>
+            </div>
+            <p class="mt-12 text-center text-[#4E342E]/60 text-sm">掃描 QR Code 或點擊上方按鈕加入我們的社群，<br class="hidden md:block"/>第一時間掌握隱藏版菜單與團購優惠！</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#E8DCC4] py-8 px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <p class="text-[#4E342E]/70 text-sm">&copy; <span id="year"></span> 日日好糧 Daily Bread. All rights reserved.</p>
+    <p class="text-[#4E342E]/70 text-sm">made by webomate</p>
+  </footer>
+
+  <script>
+    // Typewriter effect
+    const typewriterText = "桃園龍潭老宅內的純粹麥香，職人手作歐式麵包";
+    const el = document.getElementById('typewriter');
+    let i = 0;
+    const typeInterval = setInterval(() => {
+      if (i < typewriterText.length) {
+        el.textContent = typewriterText.substring(0, i + 1);
+        i++;
+      } else clearInterval(typeInterval);
+    }, 100);
+
+    // Fade-in on scroll
+    const fadeTargets = document.querySelectorAll('[data-fade]');
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    fadeTargets.forEach(t => fadeObserver.observe(t));
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      });
+    });
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
