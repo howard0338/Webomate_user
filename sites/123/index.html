@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attenly - AI 活動照片管理平台 | 智能篩選，秒速找到你的精彩瞬間</title>
+    <meta name="description" content="Attenly 運用先進的 AI 人臉辨識技術，徹底解決活動照片大海撈針的困擾。讓每位參與者都能輕鬆找到並下載自己的照片，為主辦方與攝影師提供最流暢的照片分享體驗。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: currentColor;
+            animation: blink 0.7s infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            'primary': '#0D285B', // Deep Blue
+                            'secondary': '#2563EB', // Brighter Blue for accents
+                            'light': '#F0F5FF',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Urbanist', 'Noto Sans TC', 'sans-serif'],
+                        'display': ['Urbanist', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-brand-primary antialiased">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="https://image.pollinations.ai/prompt/Minimalist%20vector%20logo,%20Flat%20design,%20Abstract%20representation%20of%20AI,%20camera%20lens,%20and%20interconnected%20nodes,%20deep%20blue%20and%20white%20color%20palette,%20Solid%20white%20background,%20SVG" alt="Attenly Logo" class="h-10 w-auto">
+                <span class="text-2xl font-bold text-brand-primary">Attenly</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="text-gray-600 hover:text-brand-secondary transition-colors duration-300">核心功能</a>
+                <a href="#how-it-works" class="text-gray-600 hover:text-brand-secondary transition-colors duration-300">運作方式</a>
+                <a href="#cta" class="bg-brand-secondary text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">立即體驗</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden">
+                <i data-lucide="menu" class="h-6 w-6 text-brand-primary"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/90 backdrop-blur-md">
+            <a href="#features" class="block py-3 px-6 text-center text-gray-700 hover:bg-brand-light">核心功能</a>
+            <a href="#how-it-works" class="block py-3 px-6 text-center text-gray-700 hover:bg-brand-light">運作方式</a>
+            <a href="#cta" class="block py-4 px-6 text-center bg-brand-secondary text-white font-semibold">立即體驗</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section class="relative min-h-screen flex items-center justify-center bg-brand-light">
+            <div class="absolute inset-0 z-0">
+                <img src="https://image.pollinations.ai/prompt/Professional%20photography,%208k%20resolution,%20Cinematic%20lighting,%20A%20vibrant%20and%20modern%20tech%20environment,%20showing%20diverse%20people%20happily%20interacting%20with%20event%20photos%20on%20digital%20screens,%20clean%20and%20innovative%20atmosphere,%20deep%20blue%20and%20white%20color%20scheme" alt="People interacting with event photos" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/50"></div>
+            </div>
+            <div class="relative z-10 container mx-auto px-6 text-center text-white fade-in-section">
+                <h1 class="text-4xl md:text-7xl font-black font-display leading-tight mb-4">
+                    別再大海撈針找照片
+                </h1>
+                <p class="text-lg md:text-2xl font-light text-gray-200 mb-2 max-w-3xl mx-auto">
+                    Attenly 運用 AI 人臉辨識，讓您在數千張活動照片中，秒速找到屬於自己的每一刻精彩。
+                </p>
+                <div class="h-8 text-lg md:text-xl text-gray-200 mb-8 font-medium">
+                    <span id="typewriter"></span><span class="typewriter-cursor"></span>
+                </div>
+                <a href="#cta" class="bg-white text-brand-secondary px-10 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl inline-block">
+                    探索 Attenly 的魔法
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold text-brand-primary">為活動體驗而生</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">我們專注於解決核心痛點，讓照片分享變得前所未有的簡單、快速、有趣。</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-12">
+                    <!-- Feature 1 -->
+                    <div class="text-center p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal">
+                        <div class="flex justify-center items-center mb-6 bg-brand-light h-24 w-24 rounded-full mx-auto">
+                            <img src="https://image.pollinations.ai/prompt/minimalist%20icon%20for%20AI%20face%20recognition,%20abstract%20face%20with%20circuit%20elements,%20deep%20blue%20line%20art,%20white%20background,%20SVG" class="h-12 w-12" alt="AI Face Recognition Icon"/>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">AI 智慧人臉辨識</h3>
+                        <p class="text-gray-600">上傳自拍照，我們的 AI 就能在龐大圖庫中，精準篩選出所有包含您的照片，省去無盡的滑動與尋找。</p>
+                    </div>
+                    <!-- Feature 2 -->
+                    <div class="text-center p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 200ms;">
+                        <div class="flex justify-center items-center mb-6 bg-brand-light h-24 w-24 rounded-full mx-auto">
+                            <img src="https://image.pollinations.ai/prompt/minimalist%20icon%20for%20photo%20download,%20photo%20frame%20with%20a%20down%20arrow,%20deep%20blue%20line%20art,%20white%20background,%20SVG" class="h-12 w-12" alt="Photo Download Icon"/>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">一鍵打包下載</h3>
+                        <p class="text-gray-600">找到您的專屬相簿後，只需一個點擊，即可將所有高解析度照片打包下載，完整收藏您的美好回憶。</p>
+                    </div>
+                    <!-- Feature 3 -->
+                    <div class="text-center p-8 border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 400ms;">
+                        <div class="flex justify-center items-center mb-6 bg-brand-light h-24 w-24 rounded-full mx-auto">
+                             <img src="https://image.pollinations.ai/prompt/minimalist%20icon%20for%20easy%20sharing,%20sharing%20symbol%20with%20a%20network%20of%20dots,%20deep%20blue%20line%20art,%20white%20background,%20SVG" class="h-12 w-12" alt="Easy Sharing Icon"/>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">輕鬆分享與協作</h3>
+                        <p class="text-gray-600">主辦方或攝影師只需一組連結或 Pin 碼，就能輕鬆建立活動相簿，讓所有參與者共享與下載照片。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="py-24 bg-brand-light">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl md:text-5xl font-bold text-brand-primary">三步驟，找回你的精彩</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">直覺的流程設計，無論是主辦方還是參與者，都能輕鬆上手。</p>
+                </div>
+                <div class="relative">
+                    <!-- Dashed Line for Desktop -->
+                    <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 border-t-2 border-dashed border-blue-300 -translate-y-1/2"></div>
+                    <div class="grid md:grid-cols-3 gap-16 relative">
+                        <!-- Step 1 -->
+                        <div class="text-center reveal">
+                            <div class="relative mb-6">
+                                <div class="bg-white h-24 w-24 rounded-full mx-auto flex items-center justify-center shadow-lg border-4 border-brand-light">
+                                    <span class="text-4xl font-bold text-brand-secondary">1</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">主辦方建立相簿</h3>
+                            <p class="text-gray-600">攝影師或主辦方上傳所有活動照片，並取得專屬分享連結。</p>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="text-center reveal" style="transition-delay: 200ms;">
+                            <div class="relative mb-6">
+                                <div class="bg-white h-24 w-24 rounded-full mx-auto flex items-center justify-center shadow-lg border-4 border-brand-light">
+                                    <span class="text-4xl font-bold text-brand-secondary">2</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">參與者上傳自拍</h3>
+                            <p class="text-gray-600">參與者進入連結，上傳一張清晰的個人照以啟用 AI 辨識。</p>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="text-center reveal" style="transition-delay: 400ms;">
+                            <div class="relative mb-6">
+                                <div class="bg-white h-24 w-24 rounded-full mx-auto flex items-center justify-center shadow-lg border-4 border-brand-light">
+                                    <span class="text-4xl font-bold text-brand-secondary">3</span>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">秒速取得個人相簿</h3>
+                            <p class="text-gray-600">Attenly AI 自動篩選，立即呈現您的個人專屬相簿，輕鬆下載分享。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-24 bg-brand-primary text-white">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-3 gap-12 text-center">
+                    <div class="reveal">
+                        <h3 class="text-5xl md:text-6xl font-bold mb-2"><span class="counter" data-target="99">0</span>%</h3>
+                        <p class="text-blue-200 text-lg">AI 辨識準確率</p>
+                    </div>
+                    <div class="reveal" style="transition-delay: 200ms;">
+                        <h3 class="text-5xl md:text-6xl font-bold mb-2"><span class="counter" data-target="1000000">0</span>+</h3>
+                        <p class="text-blue-200 text-lg">已處理照片數量</p>
+                    </div>
+                    <div class="reveal" style="transition-delay: 400ms;">
+                        <h3 class="text-5xl md:text-6xl font-bold mb-2"><span class="counter" data-target="500">0</span>+</h3>
+                        <p class="text-blue-200 text-lg">合作活動與品牌</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section id="cta" class="py-24 bg-white">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-brand-primary mb-4">準備好改變您的活動照片體驗了嗎？</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">無論您是活動主辦方、專業攝影師，還是不想錯過任何精彩瞬間的參與者，Attenly 都是您的最佳選擇。</p>
+                <a href="#" class="bg-brand-secondary text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-blue-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl inline-block">
+                    免費開始使用
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-light">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-1">
+                    <a href="#" class="flex items-center space-x-2 mb-4">
+                        <img src="https://image.pollinations.ai/prompt/Minimalist%20vector%20logo,%20Flat%20design,%20Abstract%20representation%20of%20AI,%20camera%20lens,%20and%20interconnected%20nodes,%20deep%20blue%20and%20white%20color%20palette,%20Solid%20white%20background,%20SVG" alt="Attenly Logo" class="h-8 w-auto">
+                        <span class="text-xl font-bold text-brand-primary">Attenly</span>
+                    </a>
+                    <p class="text-gray-600">AI 活動照片管理平台，讓回憶的查找與分享，變得無比輕鬆。</p>
+                    <div class="mt-6 flex space-x-4">
+                        <a href="https://www.instagram.com/attenly.cc_tw?igsh=NXV5MnF2ZTFqb2F3" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-secondary transition-colors duration-300">
+                            <i data-lucide="instagram" class="h-6 w-6"></i>
+                        </a>
+                    </div>
+                </div>
+                 <div class="md:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold text-brand-primary mb-4">產品</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#features" class="text-gray-600 hover:text-brand-secondary">核心功能</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-brand-secondary">價格方案</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-brand-secondary">客戶案例</a></li>
+                        </ul>
+                    </div>
+                     <div>
+                        <h4 class="font-bold text-brand-primary mb-4">公司</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-brand-secondary">關於我們</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-brand-secondary">聯絡我們</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-brand-secondary">隱私權政策</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-brand-primary mb-4">資源</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-brand-secondary">常見問題</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-brand-secondary">技術支援</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-500 text-sm">
+                <p>&copy; <span id="current-year"></span> Attenly. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lucide Icons
+        lucide.createIcons();
+
+        // Copyright Year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Navbar Style on Scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
+            } else {
+                header.classList.remove('bg-white/80', 'backdrop-blur-lg', 'shadow-sm');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Typewriter Effect
+        const typewriterElement = document.getElementById('typewriter');
+        const texts = ["為攝影師簡化流程", "為參與者創造驚喜", "為活動留下完美回憶"];
+        let textIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < texts[textIndex].length) {
+                typewriterElement.textContent += texts[textIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 100);
+            } else {
+                setTimeout(erase, 2000);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                typewriterElement.textContent = texts[textIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, 50);
+            } else {
+                textIndex = (textIndex + 1) % texts.length;
+                setTimeout(type, 500);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(type, 500);
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const updateCount = () => {
+                const count = +counter.innerText;
+                const increment = Math.ceil(target / speed);
+                if (count < target) {
+                    counter.innerText = Math.min(count + increment, target);
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+            };
+            updateCount();
+        };
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if(entry.target.querySelector('.counter')) {
+                        counters.forEach(counter => {
+                            counter.innerText = '0';
+                            animateCounter(counter);
+                        });
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+    </script>
+</body>
+</html>
+```
