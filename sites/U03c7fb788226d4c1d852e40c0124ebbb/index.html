@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贊贊 ZanZan | 讓長者與長者子女安心的數位守護者</title>
+    
+    <!-- Google Fonts: Noto Sans TC for clean, modern typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        // 溫暖療癒色系 (Warm Japandi / Soft Modern)
+                        brand: {
+                            light: '#E8F1F5', // 極淺藍灰
+                            DEFAULT: '#7B9EB0', // 沉穩安心的藍灰色 (取自地圖Icon背景)
+                            dark: '#5A7A8C',
+                        },
+                        warm: {
+                            50: '#FDFBF7', // 燕麥底色
+                            100: '#F5EFE6', // 溫暖米色
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Animations & Effects -->
+    <style>
+        body {
+            background-color: #FDFBF7;
+        }
+        
+        /* Glassmorphism */
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background: rgba(253, 251, 247, 0.85);
+            border-bottom: 1px solid rgba(123, 158, 176, 0.1);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+            color: #7B9EB0;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Smooth Image Hover */
+        .img-hover-zoom {
+            overflow: hidden;
+        }
+        .img-hover-zoom img {
+            transition: transform 0.5s ease;
+        }
+        .img-hover-zoom:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800 selection:bg-brand selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-full bg-brand/10 flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all duration-300">
+                        <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                    </div>
+                    <span class="text-2xl font-bold tracking-widest text-gray-900">贊贊</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-brand font-medium transition-colors duration-300">品牌理念</a>
+                    <a href="#services" class="text-gray-600 hover:text-brand font-medium transition-colors duration-300">核心服務</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-brand font-medium transition-colors duration-300">安心方案</a>
+                    <a href="#pricing" class="bg-brand text-white px-6 py-2.5 rounded-full font-medium hover:bg-brand-dark hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                        立即啟用
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?q=80&w=2070&auto=format&fit=crop" alt="溫暖的長者照護" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gray-900/40 backdrop-blur-[2px]"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <div class="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-sm font-medium tracking-wide">
+                服務範圍涵蓋全台灣
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                <span class="block font-light text-3xl md:text-4xl mb-4">贊贊，您的專屬長者照護助手</span>
+                讓長者與子女<br/>皆能安心的數位守護
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-100 mb-10 font-light max-w-2xl mx-auto h-8">
+                <span id="typewriter-text" class="typewriter-cursor"></span>
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services" class="bg-brand text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-brand-dark hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                    了解服務內容 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section (Data Injection) -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center reveal">
+            <p class="text-sm font-bold tracking-widest text-brand mb-4 uppercase">Trusted Standard</p>
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">以最高標準，守護全台長者</h2>
+            
+            <div class="max-w-3xl mx-auto bg-warm-50 rounded-2xl p-8 md:p-12 shadow-sm border border-gray-100">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                    <div class="text-center md:text-right md:border-r md:border-gray-200 md:pr-8">
+                        <div class="flex items-center justify-center md:justify-end gap-1 text-amber-400 mb-2">
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                            <i data-lucide="star-half" class="w-6 h-6 fill-current"></i>
+                        </div>
+                        <div class="text-4xl font-black text-gray-900 mb-1"><span class="counter" data-target="4.7">0</span> / 5.0</div>
+                        <p class="text-sm text-gray-500">基於 <span class="counter font-bold text-brand" data-target="55">0</span> 則真實家屬評價</p>
+                    </div>
+                    <div class="text-left max-w-md">
+                        <p class="text-gray-600 leading-relaxed text-lg">
+                            「我們深知專業照護的重要性。如同深獲家屬信賴、位於彰化縣溪湖鎮的<strong class="text-gray-900">璽悅老人長期照顧中心(養護型)</strong>，贊贊同樣秉持著最高標準的專業與用心，透過數位科技，將這份安心感延伸至全台灣每一個家庭。」
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Philosophy Section -->
+    <section id="about" class="py-24 bg-warm-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal img-hover-zoom rounded-3xl shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1516841273335-e39b37888115?q=80&w=1000&auto=format&fit=crop" alt="溫馨陪伴" class="w-full h-[500px] object-cover rounded-3xl">
+                </div>
+                <div class="reveal">
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6 leading-snug">
+                        「贊贊」<br/>
+                        <span class="text-brand text-3xl font-medium">傳遞正向與樂觀的能量</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        我們明白，當長輩年紀漸長，子女最掛心的莫過於他們的健康與日常。贊贊的誕生，正是為了解決這份擔憂。
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        透過簡約、療癒的數位服務，我們不僅記錄數據，更傳遞關懷。讓長者感受到被照顧的溫暖，也讓在外打拼的子女，能隨時掌握父母狀況，獲得真正的安心與幸福。
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <div class="w-8 h-8 rounded-full bg-brand/10 flex items-center justify-center text-brand">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            全台灣皆可使用的雲端服務
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700 font-medium">
+                            <div class="w-8 h-8 rounded-full bg-brand/10 flex items-center justify-center text-brand">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            介面簡潔，長輩也能輕鬆上手
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <p class="text-sm font-bold tracking-widest text-brand mb-4 uppercase">Core Services</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">全方位的健康數位紀錄</h2>
+                <p class="text-lg text-gray-600">我們專注於三大核心功能，將複雜的醫療資訊轉化為清晰易懂的紀錄，為長輩的健康把關。</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="reveal bg-warm-50 rounded-3xl p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+                    <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="pill" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">用藥紀錄與提醒</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        設定專屬的用藥時間表，系統將準時發送溫馨提醒。子女可透過雲端同步查看服藥狀況，確保長輩按時服藥不漏接。
+                    </p>
+                    <div class="rounded-xl overflow-hidden h-48 img-hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800&auto=format&fit=crop" alt="用藥提醒" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="reveal bg-warm-50 rounded-3xl p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 border border-gray-100 group" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="line-chart" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">用藥數據分析</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        長期追蹤用藥習慣與頻率，自動生成清晰易讀的圖表報告。回診時可直接提供給醫師參考，協助更精準地評估療效。
+                    </p>
+                    <div class="rounded-xl overflow-hidden h-48 img-hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" alt="數據分析" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="reveal bg-warm-50 rounded-3xl p-8 hover:-translate-y-2 hover:shadow-xl transition-all duration-300 border border-gray-100 group" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-brand mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="heart-pulse" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">身體數值紀錄</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        輕鬆記錄血壓、血糖、體重等重要日常數值。建立完整的個人健康數位檔案，及早發現異常，防患於未然。
+                    </p>
+                    <div class="rounded-xl overflow-hidden h-48 img-hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?q=80&w=800&auto=format&fit=crop" alt="健康測量" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 bg-brand-light/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">簡單透明的安心方案</h2>
+                <p class="text-lg text-gray-600">沒有複雜的層級，我們提供單一且完整的服務，讓每一位長者都能享有高品質的數位照顧。</p>
+            </div>
+
+            <div class="max-w-lg mx-auto reveal">
+                <div class="bg-white rounded-3xl p-10 shadow-xl border border-brand/20 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-brand text-white px-4 py-1 rounded-bl-xl text-sm font-medium">
+                        全台適用
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">數位守護月費方案</h3>
+                    <p class="text-gray-500 mb-6">獲得無價的安心感</p>
+                    <div class="flex items-baseline gap-2 mb-8">
+                        <span class="text-5xl font-black text-gray-900">NT$ 300</span>
+                        <span class="text-gray-500 font-medium">/ 月</span>
+                    </div>
+                    
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand flex-shrink-0"></i>
+                            <span>完整用藥紀錄與自訂提醒功能</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand flex-shrink-0"></i>
+                            <span>雲端用藥數據圖表分析報告</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand flex-shrink-0"></i>
+                            <span>血壓、血糖等身體數值長期追蹤</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand flex-shrink-0"></i>
+                            <span>子女遠端同步查看權限 (無人數限制)</span>
+                        </li>
+                    </ul>
+
+                    <button class="w-full bg-brand text-white py-4 rounded-xl text-lg font-bold hover:bg-brand-dark hover:shadow-lg transition-all duration-300">
+                        立即開始守護
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="heart-handshake" class="w-6 h-6 text-brand-light"></i>
+                    <span class="text-xl font-bold text-white tracking-widest">贊贊</span>
+                </div>
+                <div class="text-sm text-gray-400 text-center md:text-left">
+                    <p>讓長者與長者子女安心的數位守護者。</p>
+                    <p class="mt-1">服務範圍：全台灣</p>
+                </div>
+                <div class="text-sm text-gray-500">
+                    &copy; 2026 贊贊 ZanZan. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+
+        // Typewriter Effect
+        const textToType = "結合溫暖關懷與科技數據，每月僅需 300 元，換取無價的安心感。";
+        const typeWriterElement = document.getElementById('typewriter-text');
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < textToType.length) {
+                typeWriterElement.innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, 80); // Typing speed
+            }
+        }
+        
+        // Start typewriter after a short delay
+        setTimeout(typeWriter, 500);
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const counterCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    const isFloat = target % 1 !== 0;
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = isFloat ? (count + inc).toFixed(1) : Math.ceil(count + inc);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            });
+        };
+
+        const counterObserver = new IntersectionObserver(counterCallback, { threshold: 0.5 });
+        counters.forEach(counter => counterObserver.observe(counter));
+
+    </script>
+</body>
+</html>
+```
