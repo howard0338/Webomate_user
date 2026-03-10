@@ -1,73 +1,56 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>指尖咖啡 Fingertips Cafe | 咖啡・早午餐・精緻美甲</title>
+    <title>指尖咖啡 Coffee Fingertips | 溫馨木質早午餐與手沖咖啡</title>
+    <meta name="description" content="位於磁器口橫街，深受在地與旅人喜愛的溫馨木質咖啡空間。提供職人手沖咖啡、精緻甜點與暖心早午餐。">
     
-    <!-- Google Fonts: Noto Serif TC for elegant headings, Noto Sans TC for readable body -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Configuration -->
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config for Warm Japandi Style -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            light: '#F5EBE0', // 柔和米白
-                            DEFAULT: '#D5BDAF', // 燕麥大地色
-                            brown: '#8B5A2B', // 溫暖木質棕
-                            dark: '#4A3728', // 深咖啡色
-                        },
-                        background: '#FAF8F5', // 整體背景
+                            oat: '#F5F5DC',      // 燕麥色背景
+                            wood: '#8B5A2B',     // 木質棕主色
+                            woodLight: '#A67B5B', // 淺木色
+                            dark: '#4A3F35',     // 深咖啡文字
+                            light: '#FAFAFA'     // 暖白
+                        }
                     },
                     fontFamily: {
                         sans: ['"Noto Sans TC"', 'sans-serif'],
-                        serif: ['"Noto Serif TC"', 'serif'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 1s ease-out forwards',
-                        'slide-up': 'slideUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(30px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
+                        serif: ['"Noto Serif TC"', 'serif']
                     }
                 }
             }
         }
     </script>
 
-    <!-- Custom CSS for specific effects -->
     <style>
+        /* Custom CSS */
         body {
-            background-color: #FAF8F5;
-            overflow-x: hidden;
-        }
-        
-        .glass-nav {
-            background: rgba(250, 248, 245, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(213, 189, 175, 0.3);
+            background-color: #FAFAFA;
+            color: #4A3F35;
         }
 
-        /* Scroll Reveal Initial State */
+        /* Scroll Reveal Classes */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active {
@@ -76,291 +59,299 @@
         }
 
         /* Typewriter Cursor */
-        .cursor::after {
+        .typewriter-cursor::after {
             content: '|';
-            animation: blink 1s step-end infinite;
+            animation: blink 1s step-start infinite;
         }
         @keyframes blink {
-            0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        ::-webkit-scrollbar-track {
-            background: #FAF8F5;
+        .animate-fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
         }
-        ::-webkit-scrollbar-thumb {
-            background: #D5BDAF;
-            border-radius: 4px;
+
+        /* Image Hover Zoom */
+        .img-zoom-container {
+            overflow: hidden;
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8B5A2B;
+        .img-zoom-container img {
+            transition: transform 0.5s ease;
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="antialiased text-gray-800 font-sans selection:bg-brand-DEFAULT selection:text-white">
+<body class="antialiased font-sans selection:bg-brand-woodLight selection:text-white">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-                    <i data-lucide="coffee" class="w-8 h-8 text-brand-brown"></i>
-                    <span class="font-serif text-2xl font-bold text-brand-dark tracking-wider">指尖咖啡</span>
+    <!-- Navbar (Glassmorphism) -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-white/70 shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- Fallback Logo using Lucide Icon and text since specific image wasn't provided, ensuring it's not empty -->
+                <div class="w-10 h-10 rounded-full bg-brand-wood text-white flex items-center justify-center group-hover:bg-brand-woodLight transition-colors duration-300">
+                    <i data-lucide="coffee" class="w-5 h-5"></i>
                 </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-brand-dark hover:text-brand-brown font-medium transition-colors duration-300">關於我們</a>
-                    <a href="#services" class="text-brand-dark hover:text-brand-brown font-medium transition-colors duration-300">服務項目</a>
-                    <a href="#gallery" class="text-brand-dark hover:text-brand-brown font-medium transition-colors duration-300">空間氛圍</a>
-                    <a href="#contact" class="px-6 py-2 rounded-full bg-brand-brown text-white hover:bg-brand-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5">預約來店</a>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button class="text-brand-dark hover:text-brand-brown focus:outline-none">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
+                <span class="font-serif font-bold text-xl tracking-wider text-brand-dark">指尖咖啡<br><span class="text-xs font-sans text-brand-woodLight tracking-widest">Coffee Fingertips</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
+                <a href="#about" class="hover:text-brand-wood transition-colors duration-300">關於指尖</a>
+                <a href="#menu" class="hover:text-brand-wood transition-colors duration-300">暖心菜單</a>
+                <a href="#space" class="hover:text-brand-wood transition-colors duration-300">空間氛圍</a>
+                <a href="#contact" class="px-5 py-2 rounded-full bg-brand-dark text-white hover:bg-brand-wood transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">聯絡我們</a>
             </div>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-brand-dark">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Overlay -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image (Cozy Cafe Interior) -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" alt="指尖咖啡溫馨空間" class="w-full h-full object-cover object-center animate-fade-in" />
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1920" alt="指尖咖啡 溫馨木質空間" class="w-full h-full object-cover object-center" />
+            <!-- Dark Overlay for text readability -->
             <div class="absolute inset-0 bg-black/40"></div>
         </div>
 
-        <!-- Hero Content -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16 animate-slide-up">
-            <p id="typewriter" class="text-brand-light text-lg md:text-xl font-medium tracking-widest mb-6 cursor h-8"></p>
-            <h1 class="font-serif text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
-                指尖咖啡 <br/> <span class="text-3xl md:text-5xl font-light text-brand-light mt-4 block">Fingertips Cafe</span>
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-20 animate-fade-in">
+            <h2 class="text-brand-oat text-sm md:text-base tracking-[0.3em] uppercase mb-4 font-light">Coffee Fingertips</h2>
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-white font-bold mb-6 leading-tight drop-shadow-lg">
+                在喧囂中，留一處<br>
+                <span class="text-brand-oat italic font-light">溫潤木質</span>的靜謐角落
             </h1>
-            <p class="text-gray-200 text-lg md:text-xl mb-10 font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
-                結合手沖咖啡、現做早午餐與精緻美甲的複合式空間。<br class="hidden md:block">在溫潤的木質調中，享受一杯好咖啡的同時，也讓指尖綻放美麗。
-            </p>
+            
+            <!-- Typewriter Effect -->
+            <div class="h-8 mb-10">
+                <p id="typewriter" class="text-lg md:text-xl text-gray-200 font-light tracking-wide typewriter-cursor"></p>
+            </div>
+
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#services" class="px-8 py-4 rounded-full bg-brand-brown text-white hover:bg-brand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-lg tracking-wider">探索服務</a>
-                <a href="#contact" class="px-8 py-4 rounded-full bg-white/20 backdrop-blur-sm border border-white/50 text-white hover:bg-white hover:text-brand-dark transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-lg tracking-wider">查看營業資訊</a>
+                <a href="#menu" class="px-8 py-4 rounded-full bg-brand-wood text-white font-medium tracking-wide hover:bg-brand-woodLight transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(139,90,43,0.3)]">
+                    探索菜單
+                </a>
+                <a href="#contact" class="px-8 py-4 rounded-full bg-white/10 backdrop-blur-sm border border-white/30 text-white font-medium tracking-wide hover:bg-white/20 transition-all duration-300 hover:-translate-y-1">
+                    預約座位
+                </a>
             </div>
         </div>
-    </section>
 
-    <!-- Social Proof Section -->
-    <section class="bg-brand-light py-12 border-b border-brand-DEFAULT/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
-                <div class="text-center">
-                    <p class="text-brand-dark font-medium mb-2">Google Maps 顧客真實回饋</p>
-                    <div class="flex items-center justify-center gap-2 text-yellow-500 mb-1">
-                        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                        <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-white/70"></i>
+        </div>
+    </header>
+
+    <!-- Social Proof & Fact Section -->
+    <section class="py-16 bg-brand-oat/30 border-b border-brand-wood/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-12 reveal">
+                <p class="text-brand-wood font-medium tracking-widest text-sm mb-2">LOCAL FAVORITE</p>
+                <h3 class="font-serif text-2xl md:text-3xl text-brand-dark">位於磁器口橫街，深受在地饕客與旅人喜愛的溫馨空間。</h3>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center reveal delay-100">
+                <div class="p-4">
+                    <div class="text-4xl font-serif font-bold text-brand-wood mb-2 flex justify-center items-center">
+                        <span class="counter" data-target="4.8">0</span><span class="text-2xl ml-1">★</span>
                     </div>
-                    <div class="text-4xl font-serif font-bold text-brand-dark">
-                        <span class="counter" data-target="4.9">0.0</span>
-                    </div>
+                    <p class="text-sm text-brand-dark/70 tracking-wide">Google 顧客高分評價</p>
                 </div>
-                
-                <div class="h-16 w-px bg-brand-brown/20 hidden md:block"></div>
-                
-                <div class="text-center">
-                    <p class="text-brand-dark font-medium mb-2">累積好評推薦</p>
-                    <div class="flex items-center justify-center gap-2 text-brand-brown mb-1">
-                        <i data-lucide="users" class="w-6 h-6"></i>
+                <div class="p-4">
+                    <div class="text-4xl font-serif font-bold text-brand-wood mb-2 flex justify-center items-center">
+                        <span class="counter" data-target="20">0</span><span class="text-2xl ml-1">+</span>
                     </div>
-                    <div class="text-4xl font-serif font-bold text-brand-dark">
-                        <span class="counter" data-target="577">0</span>+
-                    </div>
+                    <p class="text-sm text-brand-dark/70 tracking-wide">嚴選世界莊園咖啡豆</p>
                 </div>
-
-                <div class="h-16 w-px bg-brand-brown/20 hidden md:block"></div>
-
-                <div class="max-w-md text-center md:text-left">
-                    <i data-lucide="quote" class="w-8 h-8 text-brand-DEFAULT opacity-50 mb-2 mx-auto md:mx-0"></i>
-                    <p class="text-brand-dark/80 italic">「位於高雄鳳山區，隱身於巷弄內的質感空間。獲得數百位顧客好評推崇，是放鬆身心、享受美食與美甲服務的絕佳去處。」</p>
+                <div class="p-4">
+                    <div class="text-4xl font-serif font-bold text-brand-wood mb-2 flex justify-center items-center">
+                        <span class="counter" data-target="15">0</span><span class="text-2xl ml-1">款</span>
+                    </div>
+                    <p class="text-sm text-brand-dark/70 tracking-wide">每日手作暖心甜點</p>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl font-serif font-bold text-brand-wood mb-2 flex justify-center items-center">
+                        <span class="counter" data-target="100">0</span><span class="text-2xl ml-1">%</span>
+                    </div>
+                    <p class="text-sm text-brand-dark/70 tracking-wide">原木打造溫馨舒適空間</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-background">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2 reveal">
-                    <div class="relative">
-                        <div class="absolute -inset-4 bg-brand-DEFAULT/20 rounded-2xl transform rotate-3"></div>
-                        <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?q=80&w=2070&auto=format&fit=crop" alt="指尖咖啡細節" class="relative rounded-2xl shadow-xl object-cover aspect-[4/3] w-full transition-transform duration-500 hover:scale-[1.02]">
-                    </div>
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="w-full md:w-1/2 reveal img-zoom-container rounded-2xl shadow-xl">
+                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&q=80&w=800" alt="指尖咖啡 沖煮過程" class="w-full h-[500px] object-cover rounded-2xl" />
                 </div>
-                <div class="lg:w-1/2 reveal">
-                    <h2 class="font-serif text-sm text-brand-brown font-bold tracking-[0.2em] mb-2">ABOUT US</h2>
-                    <h3 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark mb-6 leading-tight">為您打造專屬的<br>溫潤放鬆時光</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
-                        「指尖咖啡」不僅僅是一間咖啡廳，更是一個結合生活美學的複合式空間。我們深信，美好的生活是由許多精緻的細節堆疊而成。
+                <div class="w-full md:w-1/2 reveal delay-200">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-[1px] bg-brand-wood"></div>
+                        <span class="text-brand-wood tracking-widest text-sm font-medium">ABOUT US</span>
+                    </div>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark mb-6 leading-snug">
+                        指尖傳遞的溫度<br>
+                        成就每一杯幸福時光
+                    </h2>
+                    <p class="text-brand-dark/80 leading-relaxed mb-6 font-light">
+                        「指尖咖啡」誕生於對溫暖與質感的追求。我們深信，一杯好咖啡不僅是味覺的享受，更是心靈的撫慰。我們採用大量溫馨木質元素與暖色調，打造出如家一般舒適的空間。
                     </p>
-                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                        在這裡，您可以品嚐由專業咖啡師沖煮的醇厚咖啡，享用嚴選食材現作的豐盛早午餐；同時，我們的專業美甲師也能為您的指尖換上迷人新裝。我們以溫暖的木質調與米白色系，為您構築一個遠離喧囂、徹底放鬆的避風港。
+                    <p class="text-brand-dark/80 leading-relaxed mb-8 font-light">
+                        無論是晨間的豐盛早午餐，還是午後搭配手作甜點的咖啡時光，我們都希望能透過指尖的細心沖煮與手作，為您帶來滿滿的幸福感。
                     </p>
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-3 text-brand-dark font-medium">
-                            <i data-lucide="check-circle-2" class="text-brand-brown w-5 h-5"></i>
-                            嚴選莊園級精品咖啡豆
-                        </li>
-                        <li class="flex items-center gap-3 text-brand-dark font-medium">
-                            <i data-lucide="check-circle-2" class="text-brand-brown w-5 h-5"></i>
-                            在地新鮮食材手作早午餐
-                        </li>
-                        <li class="flex items-center gap-3 text-brand-dark font-medium">
-                            <i data-lucide="check-circle-2" class="text-brand-brown w-5 h-5"></i>
-                            日系頂級凝膠美甲服務
-                        </li>
-                    </ul>
+                    <a href="#menu" class="inline-flex items-center gap-2 text-brand-wood font-medium hover:text-brand-woodLight transition-colors duration-300 group">
+                        <span>探索我們的服務</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Menu / Services Section -->
+    <section id="menu" class="py-24 bg-brand-oat/20">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
-                <h2 class="font-serif text-sm text-brand-brown font-bold tracking-[0.2em] mb-2">OUR SERVICES</h2>
-                <h3 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark mb-4">多元的美好體驗</h3>
-                <div class="w-16 h-1 bg-brand-DEFAULT mx-auto rounded-full"></div>
+                <span class="text-brand-wood tracking-widest text-sm font-medium block mb-2">OUR OFFERINGS</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-dark">品味美好日常</h2>
+                <div class="w-16 h-1 bg-brand-wood mx-auto mt-6 rounded-full"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Service 1 -->
-                <div class="group rounded-2xl bg-background overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal">
-                    <div class="relative overflow-hidden aspect-[4/3]">
-                        <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=1975&auto=format&fit=crop" alt="職人手沖咖啡" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded-full">
-                            <i data-lucide="coffee" class="w-6 h-6 text-brand-brown"></i>
+                <!-- Card 1: Coffee -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group reveal">
+                    <div class="img-zoom-container rounded-2xl mb-6 aspect-square overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1495474472205-51f7b4c138e1?auto=format&fit=crop&q=80&w=800" alt="職人手沖咖啡" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="p-2 bg-brand-oat text-brand-wood rounded-full">
+                            <i data-lucide="coffee" class="w-5 h-5"></i>
                         </div>
+                        <h3 class="font-serif text-2xl font-bold text-brand-dark">職人手沖咖啡</h3>
                     </div>
-                    <div class="p-8">
-                        <h4 class="font-serif text-xl font-bold text-brand-dark mb-3">職人手沖咖啡</h4>
-                        <p class="text-gray-600 leading-relaxed mb-4">嚴選世界各地莊園級咖啡豆，由專業咖啡師為您精準掌控溫度與水流，沖煮出層次豐富、香氣迷人的絕佳風味。</p>
-                        <span class="text-brand-brown text-sm font-medium border-b border-brand-brown pb-1">現點現磨 / 每日精選</span>
-                    </div>
+                    <p class="text-brand-dark/70 text-sm leading-relaxed mb-4">
+                        精選世界各地優質莊園咖啡豆，透過咖啡師指尖的精準控溫與水流，為您萃取出一杯杯風味層次豐富的靈魂飲品。
+                    </p>
                 </div>
 
-                <!-- Service 2 -->
-                <div class="group rounded-2xl bg-background overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal" style="transition-delay: 100ms;">
-                    <div class="relative overflow-hidden aspect-[4/3]">
-                        <img src="https://images.unsplash.com/photo-1640138756306-02d287042838?q=80&w=1964&auto=format&fit=crop" alt="手作豐盛早午餐" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded-full">
-                            <i data-lucide="utensils-crossed" class="w-6 h-6 text-brand-brown"></i>
+                <!-- Card 2: Brunch -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group reveal delay-100">
+                    <div class="img-zoom-container rounded-2xl mb-6 aspect-square overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1640719028782-4831a7ba96fd?auto=format&fit=crop&q=80&w=800" alt="暖心早午餐" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="p-2 bg-brand-oat text-brand-wood rounded-full">
+                            <i data-lucide="utensils" class="w-5 h-5"></i>
                         </div>
+                        <h3 class="font-serif text-2xl font-bold text-brand-dark">暖心早午餐</h3>
                     </div>
-                    <div class="p-8">
-                        <h4 class="font-serif text-xl font-bold text-brand-dark mb-3">手作豐盛早午餐</h4>
-                        <p class="text-gray-600 leading-relaxed mb-4">堅持使用在地小農新鮮食材，精心搭配營養均衡的餐盤。無論是清爽沙拉或是豐盛拼盤，都能為您注入滿滿活力。</p>
-                        <span class="text-brand-brown text-sm font-medium border-b border-brand-brown pb-1">全日供應 / 健康手作</span>
-                    </div>
+                    <p class="text-brand-dark/70 text-sm leading-relaxed mb-4">
+                        嚴選新鮮在地食材，現點現做。豐盛的擺盤與均衡的營養，為您的一天注入滿滿活力，享受愜意的晨間時光。
+                    </p>
                 </div>
 
-                <!-- Service 3 -->
-                <div class="group rounded-2xl bg-background overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal" style="transition-delay: 200ms;">
-                    <div class="relative overflow-hidden aspect-[4/3]">
-                        <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=2069&auto=format&fit=crop" alt="日系精緻美甲" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur p-2 rounded-full">
-                            <i data-lucide="sparkles" class="w-6 h-6 text-brand-brown"></i>
+                <!-- Card 3: Dessert -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 group reveal delay-200">
+                    <div class="img-zoom-container rounded-2xl mb-6 aspect-square overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&q=80&w=800" alt="手作精緻甜點" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="p-2 bg-brand-oat text-brand-wood rounded-full">
+                            <i data-lucide="cake" class="w-5 h-5"></i>
                         </div>
+                        <h3 class="font-serif text-2xl font-bold text-brand-dark">手作精緻甜點</h3>
                     </div>
-                    <div class="p-8">
-                        <h4 class="font-serif text-xl font-bold text-brand-dark mb-3">日系精緻美甲</h4>
-                        <p class="text-gray-600 leading-relaxed mb-4">在獨立舒適的美甲區，由經驗豐富的美甲師為您量身打造專屬款式。採用溫和不傷甲的頂級凝膠，讓美麗持久閃耀。</p>
-                        <span class="text-brand-brown text-sm font-medium border-b border-brand-brown pb-1">預約優先 / 客製化設計</span>
-                    </div>
+                    <p class="text-brand-dark/70 text-sm leading-relaxed mb-4">
+                        每日限量手工製作，減糖配方無負擔。搭配醇厚的咖啡，在木質香氣中細細品嚐，這就是專屬於您的幸福時光。
+                    </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Footer -->
-    <footer id="contact" class="bg-brand-dark text-brand-light relative overflow-hidden">
-        <!-- Decorative background element -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full border border-brand-brown/30 opacity-50"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                
+    <!-- Footer / Contact Section -->
+    <footer id="contact" class="bg-brand-dark text-white/80 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 reveal">
                 <!-- Brand Info -->
-                <div class="lg:col-span-1 reveal">
-                    <div class="flex items-center gap-2 mb-6">
-                        <i data-lucide="coffee" class="w-8 h-8 text-brand-DEFAULT"></i>
-                        <span class="font-serif text-2xl font-bold tracking-wider text-white">指尖咖啡</span>
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-brand-wood text-white flex items-center justify-center">
+                            <i data-lucide="coffee" class="w-5 h-5"></i>
+                        </div>
+                        <span class="font-serif font-bold text-2xl text-white">指尖咖啡</span>
                     </div>
-                    <p class="text-brand-light/80 leading-relaxed mb-6 text-sm">
-                        高雄鳳山巷弄裡的溫潤時光，咖啡、早午餐與美甲的完美交織。為您提供一個放鬆身心、享受精緻生活的質感空間。
+                    <p class="text-sm leading-relaxed mb-6 font-light text-white/60">
+                        溫馨木質風格・職人手沖・早午餐。<br>
+                        為您打造兼具溫暖與質感的幸福時光。
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-DEFAULT transition-colors duration-300">
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-wood transition-colors duration-300">
                             <i data-lucide="facebook" class="w-5 h-5"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-DEFAULT transition-colors duration-300">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-wood transition-colors duration-300">
                             <i data-lucide="instagram" class="w-5 h-5"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Quick Links -->
-                <div class="reveal" style="transition-delay: 100ms;">
-                    <h4 class="font-serif text-lg font-bold text-white mb-6 tracking-wide">快速導覽</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#about" class="text-brand-light/80 hover:text-white transition-colors duration-300">關於我們</a></li>
-                        <li><a href="#services" class="text-brand-light/80 hover:text-white transition-colors duration-300">服務項目</a></li>
-                        <li><a href="#" class="text-brand-light/80 hover:text-white transition-colors duration-300">線上菜單</a></li>
-                        <li><a href="#" class="text-brand-light/80 hover:text-white transition-colors duration-300">美甲作品集</a></li>
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="font-serif text-xl font-bold text-white mb-6 tracking-wide">聯絡資訊</h4>
+                    <ul class="space-y-4 font-light text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-wood shrink-0 mt-0.5"></i>
+                            <span>中國重庆市沙坪坝区磁器口横街80号附1号<br>邮政编码: 400032</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-5 h-5 text-brand-wood shrink-0"></i>
+                            <span>02-1234-5678</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="w-5 h-5 text-brand-wood shrink-0"></i>
+                            <span>hello@fingertipscafe.com</span>
+                        </li>
                     </ul>
                 </div>
 
-                <!-- Contact Info -->
-                <div class="lg:col-span-2 reveal" style="transition-delay: 200ms;">
-                    <h4 class="font-serif text-lg font-bold text-white mb-6 tracking-wide">營業資訊</h4>
-                    <div class="space-y-4">
-                        <div class="flex items-start gap-3">
-                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-DEFAULT shrink-0 mt-1"></i>
-                            <div>
-                                <p class="text-white font-medium mb-1">店鋪地址</p>
-                                <p class="text-brand-light/80">830 高雄市鳳山區三民路43號</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <i data-lucide="clock" class="w-5 h-5 text-brand-DEFAULT shrink-0 mt-1"></i>
-                            <div>
-                                <p class="text-white font-medium mb-1">營業時間</p>
-                                <p class="text-brand-light/80">週二至週日 09:00 - 18:00<br><span class="text-sm opacity-70">(每週一公休)</span></p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <i data-lucide="phone" class="w-5 h-5 text-brand-DEFAULT shrink-0 mt-1"></i>
-                            <div>
-                                <p class="text-white font-medium mb-1">聯絡專線</p>
-                                <p class="text-brand-light/80">02-1234-5678</p>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Business Hours -->
+                <div>
+                    <h4 class="font-serif text-xl font-bold text-white mb-6 tracking-wide">營業時間</h4>
+                    <ul class="space-y-4 font-light text-sm">
+                        <li class="flex justify-between border-b border-white/10 pb-2">
+                            <span>週二至週日</span>
+                            <span>09:00 - 18:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-white/10 pb-2 text-brand-woodLight">
+                            <span>週一</span>
+                            <span>店休</span>
+                        </li>
+                        <li class="pt-2 text-xs text-white/50">
+                            * 國定假日營業時間請見官方社群公告
+                        </li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="border-t border-white/10 mt-16 pt-8 text-center text-sm text-brand-light/50 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p>&copy; 2026 指尖咖啡 Fingertips Cafe. All rights reserved.</p>
-                <p>Designed with ❤️ for a relaxing lifestyle.</p>
+            <!-- Copyright -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40 font-light">
+                <p>&copy; 2026 Coffee Fingertips 指尖咖啡. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition-colors">隱私權政策</a>
+                    <a href="#" class="hover:text-white transition-colors">服務條款</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -371,96 +362,96 @@
         lucide.createIcons();
 
         // Typewriter Effect
-        const text = "高雄鳳山巷弄裡的溫潤時光，咖啡、早午餐與美甲的完美交織。";
+        const text = "職人手沖現點現做，為您預留一處溫馨木質的靜謐角落。";
+        const typingSpeed = 100;
+        let charIndex = 0;
         const typewriterElement = document.getElementById('typewriter');
-        let i = 0;
 
-        function typeWriter() {
-            if (i < text.length) {
-                typewriterElement.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
-            }
-        }
-        // Start typewriter after a short delay
-        setTimeout(typeWriter, 500);
-
-        // Scroll Reveal Logic
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; // Trigger point
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Check on load
-
-        // Navbar Glass Effect on Scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('shadow-sm');
-                nav.style.background = 'rgba(250, 248, 245, 0.95)';
+        function type() {
+            if (charIndex < text.length) {
+                typewriterElement.textContent += text.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
             } else {
-                nav.classList.remove('shadow-sm');
-                nav.style.background = 'rgba(250, 248, 245, 0.85)';
+                // Remove cursor after finish typing (optional)
+                setTimeout(() => {
+                    typewriterElement.classList.remove('typewriter-cursor');
+                }, 3000);
             }
-        });
-
-        // Number Counter Animation Function
-        const animateValue = (obj, start, end, duration) => {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                // Ease out cubic
-                const easeOut = 1 - Math.pow(1 - progress, 3);
-                
-                let currentVal = progress * (end - start) + start;
-                
-                // Format based on integer or float
-                if (end % 1 !== 0) {
-                    obj.innerHTML = currentVal.toFixed(1);
-                } else {
-                    obj.innerHTML = Math.floor(currentVal);
-                }
-                
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    obj.innerHTML = end; // Ensure exact final value
-                }
-            };
-            window.requestAnimationFrame(step);
         }
+        
+        // Start typing after a slight delay
+        setTimeout(type, 1000);
 
-        // Intersection Observer for Counters
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5
-        };
-
-        const counterObserver = new IntersectionObserver((entries, observer) => {
+        // Scroll Reveal Effect
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const target = parseFloat(entry.target.getAttribute('data-target'));
-                    animateValue(entry.target, 0, target, 2000);
+                    entry.target.classList.add('active');
                     observer.unobserve(entry.target); // Only animate once
                 }
             });
-        }, observerOptions);
+        };
 
-        document.querySelectorAll('.counter').forEach(counter => {
-            counterObserver.observe(counter);
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const counterCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        // Lower inc to slow and higher to speed up
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            // Check if target is a float (like 4.8)
+                            if(target % 1 !== 0) {
+                                counter.innerText = (count + inc).toFixed(1);
+                            } else {
+                                counter.innerText = Math.ceil(count + inc);
+                            }
+                            setTimeout(updateCount, 15);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            });
+        };
+
+        const counterObserver = new IntersectionObserver(counterCallback, { threshold: 0.5 });
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Navbar scroll effect (add shadow/change bg on scroll)
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('bg-white/70', 'bg-white/95');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('bg-white/95', 'bg-white/70');
+            }
         });
-
     </script>
 </body>
 </html>
