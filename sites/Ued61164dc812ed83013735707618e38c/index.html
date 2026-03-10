@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>日日好糧 | 桃園龍潭手作天然酵母烘焙</title>
+    <title>日日好糧 | 溫暖手作歐式麵包坊</title>
     
-    <!-- Google Fonts: Noto Sans TC for modern, clean look -->
+    <!-- Google Fonts: Noto Sans TC for clean, modern typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -13,259 +13,320 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Configuration (Warm Japandi Style) -->
+    <!-- Tailwind Configuration for Custom Brand Colors -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            cocoa: '#5D4037',   // 溫暖可可 (主文字、深色點綴)
-                            oatmeal: '#F5EBE0', // 燕麥米 (柔和背景)
-                            yellow: '#F4D03F',  // 晨曦黃 (按鈕、高光)
-                            light: '#FFFAF0',   // 主背景色
-                        }
+                        cocoa: {
+                            DEFAULT: '#4A3018', // 可可
+                            light: '#6B4A31',
+                        },
+                        oat: {
+                            DEFAULT: '#EADDC5', // 燕麥米
+                            light: '#F5EFE6',
+                        },
+                        yellow: {
+                            DEFAULT: '#FDE68A', // 晨曦黃
+                            light: '#FEF3C7',
+                        },
+                        dark: '#1C1917'
                     },
                     fontFamily: {
                         sans: ['"Noto Sans TC"', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(93, 64, 55, 0.08)',
                     }
                 }
             }
         }
     </script>
 
-    <!-- Custom CSS for Animations & Utilities -->
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS for Animations -->
     <style>
+        /* Base styles */
         body {
-            background-color: #FFFAF0;
-            color: #5D4037;
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #F8FAFC;
+            overflow-x: hidden;
         }
-        
+
         /* Scroll Reveal Classes */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-        
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Typewriter Cursor */
-        .typewriter-cursor {
+        /* Typewriter Cursor Animation */
+        .cursor {
             display: inline-block;
             width: 2px;
-            background-color: #F4D03F;
+            background-color: #FDE68A;
             margin-left: 2px;
-            animation: blink 1s step-end infinite;
+            animation: blink 1s infinite;
         }
-
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        /* Glassmorphism */
-        .glass-nav {
-            background: rgba(255, 250, 240, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(93, 64, 55, 0.05);
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom image hover zoom */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom-container img {
+            transition: transform 0.5s ease;
+        }
+        .img-zoom-container:hover img {
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden selection:bg-brand-yellow selection:text-brand-cocoa">
+<body class="antialiased text-gray-800">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+    <!-- Navigation Bar (Glassmorphism) -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 bg-white/70 backdrop-blur-md border-b border-white/20 shadow-sm" id="navbar">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo Area -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer hover:opacity-80 transition-opacity">
-                    <!-- 模擬客戶上傳的 Logo 圖片位置 -->
-                    <img src="https://images.unsplash.com/photo-1554685300-9a3410526e10?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="日日好糧 Logo" class="h-12 w-auto object-cover rounded-full border-2 border-brand-oatmeal shadow-sm">
-                    <span class="ml-3 font-bold text-xl tracking-wider text-brand-cocoa">日日好糧</span>
-                </div>
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <!-- Placeholder for the provided logo, using a stylized icon as fallback -->
+                    <div class="w-10 h-10 bg-cocoa text-white rounded-full flex items-center justify-center transition-transform duration-300 group-hover:rotate-12">
+                        <i data-lucide="croissant" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-2xl text-cocoa tracking-wider">日日好糧</span>
+                </a>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#about" class="text-brand-cocoa/80 hover:text-brand-cocoa font-medium transition-colors">品牌精神</a>
-                    <a href="#menu" class="text-brand-cocoa/80 hover:text-brand-cocoa font-medium transition-colors">嚴選品項</a>
-                    <a href="#reviews" class="text-brand-cocoa/80 hover:text-brand-cocoa font-medium transition-colors">顧客評價</a>
-                    <a href="#contact" class="bg-brand-cocoa text-white px-6 py-2.5 rounded-full hover:bg-brand-cocoa/90 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
-                        聯絡我們
-                    </a>
+                    <a href="#about" class="text-gray-600 hover:text-cocoa font-medium transition-colors duration-300">品牌故事</a>
+                    <a href="#menu" class="text-gray-600 hover:text-cocoa font-medium transition-colors duration-300">美味品項</a>
+                    <a href="#location" class="text-gray-600 hover:text-cocoa font-medium transition-colors duration-300">門市資訊</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center pt-20">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80" alt="新鮮出爐的工匠麵包" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-brand-cocoa/50 mix-blend-multiply"></div>
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Rustic Bakery Interior" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
 
         <!-- Hero Content -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16 reveal">
-            <span class="inline-block py-1 px-3 rounded-full bg-brand-yellow/90 text-brand-cocoa text-sm font-bold tracking-widest mb-6">
-                TAOYUAN BAKERY
-            </span>
-            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-lg">
-                日日好糧
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight drop-shadow-lg leading-tight">
+                每一口，都是<br class="md:hidden"/><span class="text-yellow">晨曦的溫暖</span>
             </h1>
-            <p class="text-xl md:text-2xl text-white/90 font-light mb-10 h-8 drop-shadow-md">
-                <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
+            
+            <div class="h-8 md:h-10 mb-8 flex justify-center items-center text-lg md:text-2xl text-oat-light font-light tracking-wide">
+                <span id="typewriter"></span><span class="cursor">&nbsp;</span>
+            </div>
+            
+            <p class="text-white/90 text-lg md:text-xl font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+                嚴選天然食材，堅持手作溫度。在可可與燕麥的香氣中，為您烘焙出最純粹的歐式風味。
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="#menu" class="px-8 py-4 bg-brand-yellow text-brand-cocoa font-bold rounded-full hover:bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    查看最新菜單
-                </a>
-                <a href="#about" class="px-8 py-4 bg-white/20 backdrop-blur-sm text-white border border-white/50 font-medium rounded-full hover:bg-white/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    了解我們的堅持
-                </a>
+            
+            <a href="#menu" class="inline-flex items-center gap-2 bg-yellow hover:bg-yellow-light text-cocoa font-bold py-4 px-8 rounded-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(253,230,138,0.3)]">
+                探索美味麵包
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Relocation Notice Banner -->
+    <div class="bg-yellow-light border-y border-yellow text-cocoa py-4 px-6 text-center relative z-20 shadow-md">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-3">
+            <i data-lucide="info" class="w-6 h-6 text-cocoa"></i>
+            <span class="font-bold text-lg">重要公告：</span>
+            <span class="text-md font-medium">我們即將搬遷至新地點，目前暫停營業，敬請期待全新面貌的日日好糧！</span>
+        </div>
+    </div>
+
+    <!-- Social Proof Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-cocoa mb-6">在地饕客的真心推薦</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                        隱身於桃園龍潭的溫馨角落，我們用心烘焙每一顆麵包，收穫了無數顧客的喜愛與支持。感謝您讓我們成為在地人私藏的歐式麵包首選。
+                    </p>
+                    <div class="flex items-center gap-6">
+                        <div class="flex flex-col">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-4xl font-black text-cocoa counter" data-target="4.6">0.0</span>
+                                <div class="flex text-yellow">
+                                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                                    <i data-lucide="star-half" class="w-6 h-6 fill-current"></i>
+                                </div>
+                            </div>
+                            <span class="text-sm text-gray-500 font-medium">Google Maps 評分</span>
+                        </div>
+                        <div class="h-12 w-px bg-gray-200"></div>
+                        <div class="flex flex-col">
+                            <span class="text-4xl font-black text-cocoa"><span class="counter" data-target="76">0</span>+</span>
+                            <span class="text-sm text-gray-500 font-medium">真實好評推薦</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 reveal" style="transition-delay: 0.2s;">
+                    <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Bakery Details" class="rounded-2xl w-full h-48 object-cover shadow-lg hover:scale-105 transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fresh Bread" class="rounded-2xl w-full h-48 object-cover shadow-lg mt-8 hover:scale-105 transition-transform duration-500">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Features / Philosophy Section -->
-    <section id="about" class="py-24 bg-brand-light">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">回歸純粹的麵包哲學</h2>
-                <p class="text-brand-cocoa/70 max-w-2xl mx-auto">以溫暖可可、燕麥米與晨曦黃交織出的溫馨空間，我們堅持使用最純粹的食材，用心烘焙每一顆麵包，讓您品嚐到食材最真實的感動。</p>
-            </div>
-
+    <!-- Brand Features (Icons) -->
+    <section id="about" class="py-24 bg-oat-light">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-cocoa mb-4 reveal">回歸自然的純粹堅持</h2>
+            <p class="text-gray-600 mb-16 max-w-2xl mx-auto reveal" style="transition-delay: 0.1s;">我們相信，最好的味道來自於最單純的原料。日日好糧承諾給您無負擔的健康美味。</p>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <!-- Feature 1 -->
-                <div class="text-center group reveal">
-                    <div class="w-20 h-20 mx-auto bg-brand-oatmeal rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-yellow transition-all duration-500">
-                        <i data-lucide="leaf" class="w-10 h-10 text-brand-cocoa"></i>
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal" style="transition-delay: 0.2s;">
+                    <div class="w-20 h-20 mx-auto bg-yellow-light rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="wheat" class="w-10 h-10 text-cocoa"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">低糖無負擔</h3>
-                    <p class="text-brand-cocoa/70">精心調整配方，減少糖分攝取，讓您在享受美味的同時，也能兼顧健康與輕盈。</p>
+                    <h3 class="text-xl font-bold text-cocoa mb-3">低糖配方</h3>
+                    <p class="text-gray-600 leading-relaxed">精算糖分比例，保留麥香甘甜，讓您享受美味的同時，也能吃得健康無負擔。</p>
                 </div>
+                
                 <!-- Feature 2 -->
-                <div class="text-center group reveal" style="transition-delay: 100ms;">
-                    <div class="w-20 h-20 mx-auto bg-brand-oatmeal rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-yellow transition-all duration-500">
-                        <i data-lucide="wheat" class="w-10 h-10 text-brand-cocoa"></i>
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal" style="transition-delay: 0.3s;">
+                    <div class="w-20 h-20 mx-auto bg-oat rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="droplet" class="w-10 h-10 text-cocoa"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">天然酵母</h3>
-                    <p class="text-brand-cocoa/70">長時間低溫發酵，培養出充滿生命力的天然酵母，賦予麵包深層的麥香與Q彈口感。</p>
+                    <h3 class="text-xl font-bold text-cocoa mb-3">天然發酵奶油</h3>
+                    <p class="text-gray-600 leading-relaxed">嚴選頂級天然發酵奶油，不含人工反式脂肪，賦予麵包溫潤醇厚的迷人奶香。</p>
                 </div>
+                
                 <!-- Feature 3 -->
-                <div class="text-center group reveal" style="transition-delay: 200ms;">
-                    <div class="w-20 h-20 mx-auto bg-brand-oatmeal rounded-full flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-brand-yellow transition-all duration-500">
-                        <i data-lucide="milk" class="w-10 h-10 text-brand-cocoa"></i>
+                <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal" style="transition-delay: 0.4s;">
+                    <div class="w-20 h-20 mx-auto bg-yellow-light rounded-full flex items-center justify-center mb-6">
+                        <i data-lucide="beaker" class="w-10 h-10 text-cocoa"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">頂級發酵奶油</h3>
-                    <p class="text-brand-cocoa/70">嚴選優質發酵奶油，香氣濃郁而不膩口，為每一口麵包增添豐富的層次與溫潤風味。</p>
+                    <h3 class="text-xl font-bold text-cocoa mb-3">天然酸種酵母</h3>
+                    <p class="text-gray-600 leading-relaxed">自家培養天然酸種，長時間低溫發酵，造就外皮酥脆、內裡濕潤 Q 彈的絕佳口感。</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Menu Section -->
-    <section id="menu" class="py-24 bg-brand-oatmeal/30">
+    <section id="menu" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">嚴選品項</h2>
-                    <p class="text-brand-cocoa/70">每日新鮮出爐，每一款都是我們對美味的堅持與承諾。</p>
-                </div>
-                <div class="mt-6 md:mt-0">
-                    <span class="flex items-center text-sm font-medium bg-white px-4 py-2 rounded-full shadow-sm text-brand-cocoa">
-                        <i data-lucide="clock" class="w-4 h-4 mr-2 text-brand-yellow"></i>
-                        限量手作，建議提前預訂
-                    </span>
-                </div>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-cocoa mb-4">職人手作美味</h2>
+                <div class="w-24 h-1 bg-yellow mx-auto rounded-full"></div>
             </div>
 
-            <!-- Menu Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 
                 <!-- Category 1: 大歐包 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="大歐包" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 bg-brand-yellow text-brand-cocoa text-xs font-bold px-3 py-1 rounded-full">經典推薦</div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 group reveal" style="transition-delay: 0.1s;">
+                    <div class="img-zoom-container h-48 w-full">
+                        <img src="https://images.unsplash.com/photo-1585478259715-876a6a81fa08?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="大歐包" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4 border-b border-brand-oatmeal pb-2">大歐包系列</h3>
+                        <div class="flex items-center justify-between mb-4 border-b border-gray-100 pb-2">
+                            <h3 class="text-xl font-bold text-cocoa">大歐包</h3>
+                            <span class="text-xs font-medium bg-oat text-cocoa px-2 py-1 rounded-full">經典</span>
+                        </div>
                         <ul class="space-y-3">
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">木斯里穀物</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 木斯里穀物
                             </li>
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">全麥堅果</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 全麥堅果
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Category 2: 大吐司 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 100ms;">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1598373182133-52452f7691ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="大吐司" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 group reveal" style="transition-delay: 0.2s;">
+                    <div class="img-zoom-container h-48 w-full">
+                        <img src="https://images.unsplash.com/photo-1598373182133-52452f7691ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="大吐司" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4 border-b border-brand-oatmeal pb-2">暖心大吐司</h3>
+                        <div class="flex items-center justify-between mb-4 border-b border-gray-100 pb-2">
+                            <h3 class="text-xl font-bold text-cocoa">大吐司</h3>
+                            <span class="text-xs font-medium bg-oat text-cocoa px-2 py-1 rounded-full">熱銷</span>
+                        </div>
                         <ul class="space-y-3">
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">芬蘭全麥葡萄乾吐司</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 芬蘭全麥葡萄乾吐司
                             </li>
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">養生雜糧吐司</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 養生雜糧吐司
                             </li>
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">黃豆粉豆漿吐司</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 黃豆粉豆漿吐司
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Category 3: 小吐司 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 200ms;">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1619535860434-ba1d8fa12536?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小吐司" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 group reveal" style="transition-delay: 0.3s;">
+                    <div class="img-zoom-container h-48 w-full">
+                        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="小吐司" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4 border-b border-brand-oatmeal pb-2">精緻小吐司</h3>
+                        <div class="flex items-center justify-between mb-4 border-b border-gray-100 pb-2">
+                            <h3 class="text-xl font-bold text-cocoa">小吐司</h3>
+                        </div>
                         <ul class="space-y-3">
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">蔓越莓起司</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 蔓越莓起司
                             </li>
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">高纖黑麥</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 高纖黑麥
                             </li>
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">南瓜子奶酥</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 南瓜子奶酥
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Category 4: 減糖點心 -->
-                <div class="bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal" style="transition-delay: 300ms;">
-                    <div class="relative aspect-[4/3] overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="減糖點心" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700">
-                        <div class="absolute top-4 left-4 bg-brand-oatmeal text-brand-cocoa text-xs font-bold px-3 py-1 rounded-full">無負擔首選</div>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 group reveal" style="transition-delay: 0.4s;">
+                    <div class="img-zoom-container h-48 w-full">
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="減糖點心" class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-4 border-b border-brand-oatmeal pb-2">減糖小點心</h3>
+                        <div class="flex items-center justify-between mb-4 border-b border-gray-100 pb-2">
+                            <h3 class="text-xl font-bold text-cocoa">減糖點心</h3>
+                            <span class="text-xs font-medium bg-yellow-light text-cocoa px-2 py-1 rounded-full">推薦</span>
+                        </div>
                         <ul class="space-y-3">
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">布朗尼 (6吋)</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 布朗尼6吋
                             </li>
-                            <li class="flex justify-between items-center group">
-                                <span class="font-medium group-hover:text-brand-yellow transition-colors">比司吉 (3入)</span>
+                            <li class="flex items-center text-gray-700 font-medium">
+                                <i data-lucide="check" class="w-4 h-4 text-yellow mr-2"></i> 比司吉(3入)
                             </li>
                         </ul>
                     </div>
@@ -275,110 +336,63 @@
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section id="reviews" class="py-24 bg-white relative overflow-hidden">
-        <!-- Decorative background circle -->
-        <div class="absolute -right-20 -top-20 w-96 h-96 bg-brand-yellow/10 rounded-full blur-3xl"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="bg-brand-light rounded-3xl p-10 md:p-16 shadow-soft reveal flex flex-col md:flex-row items-center justify-between gap-12 border border-brand-oatmeal/50">
-                
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">深受在地鄉親喜愛</h2>
-                    <p class="text-lg text-brand-cocoa/80 mb-8 leading-relaxed">
-                        位於桃園龍潭，日日好糧堅持品質與初衷，我們用心製作的每一口麵包，都獲得了顧客的真實好評與信賴。
-                    </p>
-                    
-                    <div class="flex items-center gap-6">
-                        <div class="flex flex-col">
-                            <div class="flex items-center text-brand-yellow mb-1">
-                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                                <i data-lucide="star" class="w-6 h-6 fill-current"></i>
-                                <i data-lucide="star-half" class="w-6 h-6 fill-current"></i>
-                            </div>
-                            <span class="text-3xl font-black"><span class="counter" data-target="4.6">0</span> <span class="text-lg font-medium text-brand-cocoa/60">/ 5.0</span></span>
-                        </div>
-                        <div class="w-px h-12 bg-brand-cocoa/20"></div>
-                        <div class="flex flex-col">
-                            <span class="text-sm text-brand-cocoa/60 font-medium mb-1">Google 累積好評</span>
-                            <span class="text-3xl font-black"><span class="counter" data-target="76">0</span><span class="text-lg font-medium text-brand-cocoa/60">+ 則</span></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="md:w-1/2 bg-white p-8 rounded-2xl shadow-sm relative w-full">
-                    <i data-lucide="quote" class="absolute top-6 right-6 w-12 h-12 text-brand-oatmeal opacity-50"></i>
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 bg-brand-yellow/20 rounded-full flex items-center justify-center text-brand-cocoa font-bold text-xl">
-                            江
-                        </div>
-                        <div>
-                            <h4 class="font-bold">江盛文</h4>
-                            <div class="flex text-brand-yellow text-sm">
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                                <i data-lucide="star" class="w-4 h-4 fill-current"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-brand-cocoa/80 italic">「麵包口感扎實，吃得出天然酵母的獨特風味，低糖的選擇讓長輩也能安心享用，是龍潭在地最推薦的麵包坊！」</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer & Contact -->
-    <footer id="contact" class="bg-brand-cocoa text-brand-light pt-20 pb-10">
+    <!-- Footer -->
+    <footer id="location" class="bg-cocoa text-oat-light pt-20 pb-10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                
-                <div class="lg:col-span-2">
-                    <h2 class="text-3xl font-bold mb-6 text-brand-yellow">日日好糧</h2>
-                    <p class="text-brand-light/70 mb-6 max-w-md leading-relaxed">
-                        溫馨、簡單、經典。我們以溫暖可可、燕麥米與晨曦黃的品牌精神，為您帶來每日手作的天然酵母麵包。
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div>
+                    <a href="#" class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-white text-cocoa rounded-full flex items-center justify-center">
+                            <i data-lucide="croissant" class="w-6 h-6"></i>
+                        </div>
+                        <span class="font-bold text-2xl tracking-wider text-white">日日好糧</span>
+                    </a>
+                    <p class="text-oat/80 leading-relaxed mb-6">
+                        用心揉捏每一塊麵團，傳遞手作的溫度。我們期待在新地點與您再次相遇，繼續為您帶來天然、健康的歐式烘焙美味。
                     </p>
-                    <div class="inline-block bg-brand-yellow text-brand-cocoa px-4 py-2 rounded-lg text-sm font-bold mb-4 animate-pulse">
-                        即將搬遷至新地點，敬請期待！
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold mb-6">聯絡資訊</h3>
-                    <ul class="space-y-4 text-brand-light/80">
-                        <li class="flex items-start">
-                            <i data-lucide="map-pin" class="w-5 h-5 mr-3 mt-0.5 text-brand-yellow shrink-0"></i>
-                            <span>325桃園市龍潭區建國路180巷2弄24號</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-lucide="clock" class="w-5 h-5 mr-3 text-brand-yellow shrink-0"></i>
-                            <span>營業時間請關注官方社群公告</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="text-xl font-bold mb-6">關注我們</h3>
-                    <p class="text-brand-light/70 mb-4">掌握最新出爐品項與團購資訊</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-brand-light/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-cocoa transition-all duration-300">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow hover:text-cocoa transition-colors duration-300">
                             <i data-lucide="facebook" class="w-5 h-5"></i>
                         </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-brand-light/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-cocoa transition-all duration-300">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-yellow hover:text-cocoa transition-colors duration-300">
                             <i data-lucide="instagram" class="w-5 h-5"></i>
                         </a>
                     </div>
                 </div>
 
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-bold text-lg mb-6 border-b border-white/20 pb-2 inline-block">聯絡資訊</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-yellow shrink-0 mt-1"></i>
+                            <div>
+                                <span class="block text-white font-medium mb-1">原址 (即將搬遷)</span>
+                                <span class="text-oat/80">325桃園市龍潭區建國路180巷2弄24號</span>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="clock" class="w-5 h-5 text-yellow shrink-0"></i>
+                            <span class="text-oat/80">暫停營業中，敬請期待新店開幕</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Map Placeholder -->
+                <div class="h-48 rounded-xl overflow-hidden relative group">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Map Location" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <span class="text-white font-medium flex items-center gap-2">
+                            <i data-lucide="map" class="w-5 h-5"></i> 查看地圖
+                        </span>
+                    </div>
+                </div>
             </div>
-            
-            <div class="border-t border-brand-light/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-brand-light/50">
-                <p>&copy; 2026 日日好糧. All rights reserved.</p>
-                <p class="mt-2 md:mt-0">Design with care for Artisanal Bakery.</p>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-oat/60">
+                <p>&copy; 2024 日日好糧. All rights reserved.</p>
+                <p>Designed with warmth & care.</p>
             </div>
         </div>
     </footer>
@@ -388,20 +402,20 @@
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Typewriter Effect
-        const textArray = ["桃園龍潭在地推薦", "堅持天然無添加", "職人手作烘焙"];
-        const typingDelay = 100;
-        const erasingDelay = 50;
-        const newTextDelay = 2000;
-        let textArrayIndex = 0;
+        // Typewriter Effect Logic
+        const textArray = ["桃園龍潭在地推薦", "溫暖手作歐式麵包坊", "品味天然純粹的麥香"];
+        let textIndex = 0;
         let charIndex = 0;
-        const typewriterElement = document.getElementById("typewriter-text");
+        const typingSpeed = 100;
+        const erasingSpeed = 50;
+        const newTextDelay = 2000;
+        const typewriterElement = document.getElementById("typewriter");
 
         function type() {
-            if (charIndex < textArray[textArrayIndex].length) {
-                typewriterElement.textContent += textArray[textArrayIndex].charAt(charIndex);
+            if (charIndex < textArray[textIndex].length) {
+                typewriterElement.textContent += textArray[textIndex].charAt(charIndex);
                 charIndex++;
-                setTimeout(type, typingDelay);
+                setTimeout(type, typingSpeed);
             } else {
                 setTimeout(erase, newTextDelay);
             }
@@ -409,81 +423,85 @@
 
         function erase() {
             if (charIndex > 0) {
-                typewriterElement.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+                typewriterElement.textContent = textArray[textIndex].substring(0, charIndex - 1);
                 charIndex--;
-                setTimeout(erase, erasingDelay);
+                setTimeout(erase, erasingSpeed);
             } else {
-                textArrayIndex++;
-                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-                setTimeout(type, typingDelay + 1100);
+                textIndex++;
+                if (textIndex >= textArray.length) textIndex = 0;
+                setTimeout(type, typingSpeed + 1100);
             }
         }
 
         document.addEventListener("DOMContentLoaded", function() {
-            if(textArray.length) setTimeout(type, newTextDelay + 250);
+            setTimeout(type, newTextDelay + 250);
         });
 
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    // Optional: Stop observing once revealed
-                    // revealObserver.unobserve(entry.target);
+        // Scroll Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
                 }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        });
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger once on load
 
-        revealElements.forEach(el => revealObserver.observe(el));
-
-        // Number Counter Animation
+        // Counter Animation Logic
         const counters = document.querySelectorAll('.counter');
-        let hasCounted = false;
+        const speed = 200; // The lower the slower
 
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !hasCounted) {
-                    counters.forEach(counter => {
-                        const target = parseFloat(counter.getAttribute('data-target'));
-                        const duration = 2000; // 2 seconds
-                        const step = target / (duration / 16); // 60fps
-                        let current = 0;
-                        
-                        const isFloat = target % 1 !== 0;
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    
+                    // Increment logic (handle floats for rating)
+                    const inc = target / speed;
 
-                        const updateCounter = () => {
-                            current += step;
-                            if (current < target) {
-                                counter.innerText = isFloat ? current.toFixed(1) : Math.ceil(current);
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                counter.innerText = target;
-                            }
-                        };
-                        updateCounter();
-                    });
-                    hasCounted = true;
-                }
+                    if (count < target) {
+                        // Check if it's a float
+                        if(target % 1 !== 0) {
+                            counter.innerText = (count + inc).toFixed(1);
+                        } else {
+                            counter.innerText = Math.ceil(count + inc);
+                        }
+                        setTimeout(updateCount, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
             });
-        }, { threshold: 0.5 });
+        };
 
-        const reviewSection = document.getElementById('reviews');
-        if(reviewSection) counterObserver.observe(reviewSection);
-
-        // Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
+        // Trigger counters when social proof section is in view
+        let counterAnimated = false;
         window.addEventListener('scroll', () => {
+            const counterSection = document.querySelector('.counter').closest('section');
+            if (!counterSection) return;
+            const sectionTop = counterSection.getBoundingClientRect().top;
+            if (sectionTop < window.innerHeight && !counterAnimated) {
+                animateCounters();
+                counterAnimated = true;
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
             if (window.scrollY > 50) {
-                navbar.classList.add('shadow-sm');
-                navbar.style.background = 'rgba(255, 250, 240, 0.95)';
+                nav.classList.add('shadow-md');
+                nav.classList.replace('bg-white/70', 'bg-white/95');
             } else {
-                navbar.classList.remove('shadow-sm');
-                navbar.style.background = 'rgba(255, 250, 240, 0.85)';
+                nav.classList.remove('shadow-md');
+                nav.classList.replace('bg-white/95', 'bg-white/70');
             }
         });
     </script>
