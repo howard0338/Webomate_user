@@ -1,62 +1,65 @@
 <!DOCTYPE html>
-<html lang="zh-TW" class="scroll-smooth">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>白爛的一天 | 馬先生_ 白爛的一天</title>
-    <meta name="description" content="歡樂、療癒、無釐頭！馬先生_ 白爛的一天，用最貼近生活的插圖與 LINE 貼圖，陪你度過每一個日常。">
-    
-    <!-- Google Fonts -->
+    <title>馬先生_ 白爛的一天 | 療癒無厘頭插畫與貼圖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
-    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['"Noto Sans TC"', 'sans-serif'],
-                        rounded: ['"M PLUS Rounded 1c"', 'sans-serif'],
-                    },
                     colors: {
+                        macaron: {
+                            bg: '#FFFDF7',
+                            pink: '#FFE5EC',
+                            pinkDark: '#FF9EBB',
+                            yellow: '#FFF3C7',
+                            yellowDark: '#FDE47F',
+                            blue: '#E0F4FF',
+                            blueDark: '#87C4FF',
+                            green: '#E8F9E9',
+                            greenDark: '#81C784'
+                        },
                         brand: {
-                            50: '#fffbeb',
-                            100: '#fef3c7',
-                            200: '#fde68a',
-                            300: '#fcd34d',
-                            400: '#fbbf24',
-                            500: '#f59e0b', // Main Brand Color (Vibrant Yellow/Orange)
-                            600: '#d97706',
-                            700: '#b45309',
-                            800: '#92400e',
-                            900: '#78350f',
+                            dark: '#2D3748',
+                            text: '#4A5568'
                         }
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 1s ease-out forwards',
-                        'bounce-slow': 'bounce 3s infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
+                    fontFamily: {
+                        rounded: ['"M PLUS Rounded 1c"', 'sans-serif'],
+                        body: ['"Noto Sans TC"', 'sans-serif']
                     }
                 }
             }
         }
     </script>
 
-    <!-- Custom CSS for Scroll Reveal & Typewriter -->
     <style>
+        /* 基礎動畫與微互動 */
+        .hover-effect {
+            transition: all 0.3s ease;
+        }
+        .hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* 進場動畫 */
+        .fade-in-section {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 滾動揭曉 Scroll Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -66,410 +69,329 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .glass-nav {
-            backdrop-filter: blur(12px);
-            background: rgba(255, 255, 255, 0.85);
-        }
-        .typewriter-cursor {
+
+        /* 打字機游標 */
+        .cursor {
             display: inline-block;
             width: 3px;
-            height: 1.2em;
-            background-color: #f59e0b;
-            vertical-align: middle;
+            height: 1.1em;
+            background-color: #2D3748;
+            vertical-align: text-bottom;
+            margin-left: 4px;
             animation: blink 1s step-end infinite;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
+
+        /* 毛玻璃導覽列 */
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.75);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
     </style>
 </head>
-<body class="antialiased text-gray-800 bg-[#FAFAFA] font-sans selection:bg-brand-300 selection:text-gray-900">
+<body class="font-body text-brand-text bg-macaron-bg antialiased selection:bg-macaron-pinkDark selection:text-white">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 glass-nav shadow-sm border-b border-gray-100 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center cursor-pointer hover:opacity-80 transition-opacity" onclick="window.scrollTo(0,0)">
-                    <i data-lucide="smile" class="h-8 w-8 text-brand-500 mr-2"></i>
-                    <span class="font-rounded font-extrabold text-xl tracking-tight text-gray-900">馬先生_ <span class="text-brand-500">白爛的一天</span></span>
-                </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#about" class="text-gray-600 hover:text-brand-500 font-medium transition-colors duration-300">關於我們</a>
-                    <a href="#stickers" class="text-gray-600 hover:text-brand-500 font-medium transition-colors duration-300">最新貼圖</a>
-                    <a href="#social" class="text-gray-600 hover:text-brand-500 font-medium transition-colors duration-300">粉絲回饋</a>
-                    <a href="https://line.me/S/sticker/33212069" target="_blank" class="bg-brand-500 text-white px-6 py-2.5 rounded-full font-bold hover:bg-brand-600 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center gap-2">
-                        <i data-lucide="download" class="w-4 h-4"></i>
-                        下載貼圖
-                    </a>
-                </div>
+    <!-- 導覽列 -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260310171524_0.png" alt="馬先生_ 白爛的一天 Logo" class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-110 rounded-full bg-white shadow-sm" onerror="this.outerHTML='<span class=\'text-2xl font-rounded font-bold text-brand-dark\'>馬先生_ 白爛的一天</span>'">
+                <span class="text-xl font-rounded font-bold text-brand-dark hidden sm:block">馬先生_ 白爛的一天</span>
+            </a>
+            <div class="flex items-center gap-4">
+                <a href="#about" class="hidden md:block font-medium text-brand-text hover:text-macaron-pinkDark transition-colors px-3 py-2">關於馬先生</a>
+                <a href="#stickers" class="hidden md:block font-medium text-brand-text hover:text-macaron-pinkDark transition-colors px-3 py-2">熱門貼圖</a>
+                <a href="https://line.me/S/sticker/33212069" target="_blank" class="flex items-center gap-2 bg-[#00B900] hover:bg-[#009900] text-white px-5 py-2.5 rounded-full font-bold hover-effect text-sm sm:text-base">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    <span>買貼圖</span>
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Overlay -->
+    <!-- 滿版 Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden fade-in-section">
+        <!-- 背景圖與遮罩 -->
         <div class="absolute inset-0 z-0">
-            <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260310171527_0.png" alt="白爛的一天主視覺" class="w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
+            <div class="absolute inset-0 bg-macaron-bg/85 backdrop-blur-[2px] z-10"></div>
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop" alt="插畫工作空間" class="w-full h-full object-cover">
         </div>
 
-        <!-- Hero Content -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16 animate-fade-in">
-            <span class="inline-block py-1 px-3 rounded-full bg-brand-500/20 text-brand-300 font-bold text-sm mb-6 border border-brand-400/30 backdrop-blur-sm">
-                生活太苦悶？來點無釐頭！
-            </span>
-            <h1 class="font-rounded text-6xl md:text-8xl font-black text-white mb-6 tracking-tight drop-shadow-lg">
-                白爛的一天
-            </h1>
-            <div class="text-xl md:text-2xl text-gray-200 font-light mb-10 h-8 flex items-center justify-center">
-                <span id="typewriter-text" class="font-medium"></span><span class="typewriter-cursor"></span>
+        <div class="relative z-20 text-center px-6 max-w-4xl mx-auto">
+            <div class="inline-block mb-6 px-4 py-1.5 bg-white rounded-full shadow-sm text-sm font-bold text-macaron-pinkDark tracking-wider uppercase reveal">
+                日常療癒系插畫
             </div>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="https://line.me/S/sticker/33212069" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-brand-500 text-white rounded-full font-bold text-lg hover:bg-brand-600 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/30 transition-all duration-300 flex items-center justify-center gap-2">
-                    <i data-lucide="message-circle" class="w-5 h-5"></i>
-                    入手超實用貼圖
+            <h1 class="text-5xl md:text-7xl font-rounded font-extrabold text-brand-dark mb-6 leading-tight reveal" style="transition-delay: 100ms;">
+                馬先生_<br class="md:hidden"> 白爛的一天
+            </h1>
+            <div class="text-xl md:text-2xl font-light text-brand-text mb-10 h-8 reveal" style="transition-delay: 200ms;">
+                <span id="typewriter-text" class="font-rounded font-bold text-brand-dark"></span><span class="cursor"></span>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal" style="transition-delay: 300ms;">
+                <a href="https://line.me/S/sticker/33212069" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#00B900] text-white px-8 py-4 rounded-full font-bold text-lg hover-effect shadow-lg shadow-green-200">
+                    <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                    <span>逛逛 LINE 貼圖</span>
                 </a>
-                <a href="https://www.instagram.com/ma_ni_picture?igsh=MTQxbW1ocm00ZzRtMw%3D%3D&utm_source=qr" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-white/10 text-white border border-white/30 backdrop-blur-md rounded-full font-bold text-lg hover:bg-white hover:text-gray-900 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2">
-                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                    追蹤 IG 看日常
+                <a href="https://www.instagram.com/ma_ni_picture?igsh=MTQxbW1ocm00ZzRtMw%3D%3D&utm_source=qr" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-gradient-to-r from-[#833AB4] via-[#FD1D1D] to-[#F56040] text-white px-8 py-4 rounded-full font-bold text-lg hover-effect shadow-lg shadow-red-200">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                    <span>追蹤 IG 日常</span>
                 </a>
             </div>
         </div>
         
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce-slow text-white/70">
-            <i data-lucide="chevron-down" class="w-8 h-8"></i>
+        <!-- 向下滾動提示 -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce text-brand-text">
+            <i data-lucide="chevron-down" class="w-8 h-8 opacity-50"></i>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal order-2 lg:order-1">
-                    <div class="relative rounded-3xl overflow-hidden aspect-square shadow-2xl group">
-                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=1000&auto=format&fit=crop" alt="創作日常" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-                            <p class="text-white font-medium text-lg">用畫筆記錄每一個白爛瞬間</p>
-                        </div>
+    <!-- 關於品牌 Section -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 reveal">
+                    <div class="relative aspect-square rounded-[3rem] overflow-hidden shadow-2xl hover-effect">
+                        <img src="https://images.unsplash.com/photo-1627844642677-8b32e0571c4c?q=80&w=1000&auto=format&fit=crop" alt="白爛日常插畫風格" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                     </div>
-                </div>
-                <div class="reveal order-1 lg:order-2">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-50 text-brand-600 font-bold text-sm mb-6">
-                        <i data-lucide="pen-tool" class="w-4 h-4"></i>
-                        品牌精神
-                    </div>
-                    <h2 class="font-rounded text-4xl md:text-5xl font-extrabold text-gray-900 mb-8 leading-tight">
-                        把日常的無奈，<br><span class="text-brand-500">變成會心一笑的療癒。</span>
-                    </h2>
-                    <div class="space-y-6 text-lg text-gray-600 leading-relaxed">
-                        <p>
-                            生活總是充滿了各種鳥事與無奈，但如果我們換個角度，用「白爛」的心態去面對，或許一切都會變得沒那麼糟！「馬先生_ 白爛的一天」就是在這樣的理念下誕生的。我們致力於捕捉生活中那些微小卻真實的荒謬瞬間，透過溫暖又帶點無釐頭的畫風，將它們轉化為一張張充滿生命力的插圖。
-                        </p>
-                        <p>
-                            我們相信，幽默是最好的解藥。無論你今天遇到了什麼不順心的事情，只要看到馬先生那張帶點厭世卻又莫名可愛的臉，就能瞬間得到療癒。這不僅僅是圖文創作，更是一種陪伴，陪你一起吐槽生活，一起笑看人生。
-                        </p>
-                        <p>
-                            除了在 Instagram 上分享日常點滴，我們也將這些歡樂元素濃縮成了 LINE 貼圖。每一組貼圖都經過精心設計，收錄了最貼近生活用語的實用對話，只要新台幣 30 元左右，就能讓你的聊天室充滿歡笑與活力，成為朋友群組中最亮眼的存在！
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products / Stickers Section -->
-    <section id="stickers" class="py-24 bg-brand-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h2 class="font-rounded text-4xl font-extrabold text-gray-900 mb-4">人氣熱銷 LINE 貼圖</h2>
-                <p class="text-xl text-gray-600">實用度滿分！讓馬先生替你說出心裡話，聊天室不再冷場。</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                <!-- Sticker Card 1 -->
-                <div class="bg-white rounded-3xl p-6 shadow-xl shadow-gray-200/50 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 reveal group">
-                    <div class="aspect-video rounded-2xl overflow-hidden mb-6 relative">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" alt="白爛日常貼圖" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow-sm">
-                            熱賣中 🔥
-                        </div>
-                    </div>
-                    <div class="px-2">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-2xl font-bold text-gray-900 font-rounded">白爛日常實用篇</h3>
-                            <span class="text-xl font-black text-brand-500">NT$ 30</span>
-                        </div>
-                        <p class="text-gray-500 mb-6">包含 16-24 組超實用生活對話，上班厭世、朋友互嗆必備神仙貼圖！</p>
-                        <a href="https://line.me/S/sticker/33212069" target="_blank" class="block w-full text-center py-3 rounded-xl bg-gray-900 text-white font-bold hover:bg-brand-500 transition-colors duration-300">
-                            立即前往 LINE Store
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Sticker Card 2 -->
-                <div class="bg-white rounded-3xl p-6 shadow-xl shadow-gray-200/50 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 reveal group" style="transition-delay: 100ms;">
-                    <div class="aspect-video rounded-2xl overflow-hidden mb-6 relative">
-                        <!-- Using a placeholder that fits the vibe -->
-                        <img src="https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?q=80&w=800&auto=format&fit=crop" alt="歡樂療癒貼圖" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-brand-600 shadow-sm">
-                            好評推薦 ⭐
-                        </div>
-                    </div>
-                    <div class="px-2">
-                        <div class="flex justify-between items-start mb-2">
-                            <h3 class="text-2xl font-bold text-gray-900 font-rounded">歡樂療癒無釐頭篇</h3>
-                            <span class="text-xl font-black text-brand-500">NT$ 30</span>
-                        </div>
-                        <p class="text-gray-500 mb-6">滿滿的歡樂元素，用最無釐頭的方式療癒你和朋友的每一天！</p>
-                        <a href="https://line.me/S/sticker/33212069" target="_blank" class="block w-full text-center py-3 rounded-xl bg-gray-900 text-white font-bold hover:bg-brand-500 transition-colors duration-300">
-                            立即前往 LINE Store
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof / Stats Section -->
-    <section id="social" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="text-center mb-16 reveal">
-                <h2 class="font-rounded text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">粉絲好評大放送</h2>
-                <p class="text-lg text-gray-500">謝謝大家跟著馬先生一起白爛，你們的笑容是我們創作的動力！</p>
-            </div>
-
-            <!-- Stats -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-                <div class="reveal text-center p-8 rounded-3xl bg-gray-50 hover:bg-brand-50 transition-colors duration-300">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-100 text-brand-500 mb-4">
-                        <i data-lucide="instagram" class="w-8 h-8"></i>
-                    </div>
-                    <div class="text-4xl font-black text-gray-900 mb-2 font-rounded">
-                        <span class="counter" data-target="999">0</span>+
-                    </div>
-                    <div class="text-gray-500 font-medium">IG 粉絲熱情互動</div>
+                    <!-- 裝飾元素 -->
+                    <div class="absolute -z-10 top-10 -left-10 w-64 h-64 bg-macaron-yellow rounded-full blur-3xl opacity-50"></div>
                 </div>
                 
-                <div class="reveal text-center p-8 rounded-3xl bg-gray-50 hover:bg-brand-50 transition-colors duration-300" style="transition-delay: 100ms;">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-100 text-brand-500 mb-4">
-                        <i data-lucide="download-cloud" class="w-8 h-8"></i>
+                <div class="order-1 md:order-2 reveal text-center md:text-left">
+                    <div class="flex items-center justify-center md:justify-start gap-3 mb-4 text-macaron-pinkDark">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                        <span class="font-bold tracking-widest">ABOUT THE BRAND</span>
                     </div>
-                    <div class="text-4xl font-black text-gray-900 mb-2 font-rounded">
-                        <span class="counter" data-target="500">0</span>+
-                    </div>
-                    <div class="text-gray-500 font-medium">貼圖下載次數</div>
-                </div>
-
-                <div class="reveal text-center p-8 rounded-3xl bg-gray-50 hover:bg-brand-50 transition-colors duration-300" style="transition-delay: 200ms;">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-brand-100 text-brand-500 mb-4">
-                        <i data-lucide="smile" class="w-8 h-8"></i>
-                    </div>
-                    <div class="text-4xl font-black text-gray-900 mb-2 font-rounded">
-                        <span class="counter" data-target="100">0</span>%
-                    </div>
-                    <div class="text-gray-500 font-medium">歡樂療癒滿意度</div>
-                </div>
-            </div>
-
-            <!-- Reviews -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Synthesized reviews based on brand context -->
-                <div class="reveal p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white">
-                    <div class="flex text-brand-400 mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic">「貼圖真的太實用了！每次在群組發出來大家都笑翻，完全說出上班族的心聲啊！」</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-500 font-bold">A</div>
-                        <div>
-                            <div class="font-bold text-gray-900">Alice Lin</div>
-                            <div class="text-xs text-gray-400">IG 忠實粉絲</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white" style="transition-delay: 100ms;">
-                    <div class="flex text-brand-400 mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic">「每天滑 IG 看到馬先生的插圖心情就會變好，那種無釐頭的幽默感真的很療癒～」</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold">C</div>
-                        <div>
-                            <div class="font-bold text-gray-900">Chen Wei</div>
-                            <div class="text-xs text-gray-400">貼圖愛用者</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow bg-white" style="transition-delay: 200ms;">
-                    <div class="flex text-brand-400 mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    </div>
-                    <p class="text-gray-600 mb-6 italic">「畫風可愛又帶點厭世，根本就是我本人的寫照！兩組貼圖我都買了，超推！」</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white font-bold">K</div>
-                        <div>
-                            <div class="font-bold text-gray-900">Kevin Wang</div>
-                            <div class="text-xs text-gray-400">插畫愛好者</div>
-                        </div>
-                    </div>
+                    <h2 class="text-4xl md:text-5xl font-rounded font-bold text-brand-dark mb-6 leading-tight">
+                        用無厘頭的幽默，<br>化解生活的小煩惱
+                    </h2>
+                    <p class="text-lg leading-relaxed text-brand-text mb-6">
+                        生活總有那麼幾個讓人無語、翻白眼的瞬間。馬先生將這些微小卻真實的日常，轉化為一張張充滿魔力的無厘頭插畫。我們相信，幽默是最好的解藥！
+                    </p>
+                    <p class="text-lg leading-relaxed text-brand-text mb-8">
+                        無論是上班族的無奈心聲，還是朋友間的搞笑互動，都能在這裡找到最貼切的表達。跟著馬先生一起，用輕鬆詼諧的態度，笑看生活中的大小事吧！
+                    </p>
+                    <a href="https://www.instagram.com/ma_ni_picture?igsh=MTQxbW1ocm00ZzRtMw%3D%3D&utm_source=qr" target="_blank" class="inline-flex items-center gap-2 text-brand-dark font-bold hover:text-macaron-pinkDark transition-colors group">
+                        <span>看更多白爛插畫</span>
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="py-20 bg-brand-500 relative overflow-hidden">
-        <!-- Decorative background elements -->
-        <div class="absolute top-0 left-0 w-64 h-64 bg-white opacity-10 rounded-full mix-blend-overlay filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-brand-300 opacity-20 rounded-full mix-blend-overlay filter blur-3xl transform translate-x-1/3 translate-y-1/3"></div>
-        
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
-            <h2 class="font-rounded text-4xl md:text-5xl font-black text-white mb-6">準備好加入白爛的行列了嗎？</h2>
-            <p class="text-brand-100 text-xl mb-10">追蹤我們的 IG，每天給你滿滿的歡樂正能量！</p>
-            <a href="https://www.instagram.com/ma_ni_picture?igsh=MTQxbW1ocm00ZzRtMw%3D%3D&utm_source=qr" target="_blank" class="inline-flex items-center gap-2 bg-white text-brand-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-50 hover:scale-105 hover:shadow-xl transition-all duration-300">
-                <i data-lucide="instagram" class="w-6 h-6"></i>
-                立即追蹤 馬先生_ 白爛的一天
-            </a>
+    <!-- 數據信任背書 Section -->
+    <section class="py-20 bg-macaron-pink relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl opacity-40 transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl font-rounded font-bold text-brand-dark">白爛能量持續擴散中 ✨</h2>
+            </div>
+            
+            <div class="counter-section grid grid-cols-1 md:grid-cols-3 gap-8 text-center reveal">
+                <div class="p-10 bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm hover-effect border border-white">
+                    <div class="flex justify-center mb-4 text-macaron-pinkDark"><i data-lucide="smile" class="w-12 h-12"></i></div>
+                    <div class="text-5xl font-rounded font-extrabold text-brand-dark mb-2"><span class="counter" data-target="2">0</span> 款</div>
+                    <div class="text-brand-text font-medium">人氣原創貼圖上架</div>
+                </div>
+                <div class="p-10 bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm hover-effect border border-white">
+                    <div class="flex justify-center mb-4 text-macaron-blueDark"><i data-lucide="image" class="w-12 h-12"></i></div>
+                    <div class="text-5xl font-rounded font-extrabold text-brand-dark mb-2"><span class="counter" data-target="150">0</span> +</div>
+                    <div class="text-brand-text font-medium">搞笑日常插畫創作</div>
+                </div>
+                <div class="p-10 bg-white/80 backdrop-blur-sm rounded-3xl shadow-sm hover-effect border border-white">
+                    <div class="flex justify-center mb-4 text-macaron-yellowDark"><i data-lucide="heart" class="w-12 h-12"></i></div>
+                    <div class="text-5xl font-rounded font-extrabold text-brand-dark mb-2"><span class="counter" data-target="999">0</span> +</div>
+                    <div class="text-brand-text font-medium">被療癒的粉絲笑容</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 貼圖產品 Section -->
+    <section id="stickers" class="py-24 bg-macaron-bg relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-rounded font-bold text-brand-dark mb-6">實用又白爛的 LINE 貼圖</h2>
+                <p class="text-lg text-brand-text">
+                    聊天室不可或缺的靈魂！精選生活化用語，搭配馬先生獨特的生動表情，讓你的每一條訊息都充滿歡樂。只要銅板價 30 元，就能把滿滿的白爛能量帶回家！
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- 貼圖卡片 1 -->
+                <div class="bg-white rounded-[2rem] p-6 shadow-sm hover-effect border border-gray-100 reveal group">
+                    <div class="relative aspect-video rounded-2xl overflow-hidden mb-6 bg-macaron-blue/30">
+                        <img src="https://images.unsplash.com/photo-1580196969807-cc6de06c05be?q=80&w=800&auto=format&fit=crop" alt="日常實用篇貼圖" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-sm font-bold text-brand-dark shadow-sm">
+                            16-24 組
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-2xl font-rounded font-bold text-brand-dark mb-3">日常實用篇</h3>
+                        <p class="text-brand-text mb-6 line-clamp-2">包含各種問候、道謝與無奈表情，完美應對群組裡的各種尬聊時刻，一秒化解僵局！</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-macaron-pinkDark">NT$ 30</span>
+                            <a href="https://line.me/S/sticker/33212069" target="_blank" class="bg-brand-dark text-white px-6 py-2.5 rounded-full font-bold hover:bg-black transition-colors flex items-center gap-2">
+                                <span>立即購買</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 貼圖卡片 2 -->
+                <div class="bg-white rounded-[2rem] p-6 shadow-sm hover-effect border border-gray-100 reveal group" style="transition-delay: 100ms;">
+                    <div class="relative aspect-video rounded-2xl overflow-hidden mb-6 bg-macaron-yellow/30">
+                        <img src="https://images.unsplash.com/photo-1572375992501-4b0892d50c69?q=80&w=800&auto=format&fit=crop" alt="職場生存篇貼圖" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-4 py-1.5 rounded-full text-sm font-bold text-brand-dark shadow-sm">
+                            16-24 組
+                        </div>
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-2xl font-rounded font-bold text-brand-dark mb-3">職場生存篇</h3>
+                        <p class="text-brand-text mb-6 line-clamp-2">專為社畜打造，精準表達上班族的心聲。面對老闆的要求、同事的甩鍋，用貼圖優雅回擊！</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-macaron-pinkDark">NT$ 30</span>
+                            <a href="https://line.me/S/sticker/33212069" target="_blank" class="bg-brand-dark text-white px-6 py-2.5 rounded-full font-bold hover:bg-black transition-colors flex items-center gap-2">
+                                <span>立即購買</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center reveal">
+                <a href="https://line.me/S/sticker/33212069" target="_blank" class="inline-flex items-center gap-3 bg-[#00B900] text-white px-10 py-4 rounded-full font-bold text-lg hover-effect shadow-lg shadow-green-200">
+                    <i data-lucide="store" class="w-6 h-6"></i>
+                    <span>前往 LINE 貼圖小舖看全部</span>
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-2">
-                    <i data-lucide="smile" class="h-6 w-6 text-brand-500"></i>
-                    <span class="font-rounded font-bold text-xl text-white">馬先生_ 白爛的一天</span>
+    <footer class="bg-brand-dark text-white py-16 relative overflow-hidden">
+        <!-- 裝飾背景 -->
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-macaron-pinkDark via-macaron-yellowDark to-macaron-blueDark"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12 border-b border-white/10 pb-12">
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-rounded font-bold mb-4">馬先生_ 白爛的一天</h2>
+                    <p class="text-gray-400 max-w-sm mx-auto md:mx-0">
+                        用插畫紀錄生活，用貼圖傳遞歡樂。<br>感謝每一位喜歡馬先生的你！
+                    </p>
                 </div>
-                
-                <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/ma_ni_picture?igsh=MTQxbW1ocm00ZzRtMw%3D%3D&utm_source=qr" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                        <span class="sr-only">Instagram</span>
+                <div class="flex justify-center md:justify-end gap-6">
+                    <a href="https://www.instagram.com/ma_ni_picture?igsh=MTQxbW1ocm00ZzRtMw%3D%3D&utm_source=qr" target="_blank" class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center hover:bg-gradient-to-tr hover:from-[#833AB4] hover:via-[#FD1D1D] hover:to-[#F56040] transition-all duration-300 transform hover:scale-110">
                         <i data-lucide="instagram" class="w-6 h-6"></i>
                     </a>
-                    <a href="https://line.me/S/sticker/33212069" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                        <span class="sr-only">LINE Store</span>
+                    <a href="https://line.me/S/sticker/33212069" target="_blank" class="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#00B900] transition-all duration-300 transform hover:scale-110">
                         <i data-lucide="message-circle" class="w-6 h-6"></i>
                     </a>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                 <p>&copy; 2026 馬先生_ 白爛的一天. All rights reserved.</p>
                 <p class="mt-2 md:mt-0 flex items-center gap-1">
-                    Made by <span class="text-gray-300 font-medium hover:text-white transition-colors cursor-pointer">Webomate</span>
+                    Made with <i data-lucide="heart" class="w-4 h-4 text-macaron-pinkDark"></i> by <span class="font-bold text-gray-300">Webomate</span>
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- 腳本 -->
     <script>
-        // Initialize Lucide Icons
+        // 1. 初始化 Lucide Icons
         lucide.createIcons();
 
-        // Typewriter Effect
-        const textToType = "歡樂療癒無釐頭，陪你度過每一個白爛的日常！";
-        const typeWriterElement = document.getElementById('typewriter-text');
-        let i = 0;
-
-        function typeWriter() {
-            if (i < textToType.length) {
-                typeWriterElement.innerHTML += textToType.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100); // Speed of typing
-            }
-        }
-        
-        // Start typewriter after a short delay
-        setTimeout(typeWriter, 800);
-
-        // Scroll Reveal Animation using Intersection Observer
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    // Optional: Stop observing once revealed
-                    // observer.unobserve(entry.target);
+        // 2. 打字機效果
+        document.addEventListener('DOMContentLoaded', () => {
+            const text = "療癒你的每一天！分享無厘頭的日常插畫與貼圖";
+            const target = document.getElementById("typewriter-text");
+            let i = 0;
+            
+            // 延遲啟動打字機，配合進場動畫
+            setTimeout(() => {
+                function typeWriter() {
+                    if (i < text.length) {
+                        target.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 120); // 打字速度
+                    }
                 }
-            });
-        }, {
-            root: null,
-            threshold: 0.15, // Trigger when 15% visible
-            rootMargin: "0px 0px -50px 0px"
+                typeWriter();
+            }, 800);
         });
 
-        revealElements.forEach(el => revealObserver.observe(el));
+        // 3. 滾動揭曉 (Scroll Reveal)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100; // 提早觸發的距離
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // 載入時先執行一次
 
-        // Counter Animation using Intersection Observer
+        // 4. 數字跳動 (Counter)
         const counters = document.querySelectorAll('.counter');
-        let hasCounted = false;
+        const speed = 150; // 數字跳動速度 (越小越快)
 
-        const counterObserver = new IntersectionObserver((entries) => {
+        const runCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // 使用 Intersection Observer 確保滾動到該區塊才開始數字跳動
+        const counterObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting && !hasCounted) {
-                    hasCounted = true;
-                    counters.forEach(counter => {
-                        const target = +counter.getAttribute('data-target');
-                        if (target === 0) {
-                            counter.parentElement.parentElement.style.display = 'none'; // Hide if 0
-                            return;
-                        }
-                        
-                        const duration = 2000; // 2 seconds
-                        const increment = target / (duration / 16); // 60fps
-                        let current = 0;
-
-                        const updateCounter = () => {
-                            current += increment;
-                            if (current < target) {
-                                counter.innerText = Math.ceil(current);
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                counter.innerText = target;
-                            }
-                        };
-                        updateCounter();
-                    });
+                if (entry.isIntersecting) {
+                    runCounters();
+                    observer.unobserve(entry.target); // 執行過就不再監聽
                 }
             });
         }, { threshold: 0.5 });
 
-        // Observe the social section for counter trigger
-        const socialSection = document.getElementById('social');
-        if(socialSection) {
-            counterObserver.observe(socialSection);
-        }
+        document.querySelectorAll('.counter-section').forEach(section => {
+            counterObserver.observe(section);
+        });
 
-        // Navbar style change on scroll
-        const navbar = document.querySelector('nav');
+        // 5. 導覽列滾動效果 (增加陰影與透明度變化)
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
-                navbar.classList.remove('shadow-sm');
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.9)';
             } else {
-                navbar.classList.add('shadow-sm');
-                navbar.classList.remove('shadow-md');
+                nav.classList.remove('shadow-sm');
+                nav.style.background = 'rgba(255, 255, 255, 0.75)';
             }
         });
     </script>
