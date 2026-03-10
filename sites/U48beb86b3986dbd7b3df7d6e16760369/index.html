@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>二分之一 | 專屬您的線上配對與戀愛指導</title>
+    <meta name="description" content="為現代單身男女尋找人生重要的二分之一。提供嚴格把關的線上配對、一對一戀愛指導與外在改造，打造溫馨、安全、浪漫的交友環境。">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Noto Serif TC (Elegant) & Noto Sans TC (Readable) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration (Warm Romantic Palette) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            pink: '#FDF2F4',    // Very light pink background
+                            rose: '#E8B4B8',    // Primary soft pink
+                            darkrose: '#D29196', // Hover state pink
+                            beige: '#FAF7F2',   // Warm beige background
+                            sand: '#E3D5CA',    // Secondary beige
+                            text: '#4A3B3C',    // Dark warm gray for text
+                            light: '#FFFFFF'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #FAF7F2; /* brand-beige */
+            color: #4A3B3C; /* brand-text */
+        }
+        
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+            border-bottom: 1px solid rgba(232, 180, 184, 0.2);
+        }
+
+        /* Scroll Reveal Utility Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.2s; }
+        .reveal-delay-2 { transition-delay: 0.4s; }
+
+        /* Typewriter cursor */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-rose selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-full bg-brand-rose flex items-center justify-center text-white font-serif font-bold text-xl group-hover:scale-105 transition-transform duration-300 shadow-sm">
+                    ½
+                </div>
+                <span class="font-serif text-2xl font-semibold tracking-wider text-brand-text">二分之一</span>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm tracking-wide text-brand-text/80">
+                <a href="#about" class="hover:text-brand-rose transition-colors duration-300">品牌理念</a>
+                <a href="#screening" class="hover:text-brand-rose transition-colors duration-300">嚴格把關</a>
+                <a href="#services" class="hover:text-brand-rose transition-colors duration-300">專屬服務</a>
+                <a href="#contact" class="px-6 py-2.5 rounded-full bg-brand-rose text-white hover:bg-brand-darkrose transition-all duration-300 hover:-translate-y-0.5 shadow-md hover:shadow-lg">
+                    預約諮詢
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1518144591331-17a5dd71c477?q=80&w=2000&auto=format&fit=crop" alt="Romantic Couple Background" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 bg-brand-text/40 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-brand-beige/90"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-10">
+            <span class="block text-brand-pink font-medium tracking-[0.2em] mb-4 text-sm md:text-base animate-fade-in-up">ONLINE MATCHMAKING SERVICE</span>
+            <h1 class="font-serif text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg animate-fade-in-up" style="animation-delay: 0.2s;">
+                遇見美好的<br class="md:hidden" />另一半
+            </h1>
+            
+            <!-- Typewriter Effect Container -->
+            <div class="h-8 md:h-12 mb-10 text-xl md:text-2xl text-brand-pink font-light tracking-wide animate-fade-in-up" style="animation-delay: 0.4s;">
+                <span id="typewriter" class="cursor"></span>
+            </div>
+
+            <div class="animate-fade-in-up" style="animation-delay: 0.6s;">
+                <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 text-lg rounded-full bg-white text-brand-text hover:bg-brand-pink transition-all duration-300 hover:-translate-y-1 shadow-xl hover:shadow-2xl font-medium group">
+                    開始尋找您的二分之一
+                    <i data-lucide="arrow-right" class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Stats Section (Adapted for Online Service) -->
+    <section class="py-16 bg-white relative z-20 -mt-10 rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)] max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-brand-sand">
+            <div class="reveal p-4">
+                <div class="flex justify-center mb-3 text-brand-rose"><i data-lucide="shield-check" class="w-8 h-8"></i></div>
+                <h3 class="text-4xl font-serif font-bold text-brand-text mb-2"><span class="counter" data-target="100">0</span>%</h3>
+                <p class="text-brand-text/70 font-medium tracking-wide">嚴格單身身分審核</p>
+            </div>
+            <div class="reveal reveal-delay-1 p-4">
+                <div class="flex justify-center mb-3 text-brand-rose"><i data-lucide="heart-handshake" class="w-8 h-8"></i></div>
+                <h3 class="text-4xl font-serif font-bold text-brand-text mb-2"><span class="counter" data-target="1">0</span>對<span class="counter" data-target="1">0</span></h3>
+                <p class="text-brand-text/70 font-medium tracking-wide">專屬私密戀愛指導</p>
+            </div>
+            <div class="reveal reveal-delay-2 p-4">
+                <div class="flex justify-center mb-3 text-brand-rose"><i data-lucide="sparkles" class="w-8 h-8"></i></div>
+                <h3 class="text-4xl font-serif font-bold text-brand-text mb-2">客製化</h3>
+                <p class="text-brand-text/70 font-medium tracking-wide">量身打造配對建議</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Brand Philosophy -->
+    <section id="about" class="py-24 bg-brand-beige">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative reveal">
+                    <div class="absolute inset-0 bg-brand-rose/20 rounded-3xl transform translate-x-4 translate-y-4"></div>
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1000&auto=format&fit=crop" alt="Holding Hands - Connection" class="relative z-10 rounded-3xl shadow-xl w-full h-[500px] object-cover" />
+                </div>
+                <div class="order-1 lg:order-2 reveal reveal-delay-1">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-text mb-6">找尋共度餘生的契合靈魂</h2>
+                    <div class="w-16 h-1 bg-brand-rose mb-8"></div>
+                    <p class="text-lg text-brand-text/80 leading-relaxed mb-6">
+                        我們都知道，找一個合適的伴侶一起度過人生的下半場，是生命中最重要的事情之一。
+                    </p>
+                    <p class="text-lg text-brand-text/80 leading-relaxed mb-8">
+                        「二分之一」致力於幫助現代社會忙碌的單身男女，透過專業、有溫度的線上服務，為您尋找人生中那塊缺失的拼圖。我們不僅僅是提供配對，更是您的專屬戀愛顧問，陪伴您在尋找真愛的路上不斷成長。
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-3 text-brand-text/90 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-rose"></i> 溫馨浪漫的專屬線上服務
+                        </li>
+                        <li class="flex items-center gap-3 text-brand-text/90 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-rose"></i> 重視每一位客戶的獨特價值
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strict Screening / Safety -->
+    <section id="screening" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <span class="text-brand-rose font-medium tracking-widest text-sm mb-3 block">MEMBER SCREENING</span>
+            <h2 class="font-serif text-3xl md:text-5xl font-bold text-brand-text mb-8">寧缺勿濫的嚴格把關</h2>
+            <p class="text-lg text-brand-text/70 leading-relaxed mb-16 max-w-2xl mx-auto">
+                我們並非開放所有人隨意加入。每一位會員都必須經過我們專業的條件評估與篩選，確保交友環境的純粹與高質量。
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <!-- Female Safety Focus -->
+            <div class="bg-brand-pink/30 p-10 rounded-3xl border border-brand-rose/20 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal">
+                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-6 text-brand-rose">
+                    <i data-lucide="shield" class="w-7 h-7"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-brand-text mb-4">女性安心承諾</h3>
+                <p class="text-brand-text/80 leading-relaxed">
+                    我們深知女性在約會中的顧慮。在這裡，所有男性會員皆經過嚴格挑選與身分確認。我們保證：<strong>絕不會配對到有對象或已婚的男性</strong>。為女性提供最優良的配對建議，讓您安心赴約，不再踩雷，感受備受尊重的約會體驗。
+                </p>
+            </div>
+
+            <!-- Overall Evaluation -->
+            <div class="bg-brand-sand/20 p-10 rounded-3xl border border-brand-sand hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal reveal-delay-1">
+                <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-6 text-brand-text">
+                    <i data-lucide="clipboard-check" class="w-7 h-7"></i>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-brand-text mb-4">全方位條件評估</h3>
+                <p class="text-brand-text/80 leading-relaxed">
+                    加入前，我們會評估男女雙方的各方面條件。條件優良者，可選擇繳交月費方案，享受精準的配對與約會安排；若目前條件尚需提升，我們也絕不放棄，提供專屬改造計畫，幫助您成為更好的自己。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-brand-beige">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="font-serif text-3xl md:text-5xl font-bold text-brand-text mb-4">專屬服務項目</h2>
+                <p class="text-brand-text/70 text-lg">依照您的狀態，量身打造通往幸福的捷徑</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-text/20 z-10 group-hover:bg-transparent transition-colors duration-300"></div>
+                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=800&auto=format&fit=crop" alt="Coffee Chat" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-4 text-brand-rose"><i data-lucide="users" class="w-8 h-8"></i></div>
+                        <h3 class="font-serif text-xl font-bold text-brand-text mb-3">優質會員專屬配對</h3>
+                        <p class="text-brand-text/70 mb-6 text-sm leading-relaxed">
+                            針對評估後條件優良的會員，提供月費制服務。我們將為您精準篩選合適對象，安排高質量的約會，大幅提升尋找真愛的效率。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal reveal-delay-1">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-text/20 z-10 group-hover:bg-transparent transition-colors duration-300"></div>
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=800&auto=format&fit=crop" alt="Personal Improvement" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-4 text-brand-rose"><i data-lucide="graduation-cap" class="w-8 h-8"></i></div>
+                        <h3 class="font-serif text-xl font-bold text-brand-text mb-3">1對1指導與魅力改造</h3>
+                        <p class="text-brand-text/70 mb-6 text-sm leading-relaxed">
+                            若初步評估需提升外在或內在條件，我們提供高級指導服務。包含專屬外在形象改造、實用戀愛課程，幫助您建立自信，吸引對的人。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 reveal reveal-delay-2">
+                    <div class="h-48 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-text/20 z-10 group-hover:bg-transparent transition-colors duration-300"></div>
+                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=800&auto=format&fit=crop" alt="Online Consultation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                    </div>
+                    <div class="p-8">
+                        <div class="mb-4 text-brand-rose"><i data-lucide="message-heart" class="w-8 h-8"></i></div>
+                        <h3 class="font-serif text-xl font-bold text-brand-text mb-3">線上深度諮詢</h3>
+                        <p class="text-brand-text/70 mb-6 text-sm leading-relaxed">
+                            平日 10:00 - 18:00 提供專業線上服務。傾聽您的需求，給予最真誠的建議。填寫表單後，我們將為您安排專屬的線上「見面聊聊」時間。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form CTA -->
+    <section id="contact" class="py-24 bg-white relative overflow-hidden">
+        <!-- Decorative background elements -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-brand-pink rounded-full mix-blend-multiply filter blur-3xl opacity-70 transform -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-80 h-80 bg-brand-sand rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform translate-x-1/3 translate-y-1/3"></div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10 reveal">
+            <div class="bg-brand-beige/80 backdrop-blur-lg rounded-[2.5rem] p-8 md:p-14 shadow-2xl border border-white">
+                <div class="text-center mb-10">
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-text mb-4">踏出幸福的第一步</h2>
+                    <p class="text-brand-text/80 text-lg">
+                        填寫聯絡資訊表單，我們會盡快與您聯繫，<br class="hidden md:block">進一步安排見面聊聊，了解您對另一半的期許。
+                    </p>
+                </div>
+
+                <form class="space-y-6" onsubmit="event.preventDefault(); alert('感謝您的填寫！我們會盡快與您聯繫安排聊聊。');">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text/80 mb-2" for="name">您的稱呼</label>
+                            <input type="text" id="name" class="w-full px-5 py-3 rounded-xl border border-brand-sand bg-white focus:outline-none focus:ring-2 focus:ring-brand-rose/50 transition-all" placeholder="例如：林小姐 / 陳先生" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text/80 mb-2" for="gender">生理性別</label>
+                            <select id="gender" class="w-full px-5 py-3 rounded-xl border border-brand-sand bg-white focus:outline-none focus:ring-2 focus:ring-brand-rose/50 transition-all text-brand-text" required>
+                                <option value="" disabled selected>請選擇</option>
+                                <option value="female">女</option>
+                                <option value="male">男</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text/80 mb-2" for="contact_info">聯絡方式 (Line ID 或 手機)</label>
+                            <input type="text" id="contact_info" class="w-full px-5 py-3 rounded-xl border border-brand-sand bg-white focus:outline-none focus:ring-2 focus:ring-brand-rose/50 transition-all" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-brand-text/80 mb-2" for="age">年齡</label>
+                            <input type="number" id="age" class="w-full px-5 py-3 rounded-xl border border-brand-sand bg-white focus:outline-none focus:ring-2 focus:ring-brand-rose/50 transition-all" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-brand-text/80 mb-2" for="message">簡單說說您理想中的另一半 (選填)</label>
+                        <textarea id="message" rows="4" class="w-full px-5 py-3 rounded-xl border border-brand-sand bg-white focus:outline-none focus:ring-2 focus:ring-brand-rose/50 transition-all resize-none" placeholder="例如：希望對方穩重、喜歡戶外活動..."></textarea>
+                    </div>
+
+                    <div class="text-center pt-4">
+                        <button type="submit" class="inline-flex items-center justify-center px-10 py-4 text-lg rounded-full bg-brand-rose text-white hover:bg-brand-darkrose transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl font-medium w-full md:w-auto">
+                            送出表單，預約聊聊
+                            <i data-lucide="send" class="ml-2 w-5 h-5"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-text text-brand-sand py-12 border-t border-brand-text/20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center border-b border-brand-sand/20 pb-8 mb-8">
+                <div>
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-brand-rose flex items-center justify-center text-white font-serif font-bold text-sm">
+                            ½
+                        </div>
+                        <span class="font-serif text-2xl font-semibold text-white tracking-wider">二分之一</span>
+                    </a>
+                    <p class="text-brand-sand/70 max-w-sm">
+                        為單身男女找到人生重要的另一半，提供充滿溫度與信任感的專業線上配對與指導服務。
+                    </p>
+                </div>
+                <div class="md:text-right">
+                    <h4 class="text-white font-medium mb-2">服務時間</h4>
+                    <p class="text-brand-sand/70 mb-1">平日 10:00 - 18:00 (線上服務)</p>
+                    <p class="text-brand-sand/70 text-sm">其他時間不定時回覆，敬請見諒</p>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-brand-sand/50">
+                <p>&copy; 2026 二分之一 線上配對服務. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">隱私權政策</a>
+                    <a href="#" class="hover:text-white transition-colors">服務條款</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Typewriter Effect
+        const textArray = ["為您尋找人生重要的另一半", "打造專屬溫馨浪漫的相遇", "嚴格把關，讓約會不再踩雷"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingDelay = 100;
+        const erasingDelay = 50;
+        const newTextDelay = 2000;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function type() {
+            const currentText = textArray[textIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? erasingDelay : typingDelay;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = newTextDelay;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % textArray.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start typewriter after a short delay
+        setTimeout(type, 1500);
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: stop observing once revealed
+                    // observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const counterCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+
+                    updateCount();
+                    observer.unobserve(counter); // Only run once
+                }
+            });
+        };
+
+        const counterObserver = new IntersectionObserver(counterCallback, { threshold: 0.5 });
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.replace('bg-white/85', 'bg-white/95');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.replace('bg-white/95', 'bg-white/85');
+            }
+        });
+    </script>
+</body>
+</html>
+```
