@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞司智慧整合股份有限公司 | 創新轉型的專業推手</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Urbanist:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        display: ['"Urbanist"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Tech Blue
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        slate: {
+                            850: '#151e2e',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Scroll Reveal & Utilities -->
+    <style>
+        /* Base Styles */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Scroll Reveal Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.2s; }
+        .reveal-delay-2 { transition-delay: 0.4s; }
+        .reveal-delay-3 { transition-delay: 0.6s; }
+
+        /* Typewriter Cursor */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans selection:bg-brand-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-blue-700 flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="trending-up" class="w-6 h-6"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-xl tracking-wider text-slate-900 leading-tight">瑞司智慧整合</span>
+                    <span class="text-[10px] text-slate-500 font-display tracking-widest uppercase">Consulting & Innovation</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#about" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors duration-300">品牌精神</a>
+                <a href="#services" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors duration-300">專業服務</a>
+                <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors duration-300">聯絡我們</a>
+                <a href="#contact" class="px-6 py-2.5 rounded-full bg-slate-900 text-white text-sm font-medium hover:bg-brand-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                    預約諮詢
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Modern Corporate Office" class="w-full h-full object-cover object-center scale-105 animate-[pulse-slow_10s_ease-in-out_infinite_alternate]" />
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/40"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full flex flex-col items-center text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card text-brand-100 text-sm font-medium mb-8 opacity-0 animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                開放式創新．精準轉型
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight leading-tight opacity-0 animate-[fadeInUp_1s_ease-out_0.4s_forwards]">
+                驅動企業未來的<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-blue-200">創新引擎</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-300 font-light max-w-2xl mb-10 opacity-0 animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
+                以專業俐落的策略與顧客開發優勢 (CDE)，打破傳統框架，為渴望成長的企業打造專屬的數位生命力與轉型藍圖。
+            </p>
+
+            <!-- Typewriter Effect Container -->
+            <div class="h-8 mb-12 opacity-0 animate-[fadeInUp_1s_ease-out_0.8s_forwards]">
+                <p id="typewriter" class="text-lg md:text-xl text-brand-300 font-medium cursor"></p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 opacity-0 animate-[fadeInUp_1s_ease-out_1s_forwards]">
+                <a href="#services" class="px-8 py-4 rounded-full bg-brand-600 text-white font-medium hover:bg-brand-500 hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:-translate-y-1 transition-all duration-300">
+                    探索服務方案
+                </a>
+                <a href="#about" class="px-8 py-4 rounded-full bg-white/10 text-white font-medium backdrop-blur-sm border border-white/20 hover:bg-white/20 hover:-translate-y-1 transition-all duration-300">
+                    了解品牌精神
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition-opacity duration-300">
+            <span class="text-white text-xs tracking-widest uppercase font-display">Scroll</span>
+            <i data-lucide="arrow-down" class="w-4 h-4 text-white animate-bounce"></i>
+        </div>
+    </section>
+
+    <!-- Social Proof / Stats Section -->
+    <section class="py-12 bg-white border-b border-slate-100 relative z-20 -mt-10 mx-4 md:mx-auto max-w-5xl rounded-2xl shadow-xl shadow-slate-200/50 reveal">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+            <!-- Stat 1: Google Rating -->
+            <div class="flex flex-col items-center justify-center px-6">
+                <div class="flex items-center gap-1 text-amber-400 mb-2">
+                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                    <i data-lucide="star" class="w-6 h-6 fill-current"></i>
+                    <i data-lucide="star-half" class="w-6 h-6 fill-current"></i>
+                </div>
+                <div class="text-4xl font-black text-slate-900 mb-1 font-display">4.6</div>
+                <div class="text-sm text-slate-500 font-medium">Google 商家卓越評分</div>
+            </div>
+            
+            <!-- Stat 2: Reviews -->
+            <div class="flex flex-col items-center justify-center px-6 pt-8 md:pt-0">
+                <div class="text-4xl font-black text-slate-900 mb-1 font-display flex items-center">
+                    <span class="counter" data-target="13">0</span><span class="text-brand-500">+</span>
+                </div>
+                <div class="text-sm text-slate-500 font-medium">在地企業真實見證</div>
+            </div>
+
+            <!-- Stat 3: Feature -->
+            <div class="flex flex-col items-center justify-center px-6 pt-8 md:pt-0">
+                <div class="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center text-brand-600 mb-3">
+                    <i data-lucide="rocket" class="w-6 h-6"></i>
+                </div>
+                <div class="text-base font-bold text-slate-900 mb-1">CDE 核心優勢</div>
+                <div class="text-sm text-slate-500 font-medium">精準對接市場需求</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Core Spirit Section -->
+    <section id="about" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 relative reveal">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-brand-100 to-blue-50 rounded-3xl transform rotate-3 scale-105 opacity-50"></div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Team Collaboration" class="relative rounded-2xl shadow-2xl w-full object-cover aspect-[4/3] hover:scale-[1.02] transition-transform duration-500">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl flex items-center gap-4 reveal reveal-delay-2">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600">
+                            <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900">開放式創新</div>
+                            <div class="text-xs text-slate-500">Open Innovation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2 reveal reveal-delay-1">
+                    <h2 class="text-brand-600 font-bold tracking-wider text-sm mb-3 uppercase">Brand Spirit</h2>
+                    <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-6 leading-tight">
+                        不只是改變，<br>而是<span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-blue-400">精準的創新轉型</span>
+                    </h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed text-lg">
+                        在快速變動的商業環境中，瑞司智慧整合深知企業面臨的挑戰。我們不提供沉悶的理論，而是帶來充滿活力且俐落的實戰策略。
+                    </p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        我們專注於協助渴望創新的企業，導入 <strong class="text-slate-900">顧客開發優勢 (CDE)</strong>，以客戶為核心，打破既有框架。透過開放式創新的精神，為您的事業單位注入數位生命力，創造具備市場競爭力的新價值。
+                    </p>
+                    
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i>
+                            專業俐落，拒絕沉悶繁瑣的流程
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i>
+                            創新導向，引領企業突破成長瓶頸
+                        </li>
+                        <li class="flex items-center gap-3 text-slate-700 font-medium">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-500"></i>
+                            實戰為本，確保策略落地執行
+                        </li>
+                    </ul>
+
+                    <a href="#services" class="inline-flex items-center gap-2 text-brand-600 font-bold hover:text-brand-800 transition-colors group">
+                        了解我們的解決方案
+                        <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-brand-600 font-bold tracking-wider text-sm mb-3 uppercase">Our Services</h2>
+                <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">主力服務項目</h3>
+                <p class="text-slate-500">針對不同層級的企業需求，提供量身打造的創新培訓與策略規劃，全方位提升組織戰鬥力。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="group p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 hover:-translate-y-2 transition-all duration-300 reveal reveal-delay-1 cursor-pointer">
+                    <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-8 group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="book-open" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">課程內訓</h4>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        為企業量身定制專屬培訓計畫，從心智模式到實戰技能，全面提升團隊的創新思維與敏捷應變能力。
+                    </p>
+                    <div class="w-full h-[1px] bg-slate-200 mb-6 group-hover:bg-brand-100 transition-colors"></div>
+                    <span class="text-sm font-bold text-brand-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                        了解更多 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </span>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="group p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 hover:-translate-y-2 transition-all duration-300 reveal reveal-delay-2 cursor-pointer">
+                    <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-8 group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="zap" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">事業單位－創新創業實戰</h4>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        針對內部事業單位，導入開放式創新與精實創業手法，加速新產品或新服務的孵化，降低試錯成本。
+                    </p>
+                    <div class="w-full h-[1px] bg-slate-200 mb-6 group-hover:bg-brand-100 transition-colors"></div>
+                    <span class="text-sm font-bold text-brand-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                        了解更多 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </span>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="group p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-2xl hover:shadow-slate-200/50 hover:-translate-y-2 transition-all duration-300 reveal reveal-delay-3 cursor-pointer">
+                    <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center text-brand-500 mb-8 group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="target" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand-600 transition-colors">策略部門－規劃</h4>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        運用 CDE 顧客開發優勢，協助高階策略部門精準洞察市場趨勢，制定具備高度競爭力與前瞻性的發展藍圖。
+                    </p>
+                    <div class="w-full h-[1px] bg-slate-200 mb-6 group-hover:bg-brand-100 transition-colors"></div>
+                    <span class="text-sm font-bold text-brand-600 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                        了解更多 <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Location Section -->
+    <section id="contact" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Abstract Background Elements -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Info -->
+                <div class="reveal">
+                    <h2 class="text-3xl md:text-5xl font-black mb-6">準備好啟動<br><span class="text-brand-400">創新轉型</span>了嗎？</h2>
+                    <p class="text-slate-400 mb-10 text-lg">
+                        無論您是需要課程內訓，或是深度的策略規劃，瑞司智慧整合都準備好為您提供專業俐落的服務。立即與我們聯繫。
+                    </p>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-sm text-slate-400 mb-1">公司位置</h5>
+                                <p class="text-lg font-medium">412024臺中市大里區夏元路6號</p>
+                                <a href="https://maps.google.com/?q=412024臺中市大里區夏元路6號" target="_blank" class="text-sm text-brand-400 hover:text-brand-300 mt-2 inline-block transition-colors">在 Google Maps 上查看 &rarr;</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors shrink-0">
+                                <i data-lucide="clock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-sm text-slate-400 mb-1">營業時間</h5>
+                                <p class="text-lg font-medium">週一至週五 09:00 - 18:00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-brand-400 group-hover:bg-brand-500 group-hover:text-white transition-colors shrink-0">
+                                <i data-lucide="star" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-sm text-slate-400 mb-1">客戶評價</h5>
+                                <p class="text-lg font-medium flex items-center gap-2">
+                                    4.6 顆星 <span class="text-sm text-slate-400">(來自 13 位真實客戶)</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aesthetic Map/Image Representation instead of raw iframe for better design -->
+                <div class="reveal reveal-delay-2 h-full min-h-[400px] relative rounded-3xl overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Office Location" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-slate-900/60 group-hover:bg-slate-900/40 transition-colors duration-500"></div>
+                    
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                        <div class="w-16 h-16 rounded-full bg-brand-500/20 backdrop-blur-md flex items-center justify-center mb-4 animate-pulse">
+                            <div class="w-4 h-4 rounded-full bg-brand-400 shadow-[0_0_15px_rgba(56,189,248,0.8)]"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">瑞司智慧整合</h3>
+                        <p class="text-slate-300 mb-6">臺中市大里區夏元路6號</p>
+                        <a href="https://maps.google.com/?q=412024臺中市大里區夏元路6號" target="_blank" class="px-6 py-3 rounded-full bg-white text-slate-900 font-bold hover:bg-brand-50 hover:-translate-y-1 transition-all duration-300">
+                            規劃路線
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <i data-lucide="trending-up" class="w-5 h-5 text-brand-500"></i>
+                <span class="font-bold text-white tracking-wider">瑞司智慧整合</span>
+            </div>
+            
+            <p class="text-sm">
+                &copy; 2026 瑞司智慧整合股份有限公司. All rights reserved.
+            </p>
+            
+            <div class="flex gap-4">
+                <a href="#" class="hover:text-white transition-colors text-sm">隱私權政策</a>
+                <a href="#" class="hover:text-white transition-colors text-sm">服務條款</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm');
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                navbar.classList.remove('shadow-sm');
+                navbar.style.background = 'rgba(255, 255, 255, 0.8)';
+            }
+        });
+
+        // Typewriter Effect
+        const text = "位於台中大里，深獲客戶 4.6 星高分肯定的專業創新顧問團隊。";
+        const typeWriterElement = document.getElementById('typewriter');
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                typeWriterElement.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100); // Typing speed
+            } else {
+                // Remove cursor blink after typing finishes
+                setTimeout(() => {
+                    typeWriterElement.classList.remove('cursor');
+                }, 3000);
+            }
+        }
+
+        // Start typewriter after hero animation
+        setTimeout(typeWriter, 1500);
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+    </script>
+</body>
+</html>
+```
