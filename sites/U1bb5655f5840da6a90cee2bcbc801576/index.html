@@ -3,65 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AJ grill | 台北大安區頂級餐飲</title>
-    <meta name="description" content="位於台北大安區，深受在地饕客喜愛的頂級餐廳。兼具精緻感與活潑氛圍的空間，為您獻上高雅又誘人的用餐體驗。">
+    <title>AJ grill | 頂級精緻牛排館 - 台北大安區</title>
+    <meta name="description" content="位於台北大安區的 AJ grill，為您獻上 T-bone、乾式熟成紐約客等頂級牛排饗宴，搭配精緻前菜與甜點，打造令人食指大動的高質感用餐氛圍。">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-
-    <!-- Tailwind Configuration -->
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            400: '#FBBF24',
-                            500: '#D4AF37', /* Gold */
-                            600: '#B49020',
-                        },
-                        dark: {
-                            950: '#050505',
-                            900: '#0A0A0A',
-                            800: '#121212',
-                            700: '#1A1A1A',
+                            50: '#fdf8f3',
+                            100: '#f9ecd9',
+                            200: '#f2d5b3',
+                            300: '#eab884',
+                            400: '#D4AF37', // Gold accent
+                            500: '#c28b2e',
+                            600: '#a56c23',
+                            700: '#85501f',
+                            800: '#6d411e',
+                            900: '#0A0A0A', // Deep dark background
+                            950: '#121212', // Slightly lighter dark
                         }
                     },
                     fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
                         sans: ['"Noto Sans TC"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
                     }
                 }
             }
         }
     </script>
 
-    <!-- Custom CSS -->
+    <!-- Custom CSS for Animations -->
     <style>
-        body { 
-            background-color: #0A0A0A; 
-            color: #E5E5E5; 
+        body {
+            background-color: #0A0A0A;
+            color: #f3f4f6;
         }
+        
+        /* Glassmorphism */
         .glass-nav {
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            background: rgba(10, 10, 10, 0.7);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .glass-card {
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            background: rgba(26, 26, 26, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(10, 10, 10, 0.8);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
+
+        /* Scroll Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -71,499 +67,446 @@
             opacity: 1;
             transform: translateY(0);
         }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-        
+
+        /* Typewriter Cursor */
         .typewriter-cursor {
             display: inline-block;
             width: 2px;
             height: 1.2em;
             background-color: #D4AF37;
-            margin-left: 4px;
             vertical-align: middle;
             animation: blink 1s step-end infinite;
+            margin-left: 4px;
         }
         @keyframes blink {
             50% { opacity: 0; }
         }
-        
-        /* Smooth Image Hover */
-        .img-hover-zoom {
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .group:hover .img-hover-zoom {
-            transform: scale(1.05);
-        }
 
+        /* Image Hover Effect */
+        .img-hover-zoom {
+            overflow: hidden;
+        }
+        .img-hover-zoom img {
+            transition: transform 0.6s ease;
+        }
+        .img-hover-zoom:hover img {
+            transform: scale(1.08);
+        }
+        
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0A0A0A; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
     </style>
 </head>
-<body class="antialiased font-sans selection:bg-brand-500 selection:text-dark-950">
+<body class="antialiased font-sans selection:bg-brand-400 selection:text-black">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <a href="#" class="flex-shrink-0 flex items-center gap-2 group">
-                    <span class="font-serif text-2xl font-bold tracking-wider text-white group-hover:text-brand-500 transition-colors duration-300">AJ grill</span>
-                </a>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors duration-300">品牌精神</a>
-                    <a href="#menu" class="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors duration-300">經典推薦</a>
-                    <a href="#location" class="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors duration-300">營業資訊</a>
-                    
-                    <div class="h-4 w-px bg-gray-700"></div>
-                    
-                    <a href="https://www.instagram.com/ajgrill/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-brand-500 transition-colors duration-300 hover:-translate-y-0.5" aria-label="Instagram">
-                        <i data-lucide="instagram" class="w-5 h-5"></i>
-                    </a>
-                    
-                    <a href="https://inline.app/booking/-NWLBspIg_JHQgHEfT9L:inline-live-3/-NWLBt0xI9RGuC_bLLTo" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-2.5 border border-brand-500 text-sm font-medium rounded-full text-brand-500 hover:bg-brand-500 hover:text-dark-950 transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:-translate-y-0.5">
-                        <i data-lucide="calendar-check" class="w-4 h-4 mr-2"></i>
-                        立即訂位
-                    </a>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2 transition-transform active:scale-95">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
-                </div>
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <!-- Abstract Grill/Steak Icon combined with Typography -->
+                <i data-lucide="flame" class="w-6 h-6 text-brand-400 group-hover:scale-110 transition-transform duration-300"></i>
+                <span class="font-serif text-2xl font-bold tracking-wider text-white">AJ grill</span>
+            </a>
+            
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide">
+                <a href="#about" class="text-gray-300 hover:text-brand-400 transition-colors duration-300">關於我們</a>
+                <a href="#menu" class="text-gray-300 hover:text-brand-400 transition-colors duration-300">極致菜單</a>
+                <a href="#gallery" class="text-gray-300 hover:text-brand-400 transition-colors duration-300">視覺饗宴</a>
             </div>
-        </div>
-        
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="hidden md:hidden bg-dark-900 border-b border-gray-800 absolute w-full shadow-2xl">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#about" class="mobile-link block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-500 hover:bg-dark-800 rounded-lg transition-colors">品牌精神</a>
-                <a href="#menu" class="mobile-link block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-500 hover:bg-dark-800 rounded-lg transition-colors">經典推薦</a>
-                <a href="#location" class="mobile-link block px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-500 hover:bg-dark-800 rounded-lg transition-colors">營業資訊</a>
-                <a href="https://www.instagram.com/ajgrill/" target="_blank" class="flex items-center px-3 py-3 text-base font-medium text-gray-300 hover:text-brand-500 hover:bg-dark-800 rounded-lg transition-colors">
-                    <i data-lucide="instagram" class="w-5 h-5 mr-3"></i> Instagram
+
+            <div class="flex items-center gap-4">
+                <a href="https://www.instagram.com/ajgrill/" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-brand-400 transition-colors duration-300">
+                    <i data-lucide="instagram" class="w-5 h-5"></i>
                 </a>
-                <div class="pt-4 px-3">
-                    <a href="https://inline.app/booking/-NWLBspIg_JHQgHEfT9L:inline-live-3/-NWLBt0xI9RGuC_bLLTo" target="_blank" class="flex w-full items-center justify-center px-6 py-3 border border-brand-500 text-base font-medium rounded-full text-dark-950 bg-brand-500 hover:bg-brand-400 transition-colors shadow-lg">
-                        立即訂位
-                    </a>
-                </div>
+                <a href="https://inline.app/booking/-NWLBspIg_JHQgHEfT9L:inline-live-3/-NWLBt0xI9RGuC_bLLTo" target="_blank" rel="noopener noreferrer" 
+                   class="bg-brand-400 text-black px-6 py-2 rounded-full font-medium hover:bg-brand-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 transition-all duration-300">
+                    立即預約
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=2069" alt="AJ grill 頂級牛排" class="w-full h-full object-cover object-center" />
-            <div class="absolute inset-0 bg-gradient-to-b from-dark-950/80 via-dark-900/60 to-dark-900/95"></div>
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="AJ grill 高質感牛排館氛圍" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#0A0A0A]"></div>
         </div>
 
-        <!-- Content -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20 reveal">
-            <div class="mb-6 h-8 flex items-center justify-center text-sm md:text-base tracking-widest text-brand-400 font-light">
-                <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
-            </div>
-            
-            <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl font-bold text-white mb-6 tracking-tight drop-shadow-2xl">
-                AJ grill
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center reveal">
+            <span class="text-brand-400 font-serif italic text-xl md:text-2xl mb-4 block">A Symphony of Fire & Flavor</span>
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-lg">
+                品味極致 <br /> <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-brand-500">肉食哲學</span>
             </h1>
             
-            <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-                精緻感與活潑氛圍的完美交織。<br class="hidden md:block">為您獻上高雅又誘人的頂級用餐體驗。
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://inline.app/booking/-NWLBspIg_JHQgHEfT9L:inline-live-3/-NWLBt0xI9RGuC_bLLTo" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-brand-500 text-dark-950 font-medium rounded-full hover:bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(212,175,55,0.3)]">
-                    預約品味
+            <!-- Typewriter Effect Container -->
+            <div class="h-8 md:h-10 mb-10 text-gray-300 font-light text-lg md:text-xl tracking-wide">
+                <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="https://inline.app/booking/-NWLBspIg_JHQgHEfT9L:inline-live-3/-NWLBt0xI9RGuC_bLLTo" target="_blank" rel="noopener noreferrer" 
+                   class="bg-brand-400 text-black px-8 py-3.5 rounded-full font-medium text-lg hover:bg-brand-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.5)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+                    <i data-lucide="calendar-check" class="w-5 h-5"></i> 預約專屬席位
                 </a>
-                <a href="#menu" class="w-full sm:w-auto px-8 py-4 border border-white/20 text-white font-medium rounded-full hover:bg-white/10 hover:border-white/50 transition-all duration-300 hover:-translate-y-1">
+                <a href="#menu" class="border border-white/30 text-white px-8 py-3.5 rounded-full font-medium text-lg hover:bg-white hover:text-black hover:-translate-y-1 transition-all duration-300">
                     探索菜單
                 </a>
             </div>
         </div>
 
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce text-white/50">
-            <i data-lucide="chevron-down" class="w-6 h-6"></i>
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-white/50"></i>
         </div>
     </section>
 
     <!-- Social Proof Section -->
-    <section class="py-12 bg-dark-900 border-b border-white/5 relative z-20">
+    <section class="py-12 border-b border-white/5 bg-brand-950 relative z-10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 reveal">
-                <div class="flex items-center gap-4">
-                    <div class="flex text-brand-500">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+                <div class="p-4 reveal">
+                    <div class="flex items-center justify-center gap-1 mb-2 text-brand-400">
                         <i data-lucide="star" class="w-6 h-6 fill-current"></i>
                         <i data-lucide="star" class="w-6 h-6 fill-current"></i>
                         <i data-lucide="star" class="w-6 h-6 fill-current"></i>
                         <i data-lucide="star" class="w-6 h-6 fill-current"></i>
                         <i data-lucide="star-half" class="w-6 h-6 fill-current"></i>
                     </div>
-                    <div class="text-3xl font-serif font-bold text-white">
-                        <span class="counter" data-target="4.6" data-decimals="1">0</span>
-                    </div>
+                    <div class="text-4xl font-serif font-bold text-white mb-1"><span class="counter" data-target="4.6">0</span></div>
+                    <div class="text-sm text-gray-400 uppercase tracking-widest">Google 饕客評分</div>
                 </div>
-                
-                <div class="h-px w-16 md:h-12 md:w-px bg-white/10"></div>
-                
-                <div class="text-center md:text-left">
-                    <p class="text-xl font-medium text-white mb-1">
-                        <span class="counter text-brand-500 font-bold" data-target="259">0</span> 則 Google 真實好評
-                    </p>
-                    <p class="text-gray-400 text-sm">台北大安區口碑首選，深受在地饕客推崇</p>
+                <div class="p-4 reveal delay-100">
+                    <div class="flex items-center justify-center gap-2 mb-2 text-brand-400">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-4xl font-serif font-bold text-white mb-1"><span class="counter" data-target="259">0</span>+</div>
+                    <div class="text-sm text-gray-400 uppercase tracking-widest">真實五星好評</div>
+                </div>
+                <div class="p-4 reveal delay-200">
+                    <div class="flex items-center justify-center gap-2 mb-2 text-brand-400">
+                        <i data-lucide="map-pin" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-xl font-serif font-bold text-white mb-2 mt-2">台北大安區</div>
+                    <div class="text-sm text-gray-400">安和路一段135巷10號</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About / Vibe Section -->
-    <section id="about" class="py-24 bg-dark-950">
+    <!-- About Concept -->
+    <section id="about" class="py-24 bg-[#0A0A0A] relative">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <i data-lucide="quote" class="w-12 h-12 text-brand-400/20 mx-auto mb-6"></i>
+            <h2 class="text-3xl md:text-5xl font-serif font-bold text-white mb-8">深沉溫暖，食指大動</h2>
+            <p class="text-gray-300 leading-relaxed text-lg md:text-xl font-light mb-8">
+                隱身於台北大安區的靜謐巷弄，AJ grill 以精緻的火候與頂級食材，為您獻上一場視覺與味覺的雙重饗宴。我們相信，最迷人的美味不僅來自於上乘的肉品，更來自於那份俏皮活潑、熱愛生活的心。
+            </p>
+            <p class="text-brand-400 font-serif italic text-2xl">
+                "Life happens, steak helps~"
+            </p>
+        </div>
+    </section>
+
+    <!-- Menu / Specialties Section -->
+    <section id="menu" class="py-24 bg-brand-950">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal relative group">
-                    <div class="absolute -inset-4 border border-brand-500/20 rounded-2xl transform translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
-                    <div class="relative rounded-2xl overflow-hidden aspect-[4/5]">
-                        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1974" alt="AJ grill 用餐環境" class="w-full h-full object-cover img-hover-zoom">
-                    </div>
-                </div>
-                
-                <div class="reveal delay-200">
-                    <h2 class="text-brand-500 font-medium tracking-widest text-sm uppercase mb-4">The Experience</h2>
-                    <h3 class="font-serif text-4xl md:text-5xl text-white font-bold mb-8 leading-tight">
-                        精緻與活潑的<br>完美交織
-                    </h3>
-                    <div class="space-y-6 text-gray-400 font-light leading-relaxed">
-                        <p>
-                            我們深信，頂級的餐飲體驗不該是拘謹的。在 AJ grill，您可以放鬆身心，享受高雅的環境與充滿生命力的美味料理。
-                        </p>
-                        <p>
-                            嚴選頂級食材，秉持職人精神的精準烹調，搭配我們精心設計的空間氛圍。無論是浪漫約會、商務聚餐還是好友相聚，這裡都能讓每一次的用餐成為難忘的回憶。
-                        </p>
-                    </div>
-                    
-                    <div class="mt-10 flex items-center gap-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full bg-dark-800 flex items-center justify-center text-brand-500 border border-white/5">
-                                <i data-lucide="utensils-crossed" class="w-5 h-5"></i>
-                            </div>
-                            <span class="text-sm font-medium text-white">頂級食材</span>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-full bg-dark-800 flex items-center justify-center text-brand-500 border border-white/5">
-                                <i data-lucide="wine" class="w-5 h-5"></i>
-                            </div>
-                            <span class="text-sm font-medium text-white">高雅氛圍</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu / Featured Dishes Section -->
-    <section id="menu" class="py-24 bg-dark-900 relative">
-        <!-- Decorative background element -->
-        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-500/5 to-transparent pointer-events-none"></div>
-        
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
-                <h2 class="text-brand-500 font-medium tracking-widest text-sm uppercase mb-4">Signature Dishes</h2>
-                <h3 class="font-serif text-4xl md:text-5xl text-white font-bold">經典推薦</h3>
-                <div class="w-24 h-1 bg-brand-500 mx-auto mt-6 rounded-full opacity-50"></div>
+                <span class="text-brand-400 font-medium tracking-widest uppercase text-sm mb-2 block">Signature Menu</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white">主廚精選特色</h2>
+                <div class="w-24 h-1 bg-brand-400 mx-auto mt-6 rounded-full"></div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Item 1 -->
-                <div class="group glass-card rounded-2xl overflow-hidden reveal">
-                    <div class="aspect-[4/3] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&q=80&w=2069" alt="T-骨紐約客" class="w-full h-full object-cover img-hover-zoom">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent opacity-60"></div>
+                <!-- Item 1: T-bone / Porterhouse -->
+                <div class="bg-[#121212] rounded-2xl overflow-hidden border border-white/5 group reveal hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(212,175,55,0.1)] transition-all duration-500 lg:col-span-2">
+                    <div class="flex flex-col md:flex-row h-full">
+                        <div class="w-full md:w-1/2 aspect-video md:aspect-auto img-hover-zoom">
+                            <img src="https://images.unsplash.com/photo-1594046243098-0fceea9d451e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="T-bone steak / Porterhouse steak" class="w-full h-full object-cover">
+                        </div>
+                        <div class="w-full md:w-1/2 p-8 flex flex-col justify-center">
+                            <h3 class="text-2xl font-serif font-bold text-white mb-2">T-bone steak / Porterhouse steak</h3>
+                            <p class="text-brand-400 italic mb-4">「Life happens, steak helps~」</p>
+                            <p class="text-gray-400 font-light leading-relaxed">
+                                一次滿足兩種渴望的極致享受。一邊是軟嫩細緻的菲力，一邊是油花豐富、嚼勁十足的紐約客，經過精準火候炙烤，焦香與肉汁在口中完美爆發。
+                            </p>
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <h4 class="font-serif text-2xl text-white font-bold mb-2 group-hover:text-brand-400 transition-colors">T-骨紐約客</h4>
-                        <p class="text-brand-500 text-sm font-medium italic mb-4">"Life happens, steak helps~"</p>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            享受骨邊肉的極致香氣與軟嫩口感，霸氣上桌，滿足您對頂級牛排的所有渴望。
+                </div>
+
+                <!-- Item 2: 乾式熟成紐約客 -->
+                <div class="bg-[#121212] rounded-2xl overflow-hidden border border-white/5 group reveal delay-100 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(212,175,55,0.1)] transition-all duration-500">
+                    <div class="aspect-video img-hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="乾式熟成紐約客" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif font-bold text-white mb-2">乾式熟成紐約客</h3>
+                        <p class="text-brand-400 italic text-sm mb-3">「時間是最好的調味料，歲月淬鍊出的濃郁肉香。」</p>
+                        <p class="text-gray-400 font-light text-sm leading-relaxed">
+                            經過嚴格控溫控濕的乾式熟成工序，肉質更加緊實，風味濃縮轉化出迷人的堅果與起司香氣，為懂得品味的您專屬打造。
                         </p>
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="group glass-card rounded-2xl overflow-hidden reveal delay-100">
-                    <div class="aspect-[4/3] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&q=80&w=2070" alt="乾式熟成紐約客" class="w-full h-full object-cover img-hover-zoom">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent opacity-60"></div>
+                <!-- Item 3: 牛肉塔塔 -->
+                <div class="bg-[#121212] rounded-2xl overflow-hidden border border-white/5 group reveal hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(212,175,55,0.1)] transition-all duration-500">
+                    <div class="aspect-video img-hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1626844131082-256783844137?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="牛肉塔塔" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-8">
-                        <h4 class="font-serif text-2xl text-white font-bold mb-2 group-hover:text-brand-400 transition-colors">乾式熟成紐約客</h4>
-                        <p class="text-brand-500 text-sm font-medium italic mb-4">"Time is the best seasoning. 歲月靜好，熟成更美。"</p>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            經過時間的淬鍊，肉質更加緊實，濃郁的堅果與奶油風味在舌尖完美綻放。
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif font-bold text-white mb-2">牛肉塔塔 Beef Tartare</h3>
+                        <p class="text-brand-400 italic text-sm mb-3">「生而迷人，野性與優雅的完美交織。」</p>
+                        <p class="text-gray-400 font-light text-sm leading-relaxed">
+                            嚴選鮮嫩生牛肉，拌入特製辛香料與蛋黃，滑順口感中帶著一絲微酸微辣的俏皮，喚醒味蕾的初戀滋味。
                         </p>
                     </div>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="group glass-card rounded-2xl overflow-hidden reveal delay-200">
-                    <div class="aspect-[4/3] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1626844131082-256783844137?auto=format&fit=crop&q=80&w=2070" alt="牛肉塔塔" class="w-full h-full object-cover img-hover-zoom">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent opacity-60"></div>
+                <!-- Item 4: celebread酸種麵包 -->
+                <div class="bg-[#121212] rounded-2xl overflow-hidden border border-white/5 group reveal delay-100 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(212,175,55,0.1)] transition-all duration-500">
+                    <div class="aspect-video img-hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="celebread酸種麵包" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-8">
-                        <h4 class="font-serif text-2xl text-white font-bold mb-2 group-hover:text-brand-400 transition-colors">牛肉塔塔</h4>
-                        <p class="text-brand-500 text-sm font-medium italic mb-4">"A little raw, a lot of wow. 鮮嫩欲滴的初見面。"</p>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            精選生牛肉搭配獨家調味，口感滑順豐富，是一道充滿驚喜的開胃前菜。
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif font-bold text-white mb-2">celebread酸種麵包</h3>
+                        <p class="text-brand-400 italic text-sm mb-3">「外酥內韌，沾上肉汁簡直是碳水教徒的救贖。」</p>
+                        <p class="text-gray-400 font-light text-sm leading-relaxed">
+                            天然發酵帶來的獨特微酸香氣，外皮酥脆、內裡充滿彈性的氣孔。單吃美味，搭配牛排肉汁更是絕配。
                         </p>
                     </div>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="group glass-card rounded-2xl overflow-hidden reveal lg:col-start-1 lg:col-span-1 md:col-span-2 lg:ml-auto lg:w-full">
-                    <div class="aspect-[4/3] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1585478259715-876acc5be8eb?auto=format&fit=crop&q=80&w=2070" alt="celebread酸種麵包" class="w-full h-full object-cover img-hover-zoom">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent opacity-60"></div>
+                <!-- Item 5: 佛手柑雪酪 -->
+                <div class="bg-[#121212] rounded-2xl overflow-hidden border border-white/5 group reveal delay-200 hover:-translate-y-2 hover:shadow-[0_10px_30px_rgba(212,175,55,0.1)] transition-all duration-500">
+                    <div class="aspect-video img-hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1563805042-7684c8a9e9cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="佛手柑雪酪" class="w-full h-full object-cover">
                     </div>
-                    <div class="p-8">
-                        <h4 class="font-serif text-2xl text-white font-bold mb-2 group-hover:text-brand-400 transition-colors">celebread酸種麵包</h4>
-                        <p class="text-brand-500 text-sm font-medium italic mb-4">"Crusty outside, soft inside, just like a good hug."</p>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            外層酥脆，內裡柔軟帶有天然微酸麥香，每一口都是溫暖的擁抱。
+                    <div class="p-6">
+                        <h3 class="text-xl font-serif font-bold text-white mb-2">佛手柑雪酪</h3>
+                        <p class="text-brand-400 italic text-sm mb-3">「清新的酸甜，是這場肉食派對最溫柔的句點。」</p>
+                        <p class="text-gray-400 font-light text-sm leading-relaxed">
+                            帶有獨特柑橘香氣的佛手柑製成冰涼雪酪，酸甜解膩，一秒洗滌靈魂，為完美的一餐畫下優雅休止符。
                         </p>
                     </div>
                 </div>
 
-                <!-- Item 5 -->
-                <div class="group glass-card rounded-2xl overflow-hidden reveal delay-100 lg:col-start-2 lg:col-span-1 md:col-span-2">
-                    <div class="aspect-[4/3] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1563805042-7684c8e9e533?auto=format&fit=crop&q=80&w=2070" alt="佛手柑雪酪" class="w-full h-full object-cover img-hover-zoom">
-                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent opacity-60"></div>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="font-serif text-2xl text-white font-bold mb-2 group-hover:text-brand-400 transition-colors">佛手柑雪酪</h4>
-                        <p class="text-brand-500 text-sm font-medium italic mb-4">"Sweet, sour, and perfectly refreshing."</p>
-                        <p class="text-gray-400 text-sm leading-relaxed">
-                            清新的柑橘香氣與冰涼口感，酸甜適中，為美好的一餐劃上完美的休止符。
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div class="mt-16 text-center reveal">
-                <a href="https://inline.app/booking/-NWLBspIg_JHQgHEfT9L:inline-live-3/-NWLBt0xI9RGuC_bLLTo" target="_blank" class="inline-flex items-center text-white hover:text-brand-500 font-medium transition-colors group">
-                    查看完整菜單與預約
-                    <i data-lucide="arrow-right" class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Location & Reservation Section -->
-    <section id="location" class="py-24 bg-dark-950 relative">
+    <!-- Instagram / Gallery Section -->
+    <section id="gallery" class="py-24 bg-[#0A0A0A]">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="glass-card rounded-3xl overflow-hidden shadow-2xl reveal">
-                <div class="grid grid-cols-1 lg:grid-cols-2">
-                    
-                    <!-- Info Side -->
-                    <div class="p-10 md:p-16 flex flex-col justify-center">
-                        <h2 class="font-serif text-3xl md:text-4xl text-white font-bold mb-8">期待您的光臨</h2>
-                        
-                        <div class="space-y-8">
-                            <div class="flex items-start gap-4 group">
-                                <div class="w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center text-brand-500 shrink-0 group-hover:bg-brand-500 group-hover:text-dark-950 transition-colors">
-                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-medium mb-1">餐廳位置</h4>
-                                    <p class="text-gray-400 leading-relaxed">106063臺北市大安區<br>安和路一段135巷10號</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start gap-4 group">
-                                <div class="w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center text-brand-500 shrink-0 group-hover:bg-brand-500 group-hover:text-dark-950 transition-colors">
-                                    <i data-lucide="clock" class="w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-medium mb-1">營業時間</h4>
-                                    <p class="text-gray-400">請透過預約系統查看最新可訂位時段</p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-4 group">
-                                <div class="w-10 h-10 rounded-full bg-dark-800 flex items-center justify-center text-brand-500 shrink-0 group-hover:bg-brand-500 group-hover:text-dark-950 transition-colors">
-                                    <i data-lucide="instagram" class="w-5 h-5"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-white font-medium mb-1">社群動態</h4>
-                                    <a href="https://www.instagram.com/ajgrill/" target="_blank" class="text-brand-400 hover:text-brand-300 transition-colors underline underline-offset-4">@ajgrill</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-12 pt-8 border-t border-white/10">
-                            <a href="https://inline.app/booking/-NWLBspIg_JHQgHEfT9L:inline-live-3/-NWLBt0xI9RGuC_bLLTo" target="_blank" class="w-full flex items-center justify-center px-8 py-4 bg-brand-500 text-dark-950 font-bold rounded-xl hover:bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(212,175,55,0.3)] text-lg">
-                                <i data-lucide="calendar-check" class="w-5 h-5 mr-2"></i>
-                                立即線上訂位
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Map Side -->
-                    <div class="h-[400px] lg:h-auto w-full relative bg-dark-800">
-                        <iframe 
-                            src="https://maps.google.com/maps?q=AJ%20grill%20臺北市大安區安和路一段135巷10號&t=&z=16&ie=UTF8&iwloc=&output=embed" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0; filter: grayscale(80%) invert(90%) contrast(1.2);" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade"
-                            class="absolute inset-0">
-                        </iframe>
-                        <!-- Overlay to make map match dark theme better while keeping it interactive -->
-                        <div class="absolute inset-0 pointer-events-none bg-dark-900/20 mix-blend-multiply"></div>
-                    </div>
-                    
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
+                <div>
+                    <span class="text-brand-400 font-medium tracking-widest uppercase text-sm mb-2 block">Follow Us</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-white">探索更多 AJ grill 的日常</h2>
                 </div>
+                <a href="https://www.instagram.com/ajgrill/" target="_blank" rel="noopener noreferrer" 
+                   class="inline-flex items-center gap-2 text-white hover:text-brand-400 transition-colors duration-300 mt-4 md:mt-0 pb-1 border-b border-white/30 hover:border-brand-400">
+                    <i data-lucide="instagram" class="w-5 h-5"></i> @ajgrill
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <a href="https://www.instagram.com/ajgrill/" target="_blank" class="block aspect-square overflow-hidden group rounded-lg reveal">
+                    <div class="relative w-full h-full">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Restaurant interior" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/ajgrill/" target="_blank" class="block aspect-square overflow-hidden group rounded-lg reveal delay-100">
+                    <div class="relative w-full h-full">
+                        <img src="https://images.unsplash.com/photo-1600891964943-62b474246872?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Steak preparation" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/ajgrill/" target="_blank" class="block aspect-square overflow-hidden group rounded-lg reveal delay-200">
+                    <div class="relative w-full h-full">
+                        <img src="https://images.unsplash.com/photo-1572448862527-d3c904757de6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dining vibe" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/ajgrill/" target="_blank" class="block aspect-square overflow-hidden group rounded-lg reveal delay-300">
+                    <div class="relative w-full h-full">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Fine dining plating" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <i data-lucide="instagram" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark-950 border-t border-white/5 py-12">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col items-center">
-            <span class="font-serif text-2xl font-bold text-white mb-6">AJ grill</span>
-            <div class="flex space-x-6 mb-8">
-                <a href="https://www.instagram.com/ajgrill/" target="_blank" class="text-gray-400 hover:text-brand-500 transition-colors">
-                    <span class="sr-only">Instagram</span>
-                    <i data-lucide="instagram" class="w-6 h-6"></i>
-                </a>
+    <footer class="bg-black border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-2">
+                    <a href="#" class="flex items-center gap-2 mb-6">
+                        <i data-lucide="flame" class="w-8 h-8 text-brand-400"></i>
+                        <span class="font-serif text-3xl font-bold tracking-wider text-white">AJ grill</span>
+                    </a>
+                    <p class="text-gray-400 font-light leading-relaxed mb-6 max-w-md">
+                        深沉而溫暖的色調，精緻的字體與線條，為您營造高質感且令人食指大動的用餐氛圍。來場俏皮活潑的肉食派對吧！
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.instagram.com/ajgrill/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-brand-400 hover:text-black transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-serif font-bold text-xl mb-6">聯絡我們</h4>
+                    <ul class="space-y-4 text-gray-400 font-light text-sm">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-400 shrink-0 mt-0.5"></i>
+                            <a href="https://maps.google.com/?q=106063臺北市大安區安和路一段135巷10號" target="_blank" class="hover:text-brand-400 transition-colors">
+                                106063<br>臺北市大安區<br>安和路一段135巷10號
+                            </a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="star" class="w-5 h-5 text-brand-400 shrink-0"></i>
+                            <span>Google 評分 4.6 / 259 則評論</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-serif font-bold text-xl mb-6">預約用餐</h4>
+                    <p class="text-gray-400 font-light text-sm mb-6">
+                        為確保您的用餐體驗，建議提前線上預約專屬席位。
+                    </p>
+                    <a href="https://inline.app/booking/-NWLBspIg_JHQgHEfT9L:inline-live-3/-NWLBt0xI9RGuC_bLLTo" target="_blank" rel="noopener noreferrer" 
+                       class="inline-block border border-brand-400 text-brand-400 px-6 py-2.5 rounded-full text-sm font-medium hover:bg-brand-400 hover:text-black transition-all duration-300">
+                        前往 Inline 預約
+                    </a>
+                </div>
             </div>
-            <div class="text-center text-gray-500 text-sm">
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-light">
                 <p>&copy; 2026 AJ grill. All rights reserved.</p>
-                <p class="mt-2">Made by Webomate</p>
+                <p>Made by <span class="text-brand-400 font-medium">Webomate</span></p>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>
-        // Initialize Lucide Icons
+        // Initialize Icons
         lucide.createIcons();
 
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-
         // Typewriter Effect
-        const text = "位於台北大安區，深受在地饕客喜愛的頂級餐廳。";
-        const typeWriterElement = document.getElementById('typewriter-text');
-        let i = 0;
-        
+        const textToType = "位於台北大安區，深受在地饕客喜愛的頂級餐廳。";
+        const typewriterElement = document.getElementById('typewriter-text');
+        let typeIndex = 0;
+
         function typeWriter() {
-            if (i < text.length) {
-                typeWriterElement.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 120);
+            if (typeIndex < textToType.length) {
+                typewriterElement.innerHTML += textToType.charAt(typeIndex);
+                typeIndex++;
+                setTimeout(typeWriter, 100); // typing speed
             }
         }
         
-        // Start typewriter after a short delay
-        setTimeout(typeWriter, 800);
+        // Start typing after a short delay
+        setTimeout(typeWriter, 500);
 
-        // Scroll Reveal & Counter Animation Observer
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Add active class for reveal animation
                     entry.target.classList.add('active');
-                    
-                    // Trigger counters if present
-                    const counters = entry.target.querySelectorAll('.counter');
-                    counters.forEach(counter => {
-                        if (!counter.classList.contains('counted')) {
-                            startCounter(counter);
-                            counter.classList.add('counted');
-                        }
-                    });
-                    
-                    // Unobserve after animating
-                    observer.unobserve(entry.target);
+                    // Optional: Stop observing once revealed
+                    // observer.unobserve(entry.target); 
                 }
             });
-        }, observerOptions);
+        };
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
 
-        // Counter Function
-        function startCounter(counter) {
-            const target = parseFloat(counter.getAttribute('data-target'));
-            if(target === 0) {
-                counter.parentElement.style.display = 'none';
-                return;
-            }
-            
-            const duration = 2000; // ms
-            const stepTime = 20;
-            const steps = duration / stepTime;
-            const increment = target / steps;
-            let current = 0;
-            
-            const decimalsAttr = counter.getAttribute('data-decimals');
-            const decimals = decimalsAttr ? parseInt(decimalsAttr) : 0;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    counter.innerText = target.toFixed(decimals);
-                    clearInterval(timer);
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const targetStr = counter.getAttribute('data-target');
+                const isFloat = targetStr.includes('.');
+                const target = parseFloat(targetStr);
+                const count = parseFloat(counter.innerText);
+                
+                // Calculate increment
+                const inc = target / speed;
+
+                if (count < target) {
+                    if (isFloat) {
+                        counter.innerText = (count + inc).toFixed(1);
+                    } else {
+                        counter.innerText = Math.ceil(count + inc);
+                    }
+                    setTimeout(() => animateCounters(), 1);
                 } else {
-                    counter.innerText = current.toFixed(decimals);
+                    counter.innerText = targetStr;
                 }
-            }, stepTime);
+            });
+        };
+
+        // Trigger counter animation when stats section is in view
+        const statsSection = document.querySelector('.counter').closest('section');
+        let counterAnimated = false;
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting && !counterAnimated) {
+                animateCounters();
+                counterAnimated = true;
+            }
+        }, { threshold: 0.5 });
+        
+        if(statsSection) {
+            statsObserver.observe(statsSection);
         }
 
-        // Navbar Blur Effect on Scroll
-        const nav = document.querySelector('nav');
+        // Navbar background on scroll
+        const navbar = document.querySelector('nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                nav.classList.add('shadow-lg');
-                nav.style.background = 'rgba(10, 10, 10, 0.9)';
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.style.background = 'rgba(10, 10, 10, 0.95)';
             } else {
-                nav.classList.remove('shadow-lg');
-                nav.style.background = 'rgba(10, 10, 10, 0.7)';
+                navbar.classList.remove('shadow-lg');
+                navbar.style.background = 'rgba(10, 10, 10, 0.8)';
             }
         });
     </script>
