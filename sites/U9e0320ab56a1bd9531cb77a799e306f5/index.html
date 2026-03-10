@@ -3,51 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>大牛牛排館 DA NIU STEAKHOUSE | 現代質感・新鮮肉品</title>
+    <title>愛轉角咖啡廳 | 台北大安區浪漫約會秘境</title>
+    <meta name="description" content="隱身台北大安區的浪漫粉藍色系咖啡廳。自家烘焙巴西咖啡豆、低糖高纖手工甜點，希望來店情侶都能感受幸福的溫馨空間。">
     
-    <!-- Google Fonts: Noto Serif TC (Headings) & Noto Sans TC (Body) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Tailwind Config for Quiet Luxury / Modern Steakhouse -->
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config for Custom Brand Colors (Romantic Pink & Blue) -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans TC', 'sans-serif'],
+                        heading: ['Urbanist', 'sans-serif'],
+                    },
                     colors: {
                         brand: {
-                            dark: '#0A0A0A',      // 深邃黑底
-                            darker: '#050505',
-                            light: '#F8FAFC',     // 質感白
-                            accent: '#E63946',    // 新鮮肉品紅 (點綴)
-                            gold: '#D4AF37',      // 奢華金
-                            gray: '#27272A'       // 卡片底色
+                            pink: '#F9A8D4', // Tailwind pink-300
+                            pinkLight: '#FDF2F8', // Tailwind pink-50
+                            blue: '#93C5FD', // Tailwind blue-300
+                            blueDark: '#1E3A8A', // Tailwind blue-900
+                            dark: '#1F2937',
                         }
                     },
-                    fontFamily: {
-                        serif: ['"Noto Serif TC"', 'serif'],
-                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
                     }
                 }
             }
         }
     </script>
 
-    <!-- Custom CSS for Animations & Utilities -->
     <style>
-        body {
-            background-color: #0A0A0A;
-            color: #F8FAFC;
+        /* Glassmorphism utility */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
         
-        /* Scroll Reveal Classes */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(249, 168, 212, 0.2);
+            box-shadow: 0 10px 30px -10px rgba(147, 197, 253, 0.3);
+        }
+
+        /* Scroll Reveal Initial State */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
         .reveal.active {
@@ -56,50 +82,48 @@
         }
 
         /* Typewriter Cursor */
-        .cursor::after {
+        .typewriter-text::after {
             content: '|';
             animation: blink 1s step-end infinite;
+            color: #F9A8D4;
         }
         @keyframes blink {
-            0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        /* Subtle Image Zoom on Hover */
-        .img-zoom-container {
-            overflow: hidden;
+        /* Custom Selection */
+        ::selection {
+            background-color: #F9A8D4;
+            color: white;
         }
-        .img-zoom-container img {
-            transition: transform 0.7s ease;
-        }
-        .img-zoom-container:hover img {
-            transform: scale(1.05);
+        
+        /* Soft gradient background for sections */
+        .bg-gradient-soft {
+            background: linear-gradient(135deg, #FDF2F8 0%, #EFF6FF 100%);
         }
     </style>
 </head>
-<body class="antialiased font-sans flex flex-col min-h-screen selection:bg-brand-accent selection:text-white">
+<body class="antialiased text-gray-800 bg-brand-pinkLight overflow-x-hidden">
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-brand-dark/80 border-b border-white/10" id="navbar">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group">
-                <!-- Logo -->
-                <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260310113129_0.png" 
-                     alt="大牛牛排館 Logo" 
-                     class="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                     onerror="this.style.display='none'">
-                <div class="flex flex-col">
-                    <span class="font-serif font-bold text-xl tracking-wider text-white">大牛牛排館</span>
-                    <span class="text-[10px] tracking-[0.2em] text-gray-400 uppercase">Da Niu Steakhouse</span>
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-pink to-brand-blue flex items-center justify-center text-white shadow-md group-hover:rotate-12 transition-transform duration-300">
+                    <i data-lucide="coffee" class="w-5 h-5"></i>
                 </div>
+                <span class="font-heading font-bold text-xl tracking-wider text-brand-dark group-hover:text-brand-pink transition-colors duration-300">愛轉角咖啡廳</span>
             </a>
-            
-            <div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-widest">
-                <a href="#about" class="text-gray-300 hover:text-brand-accent transition-colors duration-300">品牌精神</a>
-                <a href="#cuts" class="text-gray-300 hover:text-brand-accent transition-colors duration-300">部位解析</a>
-                <a href="#contact" class="text-gray-300 hover:text-brand-accent transition-colors duration-300">營業資訊</a>
-                <a href="#contact" class="px-6 py-2 border border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-white transition-all duration-300 rounded-full">
-                    聯絡我們
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-gray-600 hover:text-brand-pink font-medium transition-colors duration-300">品牌故事</a>
+                <a href="#menu" class="text-gray-600 hover:text-brand-blue font-medium transition-colors duration-300">甜蜜菜單</a>
+                <a href="#location" class="text-gray-600 hover:text-brand-pink font-medium transition-colors duration-300">交通資訊</a>
+                <a href="tel:019393921" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-brand-pink to-brand-blue text-white font-medium hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2">
+                    <i data-lucide="phone" class="w-4 h-4"></i>
+                    <span>預約浪漫</span>
                 </a>
             </div>
         </div>
@@ -107,329 +131,385 @@
 
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
-        <!-- Background Image with Dark Overlay -->
+        <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=2070&auto=format&fit=crop" 
-                 alt="頂級牛排" 
-                 class="w-full h-full object-cover object-center">
-            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/60 to-brand-dark"></div>
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="愛轉角咖啡廳溫馨內裝" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
 
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20 reveal active">
-            <!-- Typewriter Effect -->
-            <div class="mb-6 h-6">
-                <span id="typewriter" class="text-brand-accent font-medium tracking-[0.2em] text-sm md:text-base cursor"></span>
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-16">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-sm font-medium mb-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <i data-lucide="heart" class="w-4 h-4 text-brand-pink fill-brand-pink"></i>
+                <span class="typewriter-text" id="typewriter"></span>
             </div>
             
-            <h1 class="font-serif text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-                品味純粹<span class="text-brand-accent">.</span><br>
-                <span class="text-3xl md:text-5xl text-gray-300 font-light mt-4 block">現代牛排工藝</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight animate-fade-in-up font-heading" style="animation-delay: 0.4s;">
+                遇見專屬你們的<br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-blue">溫馨角落</span>
             </h1>
             
-            <p class="text-gray-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-light tracking-wide">
-                堅持嚴選頂級新鮮肉品，以現代烹調手法呈現最純粹的美味，為您帶來一場兼具質感與滿足的牛排饗宴。
+            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light leading-relaxed animate-fade-in-up max-w-2xl mx-auto" style="animation-delay: 0.6s;">
+                「希望來店的情侶都能幸福。」<br>
+                品嚐自家烘焙巴西頂級咖啡，佐以低糖高纖手工甜點，在粉藍交織的夢幻空間裡，刻劃愛的記憶。
             </p>
             
-            <a href="#about" class="inline-flex items-center gap-2 text-white border-b border-brand-accent pb-1 hover:text-brand-accent transition-colors duration-300">
-                <span>探索美味</span>
-                <i data-lucide="arrow-down" class="w-4 h-4"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Social Proof Section (Data Injection) -->
-    <section class="py-16 bg-brand-darker border-y border-white/5 relative z-20">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center divide-y md:divide-y-0 md:divide-x divide-white/10 text-center">
-                
-                <div class="reveal py-4">
-                    <div class="flex items-center justify-center gap-1 text-brand-gold mb-2">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    </div>
-                    <p class="text-gray-400 text-sm tracking-widest">Google Maps 4.0 顆星高分評價</p>
-                </div>
-
-                <div class="reveal py-4 delay-100">
-                    <h3 class="font-serif text-4xl font-bold text-white mb-1">
-                        <span class="counter" data-target="693">0</span>+
-                    </h3>
-                    <p class="text-gray-400 text-sm tracking-widest">在地饕客真實好評推薦</p>
-                </div>
-
-                <div class="reveal py-4 delay-200">
-                    <p class="text-gray-300 font-medium leading-relaxed max-w-xs mx-auto">
-                        "位於台北大同區，深獲數百位在地饕客推崇的頂級新鮮肉品專賣店。"
-                    </p>
-                </div>
-
+            <div class="animate-fade-in-up" style="animation-delay: 0.8s;">
+                <a href="#menu" class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-white text-brand-dark font-bold hover:bg-brand-pink hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(249,168,212,0.4)] hover:shadow-[0_0_30px_rgba(249,168,212,0.6)] hover:-translate-y-1">
+                    探索甜蜜菜單
+                    <i data-lucide="arrow-down" class="ml-2 w-5 h-5"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Brand Spirit / About -->
-    <section id="about" class="py-24 bg-brand-dark relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal img-zoom-container rounded-2xl overflow-hidden shadow-2xl shadow-black/50 aspect-[4/5] lg:aspect-auto lg:h-[600px]">
-                    <img src="https://images.unsplash.com/photo-1655195671040-0f2ec432b005?q=80&w=2070&auto=format&fit=crop" 
-                         alt="現代烹調環境" 
-                         class="w-full h-full object-cover">
-                </div>
-                
-                <div class="reveal delay-200">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="h-[1px] w-12 bg-brand-accent"></div>
-                        <span class="text-brand-accent tracking-[0.2em] text-sm font-medium uppercase">Our Philosophy</span>
-                    </div>
-                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
-                        對新鮮的<br>極致追求
-                    </h2>
-                    <p class="text-gray-400 leading-relaxed mb-8 text-lg font-light">
-                        大牛牛排館深知，一塊完美的牛排，靈魂在於「新鮮」。我們捨棄過度調味，專注於肉品本身的品質與熟成狀態。透過現代精準的控溫烹調技術，完美鎖住肉汁，讓每一口都能嚐到牛肉最原始、最豐滿的鮮甜。
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-6 mt-12">
-                        <div class="border border-white/10 p-6 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
-                            <i data-lucide="beef" class="w-8 h-8 text-brand-accent mb-4"></i>
-                            <h4 class="text-white font-medium mb-2 text-lg">嚴選原肉</h4>
-                            <p class="text-sm text-gray-500">拒絕組合肉，堅持使用100%頂級原塊新鮮牛肉。</p>
-                        </div>
-                        <div class="border border-white/10 p-6 rounded-xl bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
-                            <i data-lucide="flame" class="w-8 h-8 text-brand-accent mb-4"></i>
-                            <h4 class="text-white font-medium mb-2 text-lg">精準火候</h4>
-                            <p class="text-sm text-gray-500">現代化高溫炙烤，外層焦香內裡柔嫩多汁。</p>
-                        </div>
+    <!-- Social Proof Section -->
+    <section class="py-12 bg-white border-b border-gray-100 relative z-20 -mt-6 mx-4 md:mx-auto max-w-5xl rounded-2xl shadow-xl glass-card reveal">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-6">
+            <div class="text-center">
+                <p class="text-gray-500 text-sm mb-1">Google Maps 真實評價</p>
+                <div class="flex items-center justify-center gap-2">
+                    <span class="text-4xl font-bold text-brand-dark counter" data-target="4.8">0</span>
+                    <div class="flex text-yellow-400">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
                     </div>
                 </div>
             </div>
+            
+            <div class="w-px h-12 bg-gray-200 hidden md:block"></div>
+            
+            <div class="text-center">
+                <p class="text-gray-500 text-sm mb-1">見證幸福時刻</p>
+                <div class="flex items-center justify-center gap-2">
+                    <span class="text-4xl font-bold text-brand-dark counter" data-target="212">0</span>
+                    <span class="text-xl font-medium text-gray-600">+ 則浪漫好評</span>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <p class="text-brand-blueDark font-medium bg-blue-50 inline-block px-4 py-1 rounded-full text-sm">
+                「隱身台北大安區辛亥路巷弄，獲得網友高分推崇的約會秘境。」
+            </p>
         </div>
     </section>
 
-    <!-- Beef Cuts Section (Special Request) -->
-    <section id="cuts" class="py-24 bg-brand-darker relative border-t border-white/5">
-        <!-- Decorative background element -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
-            <img src="https://images.unsplash.com/photo-1551028150-64b9f398f678?q=80&w=1887&auto=format&fit=crop" alt="Texture" class="w-full h-full object-cover">
-        </div>
-
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
+    <!-- About & Features Section -->
+    <section id="about" class="py-24 bg-gradient-soft">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
-                <span class="text-brand-accent tracking-[0.2em] text-sm font-medium uppercase mb-4 block">Know Your Meat</span>
-                <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">牛隻部位解析</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto font-light">
-                    了解不同部位的肉質特性，能讓您在品嚐大牛牛排時，獲得更深層次的味蕾享受。我們為您精選三大經典部位：
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">用心烘焙的幸福滋味</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-brand-pink to-brand-blue mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">
+                    如同吉卜力動畫中的溫馨小店，我們堅持每一個細節，只為給您與摯愛最純粹的享受。
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Cut 1 -->
-                <div class="reveal group bg-brand-gray rounded-2xl p-8 border border-white/5 hover:border-brand-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-accent/10">
-                    <div class="w-16 h-16 rounded-full bg-brand-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                        <span class="font-serif text-2xl text-brand-accent font-bold">01</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal group border border-transparent hover:border-brand-pink/30">
+                    <div class="w-16 h-16 rounded-2xl bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-brand-pink transition-colors duration-300">
+                        <i data-lucide="coffee" class="w-8 h-8 text-brand-pink group-hover:text-white transition-colors duration-300"></i>
                     </div>
-                    <h3 class="text-2xl font-serif text-white mb-2">肋眼 <span class="text-sm text-gray-500 font-sans ml-2">Ribeye</span></h3>
-                    <div class="h-[1px] w-full bg-white/10 my-4 group-hover:bg-brand-accent/30 transition-colors duration-500"></div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        取自牛隻肋脊部，運動量少。油花分布均勻如大理石紋，中心通常帶有一塊明顯的油脂。
+                    <h3 class="text-xl font-bold text-brand-dark mb-3">自家烘焙巴西豆</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        嚴選來自巴西的頂級咖啡豆，由職人精心烘焙。帶有堅果與巧克力的溫潤香氣，口感醇厚，完美詮釋愛情的濃郁。
                     </p>
-                    <ul class="text-sm text-gray-300 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> 口感：軟嫩、肉汁豐富</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> 風味：油脂香氣濃郁</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> 推薦熟度：5分熟 (Medium)</li>
-                    </ul>
                 </div>
 
-                <!-- Cut 2 -->
-                <div class="reveal delay-100 group bg-brand-gray rounded-2xl p-8 border border-white/5 hover:border-brand-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-accent/10">
-                    <div class="w-16 h-16 rounded-full bg-brand-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                        <span class="font-serif text-2xl text-brand-accent font-bold">02</span>
+                <!-- Feature 2 -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal group border border-transparent hover:border-brand-blue/30">
+                    <div class="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center mb-6 group-hover:bg-brand-blue transition-colors duration-300">
+                        <i data-lucide="cake-slice" class="w-8 h-8 text-brand-blue group-hover:text-white transition-colors duration-300"></i>
                     </div>
-                    <h3 class="text-2xl font-serif text-white mb-2">菲力 <span class="text-sm text-gray-500 font-sans ml-2">Tenderloin</span></h3>
-                    <div class="h-[1px] w-full bg-white/10 my-4 group-hover:bg-brand-accent/30 transition-colors duration-500"></div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        取自牛隻腰內肉，是整頭牛運動量極少的部位，也是牛肉中最柔嫩的一塊，脂肪含量極低。
+                    <h3 class="text-xl font-bold text-brand-dark mb-3">低糖高纖手工甜點</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        為愛美也愛健康的您量身打造。堅持純手工製作，採用低糖高纖配方，讓您與另一半在享受甜蜜時，毫無負擔。
                     </p>
-                    <ul class="text-sm text-gray-300 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> 口感：極致柔嫩、入口即化</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> 風味：清淡優雅的純粹肉香</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> 推薦熟度：3分熟 (Medium Rare)</li>
-                    </ul>
                 </div>
 
-                <!-- Cut 3 -->
-                <div class="reveal delay-200 group bg-brand-gray rounded-2xl p-8 border border-white/5 hover:border-brand-accent/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-accent/10">
-                    <div class="w-16 h-16 rounded-full bg-brand-dark flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                        <span class="font-serif text-2xl text-brand-accent font-bold">03</span>
+                <!-- Feature 3 -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 reveal group border border-transparent hover:border-brand-pink/30">
+                    <div class="w-16 h-16 rounded-2xl bg-pink-50 flex items-center justify-center mb-6 group-hover:bg-brand-pink transition-colors duration-300">
+                        <i data-lucide="sparkles" class="w-8 h-8 text-brand-pink group-hover:text-white transition-colors duration-300"></i>
                     </div>
-                    <h3 class="text-2xl font-serif text-white mb-2">紐約客 <span class="text-sm text-gray-500 font-sans ml-2">Striploin</span></h3>
-                    <div class="h-[1px] w-full bg-white/10 my-4 group-hover:bg-brand-accent/30 transition-colors duration-500"></div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        取自前腰脊肉，運動量較大。肉質緊實，油花均勻分布於邊緣，帶有一條明顯的筋膜。
+                    <h3 class="text-xl font-bold text-brand-dark mb-3">每日隱藏版驚喜</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        生活需要一點儀式感！主廚每日運用新鮮食材，創作限量隱藏版甜點。點餐時不妨問問我們，為今天的約會增添驚喜。
                     </p>
-                    <ul class="text-sm text-gray-300 space-y-2">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> 口感：略帶嚼勁、肉感十足</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> 風味：牛肉風味醇厚強烈</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-accent"></i> 推薦熟度：5分熟 (Medium)</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact Info -->
-    <footer id="contact" class="bg-brand-dark pt-24 pb-12 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-                
-                <!-- Brand Info -->
-                <div class="lg:col-span-2 reveal">
-                    <div class="flex items-center gap-3 mb-6">
-                        <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260310113129_0.png" 
-                             alt="大牛牛排館 Logo" 
-                             class="h-10 w-auto grayscale opacity-80"
-                             onerror="this.style.display='none'">
-                        <span class="font-serif font-bold text-2xl text-white">大牛牛排館</span>
-                    </div>
-                    <p class="text-gray-400 max-w-sm leading-relaxed mb-8">
-                        隱身於台北的質感空間，我們以最純粹的現代烹調手法，向每一塊頂級新鮮肉品致敬。
-                    </p>
-                </div>
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-white relative">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-pinkLight rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-blue-50 rounded-full blur-3xl opacity-50 translate-y-1/2 -translate-x-1/2"></div>
 
-                <!-- Contact Info -->
-                <div class="reveal delay-100">
-                    <h4 class="text-white font-medium mb-6 tracking-widest uppercase text-sm">聯絡資訊</h4>
-                    <ul class="space-y-4 text-gray-400">
-                        <li class="flex items-start gap-3">
-                            <i data-lucide="map-pin" class="w-5 h-5 text-brand-accent shrink-0 mt-0.5"></i>
-                            <span>103臺北市大同區大龍街266號</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="phone" class="w-5 h-5 text-brand-accent shrink-0"></i>
-                            <span class="font-serif text-lg tracking-wider">0912-345-678</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Business Hours -->
-                <div class="reveal delay-200">
-                    <h4 class="text-white font-medium mb-6 tracking-widest uppercase text-sm">營業時間</h4>
-                    <ul class="space-y-4 text-gray-400">
-                        <li class="flex items-center gap-3">
-                            <i data-lucide="clock" class="w-5 h-5 text-brand-accent shrink-0"></i>
-                            <div>
-                                <p class="text-white">週一至週五</p>
-                                <p class="font-serif">09:00 - 18:00</p>
-                            </div>
-                        </li>
-                        <li class="flex items-center gap-3 opacity-50">
-                            <i data-lucide="calendar-x" class="w-5 h-5 shrink-0"></i>
-                            <span>週六、週日公休</span>
-                        </li>
-                    </ul>
-                </div>
-
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">甜蜜約會菜單</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-brand-pink to-brand-blue mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-600">簡單而純粹，只為呈現最好的品質給您。</p>
             </div>
 
-            <!-- Copyright -->
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-sm text-gray-600">
-                <p>&copy; 2026 大牛牛排館 Da Niu Steakhouse. All rights reserved.</p>
-                <p class="mt-2 md:mt-0">Design with <i data-lucide="heart" class="w-3 h-3 inline text-brand-accent fill-current"></i> for Meat Lovers.</p>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Coffee Menu -->
+                <div class="glass-card rounded-3xl p-8 reveal">
+                    <div class="flex items-center gap-3 mb-8 border-b border-gray-100 pb-4">
+                        <i data-lucide="coffee" class="w-6 h-6 text-brand-blue"></i>
+                        <h3 class="text-2xl font-bold text-brand-dark">職人手沖咖啡</h3>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex justify-between items-center group cursor-pointer">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-800 group-hover:text-brand-blue transition-colors">單品咖啡 (熱/冰)</h4>
+                                <p class="text-sm text-gray-500 mt-1">自家烘焙巴西頂級豆</p>
+                            </div>
+                            <div class="text-xl font-bold text-brand-dark">$150</div>
+                        </li>
+                        <li class="flex justify-between items-center group cursor-pointer">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-800 group-hover:text-brand-blue transition-colors">續杯優惠</h4>
+                                <p class="text-sm text-gray-500 mt-1">延續美好的對話時光</p>
+                            </div>
+                            <div class="text-xl font-bold text-brand-pink">$80</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dessert Menu -->
+                <div class="glass-card rounded-3xl p-8 reveal" style="transition-delay: 0.2s;">
+                    <div class="flex items-center gap-3 mb-8 border-b border-gray-100 pb-4">
+                        <i data-lucide="cake" class="w-6 h-6 text-brand-pink"></i>
+                        <h3 class="text-2xl font-bold text-brand-dark">手工健康甜點</h3>
+                    </div>
+                    <ul class="space-y-6">
+                        <li class="flex justify-between items-center group cursor-pointer">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-800 group-hover:text-brand-pink transition-colors">所有常態甜點</h4>
+                                <p class="text-sm text-gray-500 mt-1">低糖高纖，無負擔的甜蜜</p>
+                            </div>
+                            <div class="text-xl font-bold text-brand-dark">$180</div>
+                        </li>
+                        <li class="flex justify-between items-center group cursor-pointer">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-800 group-hover:text-brand-pink transition-colors">每日隱藏版</h4>
+                                <p class="text-sm text-gray-500 mt-1">請洽吧檯人員，充滿驚喜</p>
+                            </div>
+                            <div class="text-xl font-bold text-brand-dark">$180</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center reveal">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="精緻手工甜點" class="w-full h-64 object-cover rounded-3xl shadow-lg hover:shadow-2xl transition-shadow duration-500" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact Section -->
+    <section id="location" class="py-24 bg-brand-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="背景紋理" class="w-full h-full object-cover mix-blend-overlay">
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 font-heading text-white">期待在轉角遇見您們</h2>
+                    <p class="text-gray-400 mb-10 text-lg leading-relaxed">
+                        無論是初次約會的悸動，還是老夫老妻的日常浪漫，愛轉角咖啡廳都為您準備好了最舒適的座位與最暖心的餐點。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-brand-pink transition-colors duration-300">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-brand-pink group-hover:text-white transition-colors duration-300"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">浪漫地址</h4>
+                                <p class="text-gray-300">106 臺北市大安區辛亥路二段171巷25號</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-brand-blue transition-colors duration-300">
+                                <i data-lucide="clock" class="w-5 h-5 text-brand-blue group-hover:text-white transition-colors duration-300"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">營業時間</h4>
+                                <p class="text-gray-300">週一至週五 09:00 - 18:00</p>
+                                <p class="text-sm text-gray-500 mt-1">週末為私人包場/公休日</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 group-hover:bg-brand-pink transition-colors duration-300">
+                                <i data-lucide="phone" class="w-5 h-5 text-brand-pink group-hover:text-white transition-colors duration-300"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold mb-1">預約專線</h4>
+                                <a href="tel:019393921" class="text-gray-300 hover:text-white transition-colors text-xl font-medium tracking-wider">019393921</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <!-- Map Placeholder (Stylized) -->
+                    <div class="aspect-square md:aspect-[4/3] rounded-3xl overflow-hidden relative group shadow-2xl border border-white/10">
+                        <img src="https://images.unsplash.com/photo-1559525839-b184a4d698c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="咖啡廳外觀" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-transparent to-transparent flex items-end p-8">
+                            <a href="https://maps.google.com/?q=106臺北市大安區辛亥路二段171巷25號" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-brand-dark font-bold hover:bg-brand-blue hover:text-white transition-all duration-300 shadow-lg">
+                                <i data-lucide="navigation" class="w-4 h-4"></i>
+                                開啟 Google 導航
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <i data-lucide="coffee" class="w-5 h-5 text-brand-pink"></i>
+                <span class="font-heading font-bold text-white text-lg">愛轉角咖啡廳</span>
+            </div>
+            
+            <p class="text-sm text-center md:text-left">
+                &copy; 2026 愛轉角咖啡廳 Love Corner Cafe. All rights reserved.<br>
+                <span class="text-xs text-gray-500">希望來店的情侶都能幸福。</span>
+            </p>
+            
+            <div class="text-sm">
+                Made by <span class="text-brand-blue font-medium">Webomate</span>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();
 
-        // 1. Typewriter Effect
-        const typeWriterElement = document.getElementById('typewriter');
-        const textToType = "台北大同區口碑首選・嚴選頂級新鮮肉品";
-        let textIndex = 0;
+        // Typewriter Effect
+        const phrases = [
+            "台北大安區口碑首選",
+            "職人手沖咖啡現點現做",
+            "為情侶打造的浪漫秘境",
+            "低糖高纖手工甜點"
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter');
 
-        function typeWriter() {
-            if (textIndex < textToType.length) {
-                typeWriterElement.innerHTML += textToType.charAt(textIndex);
-                textIndex++;
-                setTimeout(typeWriter, 100); // Typing speed
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
             } else {
-                // Remove cursor class after typing finishes
-                setTimeout(() => {
-                    typeWriterElement.classList.remove('cursor');
-                }, 2000);
+                typewriterElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
             }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000; // Pause at end of phrase
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before typing new phrase
+            }
+
+            setTimeout(type, typeSpeed);
         }
         
         // Start typewriter after a short delay
-        setTimeout(typeWriter, 500);
+        setTimeout(type, 1000);
 
-        // 2. Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
-        };
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger once on load
 
-        const revealObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target); // Only animate once
-            });
-        }, revealOptions);
-
-        revealElements.forEach(el => {
-            revealObserver.observe(el);
+        // Navbar Glass Effect on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.style.background = 'rgba(255, 255, 255, 0.85)';
+            }
         });
 
-        // 3. Number Counter Animation
+        // Counter Animation
         const counters = document.querySelectorAll('.counter');
         const speed = 200; // The lower the slower
 
-        const counterObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counter = entry.target;
-                    const updateCount = () => {
-                        const target = +counter.getAttribute('data-target');
-                        const count = +counter.innerText;
-                        
-                        // Lower inc to slow and higher to speed up
-                        const inc = target / speed;
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    
+                    // Specific logic for decimal rating vs integer reviews
+                    const isDecimal = target % 1 !== 0;
+                    const inc = target / speed;
 
-                        if (count < target) {
-                            counter.innerText = Math.ceil(count + inc);
-                            setTimeout(updateCount, 15);
+                    if (count < target) {
+                        if(isDecimal) {
+                            counter.innerText = (count + inc).toFixed(1);
                         } else {
-                            counter.innerText = target;
+                            counter.innerText = Math.ceil(count + inc);
                         }
-                    };
-                    updateCount();
-                    observer.unobserve(counter);
-                }
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
             });
-        }, { threshold: 0.5 });
+        }
 
-        counters.forEach(counter => {
-            counterObserver.observe(counter);
-        });
-
-        // 4. Navbar Background Change on Scroll
-        const navbar = document.getElementById('navbar');
+        // Trigger counter animation when section is in view
+        const socialProofSection = document.querySelector('.counter').closest('section');
+        let animated = false;
+        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-lg');
-                navbar.classList.replace('bg-brand-dark/80', 'bg-brand-dark/95');
-            } else {
-                navbar.classList.remove('shadow-lg');
-                navbar.classList.replace('bg-brand-dark/95', 'bg-brand-dark/80');
+            if(animated) return;
+            const sectionPos = socialProofSection.getBoundingClientRect().top;
+            const screenPos = window.innerHeight;
+            
+            if(sectionPos < screenPos) {
+                animateCounters();
+                animated = true;
             }
         });
     </script>
