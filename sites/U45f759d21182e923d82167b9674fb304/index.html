@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual City | 找回遺忘的記憶</title>
+    <meta name="description" content="Virtual City 運用尖端科技為您建構專屬的記憶城市，找回遺忘的過往，重塑生命連結。">
+    
+    <!-- Google Fonts: Orbitron for futuristic headings, Noto Sans TC for readability -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#050505',
+                            800: '#111111',
+                            700: '#1A1A1A',
+                        },
+                        brand: {
+                            cyan: '#00F0FF',
+                            purple: '#B026FF',
+                            blue: '#0047FF'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        future: ['"Orbitron"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'glow-pulse': 'glowPulse 2s infinite alternate',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        glowPulse: {
+                            '0%': { boxShadow: '0 0 10px rgba(0, 240, 255, 0.2)' },
+                            '100%': { boxShadow: '0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 240, 255, 0.2)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Tech Impact */
+        body {
+            background-color: #050505;
+            color: #E4E4E7;
+            overflow-x: hidden;
+        }
+        
+        .glass-nav {
+            background: rgba(5, 5, 5, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(17, 17, 17, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(0, 240, 255, 0.2);
+        }
+
+        /* Scroll Reveal Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typewriter cursor */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+            color: #00F0FF;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(to right, #00F0FF, #B026FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-cyan selection:text-dark-900">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- Conceptual Logo -->
+                <div class="w-10 h-10 rounded-sm border-2 border-brand-cyan flex items-center justify-center group-hover:bg-brand-cyan/10 transition-colors">
+                    <i data-lucide="cpu" class="text-brand-cyan w-6 h-6"></i>
+                </div>
+                <span class="font-future font-bold text-2xl tracking-wider text-white">VIRTUAL <span class="text-brand-cyan">CITY</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm tracking-widest text-gray-400">
+                <a href="#about" class="hover:text-brand-cyan transition-colors">關於重構</a>
+                <a href="#services" class="hover:text-brand-cyan transition-colors">服務核心</a>
+                <a href="#contact" class="px-6 py-2 border border-brand-cyan/50 text-brand-cyan rounded-sm hover:bg-brand-cyan hover:text-dark-900 transition-all duration-300">啟動連結</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop" alt="Futuristic Cityscape" class="w-full h-full object-cover object-center opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-dark-900/80 via-dark-900/60 to-dark-900"></div>
+            <!-- Grid Pattern Overlay -->
+            <div class="absolute inset-0" style="background-image: linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px); background-size: 50px 50px;"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 text-center flex flex-col items-center">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-brand-cyan text-sm tracking-widest mb-8 animate-fade-in" style="animation-delay: 0.2s;">
+                <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+                SYSTEM ONLINE
+            </div>
+            
+            <h1 class="font-future font-black text-5xl md:text-7xl lg:text-8xl tracking-tight text-white mb-6 animate-fade-in drop-shadow-2xl" style="animation-delay: 0.4s;">
+                REBUILD YOUR <br>
+                <span class="text-gradient">LOST MEMORIES</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl font-light text-gray-300 mb-8 h-8 animate-fade-in" style="animation-delay: 0.6s;">
+                <span id="typewriter" class="cursor"></span>
+            </p>
+            
+            <p class="max-w-2xl text-gray-400 leading-relaxed mb-12 animate-fade-in" style="animation-delay: 0.8s;">
+                Virtual City 運用量子級神經網絡技術，為您打造專屬的記憶城市。在這裡，每一座建築、每一條街道，都是您珍貴過往的具象化呈現。全日無休，隨時為您開啟回憶之門。
+            </p>
+            
+            <a href="#explore" class="group relative px-8 py-4 bg-brand-cyan text-dark-900 font-bold tracking-widest overflow-hidden animate-fade-in animate-glow-pulse" style="animation-delay: 1s;">
+                <span class="relative z-10 flex items-center gap-2">
+                    進入虛擬城市 <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </span>
+                <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out"></div>
+            </a>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+            <i data-lucide="chevrons-down" class="text-brand-cyan w-8 h-8"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 border-y border-white/5 bg-dark-800/50 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+                <div class="p-4 reveal">
+                    <div class="text-4xl md:text-5xl font-future font-bold text-white mb-2"><span class="counter" data-target="99.9">0</span>%</div>
+                    <div class="text-brand-cyan text-sm tracking-widest uppercase">神經同步率</div>
+                </div>
+                <div class="p-4 reveal" style="transition-delay: 0.2s;">
+                    <div class="text-4xl md:text-5xl font-future font-bold text-white mb-2"><span class="counter" data-target="8420">0</span></div>
+                    <div class="text-brand-cyan text-sm tracking-widest uppercase">已建構記憶節點</div>
+                </div>
+                <div class="p-4 reveal" style="transition-delay: 0.4s;">
+                    <div class="text-4xl md:text-5xl font-future font-bold text-white mb-2">24/7</div>
+                    <div class="text-brand-cyan text-sm tracking-widest uppercase">全天候意識守護</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Concept / About Section -->
+    <section id="about" class="py-24 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 reveal">
+                    <div class="relative rounded-2xl overflow-hidden group">
+                        <div class="absolute inset-0 bg-brand-cyan/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Cyber Security" class="w-full h-[500px] object-cover scale-100 group-hover:scale-105 transition-transform duration-700">
+                        
+                        <!-- Floating Tech Element -->
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-dark-900 border border-brand-cyan/30 rounded-full flex items-center justify-center animate-float z-20">
+                            <i data-lucide="database" class="w-12 h-12 text-brand-cyan"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2 reveal">
+                    <h2 class="text-sm text-brand-purple tracking-[0.3em] font-bold mb-4 uppercase">Concept</h2>
+                    <h3 class="text-3xl md:text-4xl lg:text-5xl font-future font-bold text-white mb-6 leading-tight">
+                        遺忘不是消失，<br>
+                        只是失去了<span class="text-brand-cyan">連結</span>。
+                    </h3>
+                    <div class="w-12 h-1 bg-gradient-to-r from-brand-cyan to-brand-purple mb-8"></div>
+                    <p class="text-gray-400 leading-relaxed mb-6 text-lg">
+                        在資訊爆炸的時代，我們的大腦為了自我保護，會將許多珍貴的記憶深藏。Virtual City 的核心理念，是透過非侵入式的腦波掃描與量子運算，將那些沉睡在潛意識深處的碎片重新提取。
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8 text-lg">
+                        我們不只還原畫面，更重塑當時的溫度、氣味與情感。為您在數位維度中，一磚一瓦建構出一座專屬於您的「記憶城市」。這是一場與自我重逢的深度旅行。
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center gap-4 text-gray-300">
+                            <i data-lucide="check-circle-2" class="text-brand-cyan w-5 h-5"></i>
+                            <span>軍規級數據加密，保障絕對隱私</span>
+                        </li>
+                        <li class="flex items-center gap-4 text-gray-300">
+                            <i data-lucide="check-circle-2" class="text-brand-cyan w-5 h-5"></i>
+                            <span>沉浸式 VR/AR 跨平台接入</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section id="services" class="py-24 bg-dark-800/30 relative z-10 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <h2 class="text-sm text-brand-purple tracking-[0.3em] font-bold mb-4 uppercase">Core Protocol</h2>
+                <h3 class="text-3xl md:text-4xl font-future font-bold text-white mb-6">三大核心建構程序</h3>
+                <p class="text-gray-400">從意識深處到虛擬實境，我們提供完整且安全的記憶重塑服務。</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-card p-8 rounded-xl reveal">
+                    <div class="w-14 h-14 bg-dark-900 border border-brand-cyan/30 rounded-lg flex items-center justify-center mb-6 text-brand-cyan">
+                        <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">記憶提取與解析</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        運用先進的神經感測頭盔，捕捉大腦海馬迴中的微弱訊號，將模糊的情感與畫面轉譯為基礎數位代碼。
+                    </p>
+                    <img src="https://images.unsplash.com/photo-1614729939124-032f0b56c9ce?q=80&w=1925&auto=format&fit=crop" alt="Memory Extraction" class="w-full h-32 object-cover rounded-md opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-card p-8 rounded-xl reveal" style="transition-delay: 0.2s;">
+                    <div class="w-14 h-14 bg-dark-900 border border-brand-purple/30 rounded-lg flex items-center justify-center mb-6 text-brand-purple">
+                        <i data-lucide="box" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">虛擬空間建構</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        AI 演算引擎根據提取的代碼，自動生成符合物理邏輯與個人美學的 3D 虛擬環境，每一棟建築皆代表一段時光。
+                    </p>
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2034&auto=format&fit=crop" alt="Virtual Environment" class="w-full h-32 object-cover rounded-md opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-card p-8 rounded-xl reveal" style="transition-delay: 0.4s;">
+                    <div class="w-14 h-14 bg-dark-900 border border-brand-blue/30 rounded-lg flex items-center justify-center mb-6 text-brand-blue">
+                        <i data-lucide="book-open" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">個人敘事重塑</h4>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        在建構完成的城市中，我們提供引導式探索服務，幫助您重新梳理生命脈絡，找回內心的平靜與力量。
+                    </p>
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop" alt="Personal Narrative" class="w-full h-32 object-cover rounded-md opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Testimonials -->
+    <section class="py-24 relative z-10 overflow-hidden">
+        <!-- Decorative background glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-purple/10 rounded-full blur-[120px] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <div class="flex justify-center items-center gap-2 mb-4">
+                    <i data-lucide="star" class="text-brand-cyan fill-brand-cyan w-5 h-5"></i>
+                    <i data-lucide="star" class="text-brand-cyan fill-brand-cyan w-5 h-5"></i>
+                    <i data-lucide="star" class="text-brand-cyan fill-brand-cyan w-5 h-5"></i>
+                    <i data-lucide="star" class="text-brand-cyan fill-brand-cyan w-5 h-5"></i>
+                    <i data-lucide="star" class="text-brand-cyan fill-brand-cyan w-5 h-5"></i>
+                </div>
+                <h3 class="text-3xl font-future font-bold text-white mb-2">意識連結報告</h3>
+                <p class="text-brand-cyan">深受先驅探索者一致好評</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="glass-card p-6 rounded-xl reveal">
+                    <i data-lucide="quote" class="text-white/10 w-10 h-10 mb-4"></i>
+                    <p class="text-gray-300 mb-6 italic">「當我戴上設備，看見那座根據我童年記憶重建的虛擬小鎮時，我忍不住哭了。那些以為早就忘記的細節，Virtual City 都幫我找回來了。」</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center text-brand-cyan font-future">E.</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">Elias C.</div>
+                            <div class="text-gray-500 text-xs">記憶城市編號 #0921</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="glass-card p-6 rounded-xl reveal" style="transition-delay: 0.2s;">
+                    <i data-lucide="quote" class="text-white/10 w-10 h-10 mb-4"></i>
+                    <p class="text-gray-300 mb-6 italic">「這不僅僅是 VR 體驗，這是一場深度的心理療癒。在我的記憶城市裡漫步，讓我解開了許多過去的結。科技與溫度的完美結合。」</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center text-brand-purple font-future">M.</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">Marcus L.</div>
+                            <div class="text-gray-500 text-xs">記憶城市編號 #1405</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="glass-card p-6 rounded-xl reveal hidden lg:block" style="transition-delay: 0.4s;">
+                    <i data-lucide="quote" class="text-white/10 w-10 h-10 mb-4"></i>
+                    <p class="text-gray-300 mb-6 italic">「全日無休的服務讓我隨時能在夜深人靜時，回到那個美好的時空。介面充滿未來感，但帶給我的感受卻無比溫暖。」</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-dark-700 flex items-center justify-center text-brand-blue font-future">S.</div>
+                        <div>
+                            <div class="text-white font-bold text-sm">Sarah W.</div>
+                            <div class="text-gray-500 text-xs">記憶城市編號 #2048</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-dark-900 border-t border-white/10 pt-16 pb-8 relative z-10">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div class="lg:col-span-2">
+                    <a href="#" class="flex items-center gap-3 mb-6">
+                        <i data-lucide="cpu" class="text-brand-cyan w-6 h-6"></i>
+                        <span class="font-future font-bold text-2xl tracking-wider text-white">VIRTUAL <span class="text-brand-cyan">CITY</span></span>
+                    </a>
+                    <p class="text-gray-400 max-w-md mb-6">
+                        我們致力於運用頂尖神經網絡與虛擬實境技術，為每一位迷失在時間長河中的旅人，建構專屬的記憶避風港。
+                    </p>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-dark-800 border border-white/10 rounded text-xs text-gray-300">
+                        <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                        系統狀態：全日無休 (24/7 ONLINE)
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-6 tracking-widest uppercase text-sm">導航矩陣</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">系統首頁 (Home)</a></li>
+                        <li><a href="#about" class="hover:text-brand-cyan transition-colors">關於重構 (About)</a></li>
+                        <li><a href="#services" class="hover:text-brand-cyan transition-colors">核心服務 (Services)</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-6 tracking-widest uppercase text-sm">協議與條款</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">隱私權加密協定</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">記憶使用條款</a></li>
+                        <li><a href="#" class="hover:text-brand-cyan transition-colors">免責聲明</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm font-future tracking-wider">
+                    &copy; 2026 VIRTUAL CITY. ALL RIGHTS RESERVED.
+                </p>
+                <p class="text-gray-600 text-sm">
+                    Made by <span class="text-gray-400 font-medium">Webomate</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Typewriter Effect
+        const phrases = [
+            "為您重塑遺忘的時空...",
+            "找回遺忘的記憶...",
+            "建構屬於您的永恆之都..."
+        ];
+        let i = 0;
+        let j = 0;
+        let isDeleting = false;
+        let isEnd = false;
+        const typewriterElement = document.getElementById('typewriter');
+        
+        function loop() {
+            isEnd = false;
+            typewriterElement.innerHTML = phrases[i].substring(0, j);
+
+            if (!isDeleting && j <= phrases[i].length) {
+                j++;
+                setTimeout(loop, 100);
+            } else if (isDeleting && j >= 0) {
+                j--;
+                setTimeout(loop, 50);
+            } else if (j == phrases[i].length + 1) {
+                isEnd = true;
+                isDeleting = true;
+                setTimeout(loop, 2000); // Pause at end of phrase
+            } else if (j == 0) {
+                isDeleting = false;
+                i = (i + 1) % phrases.length;
+                setTimeout(loop, 500); // Pause before next phrase
+            }
+        }
+        // Start typewriter
+        setTimeout(loop, 1500);
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg', 'shadow-brand-cyan/5');
+                navbar.style.background = 'rgba(5, 5, 5, 0.9)';
+            } else {
+                navbar.classList.remove('shadow-lg', 'shadow-brand-cyan/5');
+                navbar.style.background = 'rgba(5, 5, 5, 0.6)';
+            }
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger once on load
+
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        let hasCounted = false;
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasCounted) {
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const isFloat = target % 1 !== 0;
+                        const duration = 2000; // ms
+                        const step = target / (duration / 16); // 60fps
+                        
+                        let current = 0;
+                        const updateCounter = () => {
+                            current += step;
+                            if (current < target) {
+                                counter.innerText = isFloat ? current.toFixed(1) : Math.ceil(current);
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        updateCounter();
+                    });
+                    hasCounted = true;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe the section containing counters
+        const statsSection = document.querySelector('.counter').closest('section');
+        if(statsSection) counterObserver.observe(statsSection);
+
+    </script>
+</body>
+</html>
+```
