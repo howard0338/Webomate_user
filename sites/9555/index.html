@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>也好珈琲營業所 Yehow Coffee | 溫馨小角落，給下班後旅人放鬆的空間</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // 暖米色系 (Warm Beige Palette)
+                        brand: {
+                            50: '#FCFBF9',  // 極淺米白 (背景)
+                            100: '#F5F0E6', // 暖米色 (區塊背景)
+                            200: '#EAE0C8', 
+                            300: '#DED0A8',
+                            400: '#C5B068', // 點綴色
+                            800: '#5C4A3D', // 深木棕色 (次要文字)
+                            900: '#4A3F35', // 深咖啡色 (主要文字)
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Noto Serif TC"', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for specialized animations -->
+    <style>
+        body {
+            background-color: #FCFBF9;
+            color: #4A3F35;
+        }
+        
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1em;
+            background-color: currentColor;
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Hand-drawn underline effect */
+        .hand-drawn-underline {
+            position: relative;
+            display: inline-block;
+        }
+        .hand-drawn-underline::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 8px;
+            bottom: -2px;
+            left: 0;
+            background-color: #F5F0E6;
+            z-index: -1;
+            border-radius: 10px 100px / 100px 10px;
+            transform: rotate(-1deg);
+        }
+    </style>
+</head>
+<body class="antialiased font-sans selection:bg-brand-200 selection:text-brand-900">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-white/70 border-b border-brand-100" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <i data-lucide="coffee" class="text-brand-800 w-6 h-6 group-hover:-rotate-12 transition-transform duration-300 stroke-[1.5]"></i>
+                    <span class="font-serif font-semibold text-xl tracking-wider text-brand-900">也好珈琲營業所</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-brand-800 hover:text-brand-400 transition-colors duration-300 text-sm tracking-widest">關於也好</a>
+                    <a href="#menu" class="text-brand-800 hover:text-brand-400 transition-colors duration-300 text-sm tracking-widest">空間與餐點</a>
+                    <a href="#location" class="px-5 py-2 rounded-full border border-brand-800 text-brand-800 hover:bg-brand-800 hover:text-white transition-all duration-300 text-sm tracking-widest">尋找我們</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1920" alt="也好珈琲營業所 溫馨空間" class="w-full h-full object-cover object-center scale-105 animate-[pulse_20s_ease-in-out_infinite_alternate]" />
+            <!-- Dark/Warm Overlay for text readability -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-brand-900/50"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in mt-16">
+            <span class="block text-brand-100/90 font-light tracking-[0.3em] text-sm md:text-base mb-6">YEHOW COFFEE</span>
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-wide drop-shadow-lg">
+                溫馨小角落<br>
+                <span class="font-light text-3xl md:text-5xl opacity-90">給下班後旅人放鬆的空間</span>
+            </h1>
+            
+            <!-- Typewriter Effect -->
+            <div class="h-8 mb-10">
+                <p class="text-brand-100 text-lg md:text-xl font-light tracking-wider drop-shadow-md">
+                    <span id="typewriter-text"></span><span class="typewriter-cursor"></span>
+                </p>
+            </div>
+
+            <a href="#about" class="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-brand-100 text-brand-900 hover:bg-white hover:-translate-y-1 hover:shadow-xl transition-all duration-300 tracking-widest text-sm font-medium">
+                推開門進來坐坐
+                <i data-lucide="arrow-down" class="w-4 h-4 animate-bounce"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-12 bg-brand-100/50 border-b border-brand-200/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-center md:text-left reveal">
+                <div class="flex items-center gap-6">
+                    <div class="text-center">
+                        <div class="flex items-baseline justify-center gap-1 text-brand-900">
+                            <span class="text-4xl font-bold font-serif counter" data-target="4.6" data-decimal="true">0</span>
+                            <i data-lucide="star" class="w-5 h-5 fill-brand-400 text-brand-400"></i>
+                        </div>
+                        <span class="text-xs text-brand-800 tracking-widest mt-1 block">Google 評分</span>
+                    </div>
+                    <div class="w-px h-12 bg-brand-300 hidden md:block"></div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold font-serif text-brand-900">
+                            <span class="counter" data-target="42">0</span>+
+                        </div>
+                        <span class="text-xs text-brand-800 tracking-widest mt-1 block">真實顧客評論</span>
+                    </div>
+                </div>
+                <div class="max-w-md">
+                    <p class="text-brand-800 font-light leading-relaxed">
+                        「隱身於台北大安區新生南路巷弄，獲得數十位顧客好評推崇的溫暖咖啡空間。在這裡，我們用一杯咖啡的時間，交換彼此的故事。」
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Story Section -->
+    <section id="about" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Image -->
+                <div class="relative reveal group">
+                    <div class="absolute -inset-4 bg-brand-100 rounded-3xl transform rotate-2 group-hover:rotate-1 transition-transform duration-500 z-0"></div>
+                    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&q=80&w=800" alt="也好珈琲營業所 溫柔釋懷" class="relative z-10 rounded-2xl shadow-lg w-full object-cover aspect-[4/5] group-hover:-translate-y-2 transition-transform duration-500" />
+                    <!-- Decorative hand-drawn element -->
+                    <div class="absolute -bottom-6 -right-6 z-20 bg-white p-4 rounded-full shadow-md border border-brand-100">
+                        <i data-lucide="heart" class="w-8 h-8 text-brand-400 stroke-[1.5]"></i>
+                    </div>
+                </div>
+
+                <!-- Text -->
+                <div class="reveal space-y-8">
+                    <div class="space-y-2">
+                        <span class="text-brand-400 tracking-[0.2em] text-sm font-medium">OUR STORY</span>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900 leading-tight">
+                            <span class="hand-drawn-underline">也好</span>，像是一種溫柔的釋懷。
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-6 text-brand-800 font-light leading-loose text-lg">
+                        <p>
+                            有些地方，好像不說再見，就會默默等著你回來。
+                        </p>
+                        <p>
+                            這裡某段時間曾是【 羊毛與花 ‧ 溫州 】，在這某一段時間裡，我們把鑰匙交給了別人，但某天，不知道是我們走回來了，還是他把我們召喚回來了。
+                        </p>
+                        <p>
+                            於是，我們重新打開了這扇門，換了個名字，換了一點心情。
+                        </p>
+                        <p class="font-medium text-brand-900 border-l-2 border-brand-400 pl-6 italic">
+                            「日子不必太完美，咖啡不一定要很有事，只是希望路過時，會想推開門進來坐坐。」
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu & Features Section -->
+    <section id="menu" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <span class="text-brand-400 tracking-[0.2em] text-sm font-medium block mb-2">MENU & SPACE</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold text-brand-900">簡單，卻足夠溫暖</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Feature 1: Coffee -->
+                <div class="group reveal cursor-pointer">
+                    <div class="overflow-hidden rounded-2xl mb-6 aspect-square relative">
+                        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=600" alt="職人手沖咖啡" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-brand-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur p-3 rounded-full shadow-sm">
+                            <i data-lucide="coffee" class="w-5 h-5 text-brand-800 stroke-[1.5]"></i>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-serif font-bold text-brand-900 mb-2 group-hover:text-brand-400 transition-colors">職人手沖咖啡</h3>
+                        <p class="text-brand-800 font-light mb-3">不刻意追求完美，只願成為你疲憊時的依靠。</p>
+                        <span class="block text-brand-400 font-medium tracking-widest">NT$ 150 <span class="text-xs font-light text-brand-800">起</span></span>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Meal -->
+                <div class="group reveal cursor-pointer" style="transition-delay: 100ms;">
+                    <div class="overflow-hidden rounded-2xl mb-6 aspect-square relative">
+                        <img src="https://images.unsplash.com/photo-1495474472201-44445d51c018?auto=format&fit=crop&q=80&w=600" alt="溫暖手作餐點" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-brand-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur p-3 rounded-full shadow-sm">
+                            <i data-lucide="utensils" class="w-5 h-5 text-brand-800 stroke-[1.5]"></i>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-serif font-bold text-brand-900 mb-2 group-hover:text-brand-400 transition-colors">溫暖手作餐點</h3>
+                        <p class="text-brand-800 font-light mb-3">用心製作的純粹滋味，撫慰下班後的空腹。</p>
+                        <span class="block text-brand-400 font-medium tracking-widest">NT$ 180 <span class="text-xs font-light text-brand-800">起</span></span>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Space -->
+                <div class="group reveal cursor-pointer" style="transition-delay: 200ms;">
+                    <div class="overflow-hidden rounded-2xl mb-6 aspect-square relative">
+                        <img src="https://images.unsplash.com/photo-1444418185997-1145401101e0?auto=format&fit=crop&q=80&w=600" alt="靜謐放鬆時光" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-brand-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div class="absolute top-4 left-4 bg-white/90 backdrop-blur p-3 rounded-full shadow-sm">
+                            <i data-lucide="sofa" class="w-5 h-5 text-brand-800 stroke-[1.5]"></i>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-xl font-serif font-bold text-brand-900 mb-2 group-hover:text-brand-400 transition-colors">靜謐放鬆時光</h3>
+                        <p class="text-brand-800 font-light mb-3">暖米色的空間，手繪的溫柔，留給自己的空白。</p>
+                        <span class="block text-brand-400 font-medium tracking-widest">無價</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Footer -->
+    <footer id="location" class="bg-brand-900 text-brand-50 pt-24 pb-12 rounded-t-[3rem] mt-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-16 reveal">
+                <!-- Info -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="font-serif text-3xl font-bold mb-2">也好珈琲營業所</h2>
+                        <p class="text-brand-200 font-light tracking-widest text-sm">Yehow Coffee</p>
+                    </div>
+                    
+                    <div class="space-y-4 font-light text-brand-100">
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="map-pin" class="w-5 h-5 mt-1 text-brand-400 shrink-0"></i>
+                            <a href="https://maps.google.com/?q=106臺北市大安區新生南路三段60巷1號" target="_blank" class="hover:text-white transition-colors">
+                                106臺北市大安區新生南路三段60巷1號
+                            </a>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="phone" class="w-5 h-5 text-brand-400 shrink-0"></i>
+                            <a href="tel:0223623689" class="hover:text-white transition-colors">
+                                02 2362 3689
+                            </a>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="clock" class="w-5 h-5 text-brand-400 shrink-0"></i>
+                            <span>營業時間請見社群公告</span>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 pt-4">
+                        <a href="https://www.facebook.com/yehowcoffee/" target="_blank" class="w-10 h-10 rounded-full bg-brand-800 flex items-center justify-center hover:bg-brand-400 hover:-translate-y-1 transition-all duration-300">
+                            <i data-lucide="facebook" class="w-5 h-5 text-white"></i>
+                        </a>
+                        <a href="https://www.instagram.com/p/DMyBmgP0dYN/" target="_blank" class="w-10 h-10 rounded-full bg-brand-800 flex items-center justify-center hover:bg-brand-400 hover:-translate-y-1 transition-all duration-300">
+                            <i data-lucide="instagram" class="w-5 h-5 text-white"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map Placeholder -->
+                <div class="h-64 md:h-full min-h-[300px] bg-brand-800 rounded-2xl overflow-hidden relative group">
+                    <!-- Using a static map image or stylized placeholder to fit the constraint of no empty blocks while keeping it fast -->
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800" alt="地圖位置" class="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-500">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <a href="https://maps.google.com/?q=106臺北市大安區新生南路三段60巷1號" target="_blank" class="px-6 py-3 bg-white text-brand-900 rounded-full font-medium hover:scale-105 transition-transform shadow-lg flex items-center gap-2">
+                            <i data-lucide="navigation" class="w-4 h-4"></i>
+                            開啟 Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-brand-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-brand-300 font-light reveal">
+                <p>&copy; 2026 也好珈琲營業所 Yehow Coffee. All rights reserved.</p>
+                <p>Made by Webomate.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-sm', 'bg-white/90');
+                navbar.classList.remove('bg-white/70');
+            } else {
+                navbar.classList.remove('shadow-sm', 'bg-white/90');
+                navbar.classList.add('bg-white/70');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Typewriter Effect
+        const textToType = "隱身台北大安巷弄，4.6顆星好評的溫暖棲地。";
+        const typewriterElement = document.getElementById('typewriter-text');
+        let index = 0;
+
+        function typeWriter() {
+            if (index < textToType.length) {
+                typewriterElement.innerHTML += textToType.charAt(index);
+                index++;
+                setTimeout(typeWriter, 100); // Speed of typing
+            }
+        }
+        
+        // Start typing after a short delay
+        setTimeout(typeWriter, 1000);
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const targetValue = parseFloat(target.getAttribute('data-target'));
+                    const isDecimal = target.getAttribute('data-decimal') === 'true';
+                    const duration = 2000; // ms
+                    const frameRate = 1000 / 60;
+                    const totalFrames = Math.round(duration / frameRate);
+                    let frame = 0;
+
+                    const counterInterval = setInterval(() => {
+                        frame++;
+                        const progress = frame / totalFrames;
+                        // Easing function (easeOutExpo)
+                        const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                        
+                        let currentValue = targetValue * easeProgress;
+                        
+                        if (isDecimal) {
+                            target.innerText = currentValue.toFixed(1);
+                        } else {
+                            target.innerText = Math.floor(currentValue);
+                        }
+
+                        if (frame === totalFrames) {
+                            clearInterval(counterInterval);
+                            target.innerText = isDecimal ? targetValue.toFixed(1) : targetValue;
+                        }
+                    }, frameRate);
+                    
+                    counterObserver.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navHeight = document.getElementById('navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```
