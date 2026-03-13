@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset | 專業產後泌乳到府服務</title>
+    <meta name="description" content="Reset 提供專業、溫柔的產後泌乳到府服務。以清新、療癒的溫暖呵護，陪伴媽咪解決塞奶、硬塊等哺乳難題，找回身心的平靜。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Urbanist:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // 柔和、自然、溫暖的色系 (米白、淡綠、淺粉)
+                        brand: {
+                            50: '#FDFBF7',  // 燕麥米白底色
+                            100: '#F5EBE9',
+                            200: '#EAD5D1',
+                            300: '#DFBDB7',
+                            400: '#D1A39B',
+                            500: '#C28B82',  // 溫暖淺粉/玫瑰色調
+                            600: '#A36E65',
+                            700: '#7A524C',
+                        },
+                        accent: {
+                            light: '#E2E8CE', // 淡綠色
+                            DEFAULT: '#A8C3A6', // 療癒鼠尾草綠
+                            dark: '#7A9478'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        heading: ['"Urbanist"', '"Noto Sans TC"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* 基礎設定 */
+        html { scroll-behavior: smooth; }
+        body { background-color: #FDFBF7; }
+        
+        /* 毛玻璃效果 */
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(253, 251, 247, 0.85);
+            border-bottom: 1px solid rgba(194, 139, 130, 0.1);
+        }
+
+        /* 滾動揭曉動畫 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 進場淡入 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        /* 打字機游標閃爍 */
+        .cursor-blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* 圖片遮罩與漸層 */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(35, 29, 28, 0.4), rgba(35, 29, 28, 0.6));
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-700 font-sans">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <!-- 若有圖片 Logo 可替換此處，目前以文字呈現高質感 Logo -->
+                    <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-500 group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="leaf" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-heading font-bold text-2xl tracking-wider text-brand-700">Reset</span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium hover:text-brand-500 transition-colors duration-300">品牌理念</a>
+                    <a href="#services" class="text-sm font-medium hover:text-brand-500 transition-colors duration-300">專業服務</a>
+                    <a href="#contact" class="text-sm font-medium hover:text-brand-500 transition-colors duration-300">預約諮詢</a>
+                    
+                    <a href="tel:0910770823" class="flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-500 text-white text-sm font-medium hover:bg-brand-600 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300">
+                        <i data-lucide="phone" class="w-4 h-4"></i>
+                        0910-770-823
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-600 hover:text-brand-500 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- 背景圖片 (Serene postpartum care / Spa setting) -->
+        <div class="absolute inset-0 w-full h-full">
+            <img src="https://images.unsplash.com/photo-1600618528240-fb9fc964b853?q=80&w=2070&auto=format&fit=crop" 
+                 alt="Reset 療癒空間" 
+                 class="w-full h-full object-cover animate-fade-in" />
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <!-- Hero 內容 -->
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto mt-16">
+            <!-- 打字機效果 -->
+            <div class="mb-6 inline-flex items-center px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-sm md:text-base font-light tracking-widest">
+                <i data-lucide="sparkles" class="w-4 h-4 mr-2 text-brand-200"></i>
+                <span id="typewriter" class="text-brand-50"></span><span class="cursor-blink text-brand-200">|</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight tracking-wide font-heading drop-shadow-lg">
+                溫柔呵護，<br class="md:hidden" />
+                <span class="text-brand-200 font-light">重置身心</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-100 mb-10 font-light max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+                Reset 提供專業產後泌乳到府服務。以清新、療癒的自然氛圍，陪伴媽咪度過哺乳期的每個挑戰，讓身心靈得到真正的放鬆與支持。
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services" class="px-8 py-4 rounded-full bg-brand-500 text-white font-medium tracking-wide hover:bg-brand-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    了解服務項目
+                </a>
+                <a href="https://www.facebook.com/share/1YP57NrDX1/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-full bg-white text-brand-700 font-medium tracking-wide hover:bg-brand-50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2">
+                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                    前往粉絲專頁
+                </a>
+            </div>
+        </div>
+
+        <!-- 往下滾動提示 -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-white/70">
+            <i data-lucide="chevron-down" class="w-8 h-8"></i>
+        </div>
+    </section>
+
+    <!-- Social Proof / Trust Section -->
+    <section class="py-16 bg-white border-b border-brand-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-brand-200">
+                <div class="reveal p-4">
+                    <div class="text-4xl font-heading font-bold text-brand-500 mb-2">
+                        <span class="counter" data-target="100">0</span>%
+                    </div>
+                    <p class="text-gray-500 font-medium">純粹到府服務</p>
+                    <p class="text-sm text-gray-400 mt-1">免去奔波，在家享受最安心的照護</p>
+                </div>
+                <div class="reveal p-4" style="transition-delay: 100ms;">
+                    <div class="text-4xl font-heading font-bold text-accent-dark mb-2">
+                        <span class="counter" data-target="5">0</span> 星
+                    </div>
+                    <p class="text-gray-500 font-medium">媽咪安心推薦</p>
+                    <p class="text-sm text-gray-400 mt-1">深獲在地產後媽咪口碑好評推崇</p>
+                </div>
+                <div class="reveal p-4" style="transition-delay: 200ms;">
+                    <div class="text-4xl font-heading font-bold text-brand-500 mb-2">
+                        <span class="counter" data-target="100">0</span>+
+                    </div>
+                    <p class="text-gray-500 font-medium">無痛溫柔手法</p>
+                    <p class="text-sm text-gray-400 mt-1">拒絕硬擠，以專業手法疏通乳腺</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-brand-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- 圖片區塊 -->
+                <div class="w-full lg:w-1/2 relative reveal">
+                    <div class="absolute inset-0 bg-brand-200 rounded-2xl transform translate-x-4 translate-y-4"></div>
+                    <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?q=80&w=2070&auto=format&fit=crop" 
+                         alt="溫柔產後照護" 
+                         class="relative z-10 rounded-2xl w-full h-[500px] object-cover shadow-lg" />
+                    <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl z-20 max-w-[200px]">
+                        <i data-lucide="heart-handshake" class="w-10 h-10 text-brand-400 mb-2"></i>
+                        <p class="text-sm font-medium text-gray-800">專業、溫馨、療癒</p>
+                    </div>
+                </div>
+
+                <!-- 文字區塊 -->
+                <div class="w-full lg:w-1/2 reveal" style="transition-delay: 200ms;">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-light/50 text-accent-dark text-sm font-medium mb-6">
+                        <i data-lucide="leaf" class="w-4 h-4"></i>
+                        Brand Philosophy
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 leading-tight">
+                        讓產後的疲憊，<br>在這裡得到真正的 <span class="text-brand-500">Reset</span>
+                    </h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                        產後是一趟全新且充滿挑戰的旅程。許多媽咪在面對哺乳時，常伴隨著焦慮與身體的不適。
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        Reset 秉持著「清新、療癒、溫暖」的品牌精神，我們相信，泌乳不應該是痛苦的掙扎。透過專業且溫柔的無痛手法，我們提供專屬的到府服務，讓您在最熟悉、最安心的家中，緩解乳房不適，找回身心的平靜與力量。
+                    </p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center text-brand-500 shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span>專屬到府服務，免去外出奔波的辛勞</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center text-brand-500 shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span>無痛溫柔疏通，拒絕傳統暴力硬擠</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-700">
+                            <div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center text-brand-500 shrink-0">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <span>客製化哺乳計畫，提供專業追奶/退奶諮詢</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">專業泌乳服務項目</h2>
+                <div class="w-16 h-1 bg-brand-300 mx-auto mb-6 rounded-full"></div>
+                <p class="text-gray-500 text-lg">
+                    針對媽咪不同階段的需求，提供具象化、專業且細膩的照護方案。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="reveal bg-brand-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-brand-100 group">
+                    <div class="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center text-brand-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="droplets" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">無痛泌乳疏通</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        運用專業輕柔手法，幫助乳腺暢通，引導乳汁順利排出，減輕產後脹奶的沉重不適感。
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="reveal bg-brand-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-brand-100 group" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center text-accent-dark mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="shield-alert" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">硬塊與塞奶處理</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        針對局部硬塊、小白點或深層塞奶進行溫和排解，避免狀況惡化，讓哺乳過程更順利。
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="reveal bg-brand-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-brand-100 group" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center text-brand-500 mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="activity" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">乳腺炎初期照護</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        當出現紅腫熱痛等初期症狀時，提供緊急舒緩與正確的護理指導，協助媽咪度過難關。
+                    </p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="reveal bg-brand-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-transparent hover:border-brand-100 group" style="transition-delay: 300ms;">
+                    <div class="w-14 h-14 rounded-xl bg-white shadow-sm flex items-center justify-center text-accent-dark mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="message-circle-heart" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">追奶/退奶諮詢</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        無論是想增加奶量，或是準備溫和退奶，皆提供客製化的專業評估與階段性計畫建議。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Booking Section -->
+    <section id="contact" class="py-24 bg-brand-100 relative overflow-hidden">
+        <!-- 背景裝飾 -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-accent-light rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform -translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden reveal">
+                <div class="flex flex-col md:flex-row">
+                    <!-- 聯絡資訊 -->
+                    <div class="w-full md:w-2/5 bg-brand-500 text-white p-10 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2 font-heading">預約諮詢</h3>
+                            <p class="text-brand-100 mb-8 text-sm">歡迎透過電話或粉絲專頁與我們聯繫，我們將盡快為您安排專屬服務。</p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start gap-4">
+                                    <i data-lucide="clock" class="w-6 h-6 text-brand-200 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="text-sm text-brand-200 mb-1">營業時間</p>
+                                        <p class="font-medium">10:30 - 15:30</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-4">
+                                    <i data-lucide="phone-call" class="w-6 h-6 text-brand-200 shrink-0 mt-0.5"></i>
+                                    <div>
+                                        <p class="text-sm text-brand-200 mb-1">聯絡電話</p>
+                                        <a href="tel:0910770823" class="font-medium text-lg hover:text-white transition-colors">0910-770-823</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-12">
+                            <i data-lucide="flower-2" class="w-12 h-12 text-brand-400 opacity-50"></i>
+                        </div>
+                    </div>
+
+                    <!-- 行動呼籲區塊 -->
+                    <div class="w-full md:w-3/5 p-10 flex flex-col justify-center items-center text-center bg-white">
+                        <div class="w-20 h-20 bg-brand-50 rounded-full flex items-center justify-center mb-6">
+                            <i data-lucide="facebook" class="w-10 h-10 text-brand-500"></i>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-800 mb-4">關注 Reset 最新動態</h4>
+                        <p class="text-gray-500 mb-8 max-w-sm">
+                            點擊下方按鈕前往我們的 Facebook 粉絲專頁，了解更多泌乳知識、媽咪分享與最新服務資訊。
+                        </p>
+                        <a href="https://www.facebook.com/share/1YP57NrDX1/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-full bg-brand-500 text-white font-medium tracking-wide hover:bg-brand-600 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center gap-2 w-full max-w-xs justify-center">
+                            前往 Facebook 專頁
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="leaf" class="w-5 h-5 text-brand-400"></i>
+                    <span class="font-heading font-bold text-xl text-white">Reset</span>
+                </div>
+                
+                <div class="text-sm text-gray-400 flex flex-col md:flex-row items-center gap-2 md:gap-6">
+                    <span>&copy; 2026 Reset 產後泌乳到府服務. All rights reserved.</span>
+                    <span class="hidden md:inline">|</span>
+                    <span class="flex items-center gap-1">Made by <span class="text-brand-400 font-medium">Webomate</span></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // 1. 初始化 Lucide Icons
+        lucide.createIcons();
+
+        // 2. 打字機效果 (Typewriter Effect)
+        const phrases = ["專屬產後媽咪的溫柔守護", "找回身心平靜的療癒時光", "專業無痛泌乳到府服務"];
+        let currentPhraseIndex = 0;
+        let isDeleting = false;
+        let text = '';
+        const typewriterElement = document.getElementById('typewriter');
+        
+        function typeWriter() {
+            const currentPhrase = phrases[currentPhraseIndex];
+            
+            if (isDeleting) {
+                text = currentPhrase.substring(0, text.length - 1);
+            } else {
+                text = currentPhrase.substring(0, text.length + 1);
+            }
+            
+            typewriterElement.innerHTML = text;
+            
+            let typeSpeed = isDeleting ? 50 : 150;
+            
+            if (!isDeleting && text === currentPhrase) {
+                typeSpeed = 2000; // 停頓時間
+                isDeleting = true;
+            } else if (isDeleting && text === '') {
+                isDeleting = false;
+                currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+            
+            setTimeout(typeWriter, typeSpeed);
+        }
+        
+        // 啟動打字機
+        setTimeout(typeWriter, 1000);
+
+        // 3. 滾動揭曉動畫 (Scroll Reveal)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // 初始觸發一次
+
+        // 4. 數字跳動腳本 (Counter Animation)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // 數字跳動速度
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(animateCounters, 10);
+                } else {
+                    counter.innerText = target;
+                }
+            });
+        }
+
+        // 使用 Intersection Observer 當數字進入畫面時才開始跳動
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // 5. Navbar 滾動效果
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-sm');
+                nav.style.background = 'rgba(253, 251, 247, 0.95)';
+            } else {
+                nav.classList.remove('shadow-sm');
+                nav.style.background = 'rgba(253, 251, 247, 0.85)';
+            }
+        });
+    </script>
+</body>
+</html>
+```
