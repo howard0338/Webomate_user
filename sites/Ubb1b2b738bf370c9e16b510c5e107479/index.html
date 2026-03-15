@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mostra | 全台首創小型展覽整合平台</title>
+    
+    <!-- Google Fonts: Space Grotesk (Modern/Pop) & Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config for Vibrant Pop Style -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            pink: '#FF007F',    // High-key Magenta
+                            yellow: '#FFD700',  // Vibrant Yellow
+                            cyan: '#00F0FF',    // Electric Cyan
+                            dark: '#0F172A',
+                            light: '#F8FAFC'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Scroll Reveal & Typewriter -->
+    <style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: #FF007F;
+            animation: blink 0.75s step-end infinite;
+            vertical-align: text-bottom;
+            margin-left: 4px;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Glitch effect for hover */
+        .hover-glitch:hover {
+            text-shadow: 2px 0 #00F0FF, -2px 0 #FF007F;
+            transition: text-shadow 0.3s ease;
+        }
+    </style>
+</head>
+<body class="antialiased bg-brand-light text-brand-dark overflow-x-hidden">
+
+    <!-- Navbar (Glassmorphism) -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar" style="backdrop-filter: blur(12px); background: rgba(248, 250, 252, 0.85); border-bottom: 1px solid rgba(0,0,0,0.05);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <span class="text-4xl font-black tracking-tighter text-brand-dark hover-glitch transition-all">
+                        MOSTRA<span class="text-brand-pink">.</span>
+                    </span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center font-bold text-sm tracking-widest uppercase">
+                    <a href="#about" class="hover:text-brand-pink transition-colors duration-300">品牌理念</a>
+                    <a href="#categories" class="hover:text-brand-cyan transition-colors duration-300">展覽分類</a>
+                    <a href="#featured" class="hover:text-brand-yellow transition-colors duration-300">精選畫作</a>
+                    <a href="#contact" class="px-6 py-2.5 bg-brand-dark text-white rounded-full hover:bg-brand-pink hover:shadow-[0_0_20px_rgba(255,0,127,0.5)] transition-all duration-300 transform hover:-translate-y-1">
+                        探索展覽
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=2066&auto=format&fit=crop" 
+                 alt="Vibrant Art Gallery" 
+                 class="w-full h-full object-cover animate-float" style="animation-duration: 20s;">
+            <!-- High contrast overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/60 to-brand-dark/90"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-10">
+            <!-- Typewriter -->
+            <div class="mb-6 inline-block px-4 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-dark/50 backdrop-blur-sm">
+                <span class="text-brand-cyan font-bold text-sm md:text-base tracking-wide" id="typewriter-text"></span><span class="typewriter-cursor"></span>
+            </div>
+            
+            <!-- Big Bold Header -->
+            <h1 class="text-6xl md:text-8xl font-black text-white mb-6 leading-tight tracking-tight drop-shadow-lg">
+                釋放色彩的<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink via-brand-yellow to-brand-cyan">無限維度</span>
+            </h1>
+            
+            <!-- Light Subheader -->
+            <p class="text-lg md:text-2xl text-gray-300 font-light mb-12 max-w-3xl mx-auto leading-relaxed">
+                全台首創！專為藝術愛好者打造的小型展覽整合平台。<br class="hidden md:block">
+                在這裡，我們用高明度的熱情，點燃您對畫作的渴望。
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="px-8 py-4 bg-brand-pink text-white font-bold rounded-full text-lg hover:bg-white hover:text-brand-pink hover:shadow-[0_0_30px_rgba(255,0,127,0.6)] transition-all duration-300 transform hover:-translate-y-1">
+                    尋找附近展覽
+                </button>
+                <button class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-full text-lg hover:bg-white hover:text-brand-dark transition-all duration-300 transform hover:-translate-y-1">
+                    藝術家進駐
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (Scroll Reveal) -->
+    <section id="about" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal order-2 lg:order-1">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-square lg:aspect-[4/5] group">
+                        <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop" 
+                             alt="Modern Abstract Art" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-brand-pink/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                </div>
+                <div class="reveal order-1 lg:order-2">
+                    <h2 class="text-brand-pink font-bold tracking-widest uppercase mb-2">About Mostra</h2>
+                    <h3 class="text-4xl md:text-5xl font-black mb-6 text-brand-dark leading-tight">
+                        讓藝術，<br>以前所未有的<span class="text-brand-cyan">活力</span>呈現。
+                    </h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6 font-light">
+                        Mostra 誕生於一個簡單的理念：最動人的藝術，往往隱藏在城市的巷弄之中。作為全台第一個整合小型展覽的平台，我們致力於發掘那些充滿生命力、色彩鮮明且極具潛力的畫作與藝術空間。
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8 font-light">
+                        我們打破傳統藝廊的距離感，用明亮、現代的視覺語言，為藝術愛好者搭建一座橋樑。無論你是資深藏家，還是剛接觸藝術的新手，Mostra 都能為你導航，找到觸動靈魂的那一抹色彩。
+                    </p>
+                    <div class="flex items-center gap-4 text-brand-dark font-bold">
+                        <i data-lucide="arrow-right" class="text-brand-pink"></i>
+                        <span>探索我們的藝術版圖</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section (Vibrant Pop Style) -->
+    <section id="categories" class="py-24 bg-brand-light relative overflow-hidden">
+        <!-- Decorative background elements -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-yellow/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        <div class="absolute bottom-0 left-0 w-80 h-80 bg-brand-cyan/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-black text-brand-dark mb-4">探索多元<span class="text-brand-pink">藝術風格</span></h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">從經典的筆觸到前衛的實驗，精準分類讓你一目瞭然地找到喜愛的展覽。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Category 1: Classical -->
+                <div class="reveal group bg-white rounded-3xl p-8 shadow-lg border-b-8 border-brand-yellow hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-yellow/10 flex items-center justify-center mb-6 text-brand-yellow group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="palette" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-3 text-brand-dark">古典藝術</h3>
+                    <p class="text-gray-500 mb-6 line-clamp-2">跨越時空的經典之美，感受傳統技法的細膩與莊重，重溫藝術史上的輝煌時刻。</p>
+                    <div class="w-full h-40 rounded-xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1578305886638-ed5807af1d00?q=80&w=2000&auto=format&fit=crop" alt="Classical Art" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+
+                <!-- Category 2: Modern -->
+                <div class="reveal group bg-white rounded-3xl p-8 shadow-lg border-b-8 border-brand-pink hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-pink/10 flex items-center justify-center mb-6 text-brand-pink group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="sparkles" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-3 text-brand-dark">現代藝術</h3>
+                    <p class="text-gray-500 mb-6 line-clamp-2">突破框架的視覺衝擊，體驗當代創作者的無限活力與高明度的色彩實驗。</p>
+                    <div class="w-full h-40 rounded-xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?q=80&w=2000&auto=format&fit=crop" alt="Modern Art" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+
+                <!-- Category 3: Exhibition Info -->
+                <div class="reveal group bg-white rounded-3xl p-8 shadow-lg border-b-8 border-brand-cyan hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 cursor-pointer" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 rounded-2xl bg-brand-cyan/10 flex items-center justify-center mb-6 text-brand-cyan group-hover:scale-110 transition-transform duration-300">
+                        <i data-lucide="map" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-2xl font-black mb-3 text-brand-dark">展覽地圖</h3>
+                    <p class="text-gray-500 mb-6 line-clamp-2">即時更新全台各地小型展演空間資訊，輕鬆規劃你的週末藝術巡禮。</p>
+                    <div class="w-full h-40 rounded-xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=2000&auto=format&fit=crop" alt="Exhibition Map" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Stats Section -->
+    <section class="py-20 bg-brand-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#FF007F 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-800">
+                <div class="reveal">
+                    <div class="text-5xl md:text-6xl font-black text-brand-cyan mb-2"><span class="counter" data-target="150">0</span>+</div>
+                    <div class="text-gray-400 font-bold tracking-wider">合作藝廊</div>
+                </div>
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <div class="text-5xl md:text-6xl font-black text-brand-yellow mb-2"><span class="counter" data-target="320">0</span>+</div>
+                    <div class="text-gray-400 font-bold tracking-wider">收錄展覽</div>
+                </div>
+                <div class="reveal" style="transition-delay: 200ms;">
+                    <div class="text-5xl md:text-6xl font-black text-brand-pink mb-2"><span class="counter" data-target="850">0</span>+</div>
+                    <div class="text-gray-400 font-bold tracking-wider">活躍藝術家</div>
+                </div>
+                <div class="reveal" style="transition-delay: 300ms;">
+                    <div class="text-5xl md:text-6xl font-black text-white mb-2"><span class="counter" data-target="12">0</span>k</div>
+                    <div class="text-gray-400 font-bold tracking-wider">藝術愛好者</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-24 bg-gradient-to-br from-brand-pink via-brand-pink to-orange-500 text-white text-center">
+        <div class="max-w-4xl mx-auto px-6 reveal">
+            <h2 class="text-5xl font-black mb-6 drop-shadow-md">準備好為生活上色了嗎？</h2>
+            <p class="text-xl mb-10 font-light opacity-90">加入 Mostra，隨時掌握全台最精彩、最具活力的小型藝術展覽資訊。</p>
+            <button class="px-10 py-5 bg-white text-brand-pink font-black rounded-full text-xl hover:bg-brand-dark hover:text-white shadow-[0_10px_30px_rgba(0,0,0,0.2)] transition-all duration-300 transform hover:-translate-y-2">
+                立即開始探索
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark pt-16 pb-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
+                <div class="mb-6 md:mb-0">
+                    <span class="text-3xl font-black text-white tracking-tighter">
+                        MOSTRA<span class="text-brand-cyan">.</span>
+                    </span>
+                    <p class="text-gray-500 mt-2 text-sm">全台首創小型展覽整合平台</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-brand-pink transition-colors duration-300">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-brand-cyan transition-colors duration-300">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-white hover:bg-brand-yellow transition-colors duration-300">
+                        <i data-lucide="twitter" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Mostra Art Platform. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Made by Webomate</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(248, 250, 252, 0.85)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Typewriter Effect
+        const texts = [
+            "全台首創！專為藝術愛好者打造",
+            "發掘巷弄間的高明度色彩",
+            "整合全台最具活力的小型畫展"
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterElement = document.getElementById('typewriter-text');
+
+        function type() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500; // Pause before new text
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        
+        // Start typewriter
+        setTimeout(type, 1000);
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = +counter.getAttribute('data-target');
+                    
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 15);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    
+                    updateCount();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            if(counter.getAttribute('data-target') !== "0") {
+                counterObserver.observe(counter);
+            } else {
+                counter.parentElement.style.display = 'none'; // Hide if 0 based on rules
+            }
+        });
+
+    </script>
+</body>
+</html>
+```
