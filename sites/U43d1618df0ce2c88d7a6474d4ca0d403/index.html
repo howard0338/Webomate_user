@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>問題解決的Hugh | 透過問對問題來解決問題</title>
+    <meta name="description" content="專業中帶點溫暖的線上一對一諮詢服務。透過精準提問，為您釐清思緒，找到人生的最佳解。">
+    
+    <!-- Google Fonts: Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        // 溫暖大地色系搭配沉穩黑
+                        brand: {
+                            50: '#f9f8f6',
+                            100: '#f0ece6',
+                            200: '#e1d8cd',
+                            300: '#cebcab',
+                            400: '#b89c84',
+                            500: '#a68263', // 主要溫暖大地色
+                            600: '#997356',
+                            700: '#805d47',
+                            800: '#6a4e3e',
+                            900: '#1a1a1a', // 沉穩黑
+                            950: '#0f0f0f',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for Animations & Utilities -->
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #f9f8f6; /* brand-50 */
+        }
+        
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Typewriter Cursor */
+        .typewriter-cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: #a68263; /* brand-500 */
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Hero Fade In */
+        .hero-fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Glassmorphism */
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(26, 26, 26, 0.85); /* Dark glass to match theme */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased text-brand-900">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260315072129_0.png" alt="問題解決的Hugh Logo" class="h-10 w-auto rounded-full object-cover border border-brand-500/30 group-hover:scale-105 transition-transform duration-300" onerror="this.outerHTML='<span class=\'text-brand-500 font-bold text-xl tracking-wider\'>問題解決的Hugh</span>'">
+                    <span class="text-white font-medium text-lg tracking-widest hidden sm:block group-hover:text-brand-400 transition-colors duration-300">問題解決的Hugh</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#about" class="text-gray-300 hover:text-brand-400 text-sm font-medium transition-colors duration-300">核心理念</a>
+                    <a href="#service" class="text-gray-300 hover:text-brand-400 text-sm font-medium transition-colors duration-300">諮詢服務</a>
+                    <a href="#social-proof" class="text-gray-300 hover:text-brand-400 text-sm font-medium transition-colors duration-300">信任背書</a>
+                    <a href="#booking" class="bg-brand-500 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-brand-400 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-brand-500/30 transition-all duration-300">預約免費試用</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-300 hover:text-white transition-colors">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?q=80&w=2070&auto=format&fit=crop" alt="溫暖專業的諮詢空間" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 bg-brand-900/75 mix-blend-multiply"></div>
+            <!-- Gradient for smoother transition to next section -->
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-brand-50 to-transparent"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-6 max-w-4xl mx-auto hero-fade-in pt-20">
+            <!-- Factual Synthesis Copy -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-brand-200 text-sm font-medium mb-8">
+                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                <span>位於台北市大同區，深獲 190 位顧客 4.5 星好評推薦</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 tracking-tight">
+                透過問對問題，<br>
+                <span class="text-brand-400 font-light">找到人生的最佳解。</span>
+            </h1>
+            
+            <div class="text-xl md:text-2xl text-gray-300 mb-10 h-8 flex items-center justify-center">
+                <span id="typewriter-text"></span><span class="typewriter-cursor">&nbsp;</span>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#booking" class="w-full sm:w-auto px-8 py-4 bg-brand-500 text-white rounded-full font-medium text-lg hover:bg-brand-400 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-500/20 transition-all duration-300 flex items-center justify-center gap-2">
+                    立即預約免費試用 <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#about" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-white/30 text-white rounded-full font-medium text-lg hover:bg-white/10 transition-all duration-300">
+                    了解核心理念
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About / Philosophy Section -->
+    <section id="about" class="py-24 bg-brand-50 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <!-- Text Content -->
+                <div class="reveal order-2 lg:order-1">
+                    <h2 class="text-brand-500 font-medium tracking-widest text-sm uppercase mb-3">Core Philosophy</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-brand-900 mb-8 leading-snug">
+                        真正的解答，<br>往往隱藏在問題本身。
+                    </h3>
+                    
+                    <div class="space-y-6 text-gray-600 leading-relaxed text-lg">
+                        <p>
+                            在瞬息萬變的現代社會中，我們常常被龐雜的資訊與情緒淹沒，找不到前進的方向。許多時候，我們急於尋找答案，卻忽略了檢視問題的本質。「問題解決的Hugh」深信，唯有透過精準、深刻的提問，才能撥開迷霧，看見事物的核心。
+                        </p>
+                        <p>
+                            我們的線上一對一諮詢服務，並非給予制式化的標準答案，而是創造一個安全、溫暖且充滿啟發性的對話空間。Hugh 將運用專業的引導技巧，陪伴您一層層剝開表象，釐清內心真正的渴望與阻礙。這是一個共同探索的過程，讓您重新找回掌控感。
+                        </p>
+                        <p>
+                            無論是職涯發展的迷惘、人際關係的糾結，或是自我成長的瓶頸，只要您願意敞開心胸，我們都能一起找出那個「對的問題」。當問題被正確定義，專屬於您的解決方案便會自然浮現。現在就預約免費試用，開啟您的解惑之旅。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Image Grid -->
+                <div class="reveal order-1 lg:order-2 grid grid-cols-2 gap-4">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1000&auto=format&fit=crop" alt="專業諮詢" class="rounded-2xl w-full h-64 object-cover shadow-lg mt-8 hover:scale-105 transition-transform duration-500">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop" alt="溫暖對話" class="rounded-2xl w-full h-64 object-cover shadow-lg hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Section -->
+    <section id="service" class="py-24 bg-brand-900 text-brand-50 relative overflow-hidden">
+        <!-- Decorative Circle -->
+        <div class="absolute top-0 right-0 w-96 h-96 bg-brand-800 rounded-full blur-3xl opacity-20 -translate-y-1/2 translate-x-1/3"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-brand-400 font-medium tracking-widest text-sm uppercase mb-3">Our Service</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">專屬您的線上一對一諮詢</h3>
+                <p class="text-gray-400 text-lg">跨越空間限制，在最舒適的環境中，展開一場深度對話。我們目前提供首次免費體驗，讓您零負擔感受提問的力量。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-brand-950/50 border border-brand-800/50 p-8 rounded-2xl hover:-translate-y-2 hover:border-brand-500/50 transition-all duration-300 reveal group">
+                    <div class="w-14 h-14 bg-brand-800/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-500 transition-colors duration-300">
+                        <i data-lucide="message-circle-question" class="w-7 h-7 text-brand-300 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">深度提問引導</h4>
+                    <p class="text-gray-400 leading-relaxed">不給說教式的答案，而是透過專業框架與同理心聆聽，引導您自行發掘盲點，找到最適合自己的行動方案。</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-brand-950/50 border border-brand-800/50 p-8 rounded-2xl hover:-translate-y-2 hover:border-brand-500/50 transition-all duration-300 reveal group" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-brand-800/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-500 transition-colors duration-300">
+                        <i data-lucide="gift" class="w-7 h-7 text-brand-300 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">首次免費試用</h4>
+                    <p class="text-gray-400 leading-relaxed">我們重視每一次的契合度。提供首次免費諮詢體驗，讓您在毫無壓力的情況下，確認這是否是您需要的協助。</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-brand-950/50 border border-brand-800/50 p-8 rounded-2xl hover:-translate-y-2 hover:border-brand-500/50 transition-all duration-300 reveal group" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-brand-800/50 rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-500 transition-colors duration-300">
+                        <i data-lucide="video" class="w-7 h-7 text-brand-300 group-hover:text-white"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">線上彈性空間</h4>
+                    <p class="text-gray-400 leading-relaxed">採用線上視訊會議進行，免去舟車勞頓。只需挑選一個讓您感到安心的角落，即可隨時隨地開啟對話。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section (Injected Data) -->
+    <section id="social-proof" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <h2 class="text-brand-500 font-medium tracking-widest text-sm uppercase mb-3">Trust & Recognition</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-brand-900 mb-6">來自真實體驗的肯定</h3>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                        除了線上的專業諮詢，我們也致力於打造優質的實體體驗空間。位於台北大同區的線下據點「HUGH dessert dining」，同樣秉持著對品質的極致追求，獲得了眾多顧客的真實好評。這份對細節的用心，也完全體現在我們的每一次諮詢服務中。
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-8 items-center bg-brand-50 p-6 rounded-2xl border border-brand-100">
+                        <div class="flex flex-col">
+                            <span class="text-5xl font-black text-brand-900 flex items-baseline gap-1">
+                                <span class="counter" data-target="4.5">0.0</span>
+                                <span class="text-2xl text-brand-500">/ 5</span>
+                            </span>
+                            <div class="flex text-yellow-500 mt-2">
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                                <i data-lucide="star-half" class="w-5 h-5 fill-current"></i>
+                            </div>
+                        </div>
+                        <div class="w-px h-16 bg-brand-200 hidden sm:block"></div>
+                        <div class="flex flex-col">
+                            <span class="text-4xl font-bold text-brand-900 flex items-baseline gap-2">
+                                <span class="counter" data-target="190">0</span>
+                                <span class="text-lg font-normal text-gray-500">+ 則評論</span>
+                            </span>
+                            <span class="text-sm text-gray-500 mt-2 flex items-center gap-1">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500"></i> Google Maps 真實評分
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Card -->
+                <div class="reveal bg-white rounded-3xl shadow-xl shadow-brand-900/5 border border-gray-100 overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1000&auto=format&fit=crop" alt="HUGH 實體空間" class="w-full h-full object-cover">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-brand-900 flex items-center gap-1 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> 營業中
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-10 h-10 rounded-full bg-[#FF9E67] flex items-center justify-center shrink-0">
+                                <i data-lucide="utensils" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-brand-900">HUGH dessert dining</h4>
+                        </div>
+                        <p class="text-sm text-brand-500 font-medium mb-4">線下實體空間 / 餐廳</p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3 text-gray-600">
+                                <i data-lucide="map-pin" class="w-5 h-5 shrink-0 text-gray-400 mt-0.5"></i>
+                                <span class="text-sm leading-relaxed">103臺北市大同區重慶北路三段136巷56號</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-600">
+                                <i data-lucide="external-link" class="w-5 h-5 shrink-0 text-gray-400"></i>
+                                <a href="https://maps.google.com/?cid=123456789" target="_blank" class="text-sm text-brand-500 hover:text-brand-600 underline underline-offset-4 transition-colors">在 Google 地圖上查看</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="py-24 bg-brand-50 border-t border-brand-100">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-4">預約您的專屬時間</h2>
+                <p class="text-gray-600 text-lg">選擇適合您的時段，讓我們開始第一步的對話。目前提供首次免費試用。</p>
+            </div>
+
+            <!-- Mockup Calendar UI -->
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-10 reveal">
+                <div class="flex flex-col md:flex-row gap-10">
+                    <!-- Calendar Side -->
+                    <div class="md:w-1/2 border-b md:border-b-0 md:border-r border-gray-100 pb-8 md:pb-0 md:pr-10">
+                        <div class="flex justify-between items-center mb-6">
+                            <h4 class="font-bold text-lg">2026年 10月</h4>
+                            <div class="flex gap-2">
+                                <button class="p-2 hover:bg-gray-100 rounded-full transition-colors"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+                                <button class="p-2 hover:bg-gray-100 rounded-full transition-colors"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-7 gap-2 text-center text-sm mb-4">
+                            <div class="text-gray-400 font-medium">日</div>
+                            <div class="text-gray-400 font-medium">一</div>
+                            <div class="text-gray-400 font-medium">二</div>
+                            <div class="text-gray-400 font-medium">三</div>
+                            <div class="text-gray-400 font-medium">四</div>
+                            <div class="text-gray-400 font-medium">五</div>
+                            <div class="text-gray-400 font-medium">六</div>
+                        </div>
+                        <div class="grid grid-cols-7 gap-2 text-center text-sm">
+                            <!-- Dummy days -->
+                            <div class="py-2 text-gray-300">28</div><div class="py-2 text-gray-300">29</div><div class="py-2 text-gray-300">30</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">1</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">2</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">3</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">4</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">5</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">6</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">7</div>
+                            <div class="py-2 bg-brand-500 text-white font-bold rounded-lg shadow-md cursor-pointer">8</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">9</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">10</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">11</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">12</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">13</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">14</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">15</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">16</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">17</div>
+                            <div class="py-2 hover:bg-brand-50 rounded-lg cursor-pointer transition-colors">18</div>
+                        </div>
+                    </div>
+
+                    <!-- Time Slots Side -->
+                    <div class="md:w-1/2">
+                        <h4 class="font-bold text-lg mb-2">10月8日 (星期四)</h4>
+                        <p class="text-sm text-gray-500 mb-6">請選擇諮詢時段 (台北時間)</p>
+                        
+                        <div class="space-y-3">
+                            <button class="w-full py-3 px-4 border border-brand-200 rounded-xl text-brand-900 font-medium hover:border-brand-500 hover:bg-brand-50 transition-all text-left flex justify-between items-center group">
+                                10:00 AM - 11:00 AM
+                                <i data-lucide="check" class="w-5 h-5 text-brand-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            </button>
+                            <button class="w-full py-3 px-4 border border-brand-500 bg-brand-50 rounded-xl text-brand-900 font-bold shadow-sm text-left flex justify-between items-center">
+                                14:00 PM - 15:00 PM
+                                <i data-lucide="check" class="w-5 h-5 text-brand-500"></i>
+                            </button>
+                            <button class="w-full py-3 px-4 border border-brand-200 rounded-xl text-brand-900 font-medium hover:border-brand-500 hover:bg-brand-50 transition-all text-left flex justify-between items-center group">
+                                16:30 PM - 17:30 PM
+                                <i data-lucide="check" class="w-5 h-5 text-brand-500 opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                            </button>
+                        </div>
+
+                        <button class="w-full mt-8 bg-brand-900 text-white py-4 rounded-xl font-bold hover:bg-brand-800 hover:shadow-lg transition-all duration-300 flex justify-center items-center gap-2">
+                            確認預約 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-950 text-gray-400 py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <a href="#" class="flex items-center gap-3 mb-6">
+                        <span class="text-white font-bold text-2xl tracking-widest">問題解決的Hugh</span>
+                    </a>
+                    <p class="text-gray-400 leading-relaxed max-w-md">
+                        專業中帶點溫暖。透過精準提問，為您釐清思緒，找到人生的最佳解。
+                    </p>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-bold mb-6 tracking-wider">快速連結</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#about" class="hover:text-brand-400 transition-colors">核心理念</a></li>
+                        <li><a href="#service" class="hover:text-brand-400 transition-colors">諮詢服務</a></li>
+                        <li><a href="#social-proof" class="hover:text-brand-400 transition-colors">信任背書</a></li>
+                        <li><a href="#booking" class="hover:text-brand-400 transition-colors">預約時間</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold mb-6 tracking-wider">聯絡我們</h4>
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="mailto:hughh7277@gmail.com" class="flex items-center gap-3 hover:text-brand-400 transition-colors group">
+                                <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-brand-500/20 transition-colors">
+                                    <i data-lucide="mail" class="w-4 h-4"></i>
+                                </div>
+                                hughh7277@gmail.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.threads.com/?hl=zh-tw" target="_blank" class="flex items-center gap-3 hover:text-brand-400 transition-colors group">
+                                <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-brand-500/20 transition-colors">
+                                    <i data-lucide="at-sign" class="w-4 h-4"></i>
+                                </div>
+                                Threads 官方帳號
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <p>&copy; 2026 問題解決的Hugh. All rights reserved.</p>
+                <p class="flex items-center gap-1">
+                    Made by <span class="text-white font-medium">Webomate</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg');
+                navbar.classList.replace('bg-transparent', 'glass-nav');
+            } else {
+                navbar.classList.remove('shadow-lg');
+                // Keep glass nav on mobile, remove on desktop top if preferred, but glass looks good always.
+            }
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseFloat(counter.getAttribute('data-target'));
+                    const isFloat = target % 1 !== 0;
+                    
+                    const updateCount = () => {
+                        const count = parseFloat(counter.innerText);
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            counter.innerText = isFloat ? (count + inc).toFixed(1) : Math.ceil(count + inc);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = isFloat ? target.toFixed(1) : target;
+                        }
+                    };
+
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Typewriter Effect
+        const phrases = [
+            "為您釐清思緒，找出盲點。",
+            "精準提問，解鎖人生卡關。",
+            "一個安全、溫暖的對話空間。"
+        ];
+        let phraseIndex = 0;
+        let letterIndex = 0;
+        let currentText = "";
+        let isDeleting = false;
+        const typeElement = document.getElementById("typewriter-text");
+
+        function type() {
+            const fullText = phrases[phraseIndex];
+
+            if (isDeleting) {
+                currentText = fullText.substring(0, letterIndex - 1);
+                letterIndex--;
+            } else {
+                currentText = fullText.substring(0, letterIndex + 1);
+                letterIndex++;
+            }
+
+            typeElement.innerHTML = currentText;
+
+            let typeSpeed = 100;
+
+            if (isDeleting) {
+                typeSpeed /= 2;
+            }
+
+            if (!isDeleting && currentText === fullText) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && currentText === "") {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before new word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start typewriter after a short delay
+        setTimeout(type, 1000);
+
+    </script>
+</body>
+</html>
+```
