@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好事食品 | 現代家庭廚房・永和美食推薦</title>
+    <meta name="description" content="好事食品位於新北市永和區永元路12號，提供各式乾拌麵、炒飯、暖心雞湯。我們將現代家庭廚房的溫馨與健康帶給您，嚴選食材，用心烹調。">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // 淡綠色系 (Pale Green Palette)
+                        brand: {
+                            50: '#f2f8f5',
+                            100: '#e1f0e8',
+                            200: '#c3e0d1',
+                            300: '#9bc8b3',
+                            400: '#70ab92',
+                            500: '#518e74', // 主色
+                            600: '#3f705b',
+                            700: '#345a4a',
+                            800: '#2b493d',
+                            900: '#243d34',
+                            950: '#13231e',
+                        }
+                    },
+                    fontFamily: {
+                        sans:['"Noto Sans TC"', 'sans-serif'],
+                        heading: ['"Urbanist"', '"Noto Sans TC"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(81, 142, 116, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #fafafa;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Urbanist', 'Noto Sans TC', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .menu-dots {
+            flex-grow: 1;
+            border-bottom: 1px dashed #c3e0d1;
+            margin: 0 12px;
+            position: relative;
+            top: -6px;
+        }
+        /* Typewriter cursor */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center mr-3 text-brand-600">
+                        <i data-lucide="utensils" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-heading font-bold text-2xl text-brand-900 tracking-wider">好事食品</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">品牌理念</a>
+                    <a href="#menu" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">美味菜單</a>
+                    <a href="#reviews" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">饕客推薦</a>
+                    <a href="#location" class="text-gray-600 hover:text-brand-600 font-medium transition-colors">門市資訊</a>
+                    <a href="https://shop.ichefpos.com/store/X-SrdZTJ/ordering" target="_blank" rel="noopener noreferrer" 
+                       class="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg flex items-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                        立即預約
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-600 focus:outline-none">
+                        <i data-lucide="menu" class="w-7 h-7"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-brand-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg font-medium">品牌理念</a>
+                <a href="#menu" class="block px-3 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg font-medium">美味菜單</a>
+                <a href="#reviews" class="block px-3 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg font-medium">饕客推薦</a>
+                <a href="#location" class="block px-3 py-3 text-gray-700 hover:bg-brand-50 hover:text-brand-600 rounded-lg font-medium">門市資訊</a>
+                <a href="https://shop.ichefpos.com/store/X-SrdZTJ/ordering" target="_blank" rel="noopener noreferrer" 
+                   class="block mt-4 text-center bg-brand-500 text-white px-3 py-3 rounded-lg font-medium shadow-md">
+                    立即預約點餐
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80" alt="現代家庭廚房" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-brand-950/60 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-950/80 to-transparent"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+            <span class="inline-block py-1 px-3 rounded-full bg-brand-500/20 text-brand-100 border border-brand-400/30 text-sm font-medium tracking-widest mb-6 backdrop-blur-sm reveal">
+                永和美食口碑推薦
+            </span>
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight font-heading reveal" style="transition-delay: 100ms;">
+                好事食品
+            </h1>
+            <p class="text-xl md:text-2xl text-brand-50 mb-10 font-light tracking-wide reveal" style="transition-delay: 200ms;">
+                <span id="typewriter" class="cursor"></span>
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 reveal" style="transition-delay: 300ms;">
+                <a href="https://shop.ichefpos.com/store/X-SrdZTJ/ordering" target="_blank" rel="noopener noreferrer" 
+                   class="w-full sm:w-auto bg-brand-500 hover:bg-brand-400 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_40px_-10px_rgba(74,222,128,0.5)] flex items-center justify-center gap-2">
+                    <i data-lucide="utensils-crossed" class="w-5 h-5"></i>
+                    線上預約點餐
+                </a>
+                <a href="#menu" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/30 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2">
+                    查看菜單
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Down Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <a href="#about" class="text-white/70 hover:text-white transition-colors">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- About / Brand Spirit Section -->
+    <section id="about" class="py-24 bg-brand-50 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 right-0 -mt-10 -mr-10 text-brand-200/50 transform rotate-45">
+            <i data-lucide="leaf" class="w-64 h-64"></i>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <!-- Image -->
+                <div class="w-full md:w-1/2 reveal">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1495195134817-a1a2807810e4?auto=format&fit=crop&q=80" alt="嚴選食材" class="rounded-2xl shadow-soft aspect-[4/3] object-cover" />
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl hidden sm:block">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600">
+                                    <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500 font-medium">堅持品質</p>
+                                    <p class="text-lg font-bold text-brand-900">嚴選新鮮食材</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Text -->
+                <div class="w-full md:w-1/2 reveal" style="transition-delay: 200ms;">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-sm font-bold mb-6">
+                        <i data-lucide="chef-hat" class="w-4 h-4"></i>
+                        品牌理念
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-6 leading-tight">
+                        為生活注入一份<br/><span class="text-brand-500">美好的儀式感</span>
+                    </h2>
+                    <p class="text-lg text-gray-600 leading-relaxed mb-8">
+                        好事食品，我們將現代家庭廚房的溫馨與健康帶給您。嚴選每一份食材，用心烹調，讓您在忙碌之餘，也能輕鬆享受如現煮般安心又美味的好滋味。
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 text-brand-500"><i data-lucide="check-circle-2" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="font-bold text-brand-900">溫馨空間</h4>
+                                <p class="text-sm text-gray-500 mt-1">現代家庭廚房風格</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-1 text-brand-500"><i data-lucide="check-circle-2" class="w-5 h-5"></i></div>
+                            <div>
+                                <h4 class="font-bold text-brand-900">安心美味</h4>
+                                <p class="text-sm text-gray-500 mt-1">如現煮般的純粹</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-brand-500 font-bold tracking-wider text-sm uppercase">Our Menu</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mt-2 mb-4">美味菜單</h2>
+                <div class="w-24 h-1 bg-brand-200 mx-auto rounded-full"></div>
+                <p class="text-gray-500 mt-6">從經典乾拌麵到暖心雞湯，每一道都是我們用心準備的好味道。</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                
+                <!-- 乾拌麵類 -->
+                <div class="bg-brand-50/50 rounded-2xl p-6 md:p-8 hover:shadow-soft transition-all duration-300 reveal border border-brand-100/50">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-200">
+                        <div class="p-2 bg-white rounded-lg text-brand-600 shadow-sm"><i data-lucide="bowl" class="w-6 h-6"></i></div>
+                        <h3 class="text-2xl font-bold text-brand-900">乾拌麵類</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">香酥紅蔥乾拌麵</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$60</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">麻醬麵</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$80</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg flex items-center gap-1">川味擔擔麵 <span class="text-red-500 text-sm">🌶️</span></span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$80</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">炸醬麵</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$100</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg flex items-center gap-1">好事紅油燃麵 <span class="text-red-500 text-sm">🌶️</span></span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$80</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg flex items-center gap-1">好事皮蛋麵 <span class="text-red-500 text-sm">🌶️</span></span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$120</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg flex items-center gap-1">紅油抄手麵 / 5顆 (鮮肉/鮮蝦) <span class="text-red-500 text-sm">🌶️</span></span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$100 / $120</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">香蔥乾拌抄手麵 / 5顆 (鮮肉/鮮蝦)</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$100 / $120</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">酸菜肉絲乾拌麵</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$100</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 炒飯類 -->
+                <div class="bg-brand-50/50 rounded-2xl p-6 md:p-8 hover:shadow-soft transition-all duration-300 reveal border border-brand-100/50" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-200">
+                        <div class="p-2 bg-white rounded-lg text-brand-600 shadow-sm"><i data-lucide="flame" class="w-6 h-6"></i></div>
+                        <h3 class="text-2xl font-bold text-brand-900">炒飯類</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">好事蛋炒飯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$70</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">蒜香蛋炒飯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$90</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">肉絲蛋炒飯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$110</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">蝦仁蛋炒飯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$140</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">排骨蛋炒飯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$170</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">蝦肉蛋炒飯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$160</span>
+                        </li>
+                    </ul>
+                    
+                    <!-- Feature Image for Fried Rice -->
+                    <div class="mt-8 rounded-xl overflow-hidden h-32 relative">
+                        <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&q=80" alt="炒飯" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+
+                <!-- 暖心雞盅湯品 -->
+                <div class="bg-brand-50/50 rounded-2xl p-6 md:p-8 hover:shadow-soft transition-all duration-300 reveal border border-brand-100/50">
+                    <div class="flex items-center justify-between mb-6 pb-4 border-b border-brand-200">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-white rounded-lg text-brand-600 shadow-sm"><i data-lucide="soup" class="w-6 h-6"></i></div>
+                            <h3 class="text-2xl font-bold text-brand-900">暖心雞盅湯品</h3>
+                        </div>
+                        <span class="text-xs bg-brand-200 text-brand-800 px-2 py-1 rounded font-bold">+$30 可作雞湯麵</span>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">清燉雞湯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$150</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">香菇雞湯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$170</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">山藥紅棗雞湯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$170</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg flex items-center gap-1">剝皮辣椒雞湯 <span class="text-red-500 text-sm">🌶️</span></span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$170</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">蒜頭蛤蜊雞湯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$170</span>
+                        </li>
+                        <li class="flex items-center justify-between">
+                            <span class="text-gray-800 font-medium text-lg">酸辣湯</span>
+                            <div class="menu-dots"></div>
+                            <span class="text-brand-700 font-bold text-lg">$60</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 湯麵與餛飩 -->
+                <div class="bg-brand-50/50 rounded-2xl p-6 md:p-8 hover:shadow-soft transition-all duration-300 reveal border border-brand-100/50" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-200">
+                        <div class="p-2 bg-white rounded-lg text-brand-600 shadow-sm"><i data-lucide="droplets" class="w-6 h-6"></i></div>
+                        <h3 class="text-2xl font-bold text-brand-900">湯麵與餛飩</h3>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <h4 class="text-brand-600 font-bold mb-3 text-sm uppercase tracking-wider">🍜 湯麵類</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-800 font-medium">餛飩湯麵 / 5顆 (鮮肉/鮮蝦)</span>
+                                <div class="menu-dots"></div>
+                                <span class="text-brand-700 font-bold">$100 / $120</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-800 font-medium">排骨湯麵</span>
+                                <div class="menu-dots"></div>
+                                <span class="text-brand-700 font-bold">$150</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-800 font-medium">酸菜肉絲湯麵</span>
+                                <div class="menu-dots"></div>
+                                <span class="text-brand-700 font-bold">$100</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-brand-600 font-bold mb-3 text-sm uppercase tracking-wider">🥣 餛飩湯 & 抄手 (內含8顆)</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-800 font-medium">餛飩湯 (鮮肉/鮮蝦)</span>
+                                <div class="menu-dots"></div>
+                                <span class="text-brand-700 font-bold">$110 / $140</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-800 font-medium flex items-center gap-1">紅油抄手 (鮮肉/鮮蝦) <span class="text-red-500 text-sm">🌶️</span></span>
+                                <div class="menu-dots"></div>
+                                <span class="text-brand-700 font-bold">$110 / $140</span>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <span class="text-gray-800 font-medium">乾拌抄手 (鮮肉/鮮蝦)</span>
+                                <div class="menu-dots"></div>
+                                <span class="text-brand-700 font-bold">$110 / $140</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 單品與小菜 (Span full width on large screens) -->
+                <div class="lg:col-span-2 bg-white rounded-2xl p-6 md:p-8 shadow-soft reveal border border-brand-100">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                        <!-- 好事推薦單品 -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-100">
+                                <div class="p-2 bg-brand-50 rounded-lg text-brand-600"><i data-lucide="star" class="w-6 h-6"></i></div>
+                                <h3 class="text-2xl font-bold text-brand-900">好事推薦單品</h3>
+                            </div>
+                            <ul class="space-y-4">
+                                <li class="flex items-center justify-between">
+                                    <span class="text-gray-800 font-medium text-lg">紹興醉雞</span>
+                                    <div class="menu-dots"></div>
+                                    <span class="text-brand-700 font-bold text-lg">$130</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <span class="text-gray-800 font-medium text-lg">綠蔥油雞</span>
+                                    <div class="menu-dots"></div>
+                                    <span class="text-brand-700 font-bold text-lg">$130</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <span class="text-gray-800 font-medium text-lg flex items-center gap-1">好事叢林雞 <span class="text-red-500 text-sm">🌶️</span></span>
+                                    <div class="menu-dots"></div>
+                                    <span class="text-brand-700 font-bold text-lg">$130</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <span class="text-gray-800 font-medium text-lg">香酥炸雲吞 / 6顆 (鮮肉/鮮蝦)</span>
+                                    <div class="menu-dots"></div>
+                                    <span class="text-brand-700 font-bold text-lg">$90 / $110</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <span class="text-gray-800 font-medium text-lg">香酥炸排骨</span>
+                                    <div class="menu-dots"></div>
+                                    <span class="text-brand-700 font-bold text-lg">$100</span>
+                                </li>
+                                <li class="flex items-center justify-between">
+                                    <span class="text-gray-800 font-medium text-lg">好事當令蔬菜</span>
+                                    <div class="menu-dots"></div>
+                                    <span class="text-brand-700 font-bold text-lg">$60</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 精緻小菜 -->
+                        <div>
+                            <div class="flex items-center gap-3 mb-6 pb-4 border-b border-brand-100">
+                                <div class="p-2 bg-brand-50 rounded-lg text-brand-600"><i data-lucide="salad" class="w-6 h-6"></i></div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-brand-900">精緻小菜</h3>
+                                    <p class="text-sm text-brand-600 mt-1">均一盤 $60｜每日限量 3~4 樣販售</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="px-4 py-2 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-100">花椒腐竹</span>
+                                <span class="px-4 py-2 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-100">涼拌雲耳</span>
+                                <span class="px-4 py-2 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-100">燒椒皮蛋</span>
+                                <span class="px-4 py-2 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-100">什錦小菜</span>
+                                <span class="px-4 py-2 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-100">香菜佐煙燻豆包</span>
+                                <span class="px-4 py-2 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-100">黃金泡菜</span>
+                                <span class="px-4 py-2 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-100">辣味小黃瓜</span>
+                                <span class="px-4 py-2 bg-gray-50 text-gray-700 rounded-full text-sm font-medium border border-gray-100">醋溜土豆絲</span>
+                            </div>
+                            
+                            <!-- CTA within Menu -->
+                            <div class="mt-10 p-6 bg-brand-50 rounded-xl text-center">
+                                <p class="text-brand-900 font-bold mb-4">想品嚐這些美味嗎？</p>
+                                <a href="https://shop.ichefpos.com/store/X-SrdZTJ/ordering" target="_blank" rel="noopener noreferrer" 
+                                   class="inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg">
+                                    <i data-lucide="smartphone" class="w-5 h-5"></i>
+                                    立即線上點餐
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof / Reviews -->
+    <section id="reviews" class="py-24 bg-brand-900 text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80" alt="背景" class="w-full h-full object-cover">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">深受在地饕客喜愛</h2>
+                <p class="text-brand-200">位於新北市永和區永元路，為您帶來最純粹、最溫馨的美味體驗。</p>
+                
+                <!-- Counter (Mock Google Rating) -->
+                <div class="mt-8 inline-flex items-center gap-4 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
+                    <div class="flex text-yellow-400">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <span class="font-bold text-xl"><span class="counter" data-target="4.8">0</span> / 5.0</span>
+                    <span class="text-brand-200 text-sm">好評推薦</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Review 1 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:-translate-y-2 transition-transform duration-300 reveal">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-brand-50 mb-6 leading-relaxed">「炒飯粒粒分明，香氣十足！雞湯喝起來很暖胃，就像家裡煮的一樣溫馨，食材真的很新鮮。」</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-700 flex items-center justify-center font-bold">陳</div>
+                        <div>
+                            <p class="font-bold text-sm">陳先生</p>
+                            <p class="text-xs text-brand-300">在地嚮導</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:-translate-y-2 transition-transform duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-brand-50 mb-6 leading-relaxed">「紅油抄手麵的辣度剛好，麵條Q彈，小菜也很有水準。店面給人一種現代家庭廚房的感覺，乾淨又舒服！」</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-700 flex items-center justify-center font-bold">林</div>
+                        <div>
+                            <p class="font-bold text-sm">林小姐</p>
+                            <p class="text-xs text-brand-300">美食愛好者</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:-translate-y-2 transition-transform duration-300 reveal" style="transition-delay: 200ms;">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                    <p class="text-brand-50 mb-6 leading-relaxed">「剝皮辣椒雞湯超推！肉質軟嫩湯頭鮮甜。線上預約點餐系統很方便，下班直接去拿剛剛好，永和必吃！」</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-brand-700 flex items-center justify-center font-bold">王</div>
+                        <div>
+                            <p class="font-bold text-sm">王先生</p>
+                            <p class="text-xs text-brand-300">常客</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section id="location" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl overflow-hidden shadow-soft reveal">
+                <div class="flex flex-col lg:flex-row">
+                    <!-- Info -->
+                    <div class="w-full lg:w-1/2 p-10 md:p-16 flex flex-col justify-center">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-sm font-bold mb-6 w-max">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i>
+                            門市資訊
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-brand-900 mb-8">來找我們品嚐美味</h2>
+                        
+                        <div class="space-y-6 mb-10">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-brand-50 rounded-full flex items-center justify-center text-brand-600 flex-shrink-0 mt-1">
+                                    <i data-lucide="map-pinned" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">餐廳地址</h4>
+                                    <p class="text-gray-600">234032 新北市永和區永元路12號</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-brand-50 rounded-full flex items-center justify-center text-brand-600 flex-shrink-0 mt-1">
+                                    <i data-lucide="clock" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900 mb-1">預約取餐</h4>
+                                    <p class="text-gray-600">本店提供線上預約點餐服務，節省您的等候時間。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="https://shop.ichefpos.com/store/X-SrdZTJ/ordering" target="_blank" rel="noopener noreferrer" 
+                           class="bg-brand-900 hover:bg-brand-800 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-lg text-center flex items-center justify-center gap-2">
+                            <i data-lucide="external-link" class="w-5 h-5"></i>
+                            前往 iChef 預約點餐
+                        </a>
+                    </div>
+                    
+                    <!-- Map Placeholder / Image -->
+                    <div class="w-full lg:w-1/2 relative min-h-[400px]">
+                        <!-- Using a generic map-like or storefront image as placeholder since iframe maps require valid API/embed links -->
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80" alt="餐廳外觀" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-brand-900/10"></div>
+                        
+                        <!-- Overlay Pin -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                            <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-xl mb-2 animate-bounce">
+                                <i data-lucide="map-pin" class="w-8 h-8 text-brand-600"></i>
+                            </div>
+                            <div class="bg-white/90 backdrop-blur px-4 py-2 rounded-lg shadow-lg font-bold text-brand-900 text-sm">
+                                好事食品
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-950 text-brand-200 py-12 border-t border-brand-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="utensils" class="w-6 h-6 text-brand-500"></i>
+                    <span class="font-heading font-bold text-2xl text-white tracking-wider">好事食品</span>
+                </div>
+                
+                <div class="flex gap-6 text-sm">
+                    <a href="#about" class="hover:text-white transition-colors">品牌理念</a>
+                    <a href="#menu" class="hover:text-white transition-colors">美味菜單</a>
+                    <a href="#location" class="hover:text-white transition-colors">門市資訊</a>
+                </div>
+            </div>
+            
+            <div class="border-t border-brand-900 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                <p>&copy; 2026 好事食品. All rights reserved.</p>
+                <p class="flex items-center gap-1">
+                    Made with <i data-lucide="heart" class="w-4 h-4 text-red-500 fill-current"></i> by Webomate
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                nav.classList.add('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-sm');
+            }
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        });
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Typewriter Effect
+        const textToType = "現代家庭廚房的溫馨與健康";
+        const typeWriterElement = document.getElementById('typewriter');
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < textToType.length) {
+                typeWriterElement.innerHTML += textToType.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        // Start typewriter after a short delay
+        setTimeout(typeWriter, 800);
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // The lower the slower
+
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+
+                        if (count < target) {
+                            // Format to 1 decimal place if needed
+                            counter.innerText = (count + inc).toFixed(1);
+                            setTimeout(updateCount, 10);
+                        } else {
+                            counter.innerText = target.toFixed(1);
+                        }
+                    };
+                    updateCount();
+                    observer.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+    </script>
+</body>
+</html>
+```
