@@ -1,492 +1,486 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset | 竹科媽媽與職場女性的專屬情緒樹洞</title>
+    <title>正修室內裝潢 | 現代簡約 打造溫暖的家</title>
+    <meta name="description" content="位於台北大安區的正修室內裝潢，專精現代簡約風格，提供全室設計與局部裝修服務，致力於給用戶一個溫暖的家。">
     
-    <!-- Google Fonts: Noto Sans TC for clean, modern typography -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Urbanist:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS (CDN) -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
     <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        sage: {
-                            100: '#E8ECE6',
-                            300: '#C2CFC0',
-                            500: '#9BA993', // Primary Sage Green
-                            700: '#6B7A63',
-                            900: '#424D3D',
-                        },
-                        oatmeal: {
-                            50: '#FDFCFB',
-                            100: '#F4F1EA', // Primary Oatmeal
-                            200: '#EAE4D8',
-                        },
-                        wood: '#5C4D43', // Dark text color for contrast
+                        // 溫潤的米灰色調 (Warm Neutral Palette)
+                        brand: {
+                            50: '#F9F8F6',  // Off-white background
+                            100: '#F0EBE1', // Subtle beige accent
+                            200: '#E2D9C8',
+                            300: '#D1C2A8',
+                            400: '#BFA885',
+                            500: '#A68A64', // Primary warm tone
+                            600: '#8C704D',
+                            700: '#6E563B',
+                            800: '#52402D',
+                            900: '#3D3124', // Dark text
+                        }
                     },
                     fontFamily: {
                         sans: ['"Noto Sans TC"', 'sans-serif'],
+                        heading: ['"Urbanist"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
                     }
                 }
             }
         }
     </script>
 
-    <!-- Custom CSS for Animations and Glassmorphism -->
     <style>
+        /* Custom Styles & Animations */
         body {
-            background-color: #F4F1EA; /* Oatmeal base */
-            color: #5C4D43; /* Wood text */
-        }
-        
-        /* Glassmorphism */
-        .glass-nav {
-            background: rgba(244, 241, 234, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(155, 169, 147, 0.2);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Scroll Reveal */
-        .reveal {
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Scroll Reveal Classes */
+        .reveal-up {
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-        .reveal.active {
+        .reveal-up.active {
             opacity: 1;
             transform: translateY(0);
         }
+        
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
 
         /* Typewriter Cursor */
         .cursor::after {
             content: '|';
-            animation: blink 1s infinite;
-            color: #9BA993;
+            animation: blink 1s step-end infinite;
         }
         @keyframes blink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
-        /* Fade In */
-        .fade-in {
-            animation: fadeIn 1.5s ease-out forwards;
+        /* Image Hover Effect */
+        .img-zoom-container {
+            overflow: hidden;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .img-zoom-container img {
+            transition: transform 0.7s ease;
         }
-
-        /* Smooth Transitions */
-        .smooth-transition {
-            transition: all 0.3s ease;
+        .img-zoom-container:hover img {
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="antialiased font-sans flex flex-col min-h-screen">
+<body class="bg-brand-50 text-brand-900 font-sans selection:bg-brand-200 selection:text-brand-900">
 
-    <!-- Navbar -->
+    <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer hover:opacity-80 smooth-transition" onclick="window.scrollTo(0,0)">
-                    <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260313040118_0.png" alt="Reset Logo" class="h-12 w-auto object-contain rounded-full border border-sage-300 p-1 bg-white" onerror="this.outerHTML='<span class=\'text-2xl font-bold text-sage-700 tracking-wider\'>Reset</span>'">
-                    <span class="ml-3 text-xl font-medium tracking-widest text-wood hidden sm:block">Reset 工作室</span>
-                </div>
-                
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#about" class="text-wood hover:text-sage-700 smooth-transition">關於我們</a>
-                    <a href="#services" class="text-wood hover:text-sage-700 smooth-transition">服務項目</a>
-                    <a href="#info" class="text-wood hover:text-sage-700 smooth-transition">預約資訊</a>
-                    <a href="https://www.facebook.com/share/1YP57NrDX1/?mibextid=wwXIfr" target="_blank" class="bg-sage-500 text-white px-6 py-2 rounded-full hover:bg-sage-700 hover:shadow-lg hover:-translate-y-1 smooth-transition flex items-center gap-2">
-                        <i data-lucide="facebook" class="w-4 h-4"></i>
-                        聯絡我們
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260319060844_0.png" alt="正修室內裝潢 Logo" class="h-12 w-12 object-contain group-hover:scale-105 transition-transform duration-300">
+                        <div class="flex flex-col">
+                            <span class="font-bold text-xl tracking-wider text-brand-900">正修室內裝潢</span>
+                            <span class="text-xs text-brand-500 tracking-widest font-heading uppercase">Zhengxiu Interior</span>
+                        </div>
                     </a>
                 </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-brand-800 hover:text-brand-500 transition-colors text-sm font-medium tracking-wide">關於我們</a>
+                    <a href="#services" class="text-brand-800 hover:text-brand-500 transition-colors text-sm font-medium tracking-wide">專業服務</a>
+                    <a href="#contact" class="text-brand-800 hover:text-brand-500 transition-colors text-sm font-medium tracking-wide">聯絡資訊</a>
+                    <a href="https://www.facebook.com/search/top?q=%E6%AD%A3%E4%BF%AE" target="_blank" rel="noopener noreferrer" class="bg-brand-900 text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-brand-700 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2">
+                        <i data-lucide="facebook" class="w-4 h-4"></i>
+                        Facebook 諮詢
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-900 hover:text-brand-500 focus:outline-none p-2">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-brand-100 absolute w-full shadow-lg">
+            <div class="px-4 pt-2 pb-6 space-y-1 flex flex-col">
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-brand-800 hover:bg-brand-50 hover:text-brand-500 rounded-md">關於我們</a>
+                <a href="#services" class="block px-3 py-3 text-base font-medium text-brand-800 hover:bg-brand-50 hover:text-brand-500 rounded-md">專業服務</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-brand-800 hover:bg-brand-50 hover:text-brand-500 rounded-md">聯絡資訊</a>
+                <a href="https://www.facebook.com/search/top?q=%E6%AD%A3%E4%BF%AE" target="_blank" class="mt-4 block text-center bg-brand-900 text-white px-3 py-3 rounded-md text-base font-medium hover:bg-brand-800">
+                    Facebook 諮詢
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2000&auto=format&fit=crop" alt="Scandinavian serene interior" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-wood/40 mix-blend-multiply"></div>
+            <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260319060844_1.png" alt="現代簡約客廳設計" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-900/80 to-brand-900/40"></div>
         </div>
 
         <!-- Content -->
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto fade-in mt-16">
-            <h1 class="text-5xl md:text-7xl font-bold text-oatmeal-50 mb-6 tracking-wide drop-shadow-md">
-                Reset
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16">
+            <span class="block text-brand-200 font-heading tracking-[0.2em] text-sm md:text-base mb-4 reveal-up">ZHENGXIU INTERIOR DESIGN</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight reveal-up delay-100">
+                致力於給用戶<br>一個<span class="text-brand-300">溫暖的家</span>
             </h1>
-            <h2 class="text-2xl md:text-3xl font-light text-oatmeal-100 mb-8 h-10">
-                <span id="typewriter-text" class="cursor"></span>
-            </h2>
-            <p class="text-lg md:text-xl text-oatmeal-200 mb-12 font-light leading-relaxed max-w-2xl mx-auto">
-                在這裡，卸下所有的防備與標籤。<br class="hidden md:block">
-                讓我們用溫暖的燕麥色與療癒的鼠尾草綠，接住妳的每一個情緒。
+            <p class="text-lg md:text-xl text-brand-50 mb-10 h-8 reveal-up delay-200">
+                <span id="typewriter" class="cursor font-light tracking-wide"></span>
             </p>
-            <a href="#services" class="inline-flex items-center gap-2 bg-oatmeal-50 text-sage-900 px-8 py-4 rounded-full text-lg font-medium hover:bg-white hover:shadow-xl hover:-translate-y-1 smooth-transition">
-                探索療癒空間
-                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal-up delay-300">
+                <a href="#services" class="bg-white text-brand-900 px-8 py-4 rounded-full font-medium hover:bg-brand-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                    探索服務
+                </a>
+                <a href="#contact" class="bg-transparent border border-white text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
+                    聯絡我們
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
+            <a href="#about" class="text-white/70 hover:text-white transition-colors">
+                <i data-lucide="chevron-down" class="w-8 h-8"></i>
             </a>
         </div>
     </section>
 
-    <!-- Social Proof Section -->
-    <section class="py-16 bg-white border-b border-oatmeal-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <p class="text-sage-700 font-medium tracking-widest uppercase mb-4 text-sm">Trust & Support</p>
-            <h3 class="text-2xl md:text-3xl font-bold text-wood mb-10">座落於新竹，專為竹科生活圈打造的隱密心靈角落</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div class="p-6 rounded-2xl bg-oatmeal-50 shadow-sm hover:shadow-md smooth-transition">
-                    <div class="text-4xl font-bold text-sage-500 mb-2 flex justify-center items-center">
-                        <span class="counter" data-target="4.9">0</span>
-                        <span class="text-2xl ml-1">★</span>
-                    </div>
-                    <p class="text-wood">Google 商家高分好評</p>
-                </div>
-                <div class="p-6 rounded-2xl bg-oatmeal-50 shadow-sm hover:shadow-md smooth-transition">
-                    <div class="text-4xl font-bold text-sage-500 mb-2 flex justify-center items-center">
-                        <span class="counter" data-target="100">0</span>
-                        <span class="text-2xl ml-1">%</span>
-                    </div>
-                    <p class="text-wood">絕對隱私與安全感</p>
-                </div>
-                <div class="p-6 rounded-2xl bg-oatmeal-50 shadow-sm hover:shadow-md smooth-transition">
-                    <div class="text-4xl font-bold text-sage-500 mb-2 flex justify-center items-center">
-                        <span class="counter" data-target="60">0</span>
-                        <span class="text-2xl ml-1">mins</span>
-                    </div>
-                    <p class="text-wood">深度專屬傾聽時光</p>
-                </div>
-            </div>
-            <p class="mt-8 text-gray-500 italic max-w-2xl mx-auto">「深受在地職場女性推崇，一個能讓人真正放鬆、暢所欲言的溫馨空間。」</p>
-        </div>
-    </section>
-
     <!-- About Section -->
-    <section id="about" class="py-24 bg-oatmeal-100">
+    <section id="about" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="order-2 lg:order-1 reveal">
-                    <div class="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1499916078039-922301b0eb9b?q=80&w=1000&auto=format&fit=crop" alt="Cozy therapy room" class="w-full h-full object-cover hover:scale-105 smooth-transition duration-700">
-                        <div class="absolute inset-0 border-4 border-sage-300 rounded-3xl transform scale-95 opacity-50 pointer-events-none"></div>
+                <div class="reveal-up order-2 lg:order-1">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="h-px w-12 bg-brand-500"></div>
+                        <span class="text-brand-500 font-heading tracking-widest uppercase text-sm">About Us</span>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-brand-900 leading-snug">
+                        以簡約線條，<br>勾勒生活的溫度。
+                    </h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed font-light text-lg">
+                        位於台北大安區的「正修室內裝潢」，專注於現代簡約風格的空間塑造。我們深信，最好的設計不是繁複的堆疊，而是減去多餘的裝飾，讓空間回歸居住者的本質。
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed font-light text-lg">
+                        從全室規劃到局部翻新，我們傾聽您的需求，以溫潤的色調、流暢的動線與細膩的工法，為您打造兼具美學與實用性的理想居所。
+                    </p>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="grid grid-cols-2 gap-6 pt-6 border-t border-brand-100">
+                        <div>
+                            <p class="text-3xl font-heading font-bold text-brand-900 mb-1"><span class="counter" data-target="100">0</span>%</p>
+                            <p class="text-sm text-gray-500">用心傾聽</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-heading font-bold text-brand-900 mb-1"><span class="counter" data-target="100">0</span>%</p>
+                            <p class="text-sm text-gray-500">專業施工</p>
+                        </div>
                     </div>
                 </div>
-                <div class="order-1 lg:order-2 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-wood mb-6 relative inline-block">
-                        為什麼需要 Reset？
-                        <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-sage-300 rounded-full"></span>
-                    </h2>
-                    <div class="space-y-6 text-lg text-gray-700 leading-relaxed">
-                        <p>
-                            生活在快節奏的竹科，無論是職場的高壓、育兒的辛勞，還是婆媳與夫妻間的拉扯，常常讓人喘不過氣。我們習慣了堅強，卻忘了給自己一個喘息的空間。
-                        </p>
-                        <p>
-                            <strong>Reset 工作室</strong> 誕生於一個簡單的理念：為每一位疲憊的女性提供一個安全、無評判的避風港。在這裡，妳不需要扮演好媽媽、好妻子或好員工。
-                        </p>
-                        <p>
-                            我們融入木質與森林元素，打造極簡北歐風的實體空間。任何妳不敢跟家人說的話題，都可以帶到這裡。讓我們接住妳的情緒，陪妳一起按下生活的重置鍵。
-                        </p>
-                    </div>
+                
+                <div class="reveal-up delay-200 order-1 lg:order-2 img-zoom-container rounded-2xl shadow-soft">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="現代簡約室內設計細節" class="w-full h-[500px] object-cover rounded-2xl">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 bg-white">
+    <section id="services" class="py-24 bg-brand-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold text-wood mb-4">專屬妳的療癒服務</h2>
-                <p class="text-lg text-gray-500 max-w-2xl mx-auto">不論是日常瑣事或深層焦慮，我們提供專業且溫暖的傾聽陪伴。</p>
+            <div class="text-center mb-16 reveal-up">
+                <span class="text-brand-500 font-heading tracking-widest uppercase text-sm block mb-3">Our Services</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-900">專業裝修服務</h2>
+                <div class="w-20 h-1 bg-brand-300 mx-auto mt-6"></div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <!-- Service 1 -->
-                <div class="bg-oatmeal-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl smooth-transition hover:-translate-y-2 group reveal">
-                    <div class="aspect-video relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=800&auto=format&fit=crop" alt="Deep Emotional Listening" class="w-full h-full object-cover group-hover:scale-110 smooth-transition duration-500">
-                        <div class="absolute inset-0 bg-sage-900/20 group-hover:bg-transparent smooth-transition"></div>
+                <div class="bg-white p-10 rounded-2xl shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal-up">
+                    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-6 text-brand-600">
+                        <i data-lucide="layout-dashboard" class="w-7 h-7"></i>
                     </div>
-                    <div class="p-8">
-                        <div class="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-6 text-sage-700">
-                            <i data-lucide="message-circle-heart" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-wood mb-3">深度情緒傾聽</h3>
-                        <p class="text-gray-600 line-clamp-3">
-                            一對一的專屬時間。無論是工作上的委屈、育兒的無力感，或是難以啟齒的家庭關係，這裡都是妳最安全的傾訴出口。
-                        </p>
-                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-brand-900">全室設計規劃</h3>
+                    <p class="text-gray-600 font-light leading-relaxed">
+                        從毛胚屋到老屋翻新，提供全方位的空間動線規劃、材質挑選與風格定調，打造一致性的美學體驗。
+                    </p>
                 </div>
 
                 <!-- Service 2 -->
-                <div class="bg-oatmeal-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl smooth-transition hover:-translate-y-2 group reveal" style="transition-delay: 100ms;">
-                    <div class="aspect-video relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1512438248247-f0f2a5a8b7f0?q=80&w=800&auto=format&fit=crop" alt="Healing Space" class="w-full h-full object-cover group-hover:scale-110 smooth-transition duration-500">
-                        <div class="absolute inset-0 bg-sage-900/20 group-hover:bg-transparent smooth-transition"></div>
+                <div class="bg-white p-10 rounded-2xl shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal-up delay-100">
+                    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-6 text-brand-600">
+                        <i data-lucide="hammer" class="w-7 h-7"></i>
                     </div>
-                    <div class="p-8">
-                        <div class="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-6 text-sage-700">
-                            <i data-lucide="leaf" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-wood mb-3">森林感放鬆空間</h3>
-                        <p class="text-gray-600 line-clamp-3">
-                            沉浸在我們精心佈置的北歐極簡環境中。柔和的自然光、木質家具與鼠尾草綠的色調，讓緊繃的神經自然放鬆。
-                        </p>
-                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-brand-900">局部裝修升級</h3>
+                    <p class="text-gray-600 font-light leading-relaxed">
+                        針對客廳、廚房、衛浴或特定空間進行機能改善與視覺煥新，以最小影響帶來最大居住品質提升。
+                    </p>
                 </div>
 
                 <!-- Service 3 -->
-                <div class="bg-oatmeal-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl smooth-transition hover:-translate-y-2 group reveal" style="transition-delay: 200ms;">
-                    <div class="aspect-video relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?q=80&w=800&auto=format&fit=crop" alt="Personal Growth" class="w-full h-full object-cover group-hover:scale-110 smooth-transition duration-500">
-                        <div class="absolute inset-0 bg-sage-900/20 group-hover:bg-transparent smooth-transition"></div>
+                <div class="bg-white p-10 rounded-2xl shadow-soft hover:shadow-xl hover:-translate-y-2 transition-all duration-300 reveal-up delay-200">
+                    <div class="w-14 h-14 bg-brand-50 rounded-xl flex items-center justify-center mb-6 text-brand-600">
+                        <i data-lucide="message-square" class="w-7 h-7"></i>
                     </div>
-                    <div class="p-8">
-                        <div class="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-6 text-sage-700">
-                            <i data-lucide="sprout" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-wood mb-3">找回內在平衡</h3>
-                        <p class="text-gray-600 line-clamp-3">
-                            透過對話與沉澱，幫助妳重新梳理混亂的思緒。卸下所有的角色包袱，單純地做回自己，找回面對日常的力量。
-                        </p>
-                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-brand-900">專業諮詢服務</h3>
+                    <p class="text-gray-600 font-light leading-relaxed">
+                        提供裝潢預算評估、風格建議與施工流程解說，讓您在裝修前擁有清晰的藍圖與安心感。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Custom Icons Showcase -->
+            <div class="mt-20 reveal-up bg-white p-8 md:p-12 rounded-3xl shadow-soft flex flex-col md:flex-row items-center gap-10">
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-bold mb-4 text-brand-900">專屬設計語彙</h3>
+                    <p class="text-gray-600 font-light leading-relaxed mb-6">
+                        我們注重每一個細節，從設計圖紙到最終完工，皆秉持著現代簡約的俐落與精準。這組專屬的視覺圖標，象徵著我們對於全室設計、工程施作與專業諮詢的嚴謹態度。
+                    </p>
+                    <a href="#contact" class="inline-flex items-center gap-2 text-brand-600 font-medium hover:text-brand-800 transition-colors">
+                        開始規劃您的家 <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center img-zoom-container">
+                    <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260319060844_2.png" alt="正修室內裝潢設計圖標" class="max-w-full h-auto object-contain rounded-xl">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing & Info Section -->
-    <section id="info" class="py-24 bg-sage-100 relative overflow-hidden">
-        <!-- Decorative background elements -->
-        <div class="absolute top-0 left-0 w-64 h-64 bg-sage-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2"></div>
-        <div class="absolute bottom-0 right-0 w-80 h-80 bg-oatmeal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/3 translate-y-1/3"></div>
-
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 reveal">
-            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
-                <!-- Pricing Details -->
-                <div class="p-10 md:p-12 md:w-3/5 flex flex-col justify-center">
-                    <span class="text-sage-700 font-bold tracking-wider uppercase mb-2">Investment in Yourself</span>
-                    <h2 class="text-3xl font-bold text-wood mb-6">專屬傾聽方案</h2>
-                    
-                    <div class="flex items-baseline gap-2 mb-8 pb-8 border-b border-oatmeal-200">
-                        <span class="text-5xl font-extrabold text-sage-500">$400 - 500</span>
-                        <span class="text-gray-500 text-lg">/ 60分鐘</span>
-                    </div>
-
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-sage-500 flex-shrink-0"></i>
-                            <span>完整一小時的專屬私密對話</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-sage-500 flex-shrink-0"></i>
-                            <span>舒適放鬆的實體空間體驗</span>
-                        </li>
-                        <li class="flex items-center gap-3 text-gray-700">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-sage-500 flex-shrink-0"></i>
-                            <span>不限話題，全然接納的情緒出口</span>
-                        </li>
-                    </ul>
-                </div>
+    <!-- Location & Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row reveal-up">
                 
                 <!-- Contact Info -->
-                <div class="bg-wood text-oatmeal-50 p-10 md:p-12 md:w-2/5 flex flex-col justify-between">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-6">營業資訊</h3>
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <i data-lucide="clock" class="w-6 h-6 text-sage-300 mt-1"></i>
-                                <div>
-                                    <p class="font-medium text-white">營業時間</p>
-                                    <p class="text-oatmeal-200">10:30 - 15:30</p>
-                                    <p class="text-sm text-sage-300 mt-1">採全面預約制</p>
-                                </div>
+                <div class="w-full lg:w-5/12 p-10 md:p-16 text-white flex flex-col justify-center">
+                    <span class="text-brand-300 font-heading tracking-widest uppercase text-sm mb-4">Contact Us</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">讓我們為您<br>打造理想空間</h2>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-brand-200"></i>
                             </div>
-                            <div class="flex items-start gap-4">
-                                <i data-lucide="map-pin" class="w-6 h-6 text-sage-300 mt-1"></i>
-                                <div>
-                                    <p class="font-medium text-white">工作室位置</p>
-                                    <p class="text-oatmeal-200">新竹地區</p>
-                                    <p class="text-sm text-sage-300 mt-1">(詳細地址將於預約成功後提供，確保隱私)</p>
-                                </div>
+                            <div>
+                                <h4 class="text-brand-200 font-medium mb-1">公司地址</h4>
+                                <p class="text-gray-300 font-light">台北市大安區<br>羅斯福路四段一號</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="clock" class="w-5 h-5 text-brand-200"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-brand-200 font-medium mb-1">營業時間</h4>
+                                <p class="text-gray-300 font-light">週一至週五<br>09:00 - 18:00</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="message-circle" class="w-5 h-5 text-brand-200"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-brand-200 font-medium mb-1">線上諮詢</h4>
+                                <p class="text-gray-300 font-light mb-3">歡迎透過粉絲專頁與我們聯繫</p>
+                                <a href="https://www.facebook.com/search/top?q=%E6%AD%A3%E4%BF%AE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-400 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors">
+                                    <i data-lucide="facebook" class="w-4 h-4"></i>
+                                    Facebook 搜尋「正修」
+                                </a>
                             </div>
                         </div>
                     </div>
-                    
-                    <a href="https://www.facebook.com/share/1YP57NrDX1/?mibextid=wwXIfr" target="_blank" class="mt-10 block text-center bg-sage-500 text-white py-4 rounded-xl font-medium hover:bg-sage-300 hover:text-wood transition-colors duration-300 shadow-lg">
-                        前往 FB 粉絲專頁預約
-                    </a>
+                </div>
+
+                <!-- Image / Map Placeholder -->
+                <div class="w-full lg:w-7/12 relative min-h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="溫馨室內角落" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-brand-900/20 mix-blend-multiply"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-wood text-oatmeal-200 py-12 border-t border-sage-900/50 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="flex items-center gap-3">
-                    <i data-lucide="leaf" class="w-6 h-6 text-sage-500"></i>
-                    <span class="text-2xl font-bold text-white tracking-widest">Reset</span>
-                </div>
-                
-                <div class="flex gap-6">
-                    <a href="https://www.facebook.com/share/1YP57NrDX1/?mibextid=wwXIfr" target="_blank" class="text-oatmeal-200 hover:text-sage-300 smooth-transition">
-                        <span class="sr-only">Facebook</span>
-                        <i data-lucide="facebook" class="w-6 h-6"></i>
-                    </a>
-                </div>
+    <footer class="bg-brand-900 text-brand-200 py-12 border-t border-brand-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <img src="https://raw.githubusercontent.com/howard0338/Webomate-images/main/images/ai_img_20260319060844_0.png" alt="正修室內裝潢 Logo" class="h-8 w-8 object-contain brightness-0 invert opacity-80">
+                <span class="font-bold tracking-wider text-white">正修室內裝潢</span>
             </div>
             
-            <div class="mt-8 pt-8 border-t border-sage-900/50 flex flex-col md:flex-row justify-between items-center gap-4 text-sm font-light">
-                <p>&copy; 2026 Reset 工作室. All rights reserved.</p>
-                <p class="flex items-center gap-1">
-                    Made with <i data-lucide="heart" class="w-4 h-4 text-sage-500 mx-1"></i> by <span class="font-medium text-sage-300">Webomate</span>
-                </p>
+            <div class="text-sm font-light text-brand-300/60 text-center md:text-right">
+                &copy; 2026 正修室內裝潢. All rights reserved.<br>
+                <span class="mt-2 inline-block">Made by Webomate</span>
             </div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
     <script>
-        // Initialize Icons
+        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Typewriter Effect
-        const phrases = [
-            "竹科媽媽的專屬避風港",
-            "職場女性的情緒樹洞",
-            "讓疲憊的心重新 Reset"
-        ];
-        let i = 0;
-        let j = 0;
-        let currentPhrase = [];
-        let isDeleting = false;
-        let isEnd = false;
-        const typewriterElement = document.getElementById('typewriter-text');
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = btn.querySelector('i');
 
-        function loop() {
-            isEnd = false;
-            typewriterElement.innerHTML = currentPhrase.join('');
-
-            if (i < phrases.length) {
-                if (!isDeleting && j <= phrases[i].length) {
-                    currentPhrase.push(phrases[i][j]);
-                    j++;
-                    typewriterElement.innerHTML = currentPhrase.join('');
-                }
-
-                if (isDeleting && j <= phrases[i].length) {
-                    currentPhrase.pop(phrases[i][j]);
-                    j--;
-                    typewriterElement.innerHTML = currentPhrase.join('');
-                }
-
-                if (j == phrases[i].length) {
-                    isEnd = true;
-                    isDeleting = true;
-                }
-
-                if (isDeleting && j === 0) {
-                    currentPhrase = [];
-                    isDeleting = false;
-                    i++;
-                    if (i === phrases.length) {
-                        i = 0;
-                    }
-                }
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if(menu.classList.contains('hidden')) {
+                menuIcon.setAttribute('data-lucide', 'menu');
+            } else {
+                menuIcon.setAttribute('data-lucide', 'x');
             }
-            const spedUp = Math.random() * (80 - 50) + 50;
-            const normalSpeed = Math.random() * (150 - 100) + 100;
-            const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
-            setTimeout(loop, time);
+            lucide.createIcons();
+        });
+
+        // Close mobile menu when clicking a link
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // Typewriter Effect
+        const textArray =["大安區現代簡約設計首選", "用心規劃每一寸空間", "為您打造專屬的生活美學"];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingDelay = 100;
+        const erasingDelay = 50;
+        const newTextDelay = 2000;
+        const typewriterElement = document.getElementById('typewriter');
+
+        function type() {
+            const currentText = textArray[textIndex];
+            
+            if (isDeleting) {
+                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? erasingDelay : typingDelay;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = newTextDelay;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % textArray.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
         }
-        
-        // Start typewriter after a short delay
-        setTimeout(loop, 1000);
+
+        // Start typewriter after a slight delay
+        setTimeout(type, 1500);
 
         // Scroll Reveal Animation
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Trigger once on load
+        const revealElements = document.querySelectorAll('.reveal-up');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
 
-        // Counter Animation
-        const counters = document.querySelectorAll('.counter');
-        const speed = 200; // The lower the slower
-
-        const animateCounters = () => {
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    
-                    // Determine increment based on target size
-                    let inc = target / speed;
-                    if(target < 10) inc = target / 50; // Slower for small numbers like 4.9
-
-                    if (count < target) {
-                        // Check if it's a decimal number
-                        if(target % 1 !== 0) {
-                            counter.innerText = (count + inc).toFixed(1);
-                        } else {
-                            counter.innerText = Math.ceil(count + inc);
-                        }
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-
-                // Only start animation when element is in view
-                const observer = new IntersectionObserver((entries) => {
-                    if(entries[0].isIntersecting) {
-                        updateCount();
-                        observer.disconnect();
-                    }
-                });
-                observer.observe(counter);
+        const revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
             });
-        }
-        animateCounters();
+        }, revealOptions);
 
-        // Navbar blur effect on scroll
-        window.addEventListener('scroll', function() {
-            const nav = document.getElementById('navbar');
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Number Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const duration = 2000; // 2 seconds
+                    const increment = target / (duration / 16); // 60fps
+                    
+                    let current = 0;
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            entry.target.innerText = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            entry.target.innerText = target;
+                        }
+                    };
+                    updateCounter();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // Navbar Style on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                nav.classList.add('shadow-sm');
-                nav.style.background = 'rgba(244, 241, 234, 0.95)';
+                navbar.classList.add('shadow-md');
             } else {
-                nav.classList.remove('shadow-sm');
-                nav.style.background = 'rgba(244, 241, 234, 0.85)';
+                navbar.classList.remove('shadow-md');
             }
         });
     </script>
